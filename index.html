@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html lang="nl">
+$html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>Breure Web Agency – Offshore & Maritieme Websites</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Breure Web Agency bouwt krachtige websites voor de offshore & maritieme sector. Van heavy-lift vessels tot jack-ups en platforms: wij maken de asset websites waarop miljoenenbeslissingen worden genomen." />
+  
+  <!-- SEO & GOOGLE -->
+  <title>Breure Web Agency | Offshore & Maritieme Microsites | Rotterdam</title>
+  <meta name="description" content="Gespecialiseerde microsites voor heavy-lift vessels, jack-ups, platforms en support ships. Bliksemsnel, SEO-proof en perfect voor charterers & engineers. Rotterdam." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Breure Web Agency" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="offshore website, maritieme microsite, heavy-lift vessel website, jack-up website, platform microsite, ship marketing, Rotterdam web agency, asset website, crane specs website" />
+  
+  <!-- GOOGLE SEARCH CONSOLE VERIFICATIE (jouw echte code) -->
+  <meta name="google-site-verification" content="35f52431099f8fc7" />
+  
+  <!-- Open Graph – mooie previews op LinkedIn, X, WhatsApp etc. -->
+  <meta property="og:title" content="Breure Web Agency | Offshore & Maritieme Microsites" />
+  <meta property="og:description" content="Dedicated microsites voor heavy-lift vessels, jack-ups en platforms – snel, technisch en perfect voor chartermarketing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://breure.ai" />
+  <meta property="og:image" content="https://breure.ai/breure-offshore-hero.webp" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="breure-favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="breure-favicon-512.png" />
-
+  
   <style>
     :root {
       --bg-dark: #021526;
@@ -22,468 +39,88 @@
       --radius: 14px;
       --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: radial-gradient(circle at 0% 0%, #053865 0, #021526 38%, #000810 100%);
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    main {
-      min-height: 100vh;
-    }
-
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 32px 20px 64px;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .logo-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 20%, #ffffff 0, #92d0ff 25%, #0084ff 60%, #0050a0 100%);
-      position: relative;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .logo-mark::before,
-    .logo-mark::after {
-      content: "";
-      position: absolute;
-      inset: 50% -40%;
-      border-radius: 50%;
-      background: rgba(2, 21, 38, 0.8);
-      transform: translateY(-55%);
-    }
-
-    .logo-mark::after {
-      background: rgba(2, 21, 38, 0.6);
-      transform: translateY(10%);
-    }
-
-    .logo-mark svg {
-      position: relative;
-      z-index: 1;
-      width: 70%;
-      height: 70%;
-    }
-
-    .logo-text-main {
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-    }
-
-    .logo-text-sub {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.26em;
-      color: var(--accent-soft);
-    }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    nav a {
-      position: relative;
-      padding-bottom: 3px;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.2s ease-out;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* HERO */
-
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.8fr);
-      gap: 30px;
-      align-items: center;
-      margin-bottom: 44px;
-    }
-
-    .hero-main h1 {
-      font-size: clamp(2.1rem, 3.2vw, 2.8rem);
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .hero-main h1 span {
-      color: var(--accent-soft);
-    }
-
-    .hero-tagline {
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .hero-quote {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 18px;
-    }
-
-    .hero-sub {
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      max-width: 34rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      border-radius: 999px;
-      padding: 10px 20px;
-      font-size: 0.95rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      transition: all 0.18s ease-out;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-      color: #021526;
-      font-weight: 600;
-      box-shadow: 0 12px 30px rgba(0, 132, 255, 0.4);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 40px rgba(0, 132, 255, 0.55);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text-main);
-      border-color: var(--border-soft);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent-soft);
-      color: var(--accent-soft);
-    }
-
-    .hero-meta {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .hero-meta strong {
-      color: var(--accent-soft);
-      font-weight: 600;
-    }
-
-    /* HERO CARD – alleen posterafbeelding */
-
-    .hero-card {
-      border-radius: var(--radius);
-      border: 1px solid var(--border-soft);
-      padding: 0;
-      box-shadow: var(--shadow-soft);
-      overflow: hidden;
-      background: #021526;
-    }
-
-    .hero-card-image {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* SECTIONS */
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    .section-title {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-    }
-
-    .section-subtitle {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      max-width: 40rem;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 16px 16px 15px;
-      border: 1px solid var(--border-soft);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-      font-size: 0.9rem;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .card p {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .card ul {
-      list-style: none;
-      padding-left: 0;
-      font-size: 0.84rem;
-      color: var(--text-muted);
-    }
-
-    .card ul li::before {
-      content: "• ";
-      color: var(--accent-soft);
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(129, 176, 214, 0.8);
-      font-size: 0.75rem;
-      color: #91b3d4;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .pill span {
-      font-size: 0.95em;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
-      gap: 22px;
-      align-items: center;
-    }
-
-    .contact-block {
-      font-size: 0.9rem;
-    }
-
-    .contact-block p {
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .contact-details {
-      margin-top: 10px;
-      font-size: 0.88rem;
-    }
-
-    .contact-details div {
-      margin-bottom: 4px;
-    }
-
-    .contact-highlight {
-      margin-top: 12px;
-      font-size: 0.84rem;
-      color: #9ac7ff;
-    }
-
-    .contact-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      border: 1px solid var(--border-soft);
-      padding: 16px 16px 14px;
-      font-size: 0.86rem;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4);
-    }
-
-    .contact-card h3 {
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .contact-card label {
-      display: block;
-      font-size: 0.78rem;
-      margin-top: 8px;
-      margin-bottom: 2px;
-      color: var(--text-muted);
-    }
-
-    .contact-card input,
-    .contact-card textarea {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid #1d3c57;
-      background: #020c16;
-      padding: 7px 8px;
-      color: var(--text-main);
-      font-size: 0.83rem;
-      outline: none;
-    }
-
-    .contact-card textarea {
-      resize: vertical;
-      min-height: 62px;
-    }
-
-    .contact-card input:focus,
-    .contact-card textarea:focus {
-      border-color: var(--accent-soft);
-      box-shadow: 0 0 0 1px rgba(0, 168, 255, 0.35);
-    }
-
-    .contact-card button {
-      margin-top: 10px;
-      width: 100%;
-      border-radius: 999px;
-      border: none;
-      padding: 9px 14px;
-      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-      color: #021526;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 10px 26px rgba(0, 132, 255, 0.5);
-    }
-
-    .contact-card button:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 34px rgba(0, 132, 255, 0.65);
-    }
-
-    .footer {
-      margin-top: 40px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(36, 70, 103, 0.8);
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .footer a {
-      color: var(--text-muted);
-    }
-
-    .footer a:hover {
-      color: var(--accent-soft);
-    }
-
-    /* RESPONSIVE */
-
+    a { color: inherit; text-decoration: none; }
+    main { min-height: 100vh; }
+    .page { max-width: var(--max-width); margin: 0 auto; padding: 32px 20px 64px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 40px; }
+    .logo-wrap { display: flex; align-items: center; gap: 14px; }
+    .logo-mark { width: 40px; height: 40px; border-radius: 999px; background: radial-gradient(circle at 30% 20%, #ffffff 0, #92d0ff 25%, #0084ff 60%, #0050a0 100%); position: relative; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .logo-mark::before, .logo-mark::after { content: ""; position: absolute; inset: 50% -40%; border-radius: 50%; background: rgba(2, 21, 38, 0.8); transform: translateY(-55%); }
+    .logo-mark::after { background: rgba(2, 21, 38, 0.6); transform: translateY(10%); }
+    .logo-mark svg { position: relative; z-index: 1; width: 70%; height: 70%; }
+    .logo-text-main { font-weight: 800; letter-spacing: 0.12em; font-size: 1.1rem; text-transform: uppercase; }
+    .logo-text-sub { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.26em; color: var(--accent-soft); }
+    nav { display: flex; gap: 18px; font-size: 0.9rem; color: var(--text-muted); }
+    nav a { position: relative; padding-bottom: 3px; }
+    nav a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.2s ease-out; }
+    nav a:hover::after { width: 100%; }
+    .hero { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.8fr); gap: 30px; align-items: center; margin-bottom: 44px; }
+    .hero-main h1 { font-size: clamp(2.1rem, 3.2vw, 2.8rem); line-height: 1.15; margin-bottom: 16px; }
+    .hero-main h1 span { color: var(--accent-soft); }
+    .hero-tagline { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--text-muted); margin-bottom: 10px; }
+    .hero-quote { font-size: 1rem; font-weight: 600; margin-bottom: 18px; }
+    .hero-sub { font-size: 0.96rem; color: var(--text-muted); margin-bottom: 24px; max-width: 34rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+    .btn-primary, .btn-ghost { border-radius: 999px; padding: 10px 20px; font-size: 0.95rem; border: 1px solid transparent; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: all 0.18s ease-out; }
+    .btn-primary { background: linear-gradient(135deg, var(--accent-soft), var(--accent)); color: #021526; font-weight: 600; box-shadow: 0 12px 30px rgba(0, 132, 255, 0.4); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px rgba(0, 132, 255, 0.55); }
+    .btn-ghost { background: transparent; color: var(--text-main); border-color: var(--border-soft); }
+    .btn-ghost:hover { border-color: var(--accent-soft); color: var(--accent-soft); }
+    .hero-meta { font-size: 0.82rem; color: var(--text-muted); }
+    .hero-meta strong { color: var(--accent-soft); font-weight: 600; }
+    .hero-card { border-radius: var(--radius); border: 1px solid var(--border-soft); padding: 0; box-shadow: var(--shadow-soft); overflow: hidden; background: #021526; }
+    .hero-card-image { display: block; width: 100%; height: auto; }
+    section { margin-bottom: 40px; }
+    .section-title { font-size: 1.15rem; margin-bottom: 10px; }
+    .section-subtitle { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; max-width: 40rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { background: var(--card-bg); border-radius: var(--radius); padding: 16px 16px 15px; border: 1px solid var(--border-soft); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35); font-size: 0.9rem; }
+    .card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .card p { font-size: 0.86rem; color: var(--text-muted); margin-bottom: 8px; }
+    .card ul { list-style: none; padding-left: 0; font-size: 0.84rem; color: var(--text-muted); }
+    .card ul li::before { content: "• "; color: var(--accent-soft); }
+    .pill { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 999px; border: 1px solid rgba(129, 176, 214, 0.8); font-size: 0.75rem; color: #91b3d4; gap: 6px; margin-bottom: 8px; }
+    .pill span { font-size: 0.95em; }
+    .contact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr); gap: 22px; align-items: center; }
+    .contact-block { font-size: 0.9rem; }
+    .contact-block p { color: var(--text-muted); margin-bottom: 8px; }
+    .contact-details { margin-top: 10px; font-size: 0.88rem; }
+    .contact-details div { margin-bottom: 4px; }
+    .contact-highlight { margin-top: 12px; font-size: 0.84rem; color: #9ac7ff; }
+    .contact-card { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-soft); padding: 16px 16px 14px; font-size: 0.86rem; box-shadow: 0 12px 26px rgba(0, 0, 0, 0.4); }
+    .contact-card h3 { margin-bottom: 6px; font-size: 1rem; }
+    .contact-card label { display: block; font-size: 0.78rem; margin-top: 8px; margin-bottom: 2px; color: var(--text-muted); }
+    .contact-card input, .contact-card textarea { width: 100%; border-radius: 8px; border: 1px solid #1d3c57; background: #020c16; padding: 7px 8px; color: var(--text-main); font-size: 0.83rem; outline: none; }
+    .contact-card textarea { resize: vertical; min-height: 62px; }
+    .contact-card input:focus, .contact-card textarea:focus { border-color: var(--accent-soft); box-shadow: 0 0 0 1px rgba(0, 168, 255, 0.35); }
+    .contact-card button { margin-top: 10px; width: 100%; border-radius: 999px; border: none; padding: 9px 14px; background: linear-gradient(135deg, var(--accent-soft), var(--accent)); color: #021526; font-weight: 600; font-size: 0.9rem; cursor: pointer; box-shadow: 0 10px 26px rgba(0, 132, 255, 0.5); }
+    .contact-card button:hover { transform: translateY(-1px); box-shadow: 0 14px 34px rgba(0, 132, 255, 0.65); }
+    .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid rgba(36, 70, 103, 0.8); font-size: 0.78rem; color: var(--text-muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+    .footer a { color: var(--text-muted); }
+    .footer a:hover { color: var(--accent-soft); }
     @media (max-width: 900px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav {
-        width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-card {
-        order: -1;
-      }
-      .contact {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      header { flex-direction: column; align-items: flex-start; }
+      nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+      .hero { grid-template-columns: minmax(0, 1fr); }
+      .hero-card { order: -1; }
+      .contact { grid-template-columns: minmax(0, 1fr); }
     }
-
     @media (max-width: 640px) {
-      .page {
-        padding: 20px 16px 40px;
-      }
-      .hero-main h1 {
-        font-size: 1.8rem;
-      }
-      .grid-3 {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .contact-card {
-        padding: 14px 12px 12px;
-      }
+      .page { padding: 20px 16px 40px; }
+      .hero-main h1 { font-size: 1.8rem; }
+      .grid-3 { grid-template-columns: minmax(0, 1fr); }
+      .contact-card { padding: 14px 12px 12px; }
     }
   </style>
 </head>
-
 <body>
 <main>
   <div class="page">
@@ -491,16 +128,8 @@
       <div class="logo-wrap">
         <div class="logo-mark" aria-hidden="true">
           <svg viewBox="0 0 64 64" role="img" aria-label="Breure Web Agency logo">
-            <path
-              d="M6 36c4.5-5 9-7 13.5-7 7.5 0 10.5 5 17.5 5 6.3 0 10.6-3 13.3-6.3C47 32 43 34 37.5 34 30 34 27 29 20 29 13 29 9.5 32.5 6 36z"
-              fill="#ffffff"
-              fill-opacity="0.94"
-            />
-            <path
-              d="M12 28c3.8-4.2 8-6.2 12.8-6.2 6.3 0 9.6 3.2 15.6 3.2 4.4 0 8-1.4 11-3.7-3.4-3.4-7.7-5.3-13-5.3-8 0-11.2 4-18.6 4C17.2 20 14 22.8 12 28z"
-              fill="#cfe8ff"
-              fill-opacity="0.96"
-            />
+            <path d="M6 36c4.5-5 9-7 13.5-7 7.5 0 10.5 5 17.5 5 6.3 0 10.6-3 13.3-6.3C47 32 43 34 37.5 34 30 34 27 29 20 29 13 29 9.5 32.5 6 36z" fill="#ffffff" fill-opacity="0.94"/>
+            <path d="M12 28c3.8-4.2 8-6.2 12.8-6.2 6.3 0 9.6 3.2 15.6 3.2 4.4 0 8-1.4 11-3.7-3.4-3.4-7.7-5.3-13-5.3-8 0-11.2 4-18.6 4C17.2 20 14 22.8 12 28z" fill="#cfe8ff" fill-opacity="0.96"/>
           </svg>
         </div>
         <div>
@@ -508,7 +137,6 @@
           <div class="logo-text-sub">WEB AGENCY</div>
         </div>
       </div>
-
       <nav>
         <a href="#services">Diensten</a>
         <a href="#voordelen">Waarom offshore-klanten</a>
@@ -521,39 +149,22 @@
       <div class="hero-main">
         <div class="hero-tagline">Gespecialiseerd in websites voor de offshore &amp; maritieme sector</div>
         <h1>Wij bouwen de <span>asset websites</span> waarop miljoenenbeslissingen worden genomen.</h1>
-
         <p class="hero-quote">
-          Heavy-lift vessels, jack-ups, platforms en support ships – online
-          gepresenteerd op een niveau dat past bij uw day rate.
+          Heavy-lift vessels, jack-ups, platforms en support ships – online gepresenteerd op een niveau dat past bij uw day rate.
         </p>
-
         <p class="hero-sub">
-          Breure Web Agency vertaalt complexe technische data naar heldere, snelle en betrouwbare websites
-          voor charterers, engineers en tenderteams. Uw vloot zichtbaar, uw capabilities onmiskenbaar.
+          Breure Web Agency vertaalt complexe technische data naar heldere, snelle en betrouwbare websites voor charterers, engineers en tenderteams. Uw vloot zichtbaar, uw capabilities onmiskenbaar.
         </p>
-
         <div class="hero-actions">
-          <a class="btn-primary" href="mailto:info@breure.ai?subject=Offshore website informatie">
-            Plan een call
-          </a>
-          <a class="btn-ghost" href="#services">
-            Bekijk wat we voor uw assets doen
-          </a>
+          <a class="btn-primary" href="mailto:info@breure.ai?subject=Offshore website informatie">Plan een call</a>
+          <a class="btn-ghost" href="#services">Bekijk wat we voor uw assets doen</a>
         </div>
-
         <div class="hero-meta">
-          <strong>Breure Web Agency</strong> · Westplein 12, 3016 BM Rotterdam ·
-          <a href="mailto:info@breure.ai">info@breure.ai</a>
+          <strong>Breure Web Agency</strong> · Westplein 12, 3016 BM Rotterdam · <a href="mailto:info@breure.ai">info@breure.ai</a>
         </div>
       </div>
-
       <aside class="hero-card" aria-label="Offshore visual">
-        <img
-          src="breure-offshore-hero.webp"
-          alt="Breure Web Agency – gespecialiseerd in websites voor de offshore en maritieme sector"
-          class="hero-card-image"
-          loading="lazy"
-        />
+        <img src="breure-offshore-hero.webp" alt="Breure Web Agency – gespecialiseerd in websites voor de offshore en maritieme sector" class="hero-card-image" loading="lazy" />
       </aside>
     </section>
 
@@ -561,43 +172,33 @@
     <section id="services">
       <h2 class="section-title">Wat wij bouwen voor offshore &amp; maritieme klanten</h2>
       <p class="section-subtitle">
-        Uw asset verdient meer dan een vermelding op de corporate website. Wij bouwen gerichte, snelle
-        microsites per schip of platform – volledig afgestemd op chartering, engineering en tendering.
+        Uw asset verdient meer dan een vermelding op de corporate website. Wij bouwen gerichte, snelle microsites per schip of platform – volledig afgestemd op chartering, engineering en tendering.
       </p>
-
       <div class="grid-3">
         <article class="card">
           <div class="pill"><span>01</span> Asset microsites</div>
           <h3>Vessel &amp; platform websites</h3>
-          <p>
-            Dedicated websites voor heavy-lift vessels, jack-ups, barges, construction vessels en support ships.
-          </p>
+          <p> Dedicated websites voor heavy-lift vessels, jack-ups, barges, construction vessels en support ships.</p>
           <ul>
             <li>Technische specs &amp; crane load charts</li>
             <li>Deck layouts en POB-capaciteit</li>
             <li>Projectreferenties en foto/visual galleries</li>
           </ul>
         </article>
-
         <article class="card">
           <div class="pill"><span>02</span> Engineering-ready</div>
           <h3>Datasheets &amp; capability pages</h3>
-          <p>
-            Structuur en content die direct bruikbaar is in tenders, FEED-studies en engineering reviews.
-          </p>
+          <p>Structuur en content die direct bruikbaar is in tenders, FEED-studies en engineering reviews.</p>
           <ul>
             <li>PDF-downloads per asset</li>
             <li>Lift scenarios &amp; deck load zones</li>
             <li>DP-capability, fuel &amp; transit data</li>
           </ul>
         </article>
-
         <article class="card">
           <div class="pill"><span>03</span> Online zichtbaarheid</div>
           <h3>SEO &amp; charter marketing</h3>
-          <p>
-            Vindbaar op de termen waarop brokers, contractors en operators zoeken naar assets en capaciteit.
-          </p>
+          <p>Vindbaar op de termen waarop brokers, contractors en operators zoeken naar assets en capaciteit.</p>
           <ul>
             <li>Gerichte SEO op offshore keywords</li>
             <li>Scherpe, technische copywriting</li>
@@ -611,33 +212,20 @@
     <section id="voordelen">
       <h2 class="section-title">Waarom offshore-bedrijven voor Breure kiezen</h2>
       <p class="section-subtitle">
-        Offshore assets draaien op day rates. Elke extra charterdag telt. Een heldere digitale presentatie
-        versnelt beslissingen, verkleint risico’s en vergroot vertrouwen bij operators en contractors.
+        Offshore assets draaien op day rates. Elke extra charterdag telt. Een heldere digitale presentatie versnelt beslissingen, verkleint risico’s en vergroot vertrouwen bij operators en contractors.
       </p>
-
       <div class="grid-3">
         <article class="card">
           <h3>Asset first, niet corporate first</h3>
-          <p>
-            Engineers, charterers en tenderteams zoeken niet naar uw holding, maar naar concrete capaciteit:
-            crane, deck, DP, POB, transit. Wij structureren de site rond de asset.
-          </p>
+          <p>Engineers, charterers en tenderteams zoeken niet naar uw holding, maar naar concrete capaciteit: crane, deck, DP, POB, transit. Wij structureren de site rond de asset.</p>
         </article>
-
         <article class="card">
           <h3>Technische taal, begrijpelijke opbouw</h3>
-          <p>
-            Wij combineren technische details (SWL, outreach, hook height, draft, bollard pull) met
-            begrijpelijke navigatie. Zo vinden zowel de project engineer als de commerciële manager direct wat hij zoekt.
-          </p>
+          <p>Wij combineren technische details (SWL, outreach, hook height, draft, bollard pull) met begrijpelijke navigatie. Zo vinden zowel de project engineer als de commerciële manager direct wat hij zoekt.</p>
         </article>
-
         <article class="card">
           <h3>AI-visuals &amp; snelle iteratie</h3>
-          <p>
-            Met moderne AI-visualisatie creëren wij sterke offshore beelden zonder dure heli-flights of renders.
-            Dat geeft flexibiliteit en snelheid bij nieuwbouw, conversies en rebranding.
-          </p>
+          <p>Met moderne AI-visualisatie creëren wij sterke offshore beelden zonder dure heli-flights of renders. Dat geeft flexibiliteit en snelheid bij nieuwbouw, conversies en rebranding.</p>
         </article>
       </div>
     </section>
@@ -646,10 +234,7 @@
     <section id="contact" class="contact">
       <div class="contact-block">
         <h2 class="section-title">Bespreek uw eerste asset website</h2>
-        <p>
-          Heeft u één nieuw platform, een conversion project of een complete vloot? Wij starten vaak met één
-          pilot-asset en rollen daarna gefaseerd uit naar de rest van de vloot.
-        </p>
+        <p>Heeft u één nieuw platform, een conversion project of een complete vloot? Wij starten vaak met één pilot-asset en rollen daarna gefaseerd uit naar de rest van de vloot.</p>
         <div class="contact-details">
           <div><strong>Breure Web Agency</strong></div>
           <div>Westplein 12</div>
@@ -657,27 +242,19 @@
           <div>E-mail: <a href="mailto:info@breure.ai">info@breure.ai</a></div>
         </div>
         <p class="contact-highlight">
-          Stuur uw huidige datasheet of vessel brochure mee – wij komen terug met een concreet voorstel
-          voor een dedicated asset website, inclusief planning en indicatieve investering.
+          Stuur uw huidige datasheet of vessel brochure mee – wij komen terug met een concreet voorstel voor een dedicated asset website, inclusief planning en indicatieve investering.
         </p>
       </div>
-
       <div class="contact-card" aria-label="Contactformulier">
         <h3>Snel een eerste signaal sturen</h3>
         <p>Gebruik dit als leidraad; formulier-afhandeling kunt u later toevoegen of via e-mail oplossen.</p>
-
         <label for="name">Naam / organisatie</label>
         <input id="name" type="text" placeholder="Uw naam of bedrijfsnaam" />
-
         <label for="asset">Asset</label>
         <input id="asset" type="text" placeholder="Naam van schip / platform / project" />
-
         <label for="message">Korte omschrijving</label>
         <textarea id="message" placeholder="Bijv. 'Microsite voor heavy-lift vessel met crane specs, deck layout en PDF-downloads.'"></textarea>
-
-        <button type="button" onclick="window.location.href='mailto:info@breure.ai?subject=Offshore website aanvraag';">
-          Verstuur via e-mail
-        </button>
+        <button type="button" onclick="window.location.href='mailto:info@breure.ai?subject=Offshore website aanvraag';">Verstuur via e-mail</button>
       </div>
     </section>
 
