@@ -54,7 +54,7 @@ export default function PortfolioPage() {
           title={
             <>
               {headerCopy.titlePrefix}{" "}
-              <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
+              <span className="heading-accent-gradient">
                 {headerCopy.titleAccent}
               </span>{" "}
               {headerCopy.titleSuffix}
