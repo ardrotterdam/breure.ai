@@ -46,7 +46,7 @@ export default function ProcesPage() {
           title={
             <>
               Van GA-plan en spec sheet naar{" "}
-              <span className="bg-gradient-to-r from-white to-[#4a9eff] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
                 live asset website
               </span>
             </>

@@ -14,7 +14,7 @@ export function Footer() {
                 <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
                   <path
                     d="M5 25 Q12 20 20 25 Q28 30 35 25"
-                    stroke="#4a9eff"
+                    stroke="#0078D4"
                     strokeWidth="2.5"
                     strokeLinecap="round"
                   />

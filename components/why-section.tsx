@@ -89,8 +89,8 @@ export function WhySection() {
                 </div>
 
                 {/* Corner accent on hover */}
-                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#4a9eff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#4a9eff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <h3 className="text-xl font-medium mb-4 pr-12 text-white">{reason.title}</h3>
                 <p className="text-[#8ba3c0] leading-relaxed text-sm">{reason.description}</p>

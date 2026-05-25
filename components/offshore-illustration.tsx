@@ -27,8 +27,8 @@ export function OffshoreIllustration() {
             <stop offset="100%" stopColor="oklch(0.15 0.04 230)" stopOpacity="0" />
           </linearGradient>
           <linearGradient id="aiGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="oklch(0.65 0.14 200)" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="oklch(0.50 0.12 210)" stopOpacity="0.3" />
+            <stop offset="0%" stopColor="oklch(0.56 0.18 252)" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="oklch(0.45 0.16 252)" stopOpacity="0.3" />
           </linearGradient>
           <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
             <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
@@ -292,13 +292,13 @@ export function OffshoreIllustration() {
 
           {/* Satellite/cloud data points */}
           <motion.g animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity }}>
-            <circle cx="300" cy="30" r="4" fill="oklch(0.65 0.14 200)" />
-            <circle cx="300" cy="30" r="8" stroke="oklch(0.65 0.14 200)" strokeWidth="1" fill="none" opacity="0.5" />
+            <circle cx="300" cy="30" r="4" fill="oklch(0.56 0.18 252)" />
+            <circle cx="300" cy="30" r="8" stroke="oklch(0.56 0.18 252)" strokeWidth="1" fill="none" opacity="0.5" />
           </motion.g>
 
           <motion.g animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}>
-            <circle cx="450" cy="50" r="4" fill="oklch(0.65 0.14 200)" />
-            <circle cx="450" cy="50" r="8" stroke="oklch(0.65 0.14 200)" strokeWidth="1" fill="none" opacity="0.5" />
+            <circle cx="450" cy="50" r="4" fill="oklch(0.56 0.18 252)" />
+            <circle cx="450" cy="50" r="8" stroke="oklch(0.56 0.18 252)" strokeWidth="1" fill="none" opacity="0.5" />
           </motion.g>
 
           {/* Circuit/network pattern overlay */}
@@ -314,19 +314,19 @@ export function OffshoreIllustration() {
             />
             
             {/* Small data nodes */}
-            <motion.circle cx="220" cy="245" r="2" fill="oklch(0.65 0.14 200)"
+            <motion.circle cx="220" cy="245" r="2" fill="oklch(0.56 0.18 252)"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0 }}
             />
-            <motion.circle cx="260" cy="245" r="2" fill="oklch(0.65 0.14 200)"
+            <motion.circle cx="260" cy="245" r="2" fill="oklch(0.56 0.18 252)"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
             />
-            <motion.circle cx="300" cy="245" r="2" fill="oklch(0.65 0.14 200)"
+            <motion.circle cx="300" cy="245" r="2" fill="oklch(0.56 0.18 252)"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
             />
-            <motion.circle cx="340" cy="245" r="2" fill="oklch(0.65 0.14 200)"
+            <motion.circle cx="340" cy="245" r="2" fill="oklch(0.56 0.18 252)"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
             />
@@ -339,9 +339,9 @@ export function OffshoreIllustration() {
           >
             <circle cx="520" cy="110" r="12" fill="oklch(0.12 0.03 230)" stroke="oklch(0.55 0.12 200)" strokeWidth="1.5" />
             {/* Neural network pattern inside */}
-            <circle cx="516" cy="106" r="2" fill="oklch(0.65 0.14 200)" />
-            <circle cx="524" cy="106" r="2" fill="oklch(0.65 0.14 200)" />
-            <circle cx="520" cy="114" r="2" fill="oklch(0.65 0.14 200)" />
+            <circle cx="516" cy="106" r="2" fill="oklch(0.56 0.18 252)" />
+            <circle cx="524" cy="106" r="2" fill="oklch(0.56 0.18 252)" />
+            <circle cx="520" cy="114" r="2" fill="oklch(0.56 0.18 252)" />
             <line x1="516" y1="106" x2="524" y2="106" stroke="oklch(0.55 0.12 200)" strokeWidth="0.5" />
             <line x1="516" y1="106" x2="520" y2="114" stroke="oklch(0.55 0.12 200)" strokeWidth="0.5" />
             <line x1="524" y1="106" x2="520" y2="114" stroke="oklch(0.55 0.12 200)" strokeWidth="0.5" />

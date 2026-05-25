@@ -83,7 +83,7 @@ export function ProcessSection() {
             <motion.div variants={itemVariants}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6 text-white">
                 Van specs naar{" "}
-                <span className="bg-gradient-to-r from-white to-[#4a9eff] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
                   online impact
                 </span>
               </h2>
@@ -121,7 +121,7 @@ export function ProcessSection() {
                   <p className="text-[#8ba3c0] text-sm leading-relaxed">{step.description}</p>
 
                   {/* Hover indicator */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-8 bg-[#4a9eff] group-hover:w-1 transition-all duration-300 rounded-r" />
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-8 bg-[#0078D4] group-hover:w-1 transition-all duration-300 rounded-r" />
                 </motion.div>
               </motion.div>
             ))}

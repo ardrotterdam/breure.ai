@@ -100,7 +100,7 @@ export function ServicesSection() {
                 <div className="inline-flex items-center gap-2 mb-6">
                   <span className="text-xs font-medium text-[#5a7a9e]">{service.number}</span>
                   <span className="w-8 h-px bg-[#1e3a5f]" />
-                  <span className="text-xs font-medium tracking-wider uppercase text-[#4a9eff]">
+                  <span className="text-xs font-medium tracking-wider uppercase text-[#2B88D8]">
                     {service.tag}
                   </span>
                 </div>
@@ -112,14 +112,14 @@ export function ServicesSection() {
                 <ul className="space-y-3 mt-auto">
                   {service.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3 text-sm text-[#a0b8d0]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4a9eff] mt-1.5 shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0078D4] mt-1.5 shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
                 {/* Hover accent */}
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#4a9eff] group-hover:w-full transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0078D4] group-hover:w-full transition-all duration-500" />
               </motion.div>
             </motion.div>
           ))}

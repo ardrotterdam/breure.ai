@@ -83,7 +83,7 @@ export function Navigation() {
         {/* CTA */}
         <Link
           href="/contact"
-          className="hidden sm:inline-flex items-center px-6 py-2.5 border border-border text-sm font-medium hover:bg-foreground hover:text-background transition-all"
+          className="hidden sm:inline-flex items-center px-6 py-2.5 rounded-sm bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_6px_18px_-8px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_10px_28px_-8px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
         >
           Plan een call
         </Link>
@@ -137,7 +137,7 @@ export function Navigation() {
               <Link
                 href="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="mt-2 inline-flex items-center justify-center px-6 py-3 border border-border text-sm font-medium hover:bg-foreground hover:text-background transition-all"
+                className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-sm bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_8px_22px_-10px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_28px_-10px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
               >
                 Plan een call
               </Link>

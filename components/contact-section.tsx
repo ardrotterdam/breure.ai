@@ -82,7 +82,7 @@ export function ContactSection() {
 
       {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/3 -left-32 w-[480px] h-[480px] rounded-full bg-[#4a9eff]/10 blur-[120px]" />
+        <div className="absolute top-1/3 -left-32 w-[480px] h-[480px] rounded-full bg-[#0078D4]/12 blur-[120px]" />
         <div className="absolute bottom-1/4 right-0 w-[420px] h-[420px] rounded-full bg-[#1e3a5f]/30 blur-[140px]" />
 
         <motion.div
@@ -114,7 +114,7 @@ export function ContactSection() {
             <motion.div variants={itemVariants}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6 text-white">
                 Klaar om uw assets{" "}
-                <span className="bg-gradient-to-r from-white to-[#4a9eff] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
                   online te brengen?
                 </span>
               </h2>
@@ -130,7 +130,7 @@ export function ContactSection() {
                 <p className="text-sm text-[#5a7a9e] mb-1">E-mail</p>
                 <a
                   href="mailto:info@breure.ai"
-                  className="text-lg text-white hover:text-[#4a9eff] transition-colors"
+                  className="text-lg text-white hover:text-[#2B88D8] transition-colors"
                 >
                   info@breure.ai
                 </a>
@@ -156,7 +156,7 @@ export function ContactSection() {
             {/* Card glow accent */}
             <div
               aria-hidden
-              className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#4a9eff]/30 via-transparent to-[#1e3a5f]/20 opacity-60 blur-md"
+              className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#0078D4]/35 via-transparent to-[#1e3a5f]/25 opacity-60 blur-md"
             />
 
             <div className="relative rounded-2xl border border-white/10 bg-[#0b1426]/70 backdrop-blur-xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
@@ -246,7 +246,7 @@ export function ContactSection() {
                   disabled={isLoading}
                   whileHover={isLoading ? undefined : { scale: 1.01 }}
                   whileTap={isLoading ? undefined : { scale: 0.99 }}
-                  className="group relative w-full overflow-hidden rounded-xl px-6 py-4 text-sm font-medium tracking-wide text-[#080f1e] bg-white transition-all duration-300 hover:bg-[#4a9eff] hover:text-white hover:shadow-[0_0_30px_rgba(74,158,255,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4a9eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1426] disabled:cursor-not-allowed disabled:opacity-80"
+                  className="group relative w-full overflow-hidden rounded-xl px-6 py-4 text-sm font-medium tracking-wide text-white bg-[#0078D4] shadow-[0_10px_30px_-12px_rgba(0,120,212,0.6)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_18px_40px_-14px_rgba(0,120,212,0.75)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1426] disabled:cursor-not-allowed disabled:opacity-80"
                   aria-busy={isLoading}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2.5">
@@ -266,10 +266,10 @@ export function ContactSection() {
                     )}
                   </span>
 
-                  {/* Shine sweep */}
+                  {/* Subtle shine sweep on hover */}
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full"
                   />
                 </motion.button>
 
@@ -347,7 +347,7 @@ function FormField({
   const [focused, setFocused] = useState(false)
 
   const sharedClassName =
-    "peer w-full rounded-xl border bg-[#0d1a2d]/70 px-4 py-3.5 text-white placeholder-[#5a7a9e] transition-all duration-300 outline-none border-[#1e3a5f]/80 hover:border-[#2a4a72] focus:border-[#4a9eff] focus:bg-[#0d1a2d]/95 focus:shadow-[0_0_0_4px_rgba(74,158,255,0.12),0_0_24px_-4px_rgba(74,158,255,0.45)] disabled:opacity-60 disabled:cursor-not-allowed"
+    "peer w-full rounded-xl border bg-[#0d1a2d]/70 px-4 py-3.5 text-white placeholder-[#5a7a9e] transition-all duration-300 outline-none border-[#1e3a5f]/80 hover:border-[#2a4a72] focus:border-[#0078D4] focus:bg-[#0d1a2d]/95 focus:shadow-[0_0_0_4px_rgba(0,120,212,0.18),0_0_24px_-4px_rgba(0,120,212,0.45)] disabled:opacity-60 disabled:cursor-not-allowed"
 
   return (
     <div className="relative">
@@ -356,7 +356,7 @@ function FormField({
         className="block text-xs font-medium tracking-wide text-[#8ba3c0] mb-2 uppercase"
       >
         {label}
-        {required && <span className="ml-1 text-[#4a9eff]">*</span>}
+        {required && <span className="ml-1 text-[#2B88D8]">*</span>}
       </label>
 
       <motion.div

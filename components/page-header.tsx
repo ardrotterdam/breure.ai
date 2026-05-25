@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
     <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 bg-[#080f1e] overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#4a9eff]/10 blur-[140px]" />
+        <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[#0078D4]/12 blur-[140px]" />
         <div className="absolute top-0 right-0 w-[420px] h-[420px] rounded-full bg-[#1e3a5f]/30 blur-[140px]" />
       </div>
 

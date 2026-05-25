@@ -29,7 +29,7 @@ export function CtaBand({
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent" />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-[#4a9eff]/8 blur-[160px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full bg-[#0078D4]/10 blur-[160px]" />
       </div>
 
       <motion.div
@@ -56,14 +56,23 @@ export function CtaBand({
             href={primaryHref}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground font-medium text-sm tracking-wide overflow-hidden"
+            className="group relative inline-flex items-center justify-center px-8 py-4 rounded-sm bg-[#0078D4] text-white font-medium text-sm tracking-wide overflow-hidden shadow-[0_8px_24px_-10px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_14px_36px_-10px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
           >
-            <span className="relative z-10">{primaryLabel}</span>
-            <motion.div
-              className="absolute inset-0 bg-foreground"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: 0 }}
-              transition={{ duration: 0.3 }}
+            <span className="relative z-10 flex items-center gap-2.5">
+              {primaryLabel}
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </span>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/12 to-transparent transition-transform duration-700 group-hover:translate-x-full"
             />
           </MotionLink>
 
@@ -72,7 +81,7 @@ export function CtaBand({
               href={secondaryHref}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group inline-flex items-center justify-center px-8 py-4 border border-border text-foreground font-medium text-sm tracking-wide hover:border-accent/50 transition-colors"
+              className="group inline-flex items-center justify-center px-8 py-4 rounded-sm border border-border text-foreground font-medium text-sm tracking-wide transition-colors duration-300 hover:border-[#0078D4]/60 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
             >
               <span className="flex items-center gap-3">
                 {secondaryLabel}

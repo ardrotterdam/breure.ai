@@ -81,7 +81,7 @@ export function PortfolioSection() {
 
       {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full bg-[#4a9eff]/8 blur-[140px]" />
+        <div className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full bg-[#0078D4]/10 blur-[140px]" />
         <div className="absolute bottom-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-[#1e3a5f]/30 blur-[140px]" />
       </div>
 
@@ -128,12 +128,12 @@ export function PortfolioSection() {
                 </div>
 
                 {/* Corner accent */}
-                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#4a9eff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#4a9eff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="inline-flex items-center gap-2 mb-6">
                   <span className="w-8 h-px bg-[#1e3a5f]" />
-                  <span className="text-xs font-medium tracking-wider uppercase text-[#4a9eff]">
+                  <span className="text-xs font-medium tracking-wider uppercase text-[#2B88D8]">
                     {project.category}
                   </span>
                 </div>
@@ -150,7 +150,7 @@ export function PortfolioSection() {
                   ))}
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#4a9eff] group-hover:w-full transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0078D4] group-hover:w-full transition-all duration-500" />
               </motion.div>
             </motion.article>
           ))}
