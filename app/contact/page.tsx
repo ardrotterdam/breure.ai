@@ -4,6 +4,7 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
 import { seo } from "@/lib/i18n"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 const locale = "nl" as const
 
@@ -24,19 +25,16 @@ export const metadata: Metadata = {
       "x-default": "/contact",
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "nl_NL",
+  openGraph: socialOpenGraph({
+    title: seo.contact.nl.title,
+    description: seo.contact.nl.description,
     url: "https://breure.ai/contact",
+    locale: "nl_NL",
+  }),
+  twitter: socialTwitter({
     title: seo.contact.nl.title,
     description: seo.contact.nl.description,
-    siteName: "Breure.ai",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.contact.nl.title,
-    description: seo.contact.nl.description,
-  },
+  }),
 }
 
 export default function ContactPage() {

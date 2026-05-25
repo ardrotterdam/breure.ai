@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/page-header"
 import { ProcessSection } from "@/components/process-section"
 import { CtaBand } from "@/components/cta-band"
 import { dict, seo } from "@/lib/i18n"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 const locale = "en" as const
 const headerCopy = dict.pageHeaders.en.process
@@ -29,19 +30,16 @@ export const metadata: Metadata = {
       "x-default": "/proces",
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
+  openGraph: socialOpenGraph({
+    title: seo.process.en.title,
+    description: seo.process.en.description,
     url: "https://breure.ai/en/process",
+    locale: "en_US",
+  }),
+  twitter: socialTwitter({
     title: seo.process.en.title,
     description: seo.process.en.description,
-    siteName: "Breure.ai",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.process.en.title,
-    description: seo.process.en.description,
-  },
+  }),
 }
 
 export default function EnglishProcessPage() {

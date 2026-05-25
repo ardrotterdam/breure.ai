@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
-import { brandAssets, openGraphImages, twitterImages } from '@/lib/site-metadata'
+import { brandAssets, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
 import './globals.css'
 
 const inter = Inter({
@@ -50,24 +50,19 @@ export const metadata: Metadata = {
       'x-default': '/',
     },
   },
-  openGraph: {
-    type: 'website',
+  openGraph: socialOpenGraph({
+    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
+    description:
+      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
+    url: 'https://breure.ai',
     locale: 'nl_NL',
     alternateLocale: ['en_US'],
-    url: 'https://breure.ai',
+  }),
+  twitter: socialTwitter({
     title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
     description:
       'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
-    siteName: 'Breure.ai',
-    images: openGraphImages,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
-    description:
-      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
-    images: twitterImages,
-  },
+  }),
 }
 
 export const viewport: Viewport = {

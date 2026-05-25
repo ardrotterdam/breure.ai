@@ -8,6 +8,7 @@ import { ProcessSection } from "@/components/process-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { seo } from "@/lib/i18n"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 export const metadata: Metadata = {
   title: seo.home.nl.title,
@@ -20,19 +21,16 @@ export const metadata: Metadata = {
       "x-default": "/",
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "nl_NL",
+  openGraph: socialOpenGraph({
+    title: seo.home.nl.title,
+    description: seo.home.nl.description,
     url: "https://breure.ai",
+    locale: "nl_NL",
+  }),
+  twitter: socialTwitter({
     title: seo.home.nl.title,
     description: seo.home.nl.description,
-    siteName: "Breure.ai",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.home.nl.title,
-    description: seo.home.nl.description,
-  },
+  }),
 }
 
 export default function Home() {

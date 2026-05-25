@@ -7,6 +7,7 @@ import { ServicesSection } from "@/components/services-section"
 import { WhySection } from "@/components/why-section"
 import { CtaBand } from "@/components/cta-band"
 import { dict, seo } from "@/lib/i18n"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 const locale = "en" as const
 const headerCopy = dict.pageHeaders.en.services
@@ -32,19 +33,16 @@ export const metadata: Metadata = {
       "x-default": "/diensten",
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
+  openGraph: socialOpenGraph({
+    title: seo.services.en.title,
+    description: seo.services.en.description,
     url: "https://breure.ai/en/services",
+    locale: "en_US",
+  }),
+  twitter: socialTwitter({
     title: seo.services.en.title,
     description: seo.services.en.description,
-    siteName: "Breure.ai",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.services.en.title,
-    description: seo.services.en.description,
-  },
+  }),
 }
 
 export default function EnglishServicesPage() {

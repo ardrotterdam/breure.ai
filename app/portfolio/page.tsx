@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/page-header"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { CtaBand } from "@/components/cta-band"
 import { dict, seo } from "@/lib/i18n"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 const locale = "nl" as const
 const headerCopy = dict.pageHeaders.nl.portfolio
@@ -29,19 +30,16 @@ export const metadata: Metadata = {
       "x-default": "/portfolio",
     },
   },
-  openGraph: {
-    type: "website",
-    locale: "nl_NL",
+  openGraph: socialOpenGraph({
+    title: seo.portfolio.nl.title,
+    description: seo.portfolio.nl.description,
     url: "https://breure.ai/portfolio",
+    locale: "nl_NL",
+  }),
+  twitter: socialTwitter({
     title: seo.portfolio.nl.title,
     description: seo.portfolio.nl.description,
-    siteName: "Breure.ai",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.portfolio.nl.title,
-    description: seo.portfolio.nl.description,
-  },
+  }),
 }
 
 export default function PortfolioPage() {

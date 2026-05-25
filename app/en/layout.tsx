@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
 import { seo } from "@/lib/i18n"
-import { openGraphImages, twitterImages } from "@/lib/site-metadata"
+import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
 
 export const metadata: Metadata = {
   title: {
@@ -17,22 +17,17 @@ export const metadata: Metadata = {
       "x-default": "/",
     },
   },
-  openGraph: {
-    type: "website",
+  openGraph: socialOpenGraph({
+    title: seo.home.en.title,
+    description: seo.home.en.description,
+    url: "https://breure.ai/en",
     locale: "en_US",
     alternateLocale: ["nl_NL"],
-    url: "https://breure.ai/en",
+  }),
+  twitter: socialTwitter({
     title: seo.home.en.title,
     description: seo.home.en.description,
-    siteName: "Breure.ai",
-    images: openGraphImages,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.home.en.title,
-    description: seo.home.en.description,
-    images: twitterImages,
-  },
+  }),
 }
 
 export default function EnLayout({
