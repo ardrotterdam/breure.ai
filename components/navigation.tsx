@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 
-import { BreureLogo } from "@/components/breure-logo"
+import { NavbarLogo } from "@/components/navbar-logo"
 import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
 import { LanguageToggle } from "./language-toggle"
 import { ThemeToggle } from "./theme-toggle"
@@ -20,6 +20,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   const t = dict.nav[locale]
 
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -33,6 +35,38 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     document.body.style.overflow = "hidden"
     return () => {
       document.body.style.overflow = previousOverflow
+    }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    let previousScrollY = window.scrollY
+    const scrollDelta = 8
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      const scrollingDown = currentScrollY > previousScrollY + scrollDelta
+      const scrollingUp = currentScrollY < previousScrollY - scrollDelta
+
+      setHasScrolled(currentScrollY > 12)
+
+      if (currentScrollY < 24 || mobileOpen) {
+        setHeaderVisible(true)
+      } else if (scrollingDown) {
+        setHeaderVisible(false)
+      } else if (scrollingUp) {
+        setHeaderVisible(true)
+      }
+
+      if (Math.abs(currentScrollY - previousScrollY) > scrollDelta) {
+        previousScrollY = currentScrollY
+      }
+    }
+
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [mobileOpen])
 
@@ -55,35 +89,32 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   return (
     <>
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, delay: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-[90]"
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: headerVisible ? 0 : "-110%", opacity: headerVisible ? 1 : 0.98 }}
+      transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
+      <div
+        className={`absolute inset-0 border-b backdrop-blur-xl transition-all duration-300 ${
+          hasScrolled
+            ? "border-white/10 bg-[#07111f]/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
+            : "border-border/40 bg-background/72"
+        }`}
+      />
 
-      <nav className="relative container mx-auto px-5 sm:px-6 lg:px-12 py-4 flex items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href={homeHref} className="flex items-center gap-3 shrink-0">
-          <BreureLogo size={40} badge animated />
-          <div className="flex flex-col">
-            <span className="text-lg font-semibold tracking-wide">BREURE</span>
-            <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
-              Web Agency
-            </span>
-          </div>
-        </Link>
+      <nav className="relative container mx-auto flex min-h-[88px] items-center justify-between gap-4 py-5 pl-7 pr-5 sm:min-h-[98px] sm:pl-10 sm:pr-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
+        <NavbarLogo href={homeHref} className="mr-1 lg:mr-2" />
 
         {/* Desktop navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6">
           {navLinks.map((item) => {
             const active = isActive(item.href)
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link-hover-line pb-1 text-sm transition-colors ${
-                  active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                className={`nav-link-hover-line pb-1 text-xs font-normal tracking-wide transition-colors ${
+                  active ? "text-foreground/70" : "text-muted-foreground/50 hover:text-foreground/65"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
@@ -94,15 +125,15 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         </div>
 
         {/* Right cluster: theme + language toggle + CTA */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
           <ThemeToggle locale={locale} variant="desktop" />
-          <div className="hidden md:block">
+          <div className="hidden opacity-75 lg:block">
             <LanguageToggle variant="desktop" />
           </div>
 
           <Link
             href={contactHref}
-            className="hidden sm:inline-flex btn-primary px-5 py-2.5 hover:-translate-y-px"
+            className="hidden btn-primary px-4 py-2 text-sm hover:-translate-y-px sm:inline-flex"
           >
             {t.cta}
           </Link>
@@ -113,7 +144,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? t.closeMenu : t.openMenu}
             aria-expanded={mobileOpen}
-            className="md:hidden p-2 -mr-2"
+            className="-mr-2 p-2 lg:hidden"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               {mobileOpen ? (
@@ -136,22 +167,10 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden fixed inset-0 z-[100] bg-[#0a1628] text-white flex flex-col"
+            className="fixed inset-0 z-[100] flex flex-col bg-[#0a1628] text-white lg:hidden"
           >
-            <div className="flex items-center justify-between px-5 sm:px-6 py-4">
-              <Link
-                href={homeHref}
-                onClick={() => setMobileOpen(false)}
-                className="flex items-center gap-3 shrink-0"
-              >
-                <BreureLogo size={40} />
-                <div className="flex flex-col">
-                  <span className="text-lg font-semibold tracking-wide">BREURE</span>
-                  <span className="text-[10px] tracking-[0.2em] text-white/60 uppercase">
-                    Web Agency
-                  </span>
-                </div>
-              </Link>
+            <div className="flex min-h-[88px] items-center justify-between py-5 pl-7 pr-5 sm:min-h-[98px] sm:pl-10 sm:pr-6 md:min-h-[106px]">
+              <NavbarLogo href={homeHref} onClick={() => setMobileOpen(false)} className="mr-2" />
 
               <button
                 type="button"
