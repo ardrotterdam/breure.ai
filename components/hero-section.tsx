@@ -98,6 +98,19 @@ export function HeroSection() {
               </div>
             </FadeIn>
 
+            {/* Mobile-only Offshore Illustration */}
+            <div className="lg:hidden mt-12">
+              <FadeIn delay={1.6}>
+                <motion.div
+                  className="relative w-full max-w-md sm:max-w-lg mx-auto aspect-[6/5]"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <OffshoreIllustration />
+                </motion.div>
+              </FadeIn>
+            </div>
+
             {/* Stats bar */}
             <FadeIn delay={1.8}>
               <div className="mt-16 pt-8 border-t border-border/50 grid grid-cols-3 gap-6">
