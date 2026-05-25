@@ -26,6 +26,15 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     }
   }, [locale])
 
+  useEffect(() => {
+    if (!mobileOpen) return
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = previousOverflow
+    }
+  }, [mobileOpen])
+
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
@@ -43,6 +52,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   }
 
   return (
+    <>
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
       initial={{ y: -100 }}
@@ -94,7 +104,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm transition-colors ${
+                className={`nav-link-hover-line pb-1 text-sm transition-colors ${
                   active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
                 aria-current={active ? "page" : undefined}
@@ -137,53 +147,104 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           </button>
         </div>
       </nav>
+    </motion.header>
 
-      {/* Mobile dropdown */}
+      {/* Mobile full-screen menu — outside header so fixed positioning covers the viewport */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden relative border-t border-border/50 bg-background/95 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden fixed inset-0 z-[100] bg-[#0a1628] text-white flex flex-col"
           >
-            <div className="container mx-auto px-5 sm:px-6 py-5 flex flex-col gap-1">
-              {navLinks.map((item) => {
+            <div className="flex items-center justify-between px-5 sm:px-6 py-4">
+              <Link
+                href={homeHref}
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-3 shrink-0"
+              >
+                <div className="relative w-10 h-10">
+                  <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
+                    <path
+                      d="M5 25 Q12 20 20 25 Q28 30 35 25"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      className="text-accent"
+                    />
+                    <path
+                      d="M5 20 Q12 15 20 20 Q28 25 35 20"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      className="text-white"
+                    />
+                  </svg>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-lg font-semibold tracking-wide">BREURE</span>
+                  <span className="text-[10px] tracking-[0.2em] text-white/60 uppercase">
+                    Web Agency
+                  </span>
+                </div>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label={t.closeMenu}
+                className="p-2 -mr-2"
+              >
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
+                </svg>
+              </button>
+            </div>
+
+            <nav className="flex-1 flex flex-col justify-center px-5 sm:px-6 pb-6">
+              {navLinks.map((item, index) => {
                 const active = isActive(item.href)
                 return (
-                  <Link
+                  <motion.div
                     key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className={`py-3 text-base transition-colors ${
-                      active ? "text-foreground" : "text-muted-foreground hover:text-foreground"
-                    }`}
-                    aria-current={active ? "page" : undefined}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.05 + index * 0.05 }}
                   >
-                    {item.label}
-                  </Link>
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={`nav-link-hover-line nav-link-hover-line--mobile block py-2 sm:py-3 pb-3 sm:pb-4 text-[clamp(2.5rem,11vw,4.25rem)] font-black leading-[1.05] tracking-tight transition-colors hover:text-accent ${
+                        active ? "text-accent" : "text-white"
+                      }`}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 )
               })}
+            </nav>
 
-              <div className="mt-4 flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <ThemeToggle locale={locale} variant="mobile" />
-                  <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />
-                </div>
-                <Link
-                  href={contactHref}
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex btn-primary px-5 py-2.5"
-                >
-                  {t.cta}
-                </Link>
+            <div className="px-5 sm:px-6 py-5 border-t border-white/10 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <ThemeToggle locale={locale} variant="mobile" />
+                <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />
               </div>
+              <Link
+                href={contactHref}
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex btn-primary px-5 py-2.5 shrink-0"
+              >
+                {t.cta}
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   )
 }

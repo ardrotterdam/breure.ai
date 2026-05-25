@@ -269,6 +269,30 @@ html.light,
   background: linear-gradient(to right, transparent, var(--border), transparent);
 }
 
+.nav-link-hover-line {
+  @apply relative inline-block w-fit;
+}
+
+.nav-link-hover-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--accent);
+  transition: width 0.3s cubic-bezier(0.25, 0.4, 0.25, 1);
+}
+
+.nav-link-hover-line:hover::after,
+.nav-link-hover-line[aria-current='page']::after {
+  width: 100%;
+}
+
+.nav-link-hover-line--mobile::after {
+  height: 3px;
+}
+
 .btn-primary {
   @apply inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground font-medium text-sm tracking-wide;
   box-shadow: var(--cta-shadow);
