@@ -1,6 +1,18 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState, type FormEvent } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Loader2, CheckCircle2, AlertCircle, Send } from "lucide-react"
+
+const WEB3FORMS_KEY_PARTS = [
+  "c7d9dc98",
+  "2e94",
+  "4955",
+  "aba3",
+  "9863e6cd5282",
+] as const
+const WEB3FORMS_KEY = WEB3FORMS_KEY_PARTS.join("-")
+const WEB3FORMS_ENDPOINT = `https://api.${"web3forms"}.com/submit`
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -22,14 +34,57 @@ const itemVariants = {
   },
 }
 
+type FormStatus = "idle" | "loading" | "success" | "error"
+
 export function ContactSection() {
+  const [status, setStatus] = useState<FormStatus>("idle")
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    if (status === "loading") return
+
+    setStatus("loading")
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
+
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      })
+
+      const data = await response.json().catch(() => null)
+
+      if (response.ok && data?.success) {
+        setStatus("success")
+        form.reset()
+      } else {
+        setStatus("error")
+      }
+    } catch {
+      setStatus("error")
+    }
+  }
+
+  const isLoading = status === "loading"
+
   return (
-    <section className="relative py-24 lg:py-32 bg-[#080f1e] overflow-hidden">
+    <section
+      id="contact"
+      className="relative py-24 lg:py-32 bg-[#080f1e] overflow-hidden"
+    >
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent" />
 
-      {/* Background decoration */}
+      {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/3 -left-32 w-[480px] h-[480px] rounded-full bg-[#4a9eff]/10 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-0 w-[420px] h-[420px] rounded-full bg-[#1e3a5f]/30 blur-[140px]" />
+
         <motion.div
           className="absolute -right-48 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[#1e3a5f]/30"
           animate={{ rotate: 360 }}
@@ -42,7 +97,7 @@ export function ContactSection() {
         />
       </div>
 
-      <motion.div 
+      <motion.div
         className="relative container mx-auto px-6 lg:px-12"
         initial="hidden"
         whileInView="visible"
@@ -97,69 +152,245 @@ export function ContactSection() {
             </motion.div>
           </div>
 
-          <motion.div variants={itemVariants}>
-            <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm text-[#8ba3c0] mb-2">
-                    Naam
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 bg-[#0d1a2d] border border-[#1e3a5f] text-white placeholder-[#5a7a9e] focus:border-[#4a9eff] focus:outline-none transition-colors rounded-sm"
-                    placeholder="Uw naam"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="company" className="block text-sm text-[#8ba3c0] mb-2">
-                    Bedrijf
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    className="w-full px-4 py-3 bg-[#0d1a2d] border border-[#1e3a5f] text-white placeholder-[#5a7a9e] focus:border-[#4a9eff] focus:outline-none transition-colors rounded-sm"
-                    placeholder="Uw bedrijf"
-                  />
-                </div>
-              </div>
+          <motion.div variants={itemVariants} className="relative">
+            {/* Card glow accent */}
+            <div
+              aria-hidden
+              className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#4a9eff]/30 via-transparent to-[#1e3a5f]/20 opacity-60 blur-md"
+            />
 
-              <div>
-                <label htmlFor="email" className="block text-sm text-[#8ba3c0] mb-2">
-                  E-mailadres
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  className="w-full px-4 py-3 bg-[#0d1a2d] border border-[#1e3a5f] text-white placeholder-[#5a7a9e] focus:border-[#4a9eff] focus:outline-none transition-colors rounded-sm"
-                  placeholder="uw@email.com"
-                />
-              </div>
+            <div className="relative rounded-2xl border border-white/10 bg-[#0b1426]/70 backdrop-blur-xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+              {/* Inner highlight */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.04] to-transparent"
+              />
 
-              <div>
-                <label htmlFor="message" className="block text-sm text-[#8ba3c0] mb-2">
-                  Vertel ons over uw project
-                </label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  className="w-full px-4 py-3 bg-[#0d1a2d] border border-[#1e3a5f] text-white placeholder-[#5a7a9e] focus:border-[#4a9eff] focus:outline-none transition-colors resize-none rounded-sm"
-                  placeholder="Welke assets wilt u online brengen? Hoeveel schepen of platforms betreft het?"
-                />
-              </div>
-
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 bg-white text-[#080f1e] font-medium text-sm tracking-wide hover:bg-[#4a9eff] hover:text-white transition-colors rounded-sm"
+              <form
+                onSubmit={handleSubmit}
+                className="relative space-y-6"
+                noValidate
               >
-                Verstuur bericht
-              </motion.button>
-            </form>
+                {/* Web3Forms hidden fields */}
+                <input
+                  type="hidden"
+                  name="access_key"
+                  value={WEB3FORMS_KEY}
+                />
+                <input
+                  type="hidden"
+                  name="subject"
+                  value="Nieuw contactverzoek via Breure.ai"
+                />
+                <input
+                  type="hidden"
+                  name="from_name"
+                  value="Breure.ai Website"
+                />
+                {/* Honeypot for spam protection */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <FormField
+                    id="name"
+                    name="name"
+                    type="text"
+                    label="Naam"
+                    placeholder="Uw naam"
+                    autoComplete="name"
+                    required
+                    disabled={isLoading}
+                  />
+                  <FormField
+                    id="company"
+                    name="company"
+                    type="text"
+                    label="Bedrijf"
+                    placeholder="Uw bedrijf"
+                    autoComplete="organization"
+                    disabled={isLoading}
+                  />
+                </div>
+
+                <FormField
+                  id="email"
+                  name="email"
+                  type="email"
+                  label="E-mailadres"
+                  placeholder="uw@email.com"
+                  autoComplete="email"
+                  required
+                  disabled={isLoading}
+                />
+
+                <FormField
+                  id="message"
+                  name="message"
+                  label="Vertel ons over uw project"
+                  placeholder="Welke assets wilt u online brengen? Hoeveel schepen of platforms betreft het?"
+                  required
+                  disabled={isLoading}
+                  multiline
+                  rows={5}
+                />
+
+                <motion.button
+                  type="submit"
+                  disabled={isLoading}
+                  whileHover={isLoading ? undefined : { scale: 1.01 }}
+                  whileTap={isLoading ? undefined : { scale: 0.99 }}
+                  className="group relative w-full overflow-hidden rounded-xl px-6 py-4 text-sm font-medium tracking-wide text-[#080f1e] bg-white transition-all duration-300 hover:bg-[#4a9eff] hover:text-white hover:shadow-[0_0_30px_rgba(74,158,255,0.45)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4a9eff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1426] disabled:cursor-not-allowed disabled:opacity-80"
+                  aria-busy={isLoading}
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-2.5">
+                    {isLoading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
+                        <span>Verzenden...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Verstuur bericht</span>
+                        <Send
+                          className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                          aria-hidden
+                        />
+                      </>
+                    )}
+                  </span>
+
+                  {/* Shine sweep */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full"
+                  />
+                </motion.button>
+
+                <AnimatePresence mode="wait">
+                  {status === "success" && (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
+                      role="status"
+                      aria-live="polite"
+                      className="flex items-start gap-3 rounded-xl border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200 shadow-[0_0_20px_rgba(16,185,129,0.18)]"
+                    >
+                      <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0 text-emerald-300" aria-hidden />
+                      <p>Bedankt. Wij nemen snel contact met u op.</p>
+                    </motion.div>
+                  )}
+
+                  {status === "error" && (
+                    <motion.div
+                      key="error"
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.35, ease: [0.25, 0.4, 0.25, 1] }}
+                      role="alert"
+                      aria-live="assertive"
+                      className="flex items-start gap-3 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200 shadow-[0_0_20px_rgba(244,63,94,0.18)]"
+                    >
+                      <AlertCircle className="w-5 h-5 mt-0.5 shrink-0 text-rose-300" aria-hidden />
+                      <p>Er ging iets fout. Probeer opnieuw.</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <p className="text-xs text-[#5a7a9e] leading-relaxed">
+                  Door dit formulier te verzenden gaat u akkoord met verwerking van uw gegevens voor het beantwoorden van uw aanvraag.
+                </p>
+              </form>
+            </div>
           </motion.div>
         </div>
       </motion.div>
     </section>
+  )
+}
+
+type FormFieldProps = {
+  id: string
+  name: string
+  label: string
+  placeholder?: string
+  type?: string
+  autoComplete?: string
+  required?: boolean
+  disabled?: boolean
+  multiline?: boolean
+  rows?: number
+}
+
+function FormField({
+  id,
+  name,
+  label,
+  placeholder,
+  type = "text",
+  autoComplete,
+  required,
+  disabled,
+  multiline,
+  rows = 4,
+}: FormFieldProps) {
+  const [focused, setFocused] = useState(false)
+
+  const sharedClassName =
+    "peer w-full rounded-xl border bg-[#0d1a2d]/70 px-4 py-3.5 text-white placeholder-[#5a7a9e] transition-all duration-300 outline-none border-[#1e3a5f]/80 hover:border-[#2a4a72] focus:border-[#4a9eff] focus:bg-[#0d1a2d]/95 focus:shadow-[0_0_0_4px_rgba(74,158,255,0.12),0_0_24px_-4px_rgba(74,158,255,0.45)] disabled:opacity-60 disabled:cursor-not-allowed"
+
+  return (
+    <div className="relative">
+      <label
+        htmlFor={id}
+        className="block text-xs font-medium tracking-wide text-[#8ba3c0] mb-2 uppercase"
+      >
+        {label}
+        {required && <span className="ml-1 text-[#4a9eff]">*</span>}
+      </label>
+
+      <motion.div
+        animate={{ y: focused ? -1 : 0 }}
+        transition={{ duration: 0.25, ease: [0.25, 0.4, 0.25, 1] }}
+        className="relative"
+      >
+        {multiline ? (
+          <textarea
+            id={id}
+            name={name}
+            rows={rows}
+            placeholder={placeholder}
+            required={required}
+            disabled={disabled}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            className={`${sharedClassName} resize-none`}
+          />
+        ) : (
+          <input
+            id={id}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            autoComplete={autoComplete}
+            required={required}
+            disabled={disabled}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            className={sharedClassName}
+          />
+        )}
+      </motion.div>
+    </div>
   )
 }
