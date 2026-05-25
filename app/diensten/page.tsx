@@ -1,15 +1,20 @@
 import type { Metadata } from "next"
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { ServicesSection } from "@/components/services-section"
 import { WhySection } from "@/components/why-section"
 import { CtaBand } from "@/components/cta-band"
+import { dict, seo } from "@/lib/i18n"
+
+const locale = "nl" as const
+const headerCopy = dict.pageHeaders.nl.services
+const ctaCopy = dict.ctas.nl.services
 
 export const metadata: Metadata = {
-  title: "Diensten | Asset websites voor offshore & maritiem | Breure",
-  description:
-    "Asset microsites, capability pages, SEO en charter marketing voor heavy-lift vessels, jack-ups, platforms en support ships. Technisch, snel en op niveau van uw day rate.",
+  title: seo.services.nl.title,
+  description: seo.services.nl.description,
   keywords: [
     "asset microsites",
     "vessel website",
@@ -21,54 +26,57 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/diensten",
+    languages: {
+      "nl-NL": "/diensten",
+      "en-US": "/en/services",
+      "x-default": "/diensten",
+    },
   },
   openGraph: {
     type: "website",
     locale: "nl_NL",
     url: "https://breure.ai/diensten",
-    title: "Diensten | Breure Web Agency",
-    description:
-      "Asset microsites, capability pages, SEO en charter marketing voor de offshore & maritieme sector.",
-    siteName: "Breure Web Agency",
+    title: seo.services.nl.title,
+    description: seo.services.nl.description,
+    siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Diensten | Breure Web Agency",
-    description:
-      "Asset microsites, capability pages, SEO en charter marketing voor de offshore & maritieme sector.",
+    title: seo.services.nl.title,
+    description: seo.services.nl.description,
   },
 }
 
 export default function DienstenPage() {
   return (
     <>
-      <Navigation />
+      <Navigation locale={locale} />
       <main>
         <PageHeader
-          eyebrow="Diensten"
+          eyebrow={headerCopy.eyebrow}
           title={
             <>
-              Asset websites die meegaan op{" "}
+              {headerCopy.titlePrefix}{" "}
               <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
-                tender, charter en engineering review
+                {headerCopy.titleAccent}
               </span>
             </>
           }
-          description="Wij bouwen gerichte, snelle microsites per schip of platform — volledig afgestemd op chartering, engineering en tendering. Geen corporate brochure, maar werkbare digitale assets."
+          description={headerCopy.description}
         />
-        <ServicesSection />
-        <WhySection />
+        <ServicesSection locale={locale} />
+        <WhySection locale={locale} />
         <CtaBand
-          eyebrow="Klaar voor uw vloot"
-          title="Laat uw assets werken — ook online."
-          description="In een vrijblijvend gesprek bespreken wij welke diensten passen bij uw vloot, doelgroep en commerciële doelen."
+          eyebrow={ctaCopy.eyebrow}
+          title={ctaCopy.title}
+          description={ctaCopy.description}
           primaryHref="/contact"
-          primaryLabel="Plan een call"
+          primaryLabel={ctaCopy.primary}
           secondaryHref="/proces"
-          secondaryLabel="Bekijk ons proces"
+          secondaryLabel={ctaCopy.secondary}
         />
       </main>
-      <Footer />
+      <Footer locale={locale} />
     </>
   )
 }

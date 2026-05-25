@@ -9,11 +9,13 @@ import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { seo } from "@/lib/i18n"
 
+const locale = "en" as const
+
 export const metadata: Metadata = {
-  title: seo.home.nl.title,
-  description: seo.home.nl.description,
+  title: seo.home.en.title,
+  description: seo.home.en.description,
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: {
       "nl-NL": "/",
       "en-US": "/en",
@@ -22,31 +24,31 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "nl_NL",
-    url: "https://breure.ai",
-    title: seo.home.nl.title,
-    description: seo.home.nl.description,
+    locale: "en_US",
+    url: "https://breure.ai/en",
+    title: seo.home.en.title,
+    description: seo.home.en.description,
     siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: seo.home.nl.title,
-    description: seo.home.nl.description,
+    title: seo.home.en.title,
+    description: seo.home.en.description,
   },
 }
 
-export default function Home() {
+export default function EnglishHome() {
   return (
     <>
-      <Navigation locale="nl" />
+      <Navigation locale={locale} />
       <main>
-        <HeroSection locale="nl" />
-        <WhySection locale="nl" />
-        <ServicesSection locale="nl" />
-        <ProcessSection locale="nl" />
-        <ContactSection locale="nl" />
+        <HeroSection locale={locale} />
+        <WhySection locale={locale} />
+        <ServicesSection locale={locale} />
+        <ProcessSection locale={locale} />
+        <ContactSection locale={locale} />
       </main>
-      <Footer locale="nl" />
+      <Footer locale={locale} />
     </>
   )
 }

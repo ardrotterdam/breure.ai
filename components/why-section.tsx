@@ -2,23 +2,7 @@
 
 import { motion } from "framer-motion"
 
-const reasons = [
-  {
-    title: "Asset first, niet corporate first",
-    description:
-      "Engineers, charterers en tenderteams zoeken niet naar uw holding, maar naar concrete capaciteit: crane, deck, DP, POB, transit. Wij structureren de site rond de asset.",
-  },
-  {
-    title: "Technische taal, begrijpelijke opbouw",
-    description:
-      "Wij combineren technische details (SWL, outreach, hook height, draft, bollard pull) met begrijpelijke navigatie. Zo vinden zowel de project engineer als de commerciële manager direct wat hij zoekt.",
-  },
-  {
-    title: "AI-visuals & snelle iteratie",
-    description:
-      "Met moderne AI-visualisatie creëren wij sterke offshore beelden zonder dure heli-flights of renders. Dat geeft flexibiliteit en snelheid bij nieuwbouw, conversies en rebranding.",
-  },
-]
+import { dict, type Locale } from "@/lib/i18n"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,11 +24,17 @@ const itemVariants = {
   },
 }
 
-export function WhySection() {
+interface WhySectionProps {
+  locale?: Locale
+}
+
+export function WhySection({ locale = "nl" }: WhySectionProps) {
+  const t = dict.why[locale]
+
   return (
-    <section className="relative py-24 lg:py-32 bg-[#0d1a2d]">
+    <section className="relative py-20 sm:py-24 lg:py-32 bg-[#0d1a2d]">
       {/* Subtle texture overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
@@ -52,34 +42,34 @@ export function WhySection() {
         }}
       />
 
-      <motion.div 
-        className="relative container mx-auto px-6 lg:px-12"
+      <motion.div
+        className="relative container mx-auto px-5 sm:px-6 lg:px-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
         <motion.div variants={itemVariants}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6 max-w-3xl text-white">
-            Waarom offshore-bedrijven voor Breure kiezen
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-white">
+            {t.title}
           </h2>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <p className="text-[#8ba3c0] text-lg max-w-2xl mb-16 leading-relaxed">
-            Offshore assets draaien op day rates. Elke extra charterdag telt. Een heldere digitale presentatie versnelt beslissingen, verkleint risico&apos;s en vergroot vertrouwen bij operators en contractors.
+          <p className="text-[#8ba3c0] text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
+            {t.intro}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {reasons.map((reason, index) => (
-            <motion.div 
+          {t.reasons.map((reason, index) => (
+            <motion.div
               key={reason.title}
               variants={itemVariants}
               className="group relative"
             >
               <motion.div
-                className="relative p-8 border border-[#1e3a5f] bg-[#0a1525] h-full rounded-sm"
+                className="relative p-7 sm:p-8 border border-[#1e3a5f] bg-[#0a1525] h-full rounded-md"
                 whileHover={{ y: -4, borderColor: "#3d6a9e" }}
                 transition={{ duration: 0.3 }}
               >
@@ -92,7 +82,7 @@ export function WhySection() {
                 <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <h3 className="text-xl font-medium mb-4 pr-12 text-white">{reason.title}</h3>
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 pr-12 text-white">{reason.title}</h3>
                 <p className="text-[#8ba3c0] leading-relaxed text-sm">{reason.description}</p>
               </motion.div>
             </motion.div>

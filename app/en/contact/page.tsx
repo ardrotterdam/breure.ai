@@ -5,19 +5,19 @@ import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
 import { seo } from "@/lib/i18n"
 
-const locale = "nl" as const
+const locale = "en" as const
 
 export const metadata: Metadata = {
-  title: seo.contact.nl.title,
-  description: seo.contact.nl.description,
+  title: seo.contact.en.title,
+  description: seo.contact.en.description,
   keywords: [
     "Breure contact",
     "offshore website contact",
     "maritime web agency Rotterdam",
-    "plan een call",
+    "book a call",
   ],
   alternates: {
-    canonical: "/contact",
+    canonical: "/en/contact",
     languages: {
       "nl-NL": "/contact",
       "en-US": "/en/contact",
@@ -26,20 +26,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "nl_NL",
-    url: "https://breure.ai/contact",
-    title: seo.contact.nl.title,
-    description: seo.contact.nl.description,
+    locale: "en_US",
+    url: "https://breure.ai/en/contact",
+    title: seo.contact.en.title,
+    description: seo.contact.en.description,
     siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: seo.contact.nl.title,
-    description: seo.contact.nl.description,
+    title: seo.contact.en.title,
+    description: seo.contact.en.description,
   },
 }
 
-export default function ContactPage() {
+export default function EnglishContactPage() {
   return (
     <>
       <Navigation locale={locale} />

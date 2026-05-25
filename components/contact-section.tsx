@@ -4,6 +4,8 @@ import { useState, type FormEvent } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Loader2, CheckCircle2, AlertCircle, Send } from "lucide-react"
 
+import { dict, type Locale } from "@/lib/i18n"
+
 const WEB3FORMS_KEY_PARTS = [
   "c7d9dc98",
   "2e94",
@@ -36,7 +38,12 @@ const itemVariants = {
 
 type FormStatus = "idle" | "loading" | "success" | "error"
 
-export function ContactSection() {
+interface ContactSectionProps {
+  locale?: Locale
+}
+
+export function ContactSection({ locale = "nl" }: ContactSectionProps) {
+  const t = dict.contact[locale]
   const [status, setStatus] = useState<FormStatus>("idle")
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -75,7 +82,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-24 lg:py-32 bg-[#080f1e] overflow-hidden"
+      className="relative py-20 sm:py-24 lg:py-32 bg-[#080f1e] overflow-hidden"
     >
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent" />
@@ -98,57 +105,58 @@ export function ContactSection() {
       </div>
 
       <motion.div
-        className="relative container mx-auto px-6 lg:px-12"
+        className="relative container mx-auto px-5 sm:px-6 lg:px-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
       >
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24">
           <div>
             <motion.div variants={itemVariants}>
-              <p className="text-sm font-medium tracking-[0.3em] uppercase text-[#5a7a9e] mb-4">
-                Contact
+              <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-[#5a7a9e] mb-4">
+                {t.eyebrow}
               </p>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6 text-white">
-                Klaar om uw assets{" "}
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 text-white">
+                {t.titlePrefix}{" "}
                 <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
-                  online te brengen?
+                  {t.titleAccent}
                 </span>
               </h2>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <p className="text-[#8ba3c0] text-lg leading-relaxed max-w-md mb-12">
-                Plan een vrijblijvend gesprek. Wij analyseren uw huidige online aanwezigheid en bespreken de mogelijkheden voor uw vloot.
+              <p className="text-[#8ba3c0] text-base sm:text-lg leading-relaxed max-w-md mb-10 sm:mb-12">
+                {t.intro}
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-6">
               <div>
-                <p className="text-sm text-[#5a7a9e] mb-1">E-mail</p>
+                <p className="text-sm text-[#5a7a9e] mb-1">{t.emailLabel}</p>
                 <a
                   href="mailto:info@breure.ai"
-                  className="text-lg text-white hover:text-[#2B88D8] transition-colors"
+                  className="text-base sm:text-lg text-white hover:text-[#2B88D8] transition-colors"
                 >
                   info@breure.ai
                 </a>
               </div>
               <div>
-                <p className="text-sm text-[#5a7a9e] mb-1">Adres</p>
-                <p className="text-lg text-white">
-                  Westplein 12<br />
-                  3016 BM Rotterdam<br />
-                  The Netherlands
+                <p className="text-sm text-[#5a7a9e] mb-1">{t.addressLabel}</p>
+                <p className="text-base sm:text-lg text-white">
+                  {t.address.map((line, i) => (
+                    <span key={line}>
+                      {line}
+                      {i < t.address.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <p className="mt-16 text-sm text-[#5a7a9e] italic">
-                Techniek. Vertrouwen. Resultaat.
-              </p>
+              <p className="mt-14 sm:mt-16 text-sm text-[#5a7a9e] italic">{t.tagline}</p>
             </motion.div>
           </div>
 
@@ -159,7 +167,7 @@ export function ContactSection() {
               className="absolute -inset-px rounded-2xl bg-gradient-to-br from-[#0078D4]/35 via-transparent to-[#1e3a5f]/25 opacity-60 blur-md"
             />
 
-            <div className="relative rounded-2xl border border-white/10 bg-[#0b1426]/70 backdrop-blur-xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
+            <div className="relative rounded-2xl border border-white/10 bg-[#0b1426]/70 backdrop-blur-xl p-7 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
               {/* Inner highlight */}
               <div
                 aria-hidden
@@ -172,21 +180,10 @@ export function ContactSection() {
                 noValidate
               >
                 {/* Web3Forms hidden fields */}
-                <input
-                  type="hidden"
-                  name="access_key"
-                  value={WEB3FORMS_KEY}
-                />
-                <input
-                  type="hidden"
-                  name="subject"
-                  value="Nieuw contactverzoek via Breure.ai"
-                />
-                <input
-                  type="hidden"
-                  name="from_name"
-                  value="Breure.ai Website"
-                />
+                <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+                <input type="hidden" name="subject" value={t.form.subject} />
+                <input type="hidden" name="from_name" value={t.form.fromName} />
+                <input type="hidden" name="locale" value={locale} />
                 {/* Honeypot for spam protection */}
                 <input
                   type="checkbox"
@@ -197,13 +194,13 @@ export function ContactSection() {
                   aria-hidden="true"
                 />
 
-                <div className="grid sm:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                   <FormField
                     id="name"
                     name="name"
                     type="text"
-                    label="Naam"
-                    placeholder="Uw naam"
+                    label={t.form.nameLabel}
+                    placeholder={t.form.namePlaceholder}
                     autoComplete="name"
                     required
                     disabled={isLoading}
@@ -212,8 +209,8 @@ export function ContactSection() {
                     id="company"
                     name="company"
                     type="text"
-                    label="Bedrijf"
-                    placeholder="Uw bedrijf"
+                    label={t.form.companyLabel}
+                    placeholder={t.form.companyPlaceholder}
                     autoComplete="organization"
                     disabled={isLoading}
                   />
@@ -223,8 +220,8 @@ export function ContactSection() {
                   id="email"
                   name="email"
                   type="email"
-                  label="E-mailadres"
-                  placeholder="uw@email.com"
+                  label={t.form.emailLabel}
+                  placeholder={t.form.emailPlaceholder}
                   autoComplete="email"
                   required
                   disabled={isLoading}
@@ -233,8 +230,8 @@ export function ContactSection() {
                 <FormField
                   id="message"
                   name="message"
-                  label="Vertel ons over uw project"
-                  placeholder="Welke assets wilt u online brengen? Hoeveel schepen of platforms betreft het?"
+                  label={t.form.messageLabel}
+                  placeholder={t.form.messagePlaceholder}
                   required
                   disabled={isLoading}
                   multiline
@@ -246,18 +243,18 @@ export function ContactSection() {
                   disabled={isLoading}
                   whileHover={isLoading ? undefined : { scale: 1.01 }}
                   whileTap={isLoading ? undefined : { scale: 0.99 }}
-                  className="group relative w-full overflow-hidden rounded-xl px-6 py-4 text-sm font-medium tracking-wide text-white bg-[#0078D4] shadow-[0_10px_30px_-12px_rgba(0,120,212,0.6)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_18px_40px_-14px_rgba(0,120,212,0.75)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1426] disabled:cursor-not-allowed disabled:opacity-80"
+                  className="group relative w-full overflow-hidden rounded-xl px-6 py-4 text-sm font-medium tracking-wide text-white bg-[#0078D4] shadow-[0_10px_30px_-12px_rgba(0,120,212,0.6)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_20px_44px_-14px_rgba(0,120,212,0.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1426] disabled:cursor-not-allowed disabled:opacity-80"
                   aria-busy={isLoading}
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2.5">
                     {isLoading ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" aria-hidden />
-                        <span>Verzenden...</span>
+                        <span>{t.form.submitting}</span>
                       </>
                     ) : (
                       <>
-                        <span>Verstuur bericht</span>
+                        <span>{t.form.submit}</span>
                         <Send
                           className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5"
                           aria-hidden
@@ -286,7 +283,7 @@ export function ContactSection() {
                       className="flex items-start gap-3 rounded-xl border border-emerald-400/25 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-200 shadow-[0_0_20px_rgba(16,185,129,0.18)]"
                     >
                       <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0 text-emerald-300" aria-hidden />
-                      <p>Bedankt. Wij nemen snel contact met u op.</p>
+                      <p>{t.form.success}</p>
                     </motion.div>
                   )}
 
@@ -302,13 +299,13 @@ export function ContactSection() {
                       className="flex items-start gap-3 rounded-xl border border-rose-400/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200 shadow-[0_0_20px_rgba(244,63,94,0.18)]"
                     >
                       <AlertCircle className="w-5 h-5 mt-0.5 shrink-0 text-rose-300" aria-hidden />
-                      <p>Er ging iets fout. Probeer opnieuw.</p>
+                      <p>{t.form.error}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <p className="text-xs text-[#5a7a9e] leading-relaxed">
-                  Door dit formulier te verzenden gaat u akkoord met verwerking van uw gegevens voor het beantwoorden van uw aanvraag.
+                <p className="text-[11px] sm:text-xs text-[#5a7a9e] leading-relaxed">
+                  {t.form.consent}
                 </p>
               </form>
             </div>
@@ -353,7 +350,7 @@ function FormField({
     <div className="relative">
       <label
         htmlFor={id}
-        className="block text-xs font-medium tracking-wide text-[#8ba3c0] mb-2 uppercase"
+        className="block text-[11px] font-medium tracking-wide text-[#8ba3c0] mb-2 uppercase"
       >
         {label}
         {required && <span className="ml-1 text-[#2B88D8]">*</span>}

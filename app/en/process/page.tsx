@@ -7,22 +7,22 @@ import { ProcessSection } from "@/components/process-section"
 import { CtaBand } from "@/components/cta-band"
 import { dict, seo } from "@/lib/i18n"
 
-const locale = "nl" as const
-const headerCopy = dict.pageHeaders.nl.process
-const ctaCopy = dict.ctas.nl.process
+const locale = "en" as const
+const headerCopy = dict.pageHeaders.en.process
+const ctaCopy = dict.ctas.en.process
 
 export const metadata: Metadata = {
-  title: seo.process.nl.title,
-  description: seo.process.nl.description,
+  title: seo.process.en.title,
+  description: seo.process.en.description,
   keywords: [
-    "offshore website proces",
+    "offshore website process",
     "asset website development",
     "maritime web development",
     "vessel website launch",
-    "Breure proces",
+    "Breure process",
   ],
   alternates: {
-    canonical: "/proces",
+    canonical: "/en/process",
     languages: {
       "nl-NL": "/proces",
       "en-US": "/en/process",
@@ -31,20 +31,20 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "nl_NL",
-    url: "https://breure.ai/proces",
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
+    locale: "en_US",
+    url: "https://breure.ai/en/process",
+    title: seo.process.en.title,
+    description: seo.process.en.description,
     siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
+    title: seo.process.en.title,
+    description: seo.process.en.description,
   },
 }
 
-export default function ProcesPage() {
+export default function EnglishProcessPage() {
   return (
     <>
       <Navigation locale={locale} />
@@ -66,9 +66,9 @@ export default function ProcesPage() {
           eyebrow={ctaCopy.eyebrow}
           title={ctaCopy.title}
           description={ctaCopy.description}
-          primaryHref="/contact"
+          primaryHref="/en/contact"
           primaryLabel={ctaCopy.primary}
-          secondaryHref="/diensten"
+          secondaryHref="/en/services"
           secondaryLabel={ctaCopy.secondary}
         />
       </main>

@@ -1,14 +1,19 @@
 import type { Metadata } from "next"
+
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { CtaBand } from "@/components/cta-band"
+import { dict, seo } from "@/lib/i18n"
+
+const locale = "nl" as const
+const headerCopy = dict.pageHeaders.nl.portfolio
+const ctaCopy = dict.ctas.nl.portfolio
 
 export const metadata: Metadata = {
-  title: "Portfolio | Asset websites & capability pages | Breure",
-  description:
-    "Selected works van Breure Web Agency: asset microsites, capability pages en multi-vessel fleet sites voor offshore operators, contractors en vlooteigenaren.",
+  title: seo.portfolio.nl.title,
+  description: seo.portfolio.nl.description,
   keywords: [
     "Breure portfolio",
     "offshore website portfolio",
@@ -18,54 +23,57 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/portfolio",
+    languages: {
+      "nl-NL": "/portfolio",
+      "en-US": "/en/portfolio",
+      "x-default": "/portfolio",
+    },
   },
   openGraph: {
     type: "website",
     locale: "nl_NL",
     url: "https://breure.ai/portfolio",
-    title: "Portfolio | Breure Web Agency",
-    description:
-      "Asset websites, capability pages en multi-vessel fleet sites voor de offshore & maritieme sector.",
-    siteName: "Breure Web Agency",
+    title: seo.portfolio.nl.title,
+    description: seo.portfolio.nl.description,
+    siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Portfolio | Breure Web Agency",
-    description:
-      "Asset websites, capability pages en multi-vessel fleet sites voor de offshore & maritieme sector.",
+    title: seo.portfolio.nl.title,
+    description: seo.portfolio.nl.description,
   },
 }
 
 export default function PortfolioPage() {
   return (
     <>
-      <Navigation />
+      <Navigation locale={locale} />
       <main>
         <PageHeader
-          eyebrow="Portfolio"
+          eyebrow={headerCopy.eyebrow}
           title={
             <>
-              Asset websites waarop{" "}
+              {headerCopy.titlePrefix}{" "}
               <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
-                charterers en contractors
+                {headerCopy.titleAccent}
               </span>{" "}
-              beslissen
+              {headerCopy.titleSuffix}
             </>
           }
-          description="Een selectie uit ons werk voor offshore operators, jack-up eigenaren, heavy-lift contractors en multi-vessel vloten. Premium digitale presentaties op het niveau van de assets zelf."
+          description={headerCopy.description}
         />
-        <PortfolioSection />
+        <PortfolioSection locale={locale} />
         <CtaBand
-          eyebrow="Uw asset volgende?"
-          title="Laat uw vloot zien zoals hij verdient."
-          description="Wij bespreken graag welke aanpak past bij uw assets, doelgroep en commerciële doelen. Voorbeelden en demo-omgevingen tonen wij in een persoonlijk gesprek."
+          eyebrow={ctaCopy.eyebrow}
+          title={ctaCopy.title}
+          description={ctaCopy.description}
           primaryHref="/contact"
-          primaryLabel="Plan een call"
+          primaryLabel={ctaCopy.primary}
           secondaryHref="/diensten"
-          secondaryLabel="Bekijk onze diensten"
+          secondaryLabel={ctaCopy.secondary}
         />
       </main>
-      <Footer />
+      <Footer locale={locale} />
     </>
   )
 }

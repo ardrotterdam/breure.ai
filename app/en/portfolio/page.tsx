@@ -3,48 +3,48 @@ import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
-import { ProcessSection } from "@/components/process-section"
+import { PortfolioSection } from "@/components/portfolio-section"
 import { CtaBand } from "@/components/cta-band"
 import { dict, seo } from "@/lib/i18n"
 
-const locale = "nl" as const
-const headerCopy = dict.pageHeaders.nl.process
-const ctaCopy = dict.ctas.nl.process
+const locale = "en" as const
+const headerCopy = dict.pageHeaders.en.portfolio
+const ctaCopy = dict.ctas.en.portfolio
 
 export const metadata: Metadata = {
-  title: seo.process.nl.title,
-  description: seo.process.nl.description,
+  title: seo.portfolio.en.title,
+  description: seo.portfolio.en.description,
   keywords: [
-    "offshore website proces",
-    "asset website development",
-    "maritime web development",
-    "vessel website launch",
-    "Breure proces",
+    "Breure portfolio",
+    "offshore website portfolio",
+    "vessel website case study",
+    "asset microsite case",
+    "maritime web design portfolio",
   ],
   alternates: {
-    canonical: "/proces",
+    canonical: "/en/portfolio",
     languages: {
-      "nl-NL": "/proces",
-      "en-US": "/en/process",
-      "x-default": "/proces",
+      "nl-NL": "/portfolio",
+      "en-US": "/en/portfolio",
+      "x-default": "/portfolio",
     },
   },
   openGraph: {
     type: "website",
-    locale: "nl_NL",
-    url: "https://breure.ai/proces",
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
+    locale: "en_US",
+    url: "https://breure.ai/en/portfolio",
+    title: seo.portfolio.en.title,
+    description: seo.portfolio.en.description,
     siteName: "Breure.ai",
   },
   twitter: {
     card: "summary_large_image",
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
+    title: seo.portfolio.en.title,
+    description: seo.portfolio.en.description,
   },
 }
 
-export default function ProcesPage() {
+export default function EnglishPortfolioPage() {
   return (
     <>
       <Navigation locale={locale} />
@@ -56,19 +56,20 @@ export default function ProcesPage() {
               {headerCopy.titlePrefix}{" "}
               <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
                 {headerCopy.titleAccent}
-              </span>
+              </span>{" "}
+              {headerCopy.titleSuffix}
             </>
           }
           description={headerCopy.description}
         />
-        <ProcessSection locale={locale} />
+        <PortfolioSection locale={locale} />
         <CtaBand
           eyebrow={ctaCopy.eyebrow}
           title={ctaCopy.title}
           description={ctaCopy.description}
-          primaryHref="/contact"
+          primaryHref="/en/contact"
           primaryLabel={ctaCopy.primary}
-          secondaryHref="/diensten"
+          secondaryHref="/en/services"
           secondaryLabel={ctaCopy.secondary}
         />
       </main>

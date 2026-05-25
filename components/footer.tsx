@@ -2,14 +2,31 @@
 
 import Link from "next/link"
 
-export function Footer() {
+import { dict, type Locale, ROUTES } from "@/lib/i18n"
+
+interface FooterProps {
+  locale?: Locale
+}
+
+export function Footer({ locale = "nl" }: FooterProps) {
+  const t = dict.footer[locale]
+  const nav = dict.nav[locale]
+  const year = new Date().getFullYear()
+
+  const links = [
+    { label: nav.services, href: ROUTES.services[locale] },
+    { label: nav.process, href: ROUTES.process[locale] },
+    { label: nav.portfolio, href: ROUTES.portfolio[locale] },
+    { label: nav.contact, href: ROUTES.contact[locale] },
+  ]
+
   return (
-    <footer className="relative py-16 bg-[#060c18] border-t border-[#1e3a5f]/50">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid md:grid-cols-4 gap-12 mb-16">
+    <footer className="relative py-14 sm:py-16 bg-[#060c18] border-t border-[#1e3a5f]/50">
+      <div className="container mx-auto px-5 sm:px-6 lg:px-12">
+        <div className="grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
+            <Link href={ROUTES.home[locale]} className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8">
                 <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
                   <path
@@ -29,39 +46,26 @@ export function Footer() {
               <span className="text-lg font-semibold tracking-wide text-white">BREURE</span>
             </Link>
             <p className="text-sm text-[#8ba3c0] max-w-sm leading-relaxed">
-              Gespecialiseerd in websites voor de offshore &amp; maritieme sector. Wij bouwen de asset websites waarop miljoenenbeslissingen worden genomen.
+              {t.description}
             </p>
           </div>
 
           {/* Site links */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-white">Navigatie</h4>
+            <h4 className="text-sm font-medium mb-4 text-white">{t.navHeading}</h4>
             <ul className="space-y-2 text-sm text-[#8ba3c0]">
-              <li>
-                <Link href="/diensten" className="hover:text-white transition-colors">
-                  Diensten
-                </Link>
-              </li>
-              <li>
-                <Link href="/proces" className="hover:text-white transition-colors">
-                  Proces
-                </Link>
-              </li>
-              <li>
-                <Link href="/portfolio" className="hover:text-white transition-colors">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors">
-                  Contact
-                </Link>
-              </li>
+              {links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-4 text-white">Contact</h4>
+            <h4 className="text-sm font-medium mb-4 text-white">{t.contactHeading}</h4>
             <ul className="space-y-2 text-sm text-[#8ba3c0]">
               <li>
                 <a
@@ -80,12 +84,10 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[#1e3a5f]/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-[#5a7a9e]">
-            © {new Date().getFullYear()} Breure Web Agency. Alle rechten voorbehouden.
-          </p>
+          <p className="text-xs text-[#5a7a9e]">{t.copyright(year)}</p>
           <div className="flex items-center gap-6 text-xs text-[#5a7a9e]">
-            <Link href="/contact" className="hover:text-white transition-colors">
-              Contact
+            <Link href={ROUTES.contact[locale]} className="hover:text-white transition-colors">
+              {nav.contact}
             </Link>
           </div>
         </div>

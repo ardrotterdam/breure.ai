@@ -1,23 +1,45 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 
-const NAV_LINKS = [
-  { label: "Diensten", href: "/diensten" },
-  { label: "Proces", href: "/proces" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact", href: "/contact" },
-] as const
+import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
+import { LanguageToggle } from "./language-toggle"
 
-export function Navigation() {
-  const pathname = usePathname()
+interface NavigationProps {
+  locale?: Locale
+}
+
+export function Navigation({ locale: localeProp }: NavigationProps = {}) {
+  const pathname = usePathname() ?? "/"
+  const locale: Locale = localeProp ?? localeFromPathname(pathname)
+  const t = dict.nav[locale]
+
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const isActive = (href: string) =>
-    pathname === href || (href !== "/" && pathname?.startsWith(href))
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = locale
+    }
+  }, [locale])
+
+  const navLinks = [
+    { label: t.services, href: ROUTES.services[locale] },
+    { label: t.process, href: ROUTES.process[locale] },
+    { label: t.portfolio, href: ROUTES.portfolio[locale] },
+    { label: t.contact, href: ROUTES.contact[locale] },
+  ]
+
+  const homeHref = ROUTES.home[locale]
+  const contactHref = ROUTES.contact[locale]
+
+  const isActive = (href: string) => {
+    const home = ROUTES.home[locale]
+    if (href === home) return pathname === home
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
 
   return (
     <motion.header
@@ -28,9 +50,9 @@ export function Navigation() {
     >
       <div className="absolute inset-0 bg-background/80 backdrop-blur-md border-b border-border/50" />
 
-      <nav className="relative container mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+      <nav className="relative container mx-auto px-5 sm:px-6 lg:px-12 py-4 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
+        <Link href={homeHref} className="flex items-center gap-3 shrink-0">
           <div className="relative w-10 h-10">
             <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
               <motion.path
@@ -57,13 +79,15 @@ export function Navigation() {
           </div>
           <div className="flex flex-col">
             <span className="text-lg font-semibold tracking-wide">BREURE</span>
-            <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">Web Agency</span>
+            <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
+              Web Agency
+            </span>
           </div>
         </Link>
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((item) => {
+          {navLinks.map((item) => {
             const active = isActive(item.href)
             return (
               <Link
@@ -80,30 +104,36 @@ export function Navigation() {
           })}
         </div>
 
-        {/* CTA */}
-        <Link
-          href="/contact"
-          className="hidden sm:inline-flex items-center px-6 py-2.5 rounded-sm bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_6px_18px_-8px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_10px_28px_-8px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
-        >
-          Plan een call
-        </Link>
+        {/* Right cluster: language toggle + CTA */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="hidden md:block">
+            <LanguageToggle variant="desktop" />
+          </div>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-label={mobileOpen ? "Sluit menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          className="md:hidden p-2"
-        >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+          <Link
+            href={contactHref}
+            className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_6px_18px_-8px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow,transform] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_30px_-8px_rgba(0,120,212,0.75)] hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+          >
+            {t.cta}
+          </Link>
+
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? t.closeMenu : t.openMenu}
+            aria-expanded={mobileOpen}
+            className="md:hidden p-2 -mr-2"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </nav>
 
       {/* Mobile dropdown */}
@@ -117,8 +147,8 @@ export function Navigation() {
             transition={{ duration: 0.2 }}
             className="md:hidden relative border-t border-border/50 bg-background/95 backdrop-blur-md"
           >
-            <div className="container mx-auto px-6 py-4 flex flex-col gap-1">
-              {NAV_LINKS.map((item) => {
+            <div className="container mx-auto px-5 sm:px-6 py-5 flex flex-col gap-1">
+              {navLinks.map((item) => {
                 const active = isActive(item.href)
                 return (
                   <Link
@@ -134,13 +164,17 @@ export function Navigation() {
                   </Link>
                 )
               })}
-              <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-sm bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_8px_22px_-10px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_28px_-10px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
-              >
-                Plan een call
-              </Link>
+
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />
+                <Link
+                  href={contactHref}
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_8px_22px_-10px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_28px_-10px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+                >
+                  {t.cta}
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

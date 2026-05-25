@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -11,9 +11,23 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://breure.ai'),
-  title: 'Breure Web Agency | Offshore & Maritieme Websites',
-  description: 'Gespecialiseerd in websites voor de offshore & maritieme sector. Wij bouwen de asset websites waarop miljoenenbeslissingen worden genomen. Heavy-lift vessels, jack-ups, platforms en support ships.',
-  keywords: ['offshore websites', 'maritieme sector', 'vessel websites', 'jack-up websites', 'asset microsites', 'offshore marketing', 'Rotterdam'],
+  title: {
+    default: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
+    template: '%s',
+  },
+  description:
+    'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven. Wij ontwerpen krachtige websites voor operators, scheepseigenaren en engineeringbedrijven.',
+  keywords: [
+    'offshore websites',
+    'maritieme sector',
+    'vessel websites',
+    'jack-up websites',
+    'asset microsites',
+    'offshore marketing',
+    'maritime websites',
+    'engineered for trust',
+    'Rotterdam',
+  ],
   authors: [{ name: 'Breure Web Agency' }],
   creator: 'Breure Web Agency',
   icons: {
@@ -23,18 +37,29 @@ export const metadata: Metadata = {
     ],
     apple: '/breure-favicon-512.png',
   },
+  alternates: {
+    canonical: '/',
+    languages: {
+      'nl-NL': '/',
+      'en-US': '/en',
+      'x-default': '/',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'nl_NL',
+    alternateLocale: ['en_US'],
     url: 'https://breure.ai',
-    title: 'Breure Web Agency | Offshore & Maritieme Websites',
-    description: 'Wij bouwen de asset websites waarop miljoenenbeslissingen worden genomen.',
-    siteName: 'Breure Web Agency',
+    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
+    description:
+      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
+    siteName: 'Breure.ai',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Breure Web Agency | Offshore & Maritieme Websites',
-    description: 'Wij bouwen de asset websites waarop miljoenenbeslissingen worden genomen.',
+    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
+    description:
+      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
   },
 }
 
