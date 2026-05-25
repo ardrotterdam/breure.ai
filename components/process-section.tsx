@@ -32,16 +32,15 @@ export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
   const t = dict.process[locale]
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 bg-[#0d1a2d] overflow-hidden">
-      {/* Animated background lines */}
-      <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden opacity-[0.03]">
+    <section className="relative py-20 sm:py-24 lg:py-32 bg-secondary overflow-hidden">
+      <div className="absolute right-0 top-0 bottom-0 w-1/2 overflow-hidden opacity-[0.06] dark:opacity-[0.03]">
         <motion.div
           className="absolute inset-0"
           style={{
             background: `repeating-linear-gradient(
               90deg,
-              white 0px,
-              white 1px,
+              var(--foreground) 0px,
+              var(--foreground) 1px,
               transparent 1px,
               transparent 60px
             )`,
@@ -61,20 +60,20 @@ export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 items-start">
           <div className="lg:sticky lg:top-32">
             <motion.div variants={itemVariants}>
-              <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-[#5a7a9e] mb-4">
+              <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-4">
                 {t.eyebrow}
               </p>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 text-white">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 text-foreground">
                 {t.titlePrefix}{" "}
-                <span className="bg-gradient-to-r from-white to-[#2B88D8] bg-clip-text text-transparent">
+                <span className="heading-accent-gradient">
                   {t.titleAccent}
                 </span>
               </h2>
             </motion.div>
             <motion.div variants={itemVariants}>
-              <p className="text-[#8ba3c0] text-base sm:text-lg leading-relaxed max-w-md">
+              <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md">
                 {t.intro}
               </p>
             </motion.div>
@@ -88,25 +87,22 @@ export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
                 className="group"
               >
                 <motion.div
-                  className="relative p-6 lg:p-8 border border-[#1e3a5f] bg-[#0a1525] rounded-md"
-                  whileHover={{ x: 8, borderColor: "#3d6a9e" }}
+                  className="relative p-6 lg:p-8 border border-border bg-surface-muted rounded-md"
+                  whileHover={{ x: 8, borderColor: "var(--border-hover)" }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Number */}
-                  <div className="absolute top-6 lg:top-8 right-6 lg:right-8 text-4xl font-extralight text-[#1e3a5f] select-none group-hover:text-[#2a4a6f] transition-colors">
+                  <div className="absolute top-6 lg:top-8 right-6 lg:right-8 text-4xl font-extralight text-border select-none group-hover:text-border-hover transition-colors">
                     {step.number}
                   </div>
 
-                  {/* Connecting line */}
                   {index < t.steps.length - 1 && (
-                    <div className="absolute -bottom-4 left-10 w-px h-4 bg-gradient-to-b from-[#1e3a5f] to-transparent" />
+                    <div className="absolute -bottom-4 left-10 w-px h-4 bg-gradient-to-b from-border to-transparent" />
                   )}
 
-                  <h3 className="text-base sm:text-lg font-medium mb-2 pr-16 text-white">{step.title}</h3>
-                  <p className="text-[#8ba3c0] text-sm leading-relaxed">{step.description}</p>
+                  <h3 className="text-base sm:text-lg font-medium mb-2 pr-16 text-foreground">{step.title}</h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
 
-                  {/* Hover indicator */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-8 bg-[#0078D4] group-hover:w-1 transition-all duration-300 rounded-r" />
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-0 h-8 bg-accent group-hover:w-1 transition-all duration-300 rounded-r" />
                 </motion.div>
               </motion.div>
             ))}

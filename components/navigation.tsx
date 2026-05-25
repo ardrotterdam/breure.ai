@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
 import { LanguageToggle } from "./language-toggle"
+import { ThemeToggle } from "./theme-toggle"
 
 interface NavigationProps {
   locale?: Locale
@@ -104,15 +105,16 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           })}
         </div>
 
-        {/* Right cluster: language toggle + CTA */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        {/* Right cluster: theme + language toggle + CTA */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          <ThemeToggle locale={locale} variant="desktop" />
           <div className="hidden md:block">
             <LanguageToggle variant="desktop" />
           </div>
 
           <Link
             href={contactHref}
-            className="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_6px_18px_-8px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow,transform] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_30px_-8px_rgba(0,120,212,0.75)] hover:-translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+            className="hidden sm:inline-flex btn-primary px-5 py-2.5 hover:-translate-y-px"
           >
             {t.cta}
           </Link>
@@ -166,11 +168,14 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
               })}
 
               <div className="mt-4 flex items-center justify-between gap-3">
-                <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />
+                <div className="flex items-center gap-2">
+                  <ThemeToggle locale={locale} variant="mobile" />
+                  <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />
+                </div>
                 <Link
                   href={contactHref}
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-[#0078D4] text-white text-sm font-medium tracking-wide shadow-[0_8px_22px_-10px_rgba(0,120,212,0.55)] transition-[background-color,box-shadow] duration-300 hover:bg-[#106EBE] hover:shadow-[0_12px_28px_-10px_rgba(0,120,212,0.7)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+                  className="inline-flex btn-primary px-5 py-2.5"
                 >
                   {t.cta}
                 </Link>

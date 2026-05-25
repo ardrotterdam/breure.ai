@@ -32,12 +32,11 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
   const t = dict.why[locale]
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 bg-[#0d1a2d]">
-      {/* Subtle texture overlay */}
+    <section className="relative py-20 sm:py-24 lg:py-32 bg-secondary">
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.05] dark:opacity-[0.03]"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--foreground) 1px, transparent 0)`,
           backgroundSize: "32px 32px",
         }}
       />
@@ -50,13 +49,13 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-foreground">
             {t.title}
           </h2>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <p className="text-[#8ba3c0] text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
+          <p className="text-text-secondary text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
             {t.intro}
           </p>
         </motion.div>
@@ -69,21 +68,19 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
               className="group relative"
             >
               <motion.div
-                className="relative p-7 sm:p-8 border border-[#1e3a5f] bg-[#0a1525] h-full rounded-md"
-                whileHover={{ y: -4, borderColor: "#3d6a9e" }}
+                className="relative p-7 sm:p-8 border border-border bg-surface-muted h-full rounded-md"
+                whileHover={{ y: -4, borderColor: "var(--border-hover)" }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Number indicator */}
-                <div className="absolute top-6 right-6 text-5xl font-extralight text-[#1e3a5f] select-none">
+                <div className="absolute top-6 right-6 text-5xl font-extralight text-border select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                {/* Corner accent on hover */}
-                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-12 h-[2px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-[2px] h-12 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 pr-12 text-white">{reason.title}</h3>
-                <p className="text-[#8ba3c0] leading-relaxed text-sm">{reason.description}</p>
+                <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 pr-12 text-foreground">{reason.title}</h3>
+                <p className="text-text-secondary leading-relaxed text-sm">{reason.description}</p>
               </motion.div>
             </motion.div>
           ))}

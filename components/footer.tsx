@@ -21,42 +21,42 @@ export function Footer({ locale = "nl" }: FooterProps) {
   ]
 
   return (
-    <footer className="relative py-14 sm:py-16 bg-[#060c18] border-t border-[#1e3a5f]/50">
+    <footer className="relative py-14 sm:py-16 bg-ocean-deep border-t border-border/50">
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         <div className="grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
-          {/* Brand */}
           <div className="md:col-span-2">
             <Link href={ROUTES.home[locale]} className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8">
                 <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
                   <path
                     d="M5 25 Q12 20 20 25 Q28 30 35 25"
-                    stroke="#0078D4"
+                    stroke="currentColor"
                     strokeWidth="2.5"
                     strokeLinecap="round"
+                    className="text-accent"
                   />
                   <path
                     d="M5 20 Q12 15 20 20 Q28 25 35 20"
-                    stroke="white"
+                    stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
+                    className="text-foreground"
                   />
                 </svg>
               </div>
-              <span className="text-lg font-semibold tracking-wide text-white">BREURE</span>
+              <span className="text-lg font-semibold tracking-wide text-foreground">BREURE</span>
             </Link>
-            <p className="text-sm text-[#8ba3c0] max-w-sm leading-relaxed">
+            <p className="text-sm text-text-secondary max-w-sm leading-relaxed">
               {t.description}
             </p>
           </div>
 
-          {/* Site links */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-white">{t.navHeading}</h4>
-            <ul className="space-y-2 text-sm text-[#8ba3c0]">
+            <h4 className="text-sm font-medium mb-4 text-foreground">{t.navHeading}</h4>
+            <ul className="space-y-2 text-sm text-text-secondary">
               {links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-white transition-colors">
+                  <Link href={link.href} className="hover:text-foreground transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -65,12 +65,12 @@ export function Footer({ locale = "nl" }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="text-sm font-medium mb-4 text-white">{t.contactHeading}</h4>
-            <ul className="space-y-2 text-sm text-[#8ba3c0]">
+            <h4 className="text-sm font-medium mb-4 text-foreground">{t.contactHeading}</h4>
+            <ul className="space-y-2 text-sm text-text-secondary">
               <li>
                 <a
                   href="mailto:info@breure.ai"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-foreground transition-colors"
                 >
                   info@breure.ai
                 </a>
@@ -82,11 +82,10 @@ export function Footer({ locale = "nl" }: FooterProps) {
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-8 border-t border-[#1e3a5f]/50 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-[#5a7a9e]">{t.copyright(year)}</p>
-          <div className="flex items-center gap-6 text-xs text-[#5a7a9e]">
-            <Link href={ROUTES.contact[locale]} className="hover:text-white transition-colors">
+        <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-xs text-text-eyebrow">{t.copyright(year)}</p>
+          <div className="flex items-center gap-6 text-xs text-text-eyebrow">
+            <Link href={ROUTES.contact[locale]} className="hover:text-foreground transition-colors">
               {nav.contact}
             </Link>
           </div>

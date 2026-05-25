@@ -33,7 +33,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
           <div className="max-w-2xl">
             {/* Pre-title */}
             <FadeIn delay={0.2}>
-              <p className="text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-[#2B88D8] mb-5 sm:mb-6">
+              <p className="text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-accent-soft mb-5 sm:mb-6">
                 {t.eyebrow}
               </p>
             </FadeIn>
@@ -82,7 +82,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
                   href={ROUTES.contact[locale]}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#0078D4] text-white font-medium text-sm tracking-wide overflow-hidden shadow-[0_8px_24px_-10px_rgba(0,120,212,0.6)] transition-[background-color,box-shadow,border-color] duration-300 hover:bg-[#106EBE] hover:shadow-[0_16px_44px_-10px_rgba(0,120,212,0.85)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+                  className="group relative btn-primary px-7 sm:px-8 py-3.5 sm:py-4 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2.5">
                     {t.ctaPrimary}
@@ -107,7 +107,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
                   href={ROUTES.services[locale]}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group inline-flex items-center justify-center px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border border-border/70 text-foreground font-medium text-sm tracking-wide transition-colors duration-300 hover:border-[#0078D4]/60 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e]"
+                  className="group btn-secondary px-7 sm:px-8 py-3.5 sm:py-4"
                 >
                   <span className="flex items-center gap-3">
                     {t.ctaSecondary}
@@ -173,7 +173,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
                   transition={{ delay: 1.5, duration: 0.6 }}
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#2B88D8] animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-accent-soft animate-pulse" />
                     <span className="text-xs text-foreground/80 font-medium tracking-wide">{t.badgeOne}</span>
                   </div>
                 </motion.div>
@@ -186,7 +186,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
                   transition={{ delay: 1.8, duration: 0.6 }}
                 >
                   <div className="flex items-center gap-3">
-                    <svg className="w-4 h-4 text-[#2B88D8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-accent-soft" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span className="text-xs text-foreground/80 font-medium tracking-wide">{t.badgeTwo}</span>
@@ -221,7 +221,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
           transition={{ duration: 2, repeat: Infinity }}
         >
           <motion.div
-            className="w-1 h-2 bg-[#2B88D8] rounded-full"
+            className="w-1 h-2 bg-accent-soft rounded-full"
             animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           />

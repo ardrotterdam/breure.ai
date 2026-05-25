@@ -57,6 +57,9 @@ export const dict = {
       openMenu: "Open menu",
       closeMenu: "Sluit menu",
       switchTo: "Wissel naar Engels",
+      themeToggle: "Thema wisselen",
+      themeLight: "Schakel naar lichte modus",
+      themeDark: "Schakel naar donkere modus",
     },
     en: {
       services: "Services",
@@ -67,6 +70,9 @@ export const dict = {
       openMenu: "Open menu",
       closeMenu: "Close menu",
       switchTo: "Switch to Dutch",
+      themeToggle: "Toggle theme",
+      themeLight: "Switch to light mode",
+      themeDark: "Switch to dark mode",
     },
   },
 

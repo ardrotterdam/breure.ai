@@ -32,14 +32,18 @@ export function PortfolioSection({ locale = "nl" }: PortfolioSectionProps) {
   const t = dict.portfolio[locale]
 
   return (
-    <section className="relative py-20 sm:py-24 lg:py-32 bg-[#080f1e] overflow-hidden">
-      {/* Top accent */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1e3a5f] to-transparent" />
+    <section className="relative py-20 sm:py-24 lg:py-32 bg-background overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-px section-divider" />
 
-      {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full bg-[#0078D4]/10 blur-[140px]" />
-        <div className="absolute bottom-1/3 -left-32 w-[420px] h-[420px] rounded-full bg-[#1e3a5f]/30 blur-[140px]" />
+        <div
+          className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full blur-[140px]"
+          style={{ backgroundColor: "var(--accent-blur)" }}
+        />
+        <div
+          className="absolute bottom-1/3 -left-32 w-[420px] h-[420px] rounded-full blur-[140px]"
+          style={{ backgroundColor: "var(--divider-blur)" }}
+        />
       </div>
 
       <motion.div
@@ -50,19 +54,19 @@ export function PortfolioSection({ locale = "nl" }: PortfolioSectionProps) {
         variants={containerVariants}
       >
         <motion.div variants={itemVariants}>
-          <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-[#5a7a9e] mb-4">
+          <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-4">
             {t.eyebrow}
           </p>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-white">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-foreground">
             {t.title}
           </h2>
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <p className="text-[#8ba3c0] text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
+          <p className="text-text-secondary text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
             {t.intro}
           </p>
         </motion.div>
@@ -75,39 +79,37 @@ export function PortfolioSection({ locale = "nl" }: PortfolioSectionProps) {
               className="group relative"
             >
               <motion.div
-                className="relative p-7 sm:p-8 lg:p-10 border border-[#1e3a5f] bg-[#0d1a2d] h-full flex flex-col rounded-md overflow-hidden"
-                whileHover={{ y: -4, borderColor: "#3d6a9e" }}
+                className="relative p-7 sm:p-8 lg:p-10 surface-card h-full flex flex-col overflow-hidden"
+                whileHover={{ y: -4, borderColor: "var(--border-hover)" }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Index */}
-                <div className="absolute top-6 right-6 text-5xl font-extralight text-[#1e3a5f] select-none">
+                <div className="absolute top-6 right-6 text-5xl font-extralight text-border select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                {/* Corner accent */}
-                <div className="absolute top-0 left-0 w-12 h-[2px] bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute top-0 left-0 w-[2px] h-12 bg-[#0078D4] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-12 h-[2px] bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 w-[2px] h-12 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div className="inline-flex items-center gap-2 mb-5 sm:mb-6">
-                  <span className="w-8 h-px bg-[#1e3a5f]" />
-                  <span className="text-xs font-medium tracking-wider uppercase text-[#2B88D8]">
+                  <span className="w-8 h-px bg-border" />
+                  <span className="text-xs font-medium tracking-wider uppercase text-accent-soft">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-medium mb-3 sm:mb-4 pr-12 text-white">{project.title}</h3>
-                <p className="text-[#8ba3c0] leading-relaxed text-sm mb-7 sm:mb-8">{project.description}</p>
+                <h3 className="text-xl sm:text-2xl font-medium mb-3 sm:mb-4 pr-12 text-foreground">{project.title}</h3>
+                <p className="text-text-secondary leading-relaxed text-sm mb-7 sm:mb-8">{project.description}</p>
 
-                <div className="mt-auto pt-6 border-t border-[#1e3a5f]/60 grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="mt-auto pt-6 border-t border-border/60 grid grid-cols-3 gap-3 sm:gap-4">
                   {project.metrics.map((metric) => (
                     <div key={metric.label}>
-                      <div className="text-[11px] sm:text-xs text-[#5a7a9e] mb-1 tracking-wide">{metric.label}</div>
-                      <div className="text-sm text-white font-medium">{metric.value}</div>
+                      <div className="text-[11px] sm:text-xs text-text-eyebrow mb-1 tracking-wide">{metric.label}</div>
+                      <div className="text-sm text-foreground font-medium">{metric.value}</div>
                     </div>
                   ))}
                 </div>
 
-                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0078D4] group-hover:w-full transition-all duration-500" />
+                <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
               </motion.div>
             </motion.article>
           ))}
@@ -115,7 +117,7 @@ export function PortfolioSection({ locale = "nl" }: PortfolioSectionProps) {
 
         <motion.p
           variants={itemVariants}
-          className="mt-14 sm:mt-16 text-sm text-[#5a7a9e] italic max-w-2xl"
+          className="mt-14 sm:mt-16 text-sm text-text-eyebrow italic max-w-2xl"
         >
           {t.ndaNote}
         </motion.p>

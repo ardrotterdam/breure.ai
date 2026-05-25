@@ -2,6 +2,26 @@
 
 import { useEffect, useRef } from "react"
 
+const DARK_PALETTE = {
+  background: ["rgb(8, 15, 30)", "rgb(12, 25, 45)", "rgb(15, 35, 60)", "rgb(10, 28, 50)"],
+  particles: "120, 180, 220",
+  waves: ["rgba(40, 80, 120,", "rgba(25, 55, 90,", "rgba(15, 35, 60,"],
+  rays: ["rgba(80, 140, 180, 0.02)", "rgba(60, 120, 160, 0.01)", "rgba(40, 100, 140, 0)"],
+  horizon: ["rgba(60, 100, 140, 0.15)", "rgba(40, 80, 120, 0.05)", "rgba(20, 50, 80, 0)"],
+}
+
+const LIGHT_PALETTE = {
+  background: ["rgb(236, 241, 248)", "rgb(224, 233, 245)", "rgb(210, 225, 242)", "rgb(228, 236, 246)"],
+  particles: "80, 130, 190",
+  waves: ["rgba(100, 150, 210,", "rgba(130, 170, 220,", "rgba(180, 205, 235,"],
+  rays: ["rgba(0, 120, 212, 0.04)", "rgba(0, 120, 212, 0.02)", "rgba(0, 120, 212, 0)"],
+  horizon: ["rgba(0, 120, 212, 0.12)", "rgba(0, 120, 212, 0.05)", "rgba(0, 120, 212, 0)"],
+}
+
+function isDarkMode() {
+  return !document.documentElement.classList.contains("light")
+}
+
 export function OceanAnimation() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -14,19 +34,27 @@ export function OceanAnimation() {
 
     let animationFrameId: number
     let time = 0
+    let palette = isDarkMode() ? DARK_PALETTE : LIGHT_PALETTE
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
       const rect = canvas.getBoundingClientRect()
       canvas.width = rect.width * dpr
       canvas.height = rect.height * dpr
-      ctx.scale(dpr, dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
     resize()
     window.addEventListener("resize", resize)
 
-    // Wave parameters for multiple layers
+    const observer = new MutationObserver(() => {
+      palette = isDarkMode() ? DARK_PALETTE : LIGHT_PALETTE
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    })
+
     const waves = [
       { amplitude: 25, frequency: 0.008, speed: 0.015, yOffset: 0.55, opacity: 0.15 },
       { amplitude: 35, frequency: 0.006, speed: 0.012, yOffset: 0.60, opacity: 0.12 },
@@ -34,7 +62,6 @@ export function OceanAnimation() {
       { amplitude: 20, frequency: 0.012, speed: 0.020, yOffset: 0.52, opacity: 0.08 },
     ]
 
-    // Particles for depth
     const particles: { x: number; y: number; size: number; speed: number; opacity: number }[] = []
     for (let i = 0; i < 50; i++) {
       particles.push({
@@ -51,16 +78,14 @@ export function OceanAnimation() {
       const width = rect.width
       const height = rect.height
 
-      // Clear with deep ocean gradient
       const gradient = ctx.createLinearGradient(0, 0, 0, height)
-      gradient.addColorStop(0, "rgb(8, 15, 30)")
-      gradient.addColorStop(0.3, "rgb(12, 25, 45)")
-      gradient.addColorStop(0.6, "rgb(15, 35, 60)")
-      gradient.addColorStop(1, "rgb(10, 28, 50)")
+      gradient.addColorStop(0, palette.background[0])
+      gradient.addColorStop(0.3, palette.background[1])
+      gradient.addColorStop(0.6, palette.background[2])
+      gradient.addColorStop(1, palette.background[3])
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, width, height)
 
-      // Draw floating particles
       particles.forEach((p) => {
         p.y -= p.speed
         p.x += Math.sin(time * 0.01 + p.y * 0.01) * 0.2
@@ -70,11 +95,10 @@ export function OceanAnimation() {
         }
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(120, 180, 220, ${p.opacity})`
+        ctx.fillStyle = `rgba(${palette.particles}, ${p.opacity})`
         ctx.fill()
       })
 
-      // Draw waves
       waves.forEach((wave) => {
         ctx.beginPath()
         const baseY = height * wave.yOffset
@@ -97,36 +121,34 @@ export function OceanAnimation() {
         ctx.closePath()
 
         const waveGradient = ctx.createLinearGradient(0, baseY - wave.amplitude, 0, height)
-        waveGradient.addColorStop(0, `rgba(40, 80, 120, ${wave.opacity})`)
-        waveGradient.addColorStop(0.5, `rgba(25, 55, 90, ${wave.opacity * 0.8})`)
-        waveGradient.addColorStop(1, `rgba(15, 35, 60, ${wave.opacity * 0.5})`)
+        waveGradient.addColorStop(0, `${palette.waves[0]} ${wave.opacity})`)
+        waveGradient.addColorStop(0.5, `${palette.waves[1]} ${wave.opacity * 0.8})`)
+        waveGradient.addColorStop(1, `${palette.waves[2]} ${wave.opacity * 0.5})`)
         ctx.fillStyle = waveGradient
         ctx.fill()
       })
 
-      // Add subtle light rays
       for (let i = 0; i < 3; i++) {
         const rayX = width * (0.3 + i * 0.2) + Math.sin(time * 0.005 + i) * 30
         const rayGradient = ctx.createLinearGradient(rayX, 0, rayX + 60, height * 0.5)
-        rayGradient.addColorStop(0, "rgba(80, 140, 180, 0.02)")
-        rayGradient.addColorStop(0.5, "rgba(60, 120, 160, 0.01)")
-        rayGradient.addColorStop(1, "rgba(40, 100, 140, 0)")
+        rayGradient.addColorStop(0, palette.rays[0])
+        rayGradient.addColorStop(0.5, palette.rays[1])
+        rayGradient.addColorStop(1, palette.rays[2])
         ctx.fillStyle = rayGradient
         ctx.fillRect(rayX, 0, 80, height * 0.6)
       }
 
-      // Horizon glow
       const horizonGradient = ctx.createRadialGradient(
         width * 0.7,
         height * 0.35,
         0,
         width * 0.7,
         height * 0.35,
-        width * 0.5
+        width * 0.5,
       )
-      horizonGradient.addColorStop(0, "rgba(60, 100, 140, 0.15)")
-      horizonGradient.addColorStop(0.5, "rgba(40, 80, 120, 0.05)")
-      horizonGradient.addColorStop(1, "rgba(20, 50, 80, 0)")
+      horizonGradient.addColorStop(0, palette.horizon[0])
+      horizonGradient.addColorStop(0.5, palette.horizon[1])
+      horizonGradient.addColorStop(1, palette.horizon[2])
       ctx.fillStyle = horizonGradient
       ctx.fillRect(0, 0, width, height)
 
@@ -138,6 +160,7 @@ export function OceanAnimation() {
 
     return () => {
       window.removeEventListener("resize", resize)
+      observer.disconnect()
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
@@ -145,7 +168,7 @@ export function OceanAnimation() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 w-full h-full transition-opacity duration-500"
       style={{ filter: "blur(0.5px)" }}
     />
   )

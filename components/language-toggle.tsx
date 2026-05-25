@@ -34,17 +34,6 @@ interface LanguageToggleProps {
   onSelect?: () => void
 }
 
-/**
- * NL | EN language toggle.
- *
- * - Visible on desktop and mobile (different variants for spacing).
- * - Active language highlighted with the Microsoft-blue accent.
- * - Smooth Framer Motion indicator transition.
- * - Persists the choice to localStorage AND a cookie so the middleware
- *   can honour it on the next visit.
- * - On mount the toggle reconciles the URL with any stored preference,
- *   so a returning visitor immediately sees their preferred language.
- */
 export function LanguageToggle({ variant = "desktop", onSelect }: LanguageToggleProps) {
   const pathname = usePathname() ?? "/"
   const router = useRouter()
@@ -67,8 +56,8 @@ export function LanguageToggle({ variant = "desktop", onSelect }: LanguageToggle
 
   const isMobile = variant === "mobile"
   const containerClass = isMobile
-    ? "inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-sm"
-    : "relative inline-flex items-center gap-0 rounded-full border border-white/10 bg-white/5 p-0.5 backdrop-blur-sm"
+    ? "inline-flex items-center gap-1 rounded-full toggle-pill p-1"
+    : "relative inline-flex items-center gap-0 rounded-full toggle-pill p-0.5"
 
   return (
     <div
@@ -87,14 +76,17 @@ export function LanguageToggle({ variant = "desktop", onSelect }: LanguageToggle
             onClick={handleSelect(locale)}
             aria-current={isActive ? "true" : undefined}
             aria-label={locale === "nl" ? "Nederlands" : "English"}
-            className={`relative z-10 inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors duration-300 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2B88D8] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080f1e] ${
-              isActive ? "text-white" : "text-[#8ba3c0] hover:text-white"
+            className={`relative z-10 inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors duration-300 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              isActive
+                ? "text-accent-foreground"
+                : "text-text-secondary hover:text-foreground"
             }`}
+            style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
           >
             {isActive && (
               <motion.span
                 layoutId={`lang-toggle-pill-${variant}`}
-                className="absolute inset-0 -z-10 rounded-full bg-[#0078D4] shadow-[0_4px_16px_-4px_rgba(0,120,212,0.6)]"
+                className="absolute inset-0 -z-10 rounded-full bg-accent shadow-[0_4px_16px_-4px_oklch(0.56_0.18_252/0.6)]"
                 transition={{ type: "spring", stiffness: 380, damping: 32 }}
               />
             )}

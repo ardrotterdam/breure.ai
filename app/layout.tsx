@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { Providers } from '@/components/providers'
+import { ThemeScript } from '@/components/theme-script'
 import './globals.css'
 
 const inter = Inter({
@@ -64,7 +66,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#080f1e',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f6f9' },
+    { media: '(prefers-color-scheme: dark)', color: '#080f1e' },
+  ],
   width: 'device-width',
   initialScale: 1,
 }
@@ -75,9 +80,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="nl" className={`${inter.variable} bg-background`}>
+    <html lang="nl" className={`${inter.variable} bg-background`} suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body className="font-sans antialiased">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
