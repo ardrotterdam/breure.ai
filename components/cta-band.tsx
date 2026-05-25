@@ -20,7 +20,7 @@ export function CtaBand({
   title,
   description,
   primaryHref = "/contact",
-  primaryLabel = "Book a call",
+  primaryLabel = "Get in touch",
   secondaryHref,
   secondaryLabel,
 }: CtaBandProps) {

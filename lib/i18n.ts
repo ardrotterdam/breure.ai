@@ -53,7 +53,7 @@ export const dict = {
       process: "Proces",
       portfolio: "Portfolio",
       contact: "Contact",
-      cta: "Plan een call",
+      cta: "Neem contact op",
       openMenu: "Open menu",
       closeMenu: "Sluit menu",
       switchTo: "Wissel naar Engels",
@@ -66,7 +66,7 @@ export const dict = {
       process: "Process",
       portfolio: "Portfolio",
       contact: "Contact",
-      cta: "Book a call",
+      cta: "Get in touch",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       switchTo: "Switch to Dutch",
@@ -86,7 +86,7 @@ export const dict = {
         "Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.",
       paragraph:
         "Wij ontwerpen krachtige websites voor offshore-operators, scheepseigenaren, engineeringbedrijven en maritieme professionals. Gebouwd voor geloofwaardigheid, helderheid en commercieel vertrouwen.",
-      ctaPrimary: "Plan een call",
+      ctaPrimary: "Neem contact op",
       ctaSecondary: "Bekijk wat we voor uw assets doen",
       badgeOne: "AI-Powered Data",
       badgeTwo: "Real-time Specs",
@@ -100,7 +100,7 @@ export const dict = {
         "Premium digital platforms for offshore, maritime and heavy industry companies.",
       paragraph:
         "We design high-performance websites for offshore operators, vessel owners, engineering companies and maritime professionals. Built for credibility, clarity and commercial trust.",
-      ctaPrimary: "Book a call",
+      ctaPrimary: "Get in touch",
       ctaSecondary: "See what we build for your assets",
       badgeOne: "AI-Powered Data",
       badgeTwo: "Real-time Specs",
@@ -319,7 +319,7 @@ export const dict = {
       intro:
         "Een greep uit het werk dat wij realiseren voor offshore operators, contractors en vlooteigenaren. Specifieke case studies delen wij graag onder NDA.",
       ndaNote:
-        "Specifieke referenties, technische case studies en demo-omgevingen delen wij graag in een persoonlijk gesprek, onder NDA waar nodig.",
+        "Specifieke referenties, technische case studies en demo-omgevingen delen wij op aanvraag via het contactformulier, onder NDA waar nodig.",
       items: [
         {
           category: "Heavy-lift vessel",
@@ -373,7 +373,7 @@ export const dict = {
       intro:
         "A glimpse of the work we deliver for offshore operators, contractors and fleet owners. Specific case studies are shared under NDA on request.",
       ndaNote:
-        "Specific references, technical case studies and demo environments are shared during a personal conversation, under NDA where required.",
+        "Specific references, technical case studies and demo environments are shared on request via the contact form, under NDA where required.",
       items: [
         {
           category: "Heavy-lift vessel",
@@ -429,7 +429,7 @@ export const dict = {
       titlePrefix: "Klaar om uw assets",
       titleAccent: "online te brengen?",
       intro:
-        "Plan een vrijblijvend gesprek. Wij analyseren uw huidige online aanwezigheid en bespreken de mogelijkheden voor uw vloot.",
+        "Vul het contactformulier in. Wij reageren per e-mail of telefoon en bespreken de mogelijkheden voor uw vloot.",
       emailLabel: "E-mail",
       addressLabel: "Adres",
       address: ["Westplein 12", "3016 BM Rotterdam", "The Netherlands"],
@@ -448,7 +448,7 @@ export const dict = {
           "Welke assets wilt u online brengen? Hoeveel schepen of platforms betreft het?",
         submit: "Verstuur bericht",
         submitting: "Verzenden...",
-        success: "Bedankt. Wij nemen snel contact met u op.",
+        success: "Bedankt. Wij nemen per e-mail of telefoon contact met u op.",
         error: "Er ging iets fout. Probeer opnieuw.",
         consent:
           "Door dit formulier te verzenden gaat u akkoord met verwerking van uw gegevens voor het beantwoorden van uw aanvraag.",
@@ -459,7 +459,7 @@ export const dict = {
       titlePrefix: "Ready to bring your assets",
       titleAccent: "online?",
       intro:
-        "Book an introductory call. We'll review your current online presence and discuss the possibilities for your fleet.",
+        "Use the contact form below. We'll respond by email or phone and discuss the possibilities for your fleet.",
       emailLabel: "Email",
       addressLabel: "Address",
       address: ["Westplein 12", "3016 BM Rotterdam", "The Netherlands"],
@@ -478,7 +478,7 @@ export const dict = {
           "Which assets would you like to bring online? How many vessels or platforms are involved?",
         submit: "Send message",
         submitting: "Sending...",
-        success: "Thank you. We'll be in touch shortly.",
+        success: "Thank you. We'll get back to you by email or phone.",
         error: "Something went wrong. Please try again.",
         consent:
           "By submitting this form you consent to your data being processed to respond to your enquiry.",
@@ -543,24 +543,24 @@ export const dict = {
         eyebrow: "Klaar voor uw vloot",
         title: "Laat uw assets werken — ook online.",
         description:
-          "In een vrijblijvend gesprek bespreken wij welke diensten passen bij uw vloot, doelgroep en commerciële doelen.",
-        primary: "Plan een call",
+          "Via het contactformulier bespreken wij welke diensten passen bij uw vloot, doelgroep en commerciële doelen.",
+        primary: "Neem contact op",
         secondary: "Bekijk ons proces",
       },
       process: {
         eyebrow: "Start uw project",
         title: "Klaar om uw asset live te zetten?",
         description:
-          "Wij bespreken graag uw vloot, doelgroep en tijdlijn. Vrijblijvend, en altijd vertrouwelijk.",
-        primary: "Plan een call",
+          "Stuur ons een bericht. Wij bespreken graag uw vloot, doelgroep en tijdlijn. Vrijblijvend, en altijd vertrouwelijk.",
+        primary: "Neem contact op",
         secondary: "Bekijk onze diensten",
       },
       portfolio: {
         eyebrow: "Uw asset volgende?",
         title: "Laat uw vloot zien zoals hij verdient.",
         description:
-          "Wij bespreken graag welke aanpak past bij uw assets, doelgroep en commerciële doelen. Voorbeelden en demo-omgevingen tonen wij in een persoonlijk gesprek.",
-        primary: "Plan een call",
+          "Wij bespreken graag welke aanpak past bij uw assets, doelgroep en commerciële doelen. Voorbeelden en demo-omgevingen delen wij op aanvraag via het contactformulier.",
+        primary: "Neem contact op",
         secondary: "Bekijk onze diensten",
       },
     },
@@ -569,24 +569,24 @@ export const dict = {
         eyebrow: "Ready for your fleet",
         title: "Make your assets perform — online too.",
         description:
-          "In an introductory call we'll discuss which services fit your fleet, audience and commercial goals.",
-        primary: "Book a call",
+          "Use the contact form and we'll discuss which services fit your fleet, audience and commercial goals.",
+        primary: "Get in touch",
         secondary: "See our process",
       },
       process: {
         eyebrow: "Start your project",
         title: "Ready to take your asset live?",
         description:
-          "We'd be glad to discuss your fleet, audience and timeline. Always confidential, never any pressure.",
-        primary: "Book a call",
+          "Send us a message. We'd be glad to discuss your fleet, audience and timeline. Always confidential, never any pressure.",
+        primary: "Get in touch",
         secondary: "See our services",
       },
       portfolio: {
         eyebrow: "Your asset next?",
         title: "Show your fleet the way it deserves.",
         description:
-          "We'll discuss the approach that fits your assets, audience and commercial goals. Examples and demo environments are shared in a personal conversation.",
-        primary: "Book a call",
+          "We'll discuss the approach that fits your assets, audience and commercial goals. Examples and demo environments are shared on request via the contact form.",
+        primary: "Get in touch",
         secondary: "See our services",
       },
     },
@@ -667,14 +667,14 @@ export const seo = {
   },
   contact: {
     nl: {
-      title: "Contact | Plan een call | Breure.ai",
+      title: "Contact | Breure.ai",
       description:
-        "Neem contact op met Breure.ai in Rotterdam. Plan een vrijblijvend gesprek over websites voor uw offshore of maritieme vloot.",
+        "Neem contact op met Breure.ai in Rotterdam. Stuur een bericht via het formulier — wij reageren per e-mail of telefoon.",
     },
     en: {
-      title: "Contact | Book a call | Breure.ai",
+      title: "Contact | Breure.ai",
       description:
-        "Get in touch with Breure.ai in Rotterdam. Book an introductory call about websites for your offshore or maritime fleet.",
+        "Get in touch with Breure.ai in Rotterdam. Send a message through the form — we'll respond by email or phone.",
     },
   },
 } as const

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Breure contact",
     "offshore website contact",
     "maritime web agency Rotterdam",
-    "plan een call",
+    "contactformulier",
   ],
   alternates: {
     canonical: "/contact",
