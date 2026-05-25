@@ -48,9 +48,9 @@ export function ThemeToggle({ locale = "nl", variant = "desktop" }: ThemeToggleP
       style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
     >
       {isDark ? (
-        <Moon className="h-4 w-4" aria-hidden strokeWidth={1.75} />
-      ) : (
         <Sun className="h-4 w-4" aria-hidden strokeWidth={1.75} />
+      ) : (
+        <Moon className="h-4 w-4" aria-hidden strokeWidth={1.75} />
       )}
     </motion.button>
   )
