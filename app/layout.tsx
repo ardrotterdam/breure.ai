@@ -35,9 +35,11 @@ export const metadata: Metadata = {
   creator: 'Breure Web Agency',
   icons: {
     icon: [
+      { url: brandAssets.favicon16, sizes: '16x16', type: 'image/png' },
       { url: brandAssets.favicon32, sizes: '32x32', type: 'image/png' },
       { url: brandAssets.favicon512, sizes: '512x512', type: 'image/png' },
     ],
+    shortcut: brandAssets.favicon32,
     apple: brandAssets.favicon512,
   },
   alternates: {
