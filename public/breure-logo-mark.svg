@@ -1,5 +1,4 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Breure.ai">
-  <rect width="512" height="512" fill="#081220"/>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BREURE.AI logo mark">
   <defs>
     <filter id="blueGlow" x="-20%" y="-80%" width="140%" height="260%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>

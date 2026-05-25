@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 
+import { BreureLogo } from "@/components/breure-logo"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
 
 interface FooterProps {
@@ -26,24 +27,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
         <div className="grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           <div className="md:col-span-2">
             <Link href={ROUTES.home[locale]} className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8">
-                <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-                  <path
-                    d="M5 25 Q12 20 20 25 Q28 30 35 25"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    className="text-accent"
-                  />
-                  <path
-                    d="M5 20 Q12 15 20 20 Q28 25 35 20"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    className="text-foreground"
-                  />
-                </svg>
-              </div>
+              <BreureLogo size={32} />
               <span className="text-lg font-semibold tracking-wide text-foreground">BREURE</span>
             </Link>
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">

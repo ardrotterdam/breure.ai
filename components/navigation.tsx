@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 
+import { BreureLogo } from "@/components/breure-logo"
 import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
 import { LanguageToggle } from "./language-toggle"
 import { ThemeToggle } from "./theme-toggle"
@@ -64,30 +65,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
       <nav className="relative container mx-auto px-5 sm:px-6 lg:px-12 py-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href={homeHref} className="flex items-center gap-3 shrink-0">
-          <div className="relative w-10 h-10">
-            <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-              <motion.path
-                d="M5 25 Q12 20 20 25 Q28 30 35 25"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                className="text-accent"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1, delay: 0.8 }}
-              />
-              <motion.path
-                d="M5 20 Q12 15 20 20 Q28 25 35 20"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                className="text-foreground"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1, delay: 1 }}
-              />
-            </svg>
-          </div>
+          <BreureLogo size={40} badge animated />
           <div className="flex flex-col">
             <span className="text-lg font-semibold tracking-wide">BREURE</span>
             <span className="text-[10px] tracking-[0.2em] text-muted-foreground uppercase">
@@ -166,24 +144,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-3 shrink-0"
               >
-                <div className="relative w-10 h-10">
-                  <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
-                    <path
-                      d="M5 25 Q12 20 20 25 Q28 30 35 25"
-                      stroke="currentColor"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                      className="text-accent"
-                    />
-                    <path
-                      d="M5 20 Q12 15 20 20 Q28 25 35 20"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      className="text-white"
-                    />
-                  </svg>
-                </div>
+                <BreureLogo size={40} />
                 <div className="flex flex-col">
                   <span className="text-lg font-semibold tracking-wide">BREURE</span>
                   <span className="text-[10px] tracking-[0.2em] text-white/60 uppercase">

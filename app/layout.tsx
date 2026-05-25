@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
+import { brandAssets, openGraphImages, twitterImages } from '@/lib/site-metadata'
 import './globals.css'
 
 const inter = Inter({
@@ -34,10 +35,10 @@ export const metadata: Metadata = {
   creator: 'Breure Web Agency',
   icons: {
     icon: [
-      { url: '/breure-favicon-32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/breure-favicon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: brandAssets.favicon32, sizes: '32x32', type: 'image/png' },
+      { url: brandAssets.favicon512, sizes: '512x512', type: 'image/png' },
     ],
-    apple: '/breure-favicon-512.png',
+    apple: brandAssets.favicon512,
   },
   alternates: {
     canonical: '/',
@@ -56,12 +57,14 @@ export const metadata: Metadata = {
     description:
       'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
     siteName: 'Breure.ai',
+    images: openGraphImages,
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
     description:
       'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
+    images: twitterImages,
   },
 }
 
