@@ -90,12 +90,6 @@ export const dict = {
       ctaSecondary: "Bekijk wat we voor uw assets doen",
       badgeOne: "AI-Powered Data",
       badgeTwo: "Real-time Specs",
-      stats: [
-        { value: "50+", label: "Asset websites" },
-        { value: "15", label: "Jaar ervaring" },
-        { value: "€2B+", label: "Aan assets online" },
-      ],
-      footerLine: "Breure Web Agency · Westplein 12, 3016 BM Rotterdam · info@breure.ai",
     },
     en: {
       eyebrow: "Offshore & Maritime Web Design",
@@ -110,12 +104,6 @@ export const dict = {
       ctaSecondary: "See what we build for your assets",
       badgeOne: "AI-Powered Data",
       badgeTwo: "Real-time Specs",
-      stats: [
-        { value: "50+", label: "Asset websites" },
-        { value: "15", label: "Years experience" },
-        { value: "€2B+", label: "Assets online" },
-      ],
-      footerLine: "Breure Web Agency · Westplein 12, 3016 BM Rotterdam · info@breure.ai",
     },
   },
 

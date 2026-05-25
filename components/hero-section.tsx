@@ -18,16 +18,17 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
   const t = dict.hero[locale]
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden pb-24 sm:pb-32">
       {/* Animated ocean background */}
       <OceanAnimation />
 
       {/* Content overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+      <div className="absolute inset-x-0 bottom-0 h-48 sm:h-56 bg-gradient-to-b from-transparent via-background/40 to-secondary pointer-events-none" />
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-5 sm:px-6 lg:px-12 py-28 sm:py-32">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 lg:px-12 pt-28 sm:pt-32 pb-8 sm:pb-12">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
           {/* Left column - Text content */}
           <div className="max-w-2xl">
@@ -137,22 +138,6 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
               </FadeIn>
             </div>
 
-            {/* Stats bar */}
-            <FadeIn delay={1.8}>
-              <div className="mt-14 sm:mt-16 pt-8 border-t border-border/50 grid grid-cols-3 gap-4 sm:gap-6">
-                {t.stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
-                  >
-                    <div className="text-2xl sm:text-3xl font-light text-foreground">{stat.value}</div>
-                    <div className="text-[11px] sm:text-xs text-muted-foreground mt-1 tracking-wide">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </FadeIn>
           </div>
 
           {/* Right column - Offshore Illustration */}
@@ -197,16 +182,6 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
           </div>
         </div>
       </div>
-
-      {/* Company info footer in hero */}
-      <motion.div
-        className="absolute bottom-8 left-5 sm:left-6 lg:left-12 right-5 sm:right-auto pr-12 sm:pr-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5 }}
-      >
-        <p className="text-[11px] sm:text-xs text-muted-foreground">{t.footerLine}</p>
-      </motion.div>
 
       {/* Scroll indicator */}
       <motion.div
