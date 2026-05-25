@@ -1,9 +1,12 @@
 "use client"
 
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { OceanAnimation } from "./ocean-animation"
 import { AnimatedWord, FadeIn } from "./animated-text"
 import { OffshoreIllustration } from "./offshore-illustration"
+
+const MotionLink = motion(Link)
 
 export function HeroSection() {
   return (
@@ -64,10 +67,11 @@ export function HeroSection() {
             {/* CTA buttons */}
             <FadeIn delay={1.5}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
+                <MotionLink
+                  href="/contact"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group relative px-8 py-4 bg-accent text-accent-foreground font-medium text-sm tracking-wide overflow-hidden"
+                  className="group relative inline-flex items-center justify-center px-8 py-4 bg-accent text-accent-foreground font-medium text-sm tracking-wide overflow-hidden"
                 >
                   <span className="relative z-10">Plan een call</span>
                   <motion.div
@@ -76,12 +80,13 @@ export function HeroSection() {
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}
                   />
-                </motion.button>
+                </MotionLink>
 
-                <motion.button
+                <MotionLink
+                  href="/diensten"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="group px-8 py-4 border border-border text-foreground font-medium text-sm tracking-wide hover:border-accent/50 transition-colors"
+                  className="group inline-flex items-center justify-center px-8 py-4 border border-border text-foreground font-medium text-sm tracking-wide hover:border-accent/50 transition-colors"
                 >
                   <span className="flex items-center gap-3">
                     Bekijk wat we voor uw assets doen
@@ -94,7 +99,7 @@ export function HeroSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </span>
-                </motion.button>
+                </MotionLink>
               </div>
             </FadeIn>
 

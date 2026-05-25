@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "framer-motion"
+import Link from "next/link"
 
 export function Footer() {
   return (
@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
+            <Link href="/" className="flex items-center gap-3 mb-4">
               <div className="w-8 h-8">
                 <svg viewBox="0 0 40 40" className="w-full h-full" fill="none">
                   <path
@@ -27,27 +27,50 @@ export function Footer() {
                 </svg>
               </div>
               <span className="text-lg font-semibold tracking-wide text-white">BREURE</span>
-            </div>
+            </Link>
             <p className="text-sm text-[#8ba3c0] max-w-sm leading-relaxed">
               Gespecialiseerd in websites voor de offshore &amp; maritieme sector. Wij bouwen de asset websites waarop miljoenenbeslissingen worden genomen.
             </p>
           </div>
 
-          {/* Links */}
+          {/* Site links */}
           <div>
-            <h4 className="text-sm font-medium mb-4 text-white">Diensten</h4>
+            <h4 className="text-sm font-medium mb-4 text-white">Navigatie</h4>
             <ul className="space-y-2 text-sm text-[#8ba3c0]">
-              <li><a href="#" className="hover:text-white transition-colors">Asset microsites</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Capability pages</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">SEO &amp; marketing</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">AI-visualisatie</a></li>
+              <li>
+                <Link href="/diensten" className="hover:text-white transition-colors">
+                  Diensten
+                </Link>
+              </li>
+              <li>
+                <Link href="/proces" className="hover:text-white transition-colors">
+                  Proces
+                </Link>
+              </li>
+              <li>
+                <Link href="/portfolio" className="hover:text-white transition-colors">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-medium mb-4 text-white">Contact</h4>
             <ul className="space-y-2 text-sm text-[#8ba3c0]">
-              <li>info@breure.ai</li>
+              <li>
+                <a
+                  href="mailto:info@breure.ai"
+                  className="hover:text-white transition-colors"
+                >
+                  info@breure.ai
+                </a>
+              </li>
               <li>Westplein 12</li>
               <li>3016 BM Rotterdam</li>
               <li>The Netherlands</li>
@@ -58,11 +81,12 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-[#1e3a5f]/50 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-[#5a7a9e]">
-            © 2024 Breure Web Agency. Alle rechten voorbehouden.
+            © {new Date().getFullYear()} Breure Web Agency. Alle rechten voorbehouden.
           </p>
           <div className="flex items-center gap-6 text-xs text-[#5a7a9e]">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Voorwaarden</a>
+            <Link href="/contact" className="hover:text-white transition-colors">
+              Contact
+            </Link>
           </div>
         </div>
       </div>
