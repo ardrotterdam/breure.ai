@@ -1,32 +1,30 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BREURE.AI logo">
   <rect width="512" height="512" fill="#081220"/>
   <defs>
-    <filter id="blueGlow" x="-20%" y="-80%" width="140%" height="260%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.039  0 0 0 0 0.518  0 0 0 0 1  0 0 0 0.45 0" result="glow"/>
+    <filter id="blueGlow" x="-30%" y="-100%" width="160%" height="300%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.039  0 0 0 0 0.518  0 0 0 0 1  0 0 0 0.35 0" result="glow"/>
       <feMerge>
         <feMergeNode in="glow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
-  <g transform="translate(0 256)">
-    <path
-      d="M 56 0 C 128 -24 192 24 256 0 C 320 -24 384 24 448 0"
-      stroke="#FFFFFF"
-      stroke-width="7"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      fill="none"
-    />
-    <path
-      d="M 56 52 C 128 28 192 76 256 52 C 320 28 384 76 448 52"
-      stroke="#0A84FF"
-      stroke-width="7"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      fill="none"
-      filter="url(#blueGlow)"
-    />
-  </g>
+  <path
+    d="M 80 226 C 156 212 204 244 256 226 C 308 208 356 244 420 226"
+    stroke="#FFFFFF"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
+  <path
+    d="M 48 302 C 148 284 196 320 256 302 C 316 284 364 320 464 302"
+    stroke="#0A84FF"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    filter="url(#blueGlow)"
+  />
 </svg>

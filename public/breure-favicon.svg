@@ -1,17 +1,17 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Breure.ai">
-  <rect width="512" height="512" fill="#081220"/>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Breure.ai">
+  <rect width="48" height="48" fill="#081220"/>
   <path
-    d="M 40 228 C 120 188 184 268 256 228 C 328 188 392 268 472 228"
+    d="M 4 20.5 C 10.5 19 14.5 21.5 24 20.5 C 33.5 19 37.5 21.5 44 20.5"
     stroke="#FFFFFF"
-    stroke-width="48"
+    stroke-width="2.2"
     stroke-linecap="round"
     stroke-linejoin="round"
     fill="none"
   />
   <path
-    d="M 40 308 C 120 268 184 348 256 308 C 328 268 392 348 472 308"
+    d="M 2 27.5 C 10.5 26 15.5 29 24 27.5 C 32.5 26 37.5 29 46 27.5"
     stroke="#0A84FF"
-    stroke-width="48"
+    stroke-width="2.2"
     stroke-linecap="round"
     stroke-linejoin="round"
     fill="none"
