@@ -1,8 +1,8 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 
-import { BreureLogo } from "@/components/breure-logo"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
 
 interface FooterProps {
@@ -26,9 +26,19 @@ export function Footer({ locale = "nl" }: FooterProps) {
       <div className="container mx-auto px-5 sm:px-6 lg:px-12">
         <div className="grid md:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           <div className="md:col-span-2">
-            <Link href={ROUTES.home[locale]} className="flex items-center gap-3 mb-4">
-              <BreureLogo size={32} />
-              <span className="text-lg font-semibold tracking-wide text-foreground">BREURE</span>
+            <Link
+              href={ROUTES.home[locale]}
+              className="mb-4 inline-flex items-center"
+              aria-label="BREURE Web Agency — Home"
+            >
+              <Image
+                src="/breure-logo.png"
+                alt="BREURE Web Agency"
+                width={1536}
+                height={340}
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 180px, 210px"
+                className="h-auto w-[160px] object-contain sm:w-[180px] lg:w-[210px]"
+              />
             </Link>
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">
               {t.description}

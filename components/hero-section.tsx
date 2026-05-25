@@ -28,7 +28,7 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
       <div className="absolute inset-x-0 bottom-0 h-48 sm:h-56 bg-gradient-to-b from-transparent via-background/40 to-secondary pointer-events-none" />
 
       {/* Main content */}
-      <div className="relative z-10 container mx-auto px-5 sm:px-6 lg:px-12 pt-28 sm:pt-32 pb-8 sm:pb-12">
+      <div className="relative z-10 container mx-auto px-5 sm:px-6 lg:px-12 pt-32 sm:pt-36 lg:pt-40 pb-8 sm:pb-12">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 items-center">
           {/* Left column - Text content */}
           <div className="max-w-2xl">

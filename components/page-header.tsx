@@ -11,7 +11,7 @@ interface PageHeaderProps {
 
 export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
   return (
-    <section className="relative pt-28 sm:pt-32 lg:pt-40 pb-14 sm:pb-16 lg:pb-20 bg-background overflow-hidden">
+    <section className="relative pt-32 sm:pt-36 lg:pt-44 pb-14 sm:pb-16 lg:pb-20 bg-background overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-accent-blur blur-[140px]" style={{ backgroundColor: "var(--accent-blur)" }} />
         <div className="absolute top-0 right-0 w-[420px] h-[420px] rounded-full blur-[140px]" style={{ backgroundColor: "var(--divider-blur)" }} />

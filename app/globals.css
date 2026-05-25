@@ -198,6 +198,7 @@ html.light,
 
   html {
     color-scheme: dark;
+    overflow-x: hidden;
   }
 
   html.light {
@@ -206,6 +207,7 @@ html.light,
 
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
     transition: background-color 0.35s cubic-bezier(0.25, 0.4, 0.25, 1),
                 color 0.35s cubic-bezier(0.25, 0.4, 0.25, 1);
   }

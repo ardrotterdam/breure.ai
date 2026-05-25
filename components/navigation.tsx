@@ -22,12 +22,28 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [headerVisible, setHeaderVisible] = useState(true)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
 
   useEffect(() => {
     if (typeof document !== "undefined") {
       document.documentElement.lang = locale
     }
   }, [locale])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px)")
+    const handleViewportChange = () => {
+      setIsMobileViewport(mediaQuery.matches)
+      if (mediaQuery.matches) setHeaderVisible(true)
+    }
+
+    handleViewportChange()
+    mediaQuery.addEventListener("change", handleViewportChange)
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleViewportChange)
+    }
+  }, [])
 
   useEffect(() => {
     if (!mobileOpen) return
@@ -49,7 +65,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
       setHasScrolled(currentScrollY > 12)
 
-      if (currentScrollY < 24 || mobileOpen) {
+      if (isMobileViewport || currentScrollY < 24 || mobileOpen) {
         setHeaderVisible(true)
       } else if (scrollingDown) {
         setHeaderVisible(false)
@@ -68,7 +84,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     return () => {
       window.removeEventListener("scroll", handleScroll)
     }
-  }, [mobileOpen])
+  }, [isMobileViewport, mobileOpen])
 
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
@@ -90,8 +106,11 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     <>
     <motion.header
       className="fixed top-0 left-0 right-0 z-[90]"
-      initial={{ y: -24, opacity: 0 }}
-      animate={{ y: headerVisible ? 0 : "-110%", opacity: headerVisible ? 1 : 0.98 }}
+      initial={false}
+      animate={{
+        y: isMobileViewport || headerVisible ? 0 : "-110%",
+        opacity: isMobileViewport || headerVisible ? 1 : 0.98,
+      }}
       transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
@@ -102,8 +121,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         }`}
       />
 
-      <nav className="relative container mx-auto flex min-h-[88px] items-center justify-between gap-4 py-5 pl-7 pr-5 sm:min-h-[98px] sm:pl-10 sm:pr-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
-        <NavbarLogo href={homeHref} className="mr-1 lg:mr-2" />
+      <nav className="relative container mx-auto flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:overflow-visible lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
+        <NavbarLogo href={homeHref} className="min-w-0 lg:mr-2" />
 
         {/* Desktop navigation */}
         <div className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6">
@@ -125,7 +144,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         </div>
 
         {/* Right cluster: theme + language toggle + CTA */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+        <div className="hidden shrink-0 items-center gap-2 sm:gap-2.5 lg:flex">
           <ThemeToggle locale={locale} variant="desktop" />
           <div className="hidden opacity-75 lg:block">
             <LanguageToggle variant="desktop" />
@@ -137,24 +156,25 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           >
             {t.cta}
           </Link>
-
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            onClick={() => setMobileOpen((open) => !open)}
-            aria-label={mobileOpen ? t.closeMenu : t.openMenu}
-            aria-expanded={mobileOpen}
-            className="-mr-2 p-2 lg:hidden"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
         </div>
+
+        {/* Mobile menu button */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen((open) => !open)}
+          aria-label={mobileOpen ? t.closeMenu : t.openMenu}
+          aria-expanded={mobileOpen}
+          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#0a1628]/90 text-white shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
+          style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
+        >
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            {mobileOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </nav>
     </motion.header>
 
@@ -167,18 +187,19 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex flex-col bg-[#0a1628] text-white lg:hidden"
+            className="fixed inset-0 z-[100] flex max-w-full flex-col overflow-x-hidden bg-[#0a1628] text-white lg:hidden"
           >
-            <div className="flex min-h-[88px] items-center justify-between py-5 pl-7 pr-5 sm:min-h-[98px] sm:pl-10 sm:pr-6 md:min-h-[106px]">
-              <NavbarLogo href={homeHref} onClick={() => setMobileOpen(false)} className="mr-2" />
+            <div className="flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px]">
+              <NavbarLogo href={homeHref} onClick={() => setMobileOpen(false)} className="min-w-0" />
 
               <button
                 type="button"
                 onClick={() => setMobileOpen(false)}
                 aria-label={t.closeMenu}
-                className="p-2 -mr-2"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                style={{ ["--tw-ring-offset-color" as string]: "#0a1628" }}
               >
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
                 </svg>
               </button>

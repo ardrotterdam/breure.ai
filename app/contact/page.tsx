@@ -41,7 +41,7 @@ export default function ContactPage() {
   return (
     <>
       <Navigation locale={locale} />
-      <main className="pt-24 md:pt-28">
+      <main className="pt-28 md:pt-32">
         <ContactSection locale={locale} />
       </main>
       <Footer locale={locale} />
