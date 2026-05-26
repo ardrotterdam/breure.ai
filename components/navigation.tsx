@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
@@ -23,6 +23,9 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   const [headerVisible, setHeaderVisible] = useState(true)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [isMobileViewport, setIsMobileViewport] = useState(false)
+  const [isCompactViewport, setIsCompactViewport] = useState(false)
+  const previousScrollYRef = useRef(0)
+  const scrollFrameRef = useRef<number | null>(null)
 
   useEffect(() => {
     if (typeof document !== "undefined") {
@@ -31,17 +34,21 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   }, [locale])
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 1023px)")
+    const mobileQuery = window.matchMedia("(max-width: 767px)")
+    const compactQuery = window.matchMedia("(max-width: 1023px)")
     const handleViewportChange = () => {
-      setIsMobileViewport(mediaQuery.matches)
-      if (mediaQuery.matches) setHeaderVisible(true)
+      setIsMobileViewport(mobileQuery.matches)
+      setIsCompactViewport(compactQuery.matches)
+      if (mobileQuery.matches) setHeaderVisible(true)
     }
 
     handleViewportChange()
-    mediaQuery.addEventListener("change", handleViewportChange)
+    mobileQuery.addEventListener("change", handleViewportChange)
+    compactQuery.addEventListener("change", handleViewportChange)
 
     return () => {
-      mediaQuery.removeEventListener("change", handleViewportChange)
+      mobileQuery.removeEventListener("change", handleViewportChange)
+      compactQuery.removeEventListener("change", handleViewportChange)
     }
   }, [])
 
@@ -55,11 +62,13 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   }, [mobileOpen])
 
   useEffect(() => {
-    let previousScrollY = window.scrollY
+    previousScrollYRef.current = window.scrollY
     const scrollDelta = 8
 
-    const handleScroll = () => {
+    const updateHeader = () => {
+      scrollFrameRef.current = null
       const currentScrollY = window.scrollY
+      const previousScrollY = previousScrollYRef.current
       const scrollingDown = currentScrollY > previousScrollY + scrollDelta
       const scrollingUp = currentScrollY < previousScrollY - scrollDelta
 
@@ -74,17 +83,25 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
       }
 
       if (Math.abs(currentScrollY - previousScrollY) > scrollDelta) {
-        previousScrollY = currentScrollY
+        previousScrollYRef.current = currentScrollY
       }
     }
 
-    handleScroll()
+    const handleScroll = () => {
+      if (scrollFrameRef.current !== null) return
+      scrollFrameRef.current = window.requestAnimationFrame(updateHeader)
+    }
+
+    updateHeader()
     window.addEventListener("scroll", handleScroll, { passive: true })
 
     return () => {
       window.removeEventListener("scroll", handleScroll)
+      if (scrollFrameRef.current !== null) {
+        window.cancelAnimationFrame(scrollFrameRef.current)
+      }
     }
-  }, [isMobileViewport, mobileOpen])
+  }, [mobileOpen])
 
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
@@ -95,6 +112,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
   const homeHref = ROUTES.home[locale]
   const contactHref = ROUTES.contact[locale]
+  const mobileHeaderVisible = headerVisible || mobileOpen
+  const desktopMotionVisible = isCompactViewport || headerVisible
 
   const isActive = (href: string) => {
     const home = ROUTES.home[locale]
@@ -105,23 +124,30 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
   return (
     <>
     <motion.header
-      className="fixed top-0 left-0 right-0 z-[90]"
+      className={`fixed top-0 left-0 right-0 z-[90] ${
+        isMobileViewport && !mobileHeaderVisible ? "pointer-events-none md:pointer-events-auto" : ""
+      }`}
       initial={false}
       animate={{
-        y: isMobileViewport || headerVisible ? 0 : "-110%",
-        opacity: isMobileViewport || headerVisible ? 1 : 0.98,
+        y: desktopMotionVisible ? 0 : "-110%",
+        opacity: desktopMotionVisible ? 1 : 0.98,
       }}
       transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
-        className={`absolute inset-0 border-b backdrop-blur-xl transition-all duration-300 ${
-          hasScrolled
-            ? "border-white/10 bg-[#07111f]/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
-            : "border-border/40 bg-background/72"
+        className={`relative transition-transform duration-300 ease-out md:translate-y-0 md:transition-none ${
+          mobileHeaderVisible ? "translate-y-0" : "-translate-y-full"
         }`}
-      />
+      >
+        <div
+          className={`absolute inset-0 border-b backdrop-blur-xl transition-all duration-300 ${
+            hasScrolled
+              ? "border-white/10 bg-[#07111f]/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
+              : "border-border/40 bg-background/72"
+          }`}
+        />
 
-      <nav className="relative container mx-auto flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:overflow-visible lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
+        <nav className="relative container mx-auto flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:overflow-visible lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
         <NavbarLogo href={homeHref} className="min-w-0 lg:mr-2" />
 
         {/* Desktop navigation */}
@@ -175,7 +201,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             )}
           </svg>
         </button>
-      </nav>
+        </nav>
+      </div>
     </motion.header>
 
       {/* Mobile full-screen menu — outside header so fixed positioning covers the viewport */}
