@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
-import { brandAssets, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
+import { brandAssets, siteUrl, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
 import './globals.css'
 
 const inter = Inter({
@@ -13,7 +13,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://breure.ai'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
     template: '%s',
