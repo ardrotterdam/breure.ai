@@ -65,7 +65,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
       setHasScrolled(currentScrollY > 12)
 
-      if (isMobileViewport || currentScrollY < 24 || mobileOpen) {
+      if (currentScrollY < 24 || mobileOpen) {
         setHeaderVisible(true)
       } else if (scrollingDown) {
         setHeaderVisible(false)
