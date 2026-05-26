@@ -1,4 +1,4 @@
-/** Shared BREURE.AI wave mark geometry — single source of truth for SVG + React */
+/** Shared Breure.ai wave mark geometry — single source of truth for SVG + React */
 
 export const BRAND = {
   navy: "#081220",

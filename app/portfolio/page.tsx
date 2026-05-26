@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: seo.portfolio.nl.title,
   description: seo.portfolio.nl.description,
   keywords: [
-    "Breure portfolio",
+    "Breure.ai portfolio",
     "offshore website portfolio",
     "vessel website case study",
     "asset microsite case",

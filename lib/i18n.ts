@@ -109,7 +109,7 @@ export const dict = {
 
   why: {
     nl: {
-      title: "Waarom offshore-bedrijven voor Breure kiezen",
+      title: "Waarom offshore-bedrijven voor Breure.ai kiezen",
       intro:
         "Offshore assets draaien op day rates. Elke extra charterdag telt. Een heldere digitale presentatie versnelt beslissingen, verkleint risico's en vergroot vertrouwen bij operators en contractors.",
       reasons: [
@@ -131,7 +131,7 @@ export const dict = {
       ],
     },
     en: {
-      title: "Why offshore companies choose Breure",
+      title: "Why offshore companies choose Breure.ai",
       intro:
         "Offshore assets operate on day rates. Every additional charter day matters. A sharp digital presence accelerates decisions, reduces risk and builds trust with operators and contractors.",
       reasons: [
@@ -599,7 +599,7 @@ export const dict = {
       navHeading: "Navigatie",
       contactHeading: "Contact",
       copyright: (year: number) =>
-        `© ${year} Breure Web Agency. Alle rechten voorbehouden.`,
+        `© ${year} Breure.ai. Alle rechten voorbehouden.`,
     },
     en: {
       description:
@@ -607,7 +607,7 @@ export const dict = {
       navHeading: "Navigation",
       contactHeading: "Contact",
       copyright: (year: number) =>
-        `© ${year} Breure Web Agency. All rights reserved.`,
+        `© ${year} Breure.ai. All rights reserved.`,
     },
   },
 } as const

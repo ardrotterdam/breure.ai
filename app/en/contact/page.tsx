@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: seo.contact.en.title,
   description: seo.contact.en.description,
   keywords: [
-    "Breure contact",
+    "Breure.ai contact",
     "offshore website contact",
     "maritime web agency Rotterdam",
     "contact form",

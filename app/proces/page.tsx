@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "asset website development",
     "maritime web development",
     "vessel website launch",
-    "Breure proces",
+    "Breure.ai proces",
   ],
   alternates: {
     canonical: "/proces",

@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     'engineered for trust',
     'Rotterdam',
   ],
-  authors: [{ name: 'Breure Web Agency' }],
-  creator: 'Breure Web Agency',
+  authors: [{ name: 'Breure.ai' }],
+  creator: 'Breure.ai',
   icons: {
     icon: [
       { url: brandAssets.favicon16, sizes: '16x16', type: 'image/png' },

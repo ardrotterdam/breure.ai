@@ -16,11 +16,11 @@ export function NavbarLogo({ href = "/", className = "", onClick }: NavbarLogoPr
       href={href}
       onClick={onClick}
       className={`group inline-flex shrink-0 items-center ${className}`.trim()}
-      aria-label="BREURE Web Agency — Home"
+      aria-label="Breure.ai — Home"
     >
       <Image
         src="/breure-logo.png"
-        alt="BREURE Web Agency"
+        alt="Breure.ai maritime web agency logo"
         width={LOGO_WIDTH}
         height={LOGO_HEIGHT}
         priority

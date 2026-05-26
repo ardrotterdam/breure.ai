@@ -29,11 +29,11 @@ export function Footer({ locale = "nl" }: FooterProps) {
             <Link
               href={ROUTES.home[locale]}
               className="mb-4 inline-flex items-center"
-              aria-label="BREURE Web Agency — Home"
+              aria-label="Breure.ai — Home"
             >
               <Image
                 src="/breure-logo.png"
-                alt="BREURE Web Agency"
+                alt="Breure.ai maritime web agency logo"
                 width={1536}
                 height={340}
                 sizes="(max-width: 640px) 160px, (max-width: 1024px) 180px, 210px"
