@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@/components/google-analytics'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
 import { brandAssets, siteUrl, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
@@ -88,6 +89,7 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
+        {process.env.NODE_ENV === 'production' && <GoogleAnalytics />}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
