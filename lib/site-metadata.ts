@@ -3,14 +3,20 @@ import type { Metadata } from "next"
 export const siteUrl = "https://breure.ai"
 
 export const brandAssets = {
-  favicon16: "/breure-favicon-16.png",
-  favicon32: "/breure-favicon-32.png",
-  favicon512: "/breure-favicon-512.png",
-  openGraph: "/breure-ai-og-image.png",
+  /** SVG wave mark — used in UI and Organization schema */
+  logoMark: "/breure-logo-mark.svg",
+  /** App Router generated icons */
+  icon: "/icon",
+  appleIcon: "/apple-icon",
+  /** App Router generated social images */
+  openGraph: "/opengraph-image",
+  twitter: "/twitter-image",
 } as const
 
 /** Absolute URL for social crawlers (WhatsApp, LinkedIn, Facebook, X, Discord). */
 export const openGraphImageUrl = `${siteUrl}${brandAssets.openGraph}`
+export const twitterImageUrl = `${siteUrl}${brandAssets.twitter}`
+export const logoImageUrl = `${siteUrl}${brandAssets.logoMark}`
 
 export const openGraphImages: NonNullable<Metadata["openGraph"]>["images"] = [
   {
@@ -24,7 +30,7 @@ export const openGraphImages: NonNullable<Metadata["openGraph"]>["images"] = [
 ]
 
 export const twitterImages: NonNullable<Metadata["twitter"]>["images"] = [
-  openGraphImageUrl,
+  twitterImageUrl,
 ]
 
 type SocialPageMeta = {

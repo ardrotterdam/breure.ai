@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
 export default function ProcesPage() {
   return (
     <>
+      <BreadcrumbJsonLd locale={locale} page="process" />
       <Navigation locale={locale} />
       <main>
         <PageHeader

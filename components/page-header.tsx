@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import type { ReactNode } from "react"
 
+import { EASE_SMOOTH } from "@/lib/motion"
+
 interface PageHeaderProps {
   eyebrow: string
   title: ReactNode
@@ -29,7 +31,7 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.6, ease: EASE_SMOOTH }}
           className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-5 sm:mb-6"
         >
           {eyebrow}
@@ -38,7 +40,7 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+          transition={{ duration: 0.7, delay: 0.1, ease: EASE_SMOOTH }}
           className="text-[2.25rem] sm:text-5xl lg:text-6xl font-light tracking-tight text-foreground max-w-4xl leading-[1.05]"
         >
           {title}
@@ -48,7 +50,7 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+            transition={{ duration: 0.7, delay: 0.2, ease: EASE_SMOOTH }}
             className="mt-7 sm:mt-8 text-base sm:text-lg text-text-secondary max-w-2xl leading-relaxed"
           >
             {description}

@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 
+import { EASE_SMOOTH } from "@/lib/motion"
+
 const MotionLink = motion(Link)
 
 interface CtaBandProps {
@@ -39,7 +41,7 @@ export function CtaBand({
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }}
+        transition={{ duration: 0.7, ease: EASE_SMOOTH }}
         className="relative container mx-auto px-5 sm:px-6 lg:px-12 max-w-4xl text-center"
       >
         <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-5 sm:mb-6">

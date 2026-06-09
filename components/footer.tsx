@@ -1,8 +1,6 @@
-"use client"
-
-import Image from "next/image"
 import Link from "next/link"
 
+import { BreureWordmark } from "@/components/breure-wordmark"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
 
 interface FooterProps {
@@ -28,16 +26,12 @@ export function Footer({ locale = "nl" }: FooterProps) {
           <div className="md:col-span-2">
             <Link
               href={ROUTES.home[locale]}
-              className="mb-4 inline-flex items-center"
+              className="mb-4 inline-flex items-center transition-opacity hover:opacity-90"
               aria-label="Breure.ai — Home"
             >
-              <Image
-                src="/breure-logo.png"
-                alt="Breure.ai maritime web agency logo"
-                width={1536}
-                height={340}
-                sizes="(max-width: 640px) 160px, (max-width: 1024px) 180px, 210px"
-                className="h-auto w-[160px] object-contain sm:w-[180px] lg:w-[210px]"
+              <BreureWordmark
+                markHeight={28}
+                textClassName="text-lg sm:text-xl lg:text-[1.35rem]"
               />
             </Link>
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">

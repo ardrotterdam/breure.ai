@@ -2,9 +2,10 @@ import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { GoogleAnalytics } from '@/components/google-analytics'
+import { SiteJsonLd } from '@/components/site-json-ld'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
-import { brandAssets, siteUrl, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
+import { siteUrl, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
 import './globals.css'
 
 const inter = Inter({
@@ -34,15 +35,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Breure.ai' }],
   creator: 'Breure.ai',
-  icons: {
-    icon: [
-      { url: brandAssets.favicon16, sizes: '16x16', type: 'image/png' },
-      { url: brandAssets.favicon32, sizes: '32x32', type: 'image/png' },
-      { url: brandAssets.favicon512, sizes: '512x512', type: 'image/png' },
-    ],
-    shortcut: brandAssets.favicon32,
-    apple: brandAssets.favicon512,
-  },
   alternates: {
     canonical: '/',
     languages: {
@@ -84,6 +76,7 @@ export default function RootLayout({
     <html lang="nl" className={`${inter.variable} bg-background`} suppressHydrationWarning>
       <head>
         <ThemeScript />
+        <SiteJsonLd />
       </head>
       <body className="font-sans antialiased">
         <Providers>

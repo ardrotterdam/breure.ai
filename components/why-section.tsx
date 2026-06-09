@@ -1,28 +1,6 @@
-"use client"
-
-import { motion } from "framer-motion"
-
+import { HoverLift } from "@/components/motion/hover-lift"
+import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { dict, type Locale } from "@/lib/i18n"
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
-  },
-}
 
 interface WhySectionProps {
   locale?: Locale
@@ -41,37 +19,23 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
         }}
       />
 
-      <motion.div
-        className="relative container mx-auto px-5 sm:px-6 lg:px-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={containerVariants}
-      >
-        <motion.div variants={itemVariants}>
+      <StaggerInView className="relative container mx-auto px-5 sm:px-6 lg:px-12">
+        <StaggerItem>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-foreground">
             {t.title}
           </h2>
-        </motion.div>
+        </StaggerItem>
 
-        <motion.div variants={itemVariants}>
+        <StaggerItem>
           <p className="text-text-secondary text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
             {t.intro}
           </p>
-        </motion.div>
+        </StaggerItem>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {t.reasons.map((reason, index) => (
-            <motion.div
-              key={reason.title}
-              variants={itemVariants}
-              className="group relative"
-            >
-              <motion.div
-                className="relative p-7 sm:p-8 border border-border bg-surface-muted h-full rounded-md"
-                whileHover={{ y: -4, borderColor: "var(--border-hover)" }}
-                transition={{ duration: 0.3 }}
-              >
+            <StaggerItem key={reason.title} className="group relative">
+              <HoverLift className="relative p-7 sm:p-8 border border-border bg-surface-muted h-full rounded-md">
                 <div className="absolute top-6 right-6 text-5xl font-extralight text-border select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>
@@ -81,11 +45,11 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
 
                 <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 pr-12 text-foreground">{reason.title}</h3>
                 <p className="text-text-secondary leading-relaxed text-sm">{reason.description}</p>
-              </motion.div>
-            </motion.div>
+              </HoverLift>
+            </StaggerItem>
           ))}
         </div>
-      </motion.div>
+      </StaggerInView>
     </section>
   )
 }

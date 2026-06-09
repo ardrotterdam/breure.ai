@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <>
+      <BreadcrumbJsonLd locale={locale} page="portfolio" />
       <Navigation locale={locale} />
       <main>
         <PageHeader
@@ -60,7 +62,7 @@ export default function PortfolioPage() {
           }
           description={headerCopy.description}
         />
-        <PortfolioSection locale={locale} />
+        <PortfolioSection locale={locale} showIntro={false} />
         <CtaBand
           eyebrow={ctaCopy.eyebrow}
           title={ctaCopy.title}

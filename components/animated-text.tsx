@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import type { ReactNode } from "react"
 
+import { EASE_SMOOTH } from "@/lib/motion"
+
 interface AnimatedTextProps {
   children: ReactNode
   className?: string
@@ -17,7 +19,7 @@ export function AnimatedText({ children, className, delay = 0 }: AnimatedTextPro
       transition={{
         duration: 0.8,
         delay,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: EASE_SMOOTH,
       }}
       className={className}
     >
@@ -45,7 +47,7 @@ export function AnimatedWord({ text, className, delay = 0 }: AnimatedWordProps) 
           transition={{
             duration: 0.5,
             delay: delay + index * 0.08,
-            ease: [0.25, 0.4, 0.25, 1],
+            ease: EASE_SMOOTH,
           }}
           className="inline-block mr-[0.25em]"
         >
@@ -79,7 +81,7 @@ export function FadeIn({ children, className, delay = 0, direction = "up" }: Fad
       transition={{
         duration: 0.7,
         delay,
-        ease: [0.25, 0.4, 0.25, 1],
+        ease: EASE_SMOOTH,
       }}
       className={className}
     >

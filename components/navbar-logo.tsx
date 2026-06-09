@@ -1,8 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 
-const LOGO_WIDTH = 1536
-const LOGO_HEIGHT = 340
+import { BreureWordmark } from "@/components/breure-wordmark"
 
 interface NavbarLogoProps {
   href?: string
@@ -15,17 +13,12 @@ export function NavbarLogo({ href = "/", className = "", onClick }: NavbarLogoPr
     <Link
       href={href}
       onClick={onClick}
-      className={`group inline-flex shrink-0 items-center ${className}`.trim()}
+      className={`group inline-flex shrink-0 items-center transition-opacity duration-300 ease-out hover:opacity-90 ${className}`.trim()}
       aria-label="Breure.ai — Home"
     >
-      <Image
-        src="/breure-logo.png"
-        alt="Breure.ai maritime web agency logo"
-        width={LOGO_WIDTH}
-        height={LOGO_HEIGHT}
-        priority
-        sizes="(max-width: 640px) 180px, (max-width: 768px) 240px, (max-width: 1024px) 280px, (max-width: 1280px) 340px, (max-width: 1536px) 380px, 420px"
-        className="h-auto w-[180px] max-w-[calc(100vw-7rem)] object-contain transition-opacity duration-300 ease-out group-hover:opacity-90 sm:w-[240px] md:w-[280px] lg:w-[340px] xl:w-[380px] 2xl:w-[420px]"
+      <BreureWordmark
+        markHeight={32}
+        textClassName="text-lg sm:text-xl md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2rem]"
       />
     </Link>
   )
