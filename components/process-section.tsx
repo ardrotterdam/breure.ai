@@ -1,3 +1,4 @@
+import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { ProcessGridLines } from "@/components/process/process-grid-lines"
@@ -34,6 +35,10 @@ export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
               <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md">
                 {t.intro}
               </p>
+            </StaggerItem>
+
+            <StaggerItem className="mt-10 sm:mt-12 max-w-md">
+              <BlueprintFigure src="/blueprints/blueprint-03-wind-turbine.svg" className="w-full" />
             </StaggerItem>
           </div>
 

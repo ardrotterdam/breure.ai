@@ -1,0 +1,60 @@
+<svg width="100%" viewBox="0 0 680 360" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Offshore wind turbine — blueprint</title>
+<desc>Technische lijntekening van een offshore windturbine op een jacket-fundatie in staalblauw, met de transition piece in safety orange, waterlijn, zeebodem en mono maatlabels.</desc>
+<rect x="0" y="0" width="680" height="360" fill="#0A1628"/>
+<g stroke="#12243A" stroke-width="0.5">
+<line x1="40" y1="24" x2="40" y2="352"/><line x1="120" y1="24" x2="120" y2="352"/><line x1="200" y1="24" x2="200" y2="352"/><line x1="280" y1="24" x2="280" y2="352"/><line x1="360" y1="24" x2="360" y2="352"/><line x1="440" y1="24" x2="440" y2="352"/><line x1="520" y1="24" x2="520" y2="352"/><line x1="600" y1="24" x2="600" y2="352"/>
+<line x1="24" y1="40" x2="656" y2="40"/><line x1="24" y1="120" x2="656" y2="120"/><line x1="24" y1="200" x2="656" y2="200"/><line x1="24" y1="280" x2="656" y2="280"/>
+</g>
+<g stroke="#2A4258" stroke-width="0.8">
+<line x1="46" y1="40" x2="46" y2="52"/><line x1="40" y1="46" x2="52" y2="46"/>
+<line x1="634" y1="340" x2="634" y2="352"/><line x1="628" y1="346" x2="640" y2="346"/>
+</g>
+<line x1="40" y1="250" x2="640" y2="250" stroke="#3E5C78" stroke-width="1" stroke-dasharray="7 5"/>
+<line x1="40" y1="260" x2="640" y2="260" stroke="#243C56" stroke-width="0.8" stroke-dasharray="3 8"/>
+<line x1="150" y1="320" x2="440" y2="320" stroke="#8FB4D6" stroke-width="1.1"/>
+<g stroke="#3E5C78" stroke-width="0.8">
+<line x1="180" y1="320" x2="172" y2="328"/><line x1="220" y1="320" x2="212" y2="328"/><line x1="260" y1="320" x2="252" y2="328"/><line x1="300" y1="320" x2="292" y2="328"/><line x1="340" y1="320" x2="332" y2="328"/><line x1="380" y1="320" x2="372" y2="328"/><line x1="420" y1="320" x2="412" y2="328"/>
+</g>
+<g fill="none" stroke="#8FB4D6" stroke-width="1.1" stroke-linejoin="round">
+<line x1="255" y1="320" x2="278" y2="232"/>
+<line x1="325" y1="320" x2="302" y2="232"/>
+<line x1="262" y1="292" x2="318" y2="292"/>
+<line x1="270" y1="262" x2="310" y2="262"/>
+<line x1="278" y1="232" x2="302" y2="232"/>
+</g>
+<g fill="none" stroke="#8FB4D6" stroke-width="0.8">
+<line x1="255" y1="320" x2="318" y2="292"/><line x1="325" y1="320" x2="262" y2="292"/>
+<line x1="262" y1="292" x2="310" y2="262"/><line x1="318" y1="292" x2="270" y2="262"/>
+<line x1="270" y1="262" x2="302" y2="232"/><line x1="310" y1="262" x2="278" y2="232"/>
+</g>
+<g fill="none" stroke="#FF6A2C" stroke-width="1.4" stroke-linejoin="round">
+<rect x="274" y="210" width="32" height="22"/>
+<line x1="274" y1="210" x2="256" y2="210"/>
+<line x1="260" y1="210" x2="260" y2="240"/>
+<line x1="256" y1="218" x2="264" y2="218"/>
+<line x1="256" y1="226" x2="264" y2="226"/>
+<line x1="256" y1="234" x2="264" y2="234"/>
+</g>
+<line x1="282" y1="210" x2="286" y2="72" stroke="#8FB4D6" stroke-width="1.2"/>
+<line x1="298" y1="210" x2="294" y2="72" stroke="#8FB4D6" stroke-width="1.2"/>
+<rect x="268" y="58" width="46" height="14" fill="none" stroke="#8FB4D6" stroke-width="1.2" stroke-linejoin="round"/>
+<circle cx="316" cy="65" r="6" fill="none" stroke="#8FB4D6" stroke-width="1.2"/>
+<circle cx="316" cy="65" r="47" fill="none" stroke="#2E4860" stroke-width="0.8" stroke-dasharray="3 6"/>
+<g fill="none" stroke="#8FB4D6" stroke-width="1">
+<path d="M313 62 Q315 34 316 20 Q317 34 319 62 Z"/>
+<path d="M313 69 Q294 81 278 97 Q285 83 311 71 Z"/>
+<path d="M319 69 Q338 81 354 97 Q347 83 321 71 Z"/>
+</g>
+<line x1="316" y1="112" x2="430" y2="96" stroke="#5C7A98" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="438" y="100" font-family="'Space Mono', ui-monospace, 'Courier New', monospace" font-size="12" fill="#9DB4CC">rotor Ø 154 m</text>
+<circle cx="290" cy="210" r="3" fill="#FF6A2C"/>
+<line x1="290" y1="210" x2="382" y2="162" stroke="#FF6A2C" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="390" y="166" font-family="'Space Mono', ui-monospace, 'Courier New', monospace" font-size="12" fill="#FF6A2C">transition piece</text>
+<line x1="215" y1="250" x2="215" y2="320" stroke="#5C7A98" stroke-width="1" stroke-dasharray="5 4"/>
+<line x1="210" y1="250" x2="220" y2="250" stroke="#5C7A98" stroke-width="1"/>
+<line x1="210" y1="320" x2="220" y2="320" stroke="#5C7A98" stroke-width="1"/>
+<text x="205" y="288" font-family="'Space Mono', ui-monospace, 'Courier New', monospace" font-size="12" fill="#9DB4CC" text-anchor="end">water depth 32 m</text>
+<text x="640" y="330" font-family="'Space Mono', ui-monospace, 'Courier New', monospace" font-size="11" fill="#FF6A2C" text-anchor="end" letter-spacing="2">OFFSHORE WIND TURBINE</text>
+<text x="640" y="346" font-family="'Space Mono', ui-monospace, 'Courier New', monospace" font-size="12" fill="#9DB4CC" text-anchor="end">jacket foundation · 8 MW</text>
+</svg>

@@ -1,3 +1,4 @@
+import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { ContactDecor } from "@/components/contact/contact-decor"
 import { ContactForm } from "@/components/contact/contact-form"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
@@ -72,6 +73,10 @@ export function ContactSection({ locale = "nl", variant = "section" }: ContactSe
 
             <StaggerItem>
               <p className="mt-14 sm:mt-16 text-sm text-text-eyebrow italic">{t.tagline}</p>
+            </StaggerItem>
+
+            <StaggerItem className="mt-8 sm:mt-10 max-w-[220px] sm:max-w-[260px]">
+              <BlueprintFigure src="/blueprints/blueprint-04-rigging-detail.svg" className="w-full" />
             </StaggerItem>
           </header>
 

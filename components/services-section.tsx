@@ -1,3 +1,4 @@
+import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { dict, type Locale } from "@/lib/i18n"
@@ -14,17 +15,28 @@ export function ServicesSection({ locale = "nl" }: ServicesSectionProps) {
       <div className="absolute top-0 left-0 right-0 h-px section-divider" />
 
       <StaggerInView className="relative container mx-auto px-5 sm:px-6 lg:px-12">
-        <StaggerItem>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-foreground">
-            {t.title}
-          </h2>
-        </StaggerItem>
+        <div className="grid lg:grid-cols-[1fr_minmax(0,28rem)] gap-10 lg:gap-16 items-end mb-12 sm:mb-16">
+          <div>
+            <StaggerItem>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 max-w-3xl text-foreground">
+                {t.title}
+              </h2>
+            </StaggerItem>
 
-        <StaggerItem>
-          <p className="text-text-secondary text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
-            {t.intro}
-          </p>
-        </StaggerItem>
+            <StaggerItem>
+              <p className="text-text-secondary text-base sm:text-lg max-w-2xl leading-relaxed">
+                {t.intro}
+              </p>
+            </StaggerItem>
+          </div>
+
+          <StaggerItem className="w-full max-w-md lg:max-w-none lg:ml-auto">
+            <BlueprintFigure
+              src="/blueprints/blueprint-02-pedestal-crane.svg"
+              className="w-full pt-4 lg:pt-0"
+            />
+          </StaggerItem>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {t.items.map((service) => (

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 
 import { FadeIn } from "@/components/animated-text"
-import { OffshoreIllustration } from "@/components/offshore-illustration"
+import { BlueprintSupplyVessel } from "@/components/blueprints/blueprint-supply-vessel"
 
 type HeroIllustrationProps = {
   badgeOne: string
@@ -17,11 +17,11 @@ export function HeroIllustration({ badgeOne, badgeTwo, variant }: HeroIllustrati
       <div className="lg:hidden mt-12">
         <FadeIn delay={1.6}>
           <motion.div
-            className="relative w-full max-w-md sm:max-w-lg mx-auto aspect-[6/5]"
+            className="relative w-full max-w-md sm:max-w-xl mx-auto aspect-[17/8]"
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           >
-            <OffshoreIllustration />
+            <BlueprintSupplyVessel className="w-full h-full" />
           </motion.div>
         </FadeIn>
       </div>
@@ -32,11 +32,11 @@ export function HeroIllustration({ badgeOne, badgeTwo, variant }: HeroIllustrati
     <div className="hidden lg:block relative">
       <FadeIn delay={0.8} direction="left">
         <motion.div
-          className="relative w-full aspect-square max-w-[600px] ml-auto"
+          className="relative w-full aspect-[17/8] max-w-[640px] ml-auto"
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <OffshoreIllustration />
+          <BlueprintSupplyVessel className="w-full h-full" />
 
           <motion.div
             className="absolute -left-4 top-1/4 bg-card/90 backdrop-blur-sm border border-border px-4 py-3"
