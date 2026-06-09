@@ -5,7 +5,7 @@ export const OG_BRAND = {
   ink: "#0A1628",
   surface: "#0F1E30",
   text: "#F4F8FC",
-  accent: "#FF6A2C",
+  accent: "#0078d4",
   muted: "#9DAEBF",
 } as const
 

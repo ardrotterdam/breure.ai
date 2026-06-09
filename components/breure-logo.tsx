@@ -109,7 +109,7 @@ export function BreureLogo({
             <feColorMatrix
               in="blur"
               type="matrix"
-              values={`0 0 0 0 1  0 0 0 0 0.416  0 0 0 0 0.173  0 0 0 ${GLOW_FILTER.opacity} 0`}
+              values={`0 0 0 0 0.039  0 0 0 0 0.518  0 0 0 0 1  0 0 0 ${GLOW_FILTER.opacity} 0`}
               result="glow"
             />
             <feMerge>

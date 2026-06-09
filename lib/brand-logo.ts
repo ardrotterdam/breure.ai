@@ -4,7 +4,7 @@
 export const BRAND = {
   ink: "#0A1628",
   text: "#F4F8FC",
-  accent: "#FF6A2C",
+  accent: "#0078d4",
 } as const
 
 /** Shorter top wave — subtle organic swell */

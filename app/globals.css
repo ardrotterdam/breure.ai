@@ -13,9 +13,9 @@
   --text: #F4F8FC;
   --text-muted: #9DAEBF;
   --text-dim: #6B7E91;
-  --accent: #FF6A2C;
-  --accent-hover: #FF8147;
-  --accent-ink: #0A1628;
+  --accent: #0078d4;
+  --accent-hover: #106ebe;
+  --accent-ink: #ffffff;
   --radius: 4px;
   --radius-lg: 8px;
 
@@ -33,8 +33,8 @@
   --muted: var(--surface-2);
   --muted-foreground: var(--text-muted);
   --accent-foreground: var(--accent-ink);
-  --accent-glow: var(--accent-hover);
-  --accent-soft: var(--accent-hover);
+  --accent-glow: #2b88d8;
+  --accent-soft: #2b88d8;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --border-hover: #2a4560;
@@ -43,9 +43,9 @@
   --ring: var(--accent);
   --chart-1: var(--accent);
   --chart-2: var(--accent-hover);
-  --chart-3: #ff9a6b;
-  --chart-4: #ffb088;
-  --chart-5: #cc5523;
+  --chart-3: #2b88d8;
+  --chart-4: #5a9fd4;
+  --chart-5: #1e5a8a;
   --sidebar: var(--surface);
   --sidebar-foreground: var(--text);
   --sidebar-primary: var(--accent);
@@ -68,13 +68,13 @@
   --glass-border: rgb(255 255 255 / 0.1);
   --glass-highlight: rgb(255 255 255 / 0.04);
   --card-shadow: 0 20px 60px -15px rgb(0 0 0 / 0.6);
-  --cta-shadow: 0 8px 24px -10px rgb(255 106 44 / 0.45);
-  --cta-shadow-hover: 0 16px 44px -10px rgb(255 106 44 / 0.65);
-  --accent-blur: rgb(255 106 44 / 0.12);
+  --cta-shadow: 0 8px 24px -10px rgb(0 120 212 / 0.45);
+  --cta-shadow-hover: 0 16px 44px -10px rgb(0 120 212 / 0.65);
+  --accent-blur: rgb(0 120 212 / 0.12);
   --divider-blur: rgb(30 51 73 / 0.3);
   --toggle-track: rgb(255 255 255 / 0.05);
   --toggle-border: rgb(255 255 255 / 0.1);
-  --input-focus-shadow: 0 0 0 4px rgb(255 106 44 / 0.18), 0 0 24px -4px rgb(255 106 44 / 0.35);
+  --input-focus-shadow: 0 0 0 4px rgb(0 120 212 / 0.18), 0 0 24px -4px rgb(0 120 212 / 0.35);
   --gradient-heading-from: var(--text);
   --gradient-heading-to: var(--accent);
   --theme-color: var(--ink);
@@ -90,9 +90,9 @@ html.light,
   --text: #0A1628;
   --text-muted: #6B7E91;
   --text-dim: #9DAEBF;
-  --accent: #FF6A2C;
-  --accent-hover: #FF8147;
-  --accent-ink: #0A1628;
+  --accent: #0078d4;
+  --accent-hover: #106ebe;
+  --accent-ink: #ffffff;
 
   --border-hover: #B0C4D8;
   --border-strong: #9BB3CC;
@@ -101,13 +101,13 @@ html.light,
   --glass-border: rgb(10 22 40 / 0.08);
   --glass-highlight: rgb(255 255 255 / 0.6);
   --card-shadow: 0 20px 60px -15px rgb(10 22 40 / 0.12);
-  --cta-shadow: 0 8px 24px -10px rgb(255 106 44 / 0.3);
-  --cta-shadow-hover: 0 16px 44px -10px rgb(255 106 44 / 0.4);
-  --accent-blur: rgb(255 106 44 / 0.08);
+  --cta-shadow: 0 8px 24px -10px rgb(0 120 212 / 0.3);
+  --cta-shadow-hover: 0 16px 44px -10px rgb(0 120 212 / 0.4);
+  --accent-blur: rgb(0 120 212 / 0.08);
   --divider-blur: rgb(176 196 216 / 0.2);
   --toggle-track: rgb(10 22 40 / 0.06);
   --toggle-border: rgb(10 22 40 / 0.1);
-  --input-focus-shadow: 0 0 0 4px rgb(255 106 44 / 0.15), 0 0 24px -4px rgb(255 106 44 / 0.25);
+  --input-focus-shadow: 0 0 0 4px rgb(0 120 212 / 0.15), 0 0 24px -4px rgb(0 120 212 / 0.25);
   --gradient-heading-from: var(--text);
   --gradient-heading-to: var(--accent);
   --theme-color: var(--ink);
@@ -390,8 +390,8 @@ html.light,
 }
 
 @keyframes cta-glow-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgb(255 106 44 / 0), var(--cta-shadow); }
-  50% { box-shadow: 0 0 0 6px rgb(255 106 44 / 0), var(--cta-shadow-hover); }
+  0%, 100% { box-shadow: 0 0 0 0 rgb(0 120 212 / 0), var(--cta-shadow); }
+  50% { box-shadow: 0 0 0 6px rgb(0 120 212 / 0), var(--cta-shadow-hover); }
 }
 
 .cta-glow-hover {
@@ -401,6 +401,6 @@ html.light,
 }
 
 ::selection {
-  background: rgb(255 106 44 / 0.35);
+  background: rgb(0 120 212 / 0.35);
   color: var(--foreground);
 }

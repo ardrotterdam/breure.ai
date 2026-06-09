@@ -3,7 +3,7 @@
   <defs>
     <filter id="blueGlow" x="-30%" y="-100%" width="160%" height="300%" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
       <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 1  0 0 0 0 0.416  0 0 0 0 0.173  0 0 0 0.35 0" result="glow"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.039  0 0 0 0 0.518  0 0 0 0 1  0 0 0 0.35 0" result="glow"/>
       <feMerge>
         <feMergeNode in="glow"/>
         <feMergeNode in="SourceGraphic"/>
@@ -20,7 +20,7 @@
   />
   <path
     d="M 48 302 C 148 284 196 320 256 302 C 316 284 364 320 464 302"
-    stroke="#FF6A2C"
+    stroke="#0078d4"
     stroke-width="5.5"
     stroke-linecap="round"
     stroke-linejoin="round"
