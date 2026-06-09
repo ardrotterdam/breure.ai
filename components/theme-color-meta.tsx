@@ -10,10 +10,10 @@ export function ThemeColorMeta() {
     const meta = document.querySelector('meta[name="theme-color"]')
     if (!meta) return
 
-    meta.setAttribute(
-      "content",
-      resolvedTheme === "light" ? "#f4f6f9" : "#080f1e",
-    )
+    const themeColor = getComputedStyle(document.documentElement)
+      .getPropertyValue("--theme-color")
+      .trim()
+    meta.setAttribute("content", themeColor || "#0A1628")
   }, [resolvedTheme])
 
   return null

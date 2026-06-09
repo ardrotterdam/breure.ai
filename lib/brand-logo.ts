@@ -1,9 +1,10 @@
 /** Shared Breure.ai wave mark geometry — single source of truth for SVG + React */
 
+/** Mirrors design tokens in app/globals.css (static SVG assets cannot read CSS vars). */
 export const BRAND = {
-  navy: "#081220",
-  white: "#FFFFFF",
-  blue: "#0A84FF",
+  ink: "#0A1628",
+  text: "#F4F8FC",
+  accent: "#FF6A2C",
 } as const
 
 /** Shorter top wave — subtle organic swell */

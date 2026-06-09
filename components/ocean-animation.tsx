@@ -2,24 +2,59 @@
 
 import { useEffect, useRef } from "react"
 
-const DARK_PALETTE = {
-  background: ["rgb(8, 15, 30)", "rgb(12, 25, 45)", "rgb(15, 35, 60)", "rgb(10, 28, 50)"],
-  particles: "120, 180, 220",
-  waves: ["rgba(40, 80, 120,", "rgba(25, 55, 90,", "rgba(15, 35, 60,"],
-  rays: ["rgba(80, 140, 180, 0.02)", "rgba(60, 120, 160, 0.01)", "rgba(40, 100, 140, 0)"],
-  horizon: ["rgba(60, 100, 140, 0.15)", "rgba(40, 80, 120, 0.05)", "rgba(20, 50, 80, 0)"],
+function readToken(name: string): string {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim()
 }
 
-const LIGHT_PALETTE = {
-  background: ["rgb(236, 241, 248)", "rgb(224, 233, 245)", "rgb(210, 225, 242)", "rgb(228, 236, 246)"],
-  particles: "80, 130, 190",
-  waves: ["rgba(100, 150, 210,", "rgba(130, 170, 220,", "rgba(180, 205, 235,"],
-  rays: ["rgba(0, 120, 212, 0.04)", "rgba(0, 120, 212, 0.02)", "rgba(0, 120, 212, 0)"],
-  horizon: ["rgba(0, 120, 212, 0.12)", "rgba(0, 120, 212, 0.05)", "rgba(0, 120, 212, 0)"],
+function hexToRgb(hex: string): [number, number, number] {
+  const h = hex.replace("#", "")
+  return [
+    parseInt(h.slice(0, 2), 16),
+    parseInt(h.slice(2, 4), 16),
+    parseInt(h.slice(4, 6), 16),
+  ]
 }
 
-function isDarkMode() {
-  return !document.documentElement.classList.contains("light")
+function rgbCss([r, g, b]: [number, number, number]): string {
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+function mixRgb(a: [number, number, number], b: [number, number, number], t: number): string {
+  const mix = (x: number, y: number) => Math.round(x + (y - x) * t)
+  return `rgb(${mix(a[0], b[0])}, ${mix(a[1], b[1])}, ${mix(a[2], b[2])})`
+}
+
+function buildPalette() {
+  const ink = hexToRgb(readToken("--ink"))
+  const surface = hexToRgb(readToken("--surface"))
+  const surface2 = hexToRgb(readToken("--surface-2"))
+  const accent = hexToRgb(readToken("--accent"))
+  const border = hexToRgb(readToken("--border"))
+
+  return {
+    background: [
+      rgbCss(ink),
+      mixRgb(ink, surface, 0.55),
+      mixRgb(surface, surface2, 0.5),
+      mixRgb(ink, border, 0.35),
+    ],
+    particles: `${accent[0]}, ${accent[1]}, ${accent[2]}`,
+    waves: [
+      `rgba(${border[0]}, ${border[1]}, ${border[2]},`,
+      `rgba(${surface2[0]}, ${surface2[1]}, ${surface2[2]},`,
+      `rgba(${ink[0]}, ${ink[1]}, ${ink[2]},`,
+    ],
+    rays: [
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0.04)`,
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0.02)`,
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0)`,
+    ],
+    horizon: [
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0.12)`,
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0.05)`,
+      `rgba(${accent[0]}, ${accent[1]}, ${accent[2]}, 0)`,
+    ],
+  }
 }
 
 export function OceanAnimation() {
@@ -34,7 +69,7 @@ export function OceanAnimation() {
 
     let animationFrameId: number
     let time = 0
-    let palette = isDarkMode() ? DARK_PALETTE : LIGHT_PALETTE
+    let palette = buildPalette()
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -48,7 +83,7 @@ export function OceanAnimation() {
     window.addEventListener("resize", resize)
 
     const observer = new MutationObserver(() => {
-      palette = isDarkMode() ? DARK_PALETTE : LIGHT_PALETTE
+      palette = buildPalette()
     })
     observer.observe(document.documentElement, {
       attributes: true,

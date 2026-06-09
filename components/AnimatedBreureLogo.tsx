@@ -67,7 +67,7 @@ export default function AnimatedBreureLogo({
             <feColorMatrix
               in="blur"
               type="matrix"
-              values={`0 0 0 0 0.039  0 0 0 0 0.518  0 0 0 0 1  0 0 0 ${GLOW_FILTER.opacity} 0`}
+              values={`0 0 0 0 1  0 0 0 0 0.416  0 0 0 0 0.173  0 0 0 ${GLOW_FILTER.opacity} 0`}
               result="glow"
             />
             <feMerge>
@@ -80,7 +80,7 @@ export default function AnimatedBreureLogo({
 
       <motion.path
         d={TOP_WAVE}
-        stroke="#FFFFFF"
+        stroke="var(--text)"
         strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -92,7 +92,7 @@ export default function AnimatedBreureLogo({
 
       <motion.path
         d={BOTTOM_WAVE}
-        stroke="#0A84FF"
+        stroke="var(--accent)"
         strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -109,7 +109,7 @@ export default function AnimatedBreureLogo({
 
   return (
     <div
-      className="flex shrink-0 items-center justify-center rounded-lg bg-[#081220]"
+      className="flex shrink-0 items-center justify-center rounded-lg bg-ink"
       style={{ width: size, height: size }}
     >
       {mark}

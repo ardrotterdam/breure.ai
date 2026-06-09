@@ -142,7 +142,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         <div
           className={`absolute inset-0 border-b backdrop-blur-xl transition-all duration-300 ${
             hasScrolled
-              ? "border-white/10 bg-[#07111f]/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
+              ? "border-white/10 bg-ink/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
               : "border-border/40 bg-background/72"
           }`}
         />
@@ -190,7 +190,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           onClick={() => setMobileOpen((open) => !open)}
           aria-label={mobileOpen ? t.closeMenu : t.openMenu}
           aria-expanded={mobileOpen}
-          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-[#0a1628]/90 text-white shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
+          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-ink/90 text-foreground shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
           style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
         >
           <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -214,7 +214,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] flex max-w-full flex-col overflow-x-hidden bg-[#0a1628] text-white lg:hidden"
+            className="fixed inset-0 z-[100] flex max-w-full flex-col overflow-x-hidden bg-ink text-foreground lg:hidden"
           >
             <div className="flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px]">
               <NavbarLogo href={homeHref} onClick={() => setMobileOpen(false)} className="min-w-0" />
@@ -224,7 +224,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                 onClick={() => setMobileOpen(false)}
                 aria-label={t.closeMenu}
                 className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                style={{ ["--tw-ring-offset-color" as string]: "#0a1628" }}
+                style={{ ["--tw-ring-offset-color" as string]: "var(--ink)" }}
               >
                 <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />

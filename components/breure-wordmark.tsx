@@ -38,7 +38,7 @@ export function BreureWordmark({
         />
         <path
           d={BOTTOM_WAVE}
-          stroke="#0A84FF"
+          stroke="var(--accent)"
           strokeWidth={STROKE.compact}
           strokeLinecap="round"
           strokeLinejoin="round"

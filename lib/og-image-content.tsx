@@ -1,12 +1,12 @@
 /** Shared JSX for next/og ImageResponse — favicons and social cards */
 
+/** Mirrors design tokens in app/globals.css (OG images cannot read CSS vars). */
 export const OG_BRAND = {
-  navy: "#081220",
-  navyDeep: "#080f1e",
-  white: "#FFFFFF",
-  blue: "#0A84FF",
-  accent: "#2b88d8",
-  muted: "#8ba3c0",
+  ink: "#0A1628",
+  surface: "#0F1E30",
+  text: "#F4F8FC",
+  accent: "#FF6A2C",
+  muted: "#9DAEBF",
 } as const
 
 export const OG_TAGLINE =
@@ -22,10 +22,10 @@ export function FaviconMark({ size = 48 }: { size?: number }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="48" height="48" fill={OG_BRAND.navy} />
+      <rect width="48" height="48" fill={OG_BRAND.ink} />
       <path
         d="M 4 20.5 C 10.5 19 14.5 21.5 24 20.5 C 33.5 19 37.5 21.5 44 20.5"
-        stroke={OG_BRAND.white}
+        stroke={OG_BRAND.text}
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -33,7 +33,7 @@ export function FaviconMark({ size = 48 }: { size?: number }) {
       />
       <path
         d="M 2 27.5 C 10.5 26 15.5 29 24 27.5 C 32.5 26 37.5 29 46 27.5"
-        stroke={OG_BRAND.blue}
+        stroke={OG_BRAND.accent}
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -49,7 +49,7 @@ export function OgWaveMark() {
     <svg width="200" height="120" viewBox="40 198 432 116" fill="none">
       <path
         d="M 80 226 C 156 212 204 244 256 226 C 308 208 356 244 420 226"
-        stroke={OG_BRAND.white}
+        stroke={OG_BRAND.text}
         strokeWidth="5.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -57,7 +57,7 @@ export function OgWaveMark() {
       />
       <path
         d="M 48 302 C 148 284 196 320 256 302 C 316 284 364 320 464 302"
-        stroke={OG_BRAND.blue}
+        stroke={OG_BRAND.accent}
         strokeWidth="5.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -81,7 +81,7 @@ export function OgSocialCard({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: `linear-gradient(160deg, ${OG_BRAND.navyDeep} 0%, ${OG_BRAND.navy} 45%, #0f2038 100%)`,
+        background: `linear-gradient(160deg, ${OG_BRAND.ink} 0%, ${OG_BRAND.surface} 45%, ${OG_BRAND.surface} 100%)`,
         fontFamily: "system-ui, sans-serif",
       }}
     >
@@ -93,7 +93,7 @@ export function OgSocialCard({
           fontSize: 64,
           fontWeight: 300,
           letterSpacing: "-0.02em",
-          color: OG_BRAND.white,
+          color: OG_BRAND.text,
         }}
       >
         <span>Breure</span>
