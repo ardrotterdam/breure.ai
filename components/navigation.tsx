@@ -160,8 +160,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link-hover-line pb-1 text-xs font-normal tracking-wide transition-colors ${
-                  active ? "text-foreground/70" : "text-muted-foreground/50 hover:text-foreground/65"
+                className={`nav-link-hover-line nav-link-desktop pb-1 text-xs tracking-wide transition-colors ${
+                  active ? "font-medium" : "font-normal"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
@@ -174,7 +174,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         {/* Right cluster: theme + language toggle + CTA */}
         <div className="hidden shrink-0 items-center gap-2 sm:gap-2.5 lg:flex">
           <ThemeToggle locale={locale} variant="desktop" />
-          <div className="hidden opacity-75 lg:block">
+          <div className="hidden lg:block">
             <LanguageToggle variant="desktop" />
           </div>
 

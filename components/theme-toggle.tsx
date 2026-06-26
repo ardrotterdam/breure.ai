@@ -24,14 +24,18 @@ export function ThemeToggle({ locale = "nl", variant = "desktop" }: ThemeToggleP
   const isDark = resolvedTheme === "dark"
   const label = isDark ? t.themeLight : t.themeDark
 
-  const sizeClass = variant === "mobile" ? "h-9 w-9" : "h-9 w-9"
+  const sizeClass = "h-9 w-9"
+  const navVariantClass =
+    variant === "desktop"
+      ? "theme-toggle-nav"
+      : "border-border/50 bg-secondary/40 text-muted-foreground hover:border-accent/40 hover:bg-accent/10 hover:text-accent"
 
   if (!mounted) {
     return (
       <button
         type="button"
         aria-label={t.themeToggle}
-        className={`${sizeClass} inline-flex items-center justify-center rounded-full border border-border/50 text-muted-foreground`}
+        className={`${sizeClass} inline-flex items-center justify-center rounded-full border transition-colors duration-300 ${navVariantClass}`}
       />
     )
   }
@@ -44,7 +48,7 @@ export function ThemeToggle({ locale = "nl", variant = "desktop" }: ThemeToggleP
       title={label}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.96 }}
-      className={`${sizeClass} inline-flex items-center justify-center rounded-full border border-border/50 bg-secondary/40 text-muted-foreground transition-colors duration-300 hover:border-accent/40 hover:bg-accent/10 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}
+      className={`${sizeClass} inline-flex items-center justify-center rounded-full border transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${navVariantClass}`}
       style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
     >
       {isDark ? (

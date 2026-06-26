@@ -302,6 +302,39 @@ html.light,
   height: 3px;
 }
 
+/* Desktop nav — high contrast on dark maritime header */
+.nav-link-desktop {
+  @apply text-white/80 hover:text-white;
+}
+
+.nav-link-desktop[aria-current='page'] {
+  @apply text-white font-medium;
+}
+
+.theme-toggle-nav {
+  @apply border-white/20 bg-white/5 text-white/85 hover:border-accent/40 hover:bg-accent/10 hover:text-accent;
+}
+
+.lang-toggle-link--inactive {
+  @apply text-white/70 hover:text-white;
+}
+
+html.light .nav-link-desktop {
+  @apply text-foreground/75 hover:text-foreground;
+}
+
+html.light .nav-link-desktop[aria-current='page'] {
+  @apply text-foreground font-medium;
+}
+
+html.light .theme-toggle-nav {
+  @apply border-border/50 bg-secondary/40 text-foreground/80 hover:border-accent/40 hover:bg-accent/10 hover:text-accent;
+}
+
+html.light .lang-toggle-link--inactive {
+  @apply text-text-secondary hover:text-foreground;
+}
+
 .btn-primary {
   @apply inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground font-medium text-sm tracking-wide;
   box-shadow: var(--cta-shadow);

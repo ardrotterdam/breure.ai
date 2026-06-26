@@ -79,7 +79,9 @@ export function LanguageToggle({ variant = "desktop", onSelect }: LanguageToggle
             className={`relative z-10 inline-flex items-center justify-center px-3 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase transition-colors duration-300 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
               isActive
                 ? "text-accent-foreground"
-                : "text-text-secondary hover:text-foreground"
+                : isMobile
+                  ? "text-text-secondary hover:text-foreground"
+                  : "lang-toggle-link--inactive"
             }`}
             style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
           >
