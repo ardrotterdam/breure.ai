@@ -21,14 +21,16 @@ import {
   insightsIndexPath,
 } from "@/lib/insights"
 
-const locale = "en" as const
+const locale = "nl" as const
 
 type InsightArticlePageProps = {
   params: Promise<{ slug: string }>
 }
 
 export function generateStaticParams() {
-  return insightArticles.map((article) => ({ slug: article.slug }))
+  return insightArticles
+    .filter((article) => article.slugNl)
+    .map((article) => ({ slug: article.slugNl! }))
 }
 
 export async function generateMetadata({
@@ -38,7 +40,7 @@ export async function generateMetadata({
   return buildInsightArticleMetadataBySlug(slug, locale)
 }
 
-export default async function InsightArticlePage({
+export default async function DutchInsightArticlePage({
   params,
 }: InsightArticlePageProps) {
   const { slug } = await params
@@ -85,7 +87,7 @@ export default async function InsightArticlePage({
                   d="M7 16l-4-4m0 0l4-4m-4 4h18"
                 />
               </svg>
-              Back to Insights
+              Terug naar Inzichten
             </Link>
 
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-5">
@@ -180,36 +182,36 @@ export default async function InsightArticlePage({
                 {getConclusionCta(article, locale)}
               </p>
               <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-                <Link href="/en/contact" className="btn-primary px-5 py-3 text-sm">
-                  Get in touch
+                <Link href="/contact" className="btn-primary px-5 py-3 text-sm">
+                  Neem contact op
                 </Link>
-                <Link href="/en/services" className="btn-secondary px-5 py-3 text-sm">
-                  Our services
+                <Link href="/diensten" className="btn-secondary px-5 py-3 text-sm">
+                  Onze diensten
                 </Link>
-                <Link href="/en/process" className="btn-secondary px-5 py-3 text-sm">
-                  Our process
+                <Link href="/proces" className="btn-secondary px-5 py-3 text-sm">
+                  Ons proces
                 </Link>
               </div>
             </aside>
 
             <nav
               className="mt-12 pt-8 border-t border-border/50"
-              aria-label="Related pages"
+              aria-label="Gerelateerde pagina's"
             >
               <p className="text-sm text-text-secondary mb-4">
-                Explore how Breure.ai approaches{" "}
-                <Link href="/en/services" className="text-foreground hover:text-accent transition-colors">
-                  maritime website design and asset microsites
-                </Link>
-                , our{" "}
-                <Link href="/en/process" className="text-foreground hover:text-accent transition-colors">
-                  project process
+                Ontdek hoe Breure.ai{" "}
+                <Link href="/diensten" className="text-foreground hover:text-accent transition-colors">
+                  maritiem webdesign en asset-microsites
                 </Link>{" "}
-                from specs to launch, or{" "}
-                <Link href="/en/contact" className="text-foreground hover:text-accent transition-colors">
-                  contact us
+                aanpakt, ons{" "}
+                <Link href="/proces" className="text-foreground hover:text-accent transition-colors">
+                  projectproces
                 </Link>{" "}
-                to discuss your fleet or offshore assets.
+                van specificatie tot livegang, of{" "}
+                <Link href="/contact" className="text-foreground hover:text-accent transition-colors">
+                  neem contact op
+                </Link>{" "}
+                om uw vloot of offshore assets te bespreken.
               </p>
               <Link
                 href={indexPath}
@@ -229,7 +231,7 @@ export default async function InsightArticlePage({
                     d="M7 16l-4-4m0 0l4-4m-4 4h18"
                   />
                 </svg>
-                All Insights
+                Alle Inzichten
               </Link>
             </nav>
           </div>

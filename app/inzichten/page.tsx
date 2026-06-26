@@ -8,11 +8,11 @@ import {
   insightArticles,
 } from "@/lib/insights"
 
-const locale = "en" as const
+const locale = "nl" as const
 
 export const metadata = buildInsightsIndexMetadata(locale)
 
-export default function EnglishInsightsPage() {
+export default function DutchInsightsPage() {
   const overview = getInsightsOverview(locale)
 
   return (
@@ -20,11 +20,11 @@ export default function EnglishInsightsPage() {
       <Navigation locale={locale} />
       <main>
         <PageHeader
-          eyebrow="Insights"
+          eyebrow="Inzichten"
           title={
             <>
-              Maritime & offshore{" "}
-              <span className="heading-accent-gradient">perspectives</span>
+              Maritiem & offshore{" "}
+              <span className="heading-accent-gradient">perspectieven</span>
             </>
           }
           description={overview.intro}

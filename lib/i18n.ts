@@ -1,3 +1,5 @@
+import { toOppositeInsightPath } from "@/lib/insights"
+
 export type Locale = "nl" | "en"
 
 export const LOCALES: Locale[] = ["nl", "en"]
@@ -13,6 +15,7 @@ export const ROUTES = {
   process: { nl: "/proces", en: "/en/process" },
   portfolio: { nl: "/portfolio", en: "/en/portfolio" },
   contact: { nl: "/contact", en: "/en/contact" },
+  insights: { nl: "/inzichten", en: "/en/insights" },
 } as const
 
 export type RouteKey = keyof typeof ROUTES
@@ -28,6 +31,10 @@ export function routePath(key: RouteKey, locale: Locale): string {
  */
 export function toOppositeLocalePath(pathname: string, target: Locale): string {
   const normalized = pathname.replace(/\/+$/, "") || "/"
+
+  const insightPath = toOppositeInsightPath(normalized, target)
+  if (insightPath) return insightPath
+
   for (const key of Object.keys(ROUTES) as RouteKey[]) {
     const entry = ROUTES[key]
     if (entry.nl === normalized || entry.en === normalized) {
@@ -52,8 +59,8 @@ export const dict = {
       services: "Diensten",
       process: "Proces",
       portfolio: "Portfolio",
-      insights: "Inzichten (EN)",
-      insightsTitle: "Artikelen over maritiem webdesign — in het Engels",
+      insights: "Inzichten",
+      insightsTitle: "Artikelen over maritiem webdesign",
       contact: "Contact",
       cta: "Neem contact op",
       openMenu: "Open menu",
@@ -556,13 +563,13 @@ export const dict = {
 
   latestInsight: {
     nl: {
-      eyebrow: "Inzichten (EN)",
-      title: "Laatste artikel",
+      eyebrow: "Inzichten",
+      title: "Laatste inzicht",
       description:
-        "Praktische perspectieven op maritiem webdesign, offshore-geloofwaardigheid en digitaal vertrouwen. Onze artikelen zijn momenteel in het Engels.",
-      readArticle: "Lees artikel (EN)",
-      viewAll: "Alle inzichten (EN)",
-      languageBadge: "EN",
+        "Praktische perspectieven op maritiem webdesign, offshore-geloofwaardigheid en digitaal vertrouwen.",
+      readArticle: "Lees artikel",
+      viewAll: "Alle inzichten",
+      languageBadge: "",
     },
     en: {
       eyebrow: "Insights",

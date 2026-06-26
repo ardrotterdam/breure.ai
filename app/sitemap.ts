@@ -1,14 +1,15 @@
 import type { MetadataRoute } from "next"
 
-import { insightSitemapEntries } from "@/lib/insights"
-import { LOCALES, type RouteKey } from "@/lib/i18n"
+import { insightSitemapEntries } from "@/lib/insights-metadata"
+import { LOCALES } from "@/lib/i18n"
 import {
   absoluteUrl,
   pathForRoute,
   SITEMAP_ROUTES,
+  type CoreRouteKey,
 } from "@/lib/page-metadata"
 
-const PRIORITY: Record<RouteKey, number> = {
+const PRIORITY: Record<CoreRouteKey, number> = {
   home: 1,
   services: 0.9,
   process: 0.8,
@@ -17,7 +18,7 @@ const PRIORITY: Record<RouteKey, number> = {
 }
 
 const CHANGE_FREQUENCY: Record<
-  RouteKey,
+  CoreRouteKey,
   MetadataRoute.Sitemap[number]["changeFrequency"]
 > = {
   home: "weekly",

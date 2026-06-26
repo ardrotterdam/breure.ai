@@ -4,10 +4,11 @@ import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { dict, type Locale } from "@/lib/i18n"
 import {
+  findArticleBySlug,
   formatInsightDate,
-  getInsightBySlug,
-  INSIGHTS_INDEX_PATH,
+  getInsightField,
   insightArticlePath,
+  insightsIndexPath,
 } from "@/lib/insights"
 
 const FEATURED_SLUG = "maritime-website-design-trust"
@@ -18,11 +19,12 @@ interface LatestInsightSectionProps {
 
 export function LatestInsightSection({ locale = "nl" }: LatestInsightSectionProps) {
   const t = dict.latestInsight[locale]
-  const article = getInsightBySlug(FEATURED_SLUG)
+  const article = findArticleBySlug(FEATURED_SLUG, "en")
 
   if (!article) return null
 
-  const articleHref = insightArticlePath(article.slug)
+  const articleHref = insightArticlePath(article, locale)
+  const indexHref = insightsIndexPath(locale)
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-28 bg-background border-y border-border/40 overflow-hidden">
@@ -56,7 +58,7 @@ export function LatestInsightSection({ locale = "nl" }: LatestInsightSectionProp
 
           <StaggerItem>
             <Link
-              href={INSIGHTS_INDEX_PATH}
+              href={indexHref}
               className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors shrink-0"
             >
               {t.viewAll}
@@ -81,20 +83,22 @@ export function LatestInsightSection({ locale = "nl" }: LatestInsightSectionProp
                   </>
                 ) : null}
                 <span className="font-medium tracking-[0.2em] uppercase">
-                  {article.category}
+                  {getInsightField(article, "category", locale)}
                 </span>
                 <span aria-hidden>·</span>
-                <time dateTime={article.date}>{formatInsightDate(article.date)}</time>
+                <time dateTime={article.date}>
+                  {formatInsightDate(article.date, locale)}
+                </time>
                 <span aria-hidden>·</span>
-                <span>{article.readingTime}</span>
+                <span>{getInsightField(article, "readingTime", locale)}</span>
               </div>
 
               <h3 className="text-xl sm:text-2xl lg:text-[1.75rem] font-light tracking-tight text-foreground group-hover:text-accent transition-colors max-w-3xl">
-                {article.title}
+                {getInsightField(article, "title", locale)}
               </h3>
 
               <p className="mt-4 text-sm sm:text-base text-text-secondary leading-relaxed max-w-3xl">
-                {article.excerpt}
+                {getInsightField(article, "excerpt", locale)}
               </p>
 
               <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-foreground/80 group-hover:text-accent transition-colors">

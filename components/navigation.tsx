@@ -7,7 +7,6 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { NavbarLogo } from "@/components/navbar-logo"
 import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
-import { INSIGHTS_INDEX_PATH } from "@/lib/insights"
 import { LanguageToggle } from "./language-toggle"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -104,11 +103,13 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     }
   }, [mobileOpen])
 
+  const insightsHref = ROUTES.insights[locale]
+
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
     { label: t.portfolio, href: ROUTES.portfolio[locale] },
-    { label: t.insights, href: INSIGHTS_INDEX_PATH },
+    { label: t.insights, href: insightsHref },
     { label: t.contact, href: ROUTES.contact[locale] },
   ]
 
@@ -164,7 +165,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                   active ? "font-medium" : "font-normal"
                 }`}
                 aria-current={active ? "page" : undefined}
-                {...(item.href === INSIGHTS_INDEX_PATH && t.insightsTitle
+                {...(item.href === insightsHref && t.insightsTitle
                   ? { title: t.insightsTitle }
                   : {})}
               >
@@ -254,7 +255,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                         active ? "text-accent" : "text-white"
                       }`}
                       aria-current={active ? "page" : undefined}
-                      {...(item.href === INSIGHTS_INDEX_PATH && t.insightsTitle
+                      {...(item.href === insightsHref && t.insightsTitle
                         ? { title: t.insightsTitle }
                         : {})}
                     >

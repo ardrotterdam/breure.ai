@@ -13,10 +13,14 @@ const OG_LOCALE = {
   en: "en_US",
 } as const
 
+type InsightLocale = "nl" | "en"
+
 type PageSeoKey = keyof typeof seo
 
+export type CoreRouteKey = Exclude<RouteKey, "insights">
+
 /** Map sitemap / metadata route keys to i18n ROUTES keys. */
-export const SITEMAP_ROUTES: readonly RouteKey[] = [
+export const SITEMAP_ROUTES: readonly CoreRouteKey[] = [
   "home",
   "services",
   "portfolio",
@@ -37,16 +41,22 @@ type InsightsMetadataOptions = {
   title: string
   description: string
   path: string
+  alternatePath: string
+  locale: InsightLocale
   keywords?: string[]
 }
 
-/** Metadata for English-only Insights routes (no NL hreflang pair). */
+/** Metadata for bilingual Insights routes with NL↔EN hreflang alternates. */
 export function buildInsightsPageMetadata({
   title,
   description,
   path,
+  alternatePath,
+  locale,
   keywords,
 }: InsightsMetadataOptions): Metadata {
+  const oppositeLocale: InsightLocale = locale === "nl" ? "en" : "nl"
+
   return {
     title,
     description,
@@ -61,12 +71,18 @@ export function buildInsightsPageMetadata({
     },
     alternates: {
       canonical: path,
+      languages: {
+        [LOCALE_TAG.nl]: locale === "nl" ? path : alternatePath,
+        [LOCALE_TAG.en]: locale === "en" ? path : alternatePath,
+        "x-default": locale === "en" ? path : alternatePath,
+      },
     },
     openGraph: socialOpenGraph({
       title,
       description,
       url: absoluteUrl(path),
-      locale: "en_US",
+      locale: OG_LOCALE[locale],
+      alternateLocale: [OG_LOCALE[oppositeLocale]],
     }),
     twitter: socialTwitter({
       title,

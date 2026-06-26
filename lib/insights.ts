@@ -1,6 +1,4 @@
-import type { Metadata } from "next"
-
-import { absoluteUrl, buildInsightsPageMetadata } from "@/lib/page-metadata"
+export type InsightLocale = "nl" | "en"
 
 export const INSIGHTS_INDEX_PATH = "/en/insights" as const
 
@@ -8,6 +6,8 @@ export type InsightSection = {
   id: string
   heading: string
   paragraphs: string[]
+  headingNl?: string
+  paragraphsNl?: string[]
 }
 
 export type InsightImage = {
@@ -15,11 +15,13 @@ export type InsightImage = {
   alt: string
   width?: number
   height?: number
+  altNl?: string
 }
 
 export type InsightInlineImage = InsightImage & {
   afterSectionId: string
   caption?: string
+  captionNl?: string
 }
 
 export type InsightArticle = {
@@ -41,10 +43,31 @@ export type InsightArticle = {
     heading: string
     paragraphs: string[]
     cta: string
+    headingNl?: string
+    paragraphsNl?: string[]
+    ctaNl?: string
   }
+  slugNl?: string
+  titleNl?: string
+  excerptNl?: string
+  categoryNl?: string
+  readingTimeNl?: string
+  seoTitleNl?: string
+  metaDescriptionNl?: string
+  keywordsNl?: string[]
+  canonicalUrlNl?: string
+  introNl?: string
 }
 
-export const insightsOverview = {
+export type InsightsOverview = {
+  seoTitle: string
+  metaDescription: string
+  canonicalUrl: string
+  title: string
+  intro: string
+}
+
+export const insightsOverview: InsightsOverview = {
   seoTitle: "Insights | Maritime & Offshore Web Design | Breure.ai",
   metaDescription:
     "Practical perspectives on maritime website design, offshore credibility and digital trust for vessel owners, contractors and shipping companies.",
@@ -52,9 +75,23 @@ export const insightsOverview = {
   title: "Insights",
   intro:
     "Breure.ai Insights covers maritime and offshore web design from an operator's perspective — clarity, capability, trust and the signals buyers look for before the first call.",
-} as const
+}
 
-export const insightArticles: InsightArticle[] = [
+export const insightsOverviewNl: InsightsOverview = {
+  seoTitle: "Inzichten | Maritiem & Offshore Webdesign | Breure.ai",
+  metaDescription:
+    "Praktische perspectieven op maritiem webdesign, offshore-geloofwaardigheid en digitaal vertrouwen voor scheepseigenaren, aannemers en scheepvaartbedrijven.",
+  canonicalUrl: "https://breure.ai/inzichten",
+  title: "Inzichten",
+  intro:
+    "Breure.ai Inzichten behandelt maritiem en offshore webdesign vanuit het perspectief van de operator — helderheid, capability, vertrouwen en de signalen die kopers zoeken vóór het eerste gesprek.",
+}
+
+export function getInsightsOverview(locale: InsightLocale): InsightsOverview {
+  return locale === "nl" ? insightsOverviewNl : insightsOverview
+}
+
+const baseInsightArticles: InsightArticle[] = [
   {
     title: "Why Maritime Companies Lose Trust Before the First Call",
     slug: "maritime-website-design-trust",
@@ -182,43 +219,283 @@ export const insightArticles: InsightArticle[] = [
   },
 ]
 
+/** Applies Dutch translations for the maritime trust article. */
+function withMaritimeTrustNl(article: InsightArticle): InsightArticle {
+  const slugNl = "maritiem-webdesign-vertrouwen"
+
+  const sectionNl: Record<string, { headingNl: string; paragraphsNl: string[] }> = {
+    "confidence-not-decoration": {
+      headingNl: "1. Maritieme kopers zoeken vertrouwen, geen decoratie",
+      paragraphsNl: [
+        "Maritieme kopers — charterers, scheepseigenaren, projectteams, brokers en technische stakeholders — laten zich niet alleen imponeren door decoratief design. Zij zoeken helderheid, geloofwaardigheid, capability, technische degelijkheid en vertrouwen. Een gepolijste homepage met vage claims en geen structuur erachter wekt argwaan, geen vertrouwen.",
+        "Effectief maritiem webdesign presenteert informatie op een manier die aansluit bij hoe de sector risico beoordeelt: wie u bent, wat u operateert, waar u werkt en wat u levert onder echte projectomstandigheden. Visuele kwaliteit telt, maar alleen wanneer die leesbare structuur, geloofwaardige content en het gevoel ondersteunt dat het bedrijf zijn eigen operatie begrijpt.",
+        "Wanneer een site esthetiek boven inhoud stelt, merken ervaren kopers dat snel op. Zij hebben genoeg tender packs, vlootoverzichten en capability-samenvattingen gezien om te weten wanneer een digitale presentatie operationele discipline weerspiegelt — en wanneer niet.",
+      ],
+    },
+    "old-websites-doubt": {
+      headingNl: "2. Verouderde websites wekken twijfel over serieuze operaties",
+      paragraphsNl: [
+        "Een verouderde website kan een serieus maritiem bedrijf kleiner, trager of minder professioneel laten lijken dan het in werkelijkheid is. Layouts die niet meebewegen met huidige standaarden, kapotte mobiele weergaven, trage laadtijden en content die duidelijk jaren niet is herzien — allemaal hetzelfde signaal: deze organisatie investeert misschien niet in hoe zij zich presenteert aan de markt.",
+        "Dat beeld is onterecht, maar het komt vaak voor. Offshore- en scheepvaartbeslissingen gaan gepaard met hoge inzet, strakke planning en reputatierisico. Kopers gebruiken elk beschikbaar signaal — inclusief de website — om onzekerheid te verkleinen vóór zij de telefoon pakken.",
+        "Een bedrijf met moderne assets en een site die vast lijkt te zitten in een vroeger decennium creëert een kloof tussen operationele werkelijkheid en digitale perceptie. Die kloof dichten is geen trendjagen. Het gaat erom het publieke gezicht van het bedrijf af te stemmen op het niveau van professionaliteit dat kopers in de sector verwachten.",
+      ],
+    },
+    "vessel-pages": {
+      headingNl: "3. Scheepspagina's moeten meer zijn dan PDF-downloads",
+      paragraphsNl: [
+        "Scheeps- en vlootpagina's zijn vaak het punt waar maritiem webdesign slaagt of faalt. Te veel sites behandelen elke unit als een bestandsnaam: een PDF-link, misschien een thumbnail, verder niets. PDF's hebben hun plaats — zeker bij tenders en engineering review — maar zij moeten de pagina ondersteunen, niet vervangen.",
+        "Een sterke scheepspagina presenteert vlootdetails, capabilities, specificaties, toepassingen, beelden, contactopties en context in een gestructureerd, leesbaar formaat. Charterers en project engineers moeten kerngegevens kunnen scannen — crane capacity, deck load, DP class, POB, draft, transit speed, sectorervaring — zonder eerst een document te downloaden.",
+        "Wanneer de website zelf de eerste technische vragen beantwoordt, verlaagt u de drempel voor serieuze aanvragen en filtert u contact van lage kwaliteit. Wanneer dat niet zo is, dwingen capabele operators kopers tot extra werk — of stappen zij simpelweg over naar een concurrent wiens assets online makkelijker te beoordelen zijn.",
+      ],
+    },
+    "capability-clarity": {
+      headingNl: "4. Offshore- en maritieme websites moeten capability helder uitleggen",
+      paragraphsNl: [
+        "Kopers moeten niet hoeven af te leiden wat een bedrijf doet uit een generiek corporate verhaal. Offshore-aannemers, scheepsoperators, scheepvaartbedrijven en maritieme dienstverleners moeten duidelijk tonen wat zij leveren, waar zij opereren, welke sectoren zij bedienen en welk type projecten zij begrijpen.",
+        "Capability-pagina's moeten lezen als gestructureerde antwoorden op de vragen die een projectteam werkelijk stelt: scope of work, asset types, geografieën, klantprofielen, mobilisatielogica en het soort uitdagingen waarvoor de organisatie is ingericht. Generieke frases als \"innovatieve oplossingen\" of \"world-class service\" voegen weinig toe. Specificiteit bouwt vertrouwen.",
+        "Voor internationale doelgroepen ondersteunt deze helderheid ook vindbaarheid. Zoektermen rond offshore webdesign, scheepswebsites en de structuur van scheepvaartbedrijf-sites sluiten direct aan op hoe kopers online partners zoeken — maar alleen als de site echte, indexeerbare content bevat die werkelijke capability weerspiegelt.",
+      ],
+    },
+    "safety-compliance": {
+      headingNl: "5. Veiligheid, compliance en projectervaring vragen om zichtbare structuur",
+      paragraphsNl: [
+        "Maritieme en offshore-kopers hechten sterk aan veiligheid, betrouwbaarheid, documentatie, projectdiscipline en operationele degelijkheid. Deze thema's horen op de website — niet als marketingvulling, maar als zichtbare, goed georganiseerde signalen.",
+        "Dat kan certificeringen, managementsystemen, HSE-aanpak, kwaliteitskaders, incidentpreventiecultuur en de manier waarop projecten worden gepland en uitgevoerd omvatten. Ook gestructureerde verwijzingen naar bediende sectoren, projecttypes en de documentatiestandaarden die het bedrijf voor klanten en partners hanteert.",
+        "U hoeft geen vertrouwelijke details publiek te maken. U moet wel tonen dat veiligheid en compliance zijn geïntegreerd in hoe de organisatie werkt — en dat de website dezelfde degelijkheid weerspiegelt die kopers verwachten in een pre-kwalificatie- of tendercontext.",
+      ],
+    },
+    "digital-expectations": {
+      headingNl: "6. Digitale verwachtingen veranderen in maritiem en offshore",
+      paragraphsNl: [
+        "Maritiem wordt digitaler, ook bij traditioneel conservatieve operators. Jonge engineers, internationale inkoopteams en remote beslissers verwachten steeds vaker een bedrijf online te beoordelen vóór zij een meeting aanvragen. Recruitment, partnerships, tender shortlists en internationale zichtbaarheid lopen allemaal via de website.",
+        "Een zwakke digitale presentatie raakt niet alleen nieuwe business. Het kan hiring vertragen, merkconsistentie over regio's verzwakken en het commerciële team bemoeilijken om geloofwaardige links te delen in gesprekken die al snel verlopen. De website maakt deel uit van de operating environment — geen bijproject voor als er tijd over is.",
+        "Bedrijven die maritiem webdesign als strategisch asset behandelen, behalen een praktisch voordeel: hun geloofwaardigheid is zichtbaar vóór het eerste gesprek, over tijdzones heen en zonder te vertrouwen op één verkoper die het verhaal vanaf nul moet uitleggen.",
+      ],
+    },
+    "strong-website-checklist": {
+      headingNl: "7. Wat een sterke maritieme website moet bevatten",
+      paragraphsNl: [
+        "Er is geen enkele template voor elke operator, maar sterke maritieme en offshore-websites delen vaak een duidelijke set bouwstenen:",
+        "Heldere positionering die benoemt wie het bedrijf bedient en welke problemen het oplost. Dedicated vloot- en scheepspagina's met leesbare specs, beelden en aanvraagpaden. Dienstpagina's die scope, sectoren en delivery-logica uitleggen. Project- of capability-pagina's die ervaring tonen zonder te overclaimen. Zichtbare veiligheids- en compliance-signalen, gestructureerd gepresenteerd in plaats van als slogans.",
+        "Een sterk contactflow die aansluit bij hoe maritieme kopers prefereren contact op te nemen — direct, laagdrempelig en professioneel. Snelle performance en betrouwbare mobiele bruikbaarheid voor gebruikers die assets bekijken vanaf terminals, kantoren en projectlocaties. Internationale taalstructuur waar het bedrijf over regio's heen opereert. Professionele visuals die de sector weerspiegelen — industrieel, precies en geloofwaardig, niet generiek stockbeelden.",
+        "Deze elementen werken samen. Een snelle site met zwakke content faalt nog steeds de vertrouwentest. Mooi design zonder technische diepgang evenzeer. Het doel is coherentie: een digitale presentatie die zo serieus aanvoelt als de operatie erachter.",
+      ],
+    },
+  }
+
+  return {
+    ...article,
+    slugNl,
+    canonicalUrlNl: `https://breure.ai/inzichten/${slugNl}`,
+    titleNl: "Waarom maritieme bedrijven vertrouwen verliezen vóór het eerste gesprek",
+    excerptNl:
+      "In maritiem en offshore wordt uw website beoordeeld lang vóór een meeting wordt gepland. Verouderde structuur, magere scheepspagina's en onduidelijke capability-signalen kunnen geloofwaardigheid kosten vóór het eerste gesprek begint.",
+    categoryNl: "Maritiem webdesign",
+    readingTimeNl: "6 min lezen",
+    seoTitleNl:
+      "Maritiem webdesign: waarom offshore-bedrijven online vertrouwen verliezen",
+    metaDescriptionNl:
+      "Maritiem webdesign gaat niet alleen om visuals. Ontdek waarom offshore-, scheeps- en scheepvaartbedrijven online vertrouwen kunnen verliezen vóór het eerste klantgesprek.",
+    keywordsNl: [
+      "maritiem webdesign",
+      "offshore website",
+      "scheepswebsite",
+      "website scheepvaartbedrijf",
+      "maritieme website",
+      "website offshore aannemer",
+    ],
+    introNl:
+      "In maritiem en offshore is een website geen digitale brochure naast het bedrijf. Het is een vertrouwenssignaal. Vóór een koper contact opneemt, een capability pack aanvraagt, projectdetails deelt of een serieus commercieel gesprek start, bekijkt hij of zij vaak eerst de website. Voelt de site verouderd, onduidelijk of mager, dan kan het bedrijf geloofwaardigheid verliezen vóór het eerste gesprek — ongeacht hoe sterk de operatie offshore is.",
+    heroImage: article.heroImage
+      ? {
+          ...article.heroImage,
+          altNl:
+            "Breure.ai maritiem webdesign met offshore professional in moderne scheepsbrug",
+        }
+      : undefined,
+    inlineImages: article.inlineImages?.map((image) => {
+      if (image.afterSectionId === "vessel-pages") {
+        return {
+          ...image,
+          altNl:
+            "Breure.ai offshore webdesign mockup met scheepspagina-wireframes en maritieme capability-layout",
+          captionNl:
+            "Een sterke scheepspagina vertaalt technische capability naar duidelijke digitale vertrouwenssignalen.",
+        }
+      }
+      if (image.afterSectionId === "safety-compliance") {
+        return {
+          ...image,
+          altNl:
+            "Breure.ai scheepswebsite-design met professional die scheepsblauwdrukken bekijkt in havenkantoor",
+          captionNl:
+            "Maritieme kopers zoeken operationele degelijkheid, niet alleen visuele presentatie.",
+        }
+      }
+      return image
+    }),
+    sections: article.sections.map((section) => ({
+      ...section,
+      headingNl: sectionNl[section.id]?.headingNl ?? section.heading,
+      paragraphsNl: sectionNl[section.id]?.paragraphsNl ?? section.paragraphs,
+    })),
+    conclusion: {
+      ...article.conclusion,
+      headingNl: "8. Conclusie: uw website moet zo serieus aanvoelen als uw operatie",
+      paragraphsNl: [
+        "Vertrouwen in maritiem en offshore wordt opgebouwd door consistentie — tussen wat een bedrijf claimt, wat het kan aantonen en hoe het zich presenteert onder scrutiny. De website is vaak de eerste gestructureerde blootstelling die een koper heeft aan die consistentie. Is die helder, capabel en actueel, dan ondersteunt zij commerciële gesprekken vóór zij beginnen. Is dat niet zo, dan ontstaat twijfel vroeg — en vroege twijfel is duur om ongedaan te maken.",
+        "Investeren in maritiem webdesign gaat niet om awards of agency-trends najagen. Het gaat erom geloofwaardigheid zichtbaar te maken: voor charterers die assets vergelijken, voor projectteams die aannemers shortlisten, voor partners die fit beoordelen, en voor mensen binnen uw organisatie die een site nodig hebben die zij willen delen.",
+      ],
+      ctaNl:
+        "Breure.ai bouwt gerichte maritieme websites voor offshore-, scheeps-, scheepvaart- en industriële bedrijven die geloofwaardig moeten zijn vóór het eerste gesprek begint.",
+    },
+  }
+}
+
+export const insightArticles: InsightArticle[] = baseInsightArticles.map((article) =>
+  article.slug === "maritime-website-design-trust"
+    ? withMaritimeTrustNl(article)
+    : article,
+)
+
+export function insightsIndexPath(locale: InsightLocale): string {
+  return locale === "nl" ? "/inzichten" : "/en/insights"
+}
+
+export function insightArticlePath(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string {
+  const slug =
+    locale === "nl" ? (article.slugNl ?? article.slug) : article.slug
+  return `${insightsIndexPath(locale)}/${slug}`
+}
+
+type InsightLocalizableScalarField =
+  | "title"
+  | "excerpt"
+  | "category"
+  | "readingTime"
+  | "seoTitle"
+  | "metaDescription"
+  | "intro"
+
+export function getInsightField(
+  article: InsightArticle,
+  field: InsightLocalizableScalarField,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl") {
+    const nlKey = `${field}Nl` as keyof InsightArticle
+    const nlValue = article[nlKey]
+    if (typeof nlValue === "string") return nlValue
+  }
+  return article[field]
+}
+
+export function getInsightKeywords(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string[] {
+  if (locale === "nl" && article.keywordsNl) return article.keywordsNl
+  return article.keywords
+}
+
+export function getInsightSlug(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl") return article.slugNl ?? article.slug
+  return article.slug
+}
+
+export function getSectionHeading(
+  section: InsightSection,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl" && section.headingNl) return section.headingNl
+  return section.heading
+}
+
+export function getSectionParagraphs(
+  section: InsightSection,
+  locale: InsightLocale,
+): string[] {
+  if (locale === "nl" && section.paragraphsNl) return section.paragraphsNl
+  return section.paragraphs
+}
+
+export function getConclusionHeading(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl" && article.conclusion.headingNl) {
+    return article.conclusion.headingNl
+  }
+  return article.conclusion.heading
+}
+
+export function getConclusionParagraphs(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string[] {
+  if (locale === "nl" && article.conclusion.paragraphsNl) {
+    return article.conclusion.paragraphsNl
+  }
+  return article.conclusion.paragraphs
+}
+
+export function getConclusionCta(
+  article: InsightArticle,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl" && article.conclusion.ctaNl) {
+    return article.conclusion.ctaNl
+  }
+  return article.conclusion.cta
+}
+
+export function getImageAlt(
+  image: InsightImage,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl" && image.altNl) return image.altNl
+  return image.alt
+}
+
+export function getInlineImageCaption(
+  image: InsightInlineImage,
+  locale: InsightLocale,
+): string | undefined {
+  if (locale === "nl" && image.captionNl) return image.captionNl
+  return image.caption
+}
+
+export function findArticleBySlug(
+  slug: string,
+  locale: InsightLocale,
+): InsightArticle | undefined {
+  return insightArticles.find((article) =>
+    locale === "nl"
+      ? article.slugNl === slug || article.slug === slug
+      : article.slug === slug,
+  )
+}
+
 export function getInsightBySlug(slug: string): InsightArticle | undefined {
-  return insightArticles.find((article) => article.slug === slug)
+  return findArticleBySlug(slug, "en")
 }
 
-export function insightArticlePath(slug: string): string {
-  return `${INSIGHTS_INDEX_PATH}/${slug}`
-}
-
-export function formatInsightDate(isoDate: string): string {
-  return new Intl.DateTimeFormat("en-GB", {
+export function formatInsightDate(
+  isoDate: string,
+  locale: InsightLocale = "en",
+): string {
+  const tag = locale === "nl" ? "nl-NL" : "en-GB"
+  return new Intl.DateTimeFormat(tag, {
     day: "numeric",
     month: "long",
     year: "numeric",
   }).format(new Date(isoDate))
-}
-
-export function buildInsightsIndexMetadata(): Metadata {
-  return buildInsightsPageMetadata({
-    title: insightsOverview.seoTitle,
-    description: insightsOverview.metaDescription,
-    path: INSIGHTS_INDEX_PATH,
-    keywords: [
-      "maritime website design",
-      "offshore web design",
-      "maritime insights",
-      "shipping company website",
-    ],
-  })
-}
-
-export function buildInsightArticleMetadata(article: InsightArticle): Metadata {
-  return buildInsightsPageMetadata({
-    title: article.seoTitle,
-    description: article.metaDescription,
-    path: insightArticlePath(article.slug),
-    keywords: article.keywords,
-  })
 }
 
 export function insightArticleWordCount(article: InsightArticle): number {
@@ -236,18 +513,40 @@ export function insightArticleWordCount(article: InsightArticle): number {
   return text.split(/\s+/).filter(Boolean).length
 }
 
-export const insightSitemapPaths = [
-  INSIGHTS_INDEX_PATH,
-  ...insightArticles.map((article) => insightArticlePath(article.slug)),
-] as const
+export function insightSitemapPaths(locale: InsightLocale): string[] {
+  return [
+    insightsIndexPath(locale),
+    ...insightArticles.map((article) => insightArticlePath(article, locale)),
+  ]
+}
 
-export function insightSitemapEntries() {
-  const lastModified = new Date()
+export function toOppositeInsightPath(
+  pathname: string,
+  target: InsightLocale,
+): string | null {
+  const normalized = pathname.replace(/\/+$/, "") || "/"
+  const nlIndex = insightsIndexPath("nl")
+  const enIndex = insightsIndexPath("en")
 
-  return insightSitemapPaths.map((path) => ({
-    url: absoluteUrl(path),
-    lastModified,
-    changeFrequency: "monthly" as const,
-    priority: path === INSIGHTS_INDEX_PATH ? 0.75 : 0.7,
-  }))
+  if (normalized === nlIndex || normalized === enIndex) {
+    return insightsIndexPath(target)
+  }
+
+  const nlMatch = normalized.match(/^\/inzichten\/([^/]+)$/)
+  if (nlMatch) {
+    const article = findArticleBySlug(nlMatch[1], "nl")
+    return article
+      ? insightArticlePath(article, target)
+      : insightsIndexPath(target)
+  }
+
+  const enMatch = normalized.match(/^\/en\/insights\/([^/]+)$/)
+  if (enMatch) {
+    const article = findArticleBySlug(enMatch[1], "en")
+    return article
+      ? insightArticlePath(article, target)
+      : insightsIndexPath(target)
+  }
+
+  return null
 }

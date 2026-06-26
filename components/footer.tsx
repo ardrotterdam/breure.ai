@@ -2,7 +2,6 @@ import Link from "next/link"
 
 import { BreureWordmark } from "@/components/breure-wordmark"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
-import { INSIGHTS_INDEX_PATH } from "@/lib/insights"
 
 interface FooterProps {
   locale?: Locale
@@ -13,11 +12,13 @@ export function Footer({ locale = "nl" }: FooterProps) {
   const nav = dict.nav[locale]
   const year = new Date().getFullYear()
 
+  const insightsHref = ROUTES.insights[locale]
+
   const links = [
     { label: nav.services, href: ROUTES.services[locale] },
     { label: nav.process, href: ROUTES.process[locale] },
     { label: nav.portfolio, href: ROUTES.portfolio[locale] },
-    { label: nav.insights, href: INSIGHTS_INDEX_PATH },
+    { label: nav.insights, href: insightsHref },
     { label: nav.contact, href: ROUTES.contact[locale] },
   ]
 
@@ -49,7 +50,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
                   <Link
                     href={link.href}
                     className="hover:text-foreground transition-colors"
-                    {...(link.href === INSIGHTS_INDEX_PATH && nav.insightsTitle
+                    {...(link.href === insightsHref && nav.insightsTitle
                       ? { title: nav.insightsTitle }
                       : {})}
                   >
