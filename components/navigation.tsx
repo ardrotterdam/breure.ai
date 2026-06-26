@@ -164,6 +164,9 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                   active ? "font-medium" : "font-normal"
                 }`}
                 aria-current={active ? "page" : undefined}
+                {...(item.href === INSIGHTS_INDEX_PATH && t.insightsTitle
+                  ? { title: t.insightsTitle }
+                  : {})}
               >
                 {item.label}
               </Link>
@@ -251,6 +254,9 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                         active ? "text-accent" : "text-white"
                       }`}
                       aria-current={active ? "page" : undefined}
+                      {...(item.href === INSIGHTS_INDEX_PATH && t.insightsTitle
+                        ? { title: t.insightsTitle }
+                        : {})}
                     >
                       {item.label}
                     </Link>

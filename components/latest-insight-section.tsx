@@ -72,6 +72,14 @@ export function LatestInsightSection({ locale = "nl" }: LatestInsightSectionProp
               <div className="absolute top-0 left-0 w-[2px] h-16 bg-accent opacity-60" />
 
               <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-eyebrow">
+                {t.languageBadge ? (
+                  <>
+                    <span className="inline-flex items-center rounded border border-border/60 px-2 py-0.5 font-semibold tracking-wider uppercase text-accent-soft">
+                      {t.languageBadge}
+                    </span>
+                    <span aria-hidden>·</span>
+                  </>
+                ) : null}
                 <span className="font-medium tracking-[0.2em] uppercase">
                   {article.category}
                 </span>

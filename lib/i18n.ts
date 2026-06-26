@@ -52,7 +52,8 @@ export const dict = {
       services: "Diensten",
       process: "Proces",
       portfolio: "Portfolio",
-      insights: "Inzichten",
+      insights: "Inzichten (EN)",
+      insightsTitle: "Artikelen over maritiem webdesign — in het Engels",
       contact: "Contact",
       cta: "Neem contact op",
       openMenu: "Open menu",
@@ -67,6 +68,7 @@ export const dict = {
       process: "Process",
       portfolio: "Portfolio",
       insights: "Insights",
+      insightsTitle: "Articles on maritime web design",
       contact: "Contact",
       cta: "Get in touch",
       openMenu: "Open menu",
@@ -80,18 +82,18 @@ export const dict = {
 
   hero: {
     nl: {
-      eyebrow: "Offshore & Maritieme Webdesign",
+      eyebrow: "Maritiem webdesign voor offshore & scheepvaart",
       headlineMain: "Maritieme websites",
-      headlineAccent: "ontworpen voor vertrouwen",
+      headlineAccent: "gebouwd voor vertrouwen",
       headlineEnd: ".",
       subheadline:
-        "Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.",
+        "Premium digitale platforms voor offshore, maritieme en zware-industriële bedrijven.",
       paragraph:
-        "Wij ontwerpen krachtige websites voor offshore-operators, scheepseigenaren, engineeringbedrijven en maritieme professionals. Gebouwd voor geloofwaardigheid, helderheid en commercieel vertrouwen.",
-      ctaPrimary: "Neem contact op",
-      ctaSecondary: "Bekijk wat we voor uw assets doen",
-      badgeOne: "AI-Powered Data",
-      badgeTwo: "Real-time Specs",
+        "Wij ontwerpen performante maritieme websites voor offshore-operators, scheepseigenaren, scheepvaartbedrijven, maritieme toeleveranciers en engineeringbedrijven — zodat u geloofwaardig bent vóór het eerste gesprek.",
+      ctaPrimary: "Bespreken we uw project",
+      ctaSecondary: "Ontdek onze diensten voor uw assets",
+      badgeOne: "AI-ondersteunde specificaties",
+      badgeTwo: "Specificaties in realtime",
     },
     en: {
       eyebrow: "Offshore & Maritime Web Design",
@@ -113,22 +115,22 @@ export const dict = {
     nl: {
       title: "Waarom offshore-bedrijven voor Breure.ai kiezen",
       intro:
-        "Offshore assets draaien op day rates. Elke extra charterdag telt. Een heldere digitale presentatie versnelt beslissingen, verkleint risico's en vergroot vertrouwen bij operators en contractors.",
+        "Offshore assets draaien op day rates. Elke extra charterdag telt. Een scherpe digitale presentatie versnelt beslissingen, verkleint risico's en bouwt vertrouwen op — nog vóór het eerste commerciële gesprek.",
       reasons: [
         {
-          title: "Asset first, niet corporate first",
+          title: "Asset eerst — niet de holding",
           description:
             "Engineers, charterers en tenderteams zoeken niet naar uw holding, maar naar concrete capaciteit: crane, deck, DP, POB, transit. Wij structureren de site rond de asset.",
         },
         {
           title: "Technische taal, begrijpelijke opbouw",
           description:
-            "Wij combineren technische details (SWL, outreach, hook height, draft, bollard pull) met begrijpelijke navigatie. Zo vinden zowel de project engineer als de commerciële manager direct wat hij zoekt.",
+            "Wij combineren technische details (SWL, outreach, hook height, draft, bollard pull) met heldere navigatie. Zo vinden project engineers en commercieel management direct wat ze zoeken.",
         },
         {
-          title: "AI-visuals & snelle iteratie",
+          title: "AI-beelden & snelle iteratie",
           description:
-            "Met moderne AI-visualisatie creëren wij sterke offshore beelden zonder dure heli-flights of renders. Dat geeft flexibiliteit en snelheid bij nieuwbouw, conversies en rebranding.",
+            "Met moderne AI-visualisatie creëren wij sterke offshore beelden zonder dure helikoptervluchten of renders. Dat geeft flexibiliteit en snelheid bij nieuwbouw, conversies en rebranding.",
         },
       ],
     },
@@ -160,30 +162,30 @@ export const dict = {
     nl: {
       title: "Wat wij bouwen voor offshore & maritieme klanten",
       intro:
-        "Uw asset verdient meer dan een vermelding op de corporate website. Wij bouwen gerichte, snelle microsites per schip of platform — volledig afgestemd op chartering, engineering en tendering.",
+        "Uw asset verdient meer dan een vermelding op de corporate website. Wij bouwen gerichte, snelle microsites per schip of platform — volledig afgestemd op chartering, engineering en tendering. Ook voor scheepvaartbedrijven, maritieme toeleveranciers en industriële contractors.",
       items: [
         {
-          tag: "Asset microsites",
+          tag: "Asset-microsites",
           number: "01",
-          title: "Vessel & platform websites",
+          title: "Websites per schip & platform",
           description:
-            "Dedicated websites voor heavy-lift vessels, jack-ups, barges, construction vessels en support ships.",
+            "Dedicated websites voor heavy-lift vessels, jack-ups, barges, construction vessels en supportschepen.",
           features: [
             "Technische specs & crane load charts",
             "Deck layouts en POB-capaciteit",
-            "Projectreferenties en foto/visual galleries",
+            "Projectreferenties en foto- en visualgalerijen",
           ],
         },
         {
           tag: "Engineering-ready",
           number: "02",
-          title: "Datasheets & capability pages",
+          title: "Datasheets & capaciteitspagina's",
           description:
             "Structuur en content die direct bruikbaar is in tenders, FEED-studies en engineering reviews.",
           features: [
             "PDF-downloads per asset",
             "Lift scenarios & deck load zones",
-            "DP-capability, fuel & transit data",
+            "DP-capability, brandstof- & transitdata",
           ],
         },
         {
@@ -193,8 +195,8 @@ export const dict = {
           description:
             "Vindbaar op de termen waarop brokers, contractors en operators zoeken naar assets en capaciteit.",
           features: [
-            "Gerichte SEO op offshore keywords",
-            "Scherpe, technische copywriting",
+            "Technische SEO afgestemd op maritieme zoektermen",
+            "Scherpe, sector-specifieke copywriting",
             "Snel en veilig gehost, wereldwijd bereikbaar",
           ],
         },
@@ -248,16 +250,16 @@ export const dict = {
   process: {
     nl: {
       eyebrow: "Ons proces",
-      titlePrefix: "Van specs naar",
+      titlePrefix: "Van specificaties naar",
       titleAccent: "online impact",
       intro:
-        "Een gestroomlijnd proces dat past bij de snelheid van de offshore industrie. Geen maanden wachten, maar resultaat binnen weken.",
+        "Een gestroomlijnd proces dat past bij de snelheid van de offshore-industrie. Geen maanden wachten — resultaat binnen weken.",
       steps: [
         {
           number: "01",
-          title: "Asset inventarisatie",
+          title: "Asset-inventarisatie",
           description:
-            "Wij verzamelen alle technische data, GA-plans, specs en visueel materiaal van uw asset.",
+            "Wij verzamelen alle technische data, GA-plannen, specificaties en visueel materiaal van uw asset.",
         },
         {
           number: "02",
@@ -267,15 +269,15 @@ export const dict = {
         },
         {
           number: "03",
-          title: "Design & ontwikkeling",
+          title: "Ontwerp & ontwikkeling",
           description:
-            "Premium design met AI-gegenereerde visuals waar nodig. Snel, responsief, SEO-geoptimaliseerd.",
+            "Premium ontwerp met AI-gegenereerde visuals waar nodig. Snel, responsief en SEO-geoptimaliseerd.",
         },
         {
           number: "04",
-          title: "Launch & optimalisatie",
+          title: "Livegang & optimalisatie",
           description:
-            "Live binnen weken. Daarna continue verbetering op basis van data en gebruikersgedrag.",
+            "Live binnen weken. Daarna continue verbetering op basis van performance, SEO en gebruikersgedrag.",
         },
       ],
     },
@@ -316,44 +318,44 @@ export const dict = {
 
   portfolio: {
     nl: {
-      eyebrow: "Selected works",
-      title: "Asset websites, capability pages en vloot-platforms",
+      eyebrow: "Projecttypes & deliverables",
+      title: "Websites per asset, capaciteitspagina's en vlootplatforms",
       intro:
-        "Een greep uit het werk dat wij realiseren voor offshore operators, contractors en vlooteigenaren. Specifieke case studies delen wij graag onder NDA.",
+        "Typische projecttypes die wij realiseren voor offshore-operators, contractors en vlooteigenaren. Geanonimiseerde voorbeelden — specifieke referenties delen wij op aanvraag onder NDA.",
       ndaNote:
         "Specifieke referenties, technische case studies en demo-omgevingen delen wij op aanvraag via het contactformulier, onder NDA waar nodig.",
       items: [
         {
           category: "Heavy-lift vessel",
-          title: "Crane vessel asset microsite",
+          title: "Microsite voor crane vessel",
           description:
             "Dedicated microsite voor een heavy-lift crane vessel met dynamische load charts, deck layout en projectreferenties. Direct bruikbaar in tenders en FEED-studies.",
           metrics: [
-            { label: "SWL & outreach charts", value: "Live" },
+            { label: "Load charts", value: "SWL & outreach" },
             { label: "Talen", value: "NL · EN" },
-            { label: "Time to launch", value: "5 weken" },
+            { label: "Doorlooptijd", value: "4–8 weken" },
           ],
         },
         {
           category: "Jack-up platform",
-          title: "Jack-up capability page",
+          title: "Capaciteitspagina jack-up",
           description:
-            "Capability page voor een wind installation jack-up. Compleet met leg length, payload, accommodatie, transit data en downloadbare datasheets voor contractors.",
+            "Capaciteitspagina voor een wind-installatie jack-up. Compleet met leg length, payload, accommodatie, transitdata en downloadbare datasheets voor contractors.",
           metrics: [
-            { label: "Datasheets (PDF)", value: "Per asset" },
+            { label: "Datasheets", value: "PDF per asset" },
             { label: "Sectoren", value: "Wind · O&G" },
-            { label: "Time to launch", value: "4 weken" },
+            { label: "Doorlooptijd", value: "4–8 weken" },
           ],
         },
         {
-          category: "Support fleet",
-          title: "Multi-vessel fleet site",
+          category: "Supportvloot",
+          title: "Vlootplatform multi-vessel",
           description:
-            "Vloot-website voor een offshore support operator. Per schip een eigen detailpagina met specs, foto's en charter-aanvraag, gekoppeld aan een centrale brand experience.",
+            "Vlootwebsite voor een offshore support operator. Per schip een eigen detailpagina met specs, beeldmateriaal en charter-aanvraag — gekoppeld aan één merkbeleving.",
           metrics: [
-            { label: "Vessels online", value: "12" },
-            { label: "Charter aanvragen", value: "+38%" },
-            { label: "Time to launch", value: "8 weken" },
+            { label: "Vlootpresentatie", value: "Per schip" },
+            { label: "Charterflow", value: "Geïntegreerd" },
+            { label: "Doorlooptijd", value: "6–10 weken" },
           ],
         },
         {
@@ -362,9 +364,9 @@ export const dict = {
           description:
             "Corporate website met geïntegreerde asset library. Tenderteams, brokers en charterers vinden in één omgeving zowel het bedrijfsverhaal als concrete capability data.",
           metrics: [
-            { label: "Asset profielen", value: "20+" },
-            { label: "PageSpeed", value: "98 / 100" },
-            { label: "Time to launch", value: "10 weken" },
+            { label: "Assetprofielen", value: "Centraal beheer" },
+            { label: "Performance", value: "Core Web Vitals" },
+            { label: "Doorlooptijd", value: "8–12 weken" },
           ],
         },
       ],
@@ -435,7 +437,7 @@ export const dict = {
       emailLabel: "E-mail",
       addressLabel: "Adres",
       address: ["Westplein 12", "3016 BM Rotterdam", "The Netherlands"],
-      tagline: "Techniek. Vertrouwen. Resultaat.",
+      tagline: "Engineering. Vertrouwen. Resultaat.",
       form: {
         subject: "Nieuw contactverzoek via Breure.ai",
         fromName: "Breure.ai Website",
@@ -492,25 +494,25 @@ export const dict = {
     nl: {
       services: {
         eyebrow: "Diensten",
-        titlePrefix: "Asset websites die meegaan op",
+        titlePrefix: "Professionele maritieme websites die standhouden bij",
         titleAccent: "tender, charter en engineering review",
         description:
-          "Wij bouwen gerichte, snelle microsites per schip of platform — volledig afgestemd op chartering, engineering en tendering. Geen corporate brochure, maar werkbare digitale assets.",
+          "Wij bouwen gerichte, snelle microsites per schip of platform — volledig afgestemd op chartering, engineering en tendering. Geen corporate brochure, maar werkbare digitale assets voor offshore en scheepvaart.",
       },
       process: {
         eyebrow: "Proces",
-        titlePrefix: "Van GA-plan en spec sheet naar",
-        titleAccent: "live asset website",
+        titlePrefix: "Van GA-plan en specificaties naar",
+        titleAccent: "live asset-website",
         description:
-          "Geen maanden wachten, maar resultaat binnen weken. Vier heldere fases die aansluiten op hoe charterers, engineers en tenderteams werken — zodat uw site direct waarde levert.",
+          "Geen maanden wachten — resultaat binnen weken. Vier heldere fases die aansluiten op hoe charterers, engineers en tenderteams werken, zodat uw site direct commerciële waarde levert.",
       },
       portfolio: {
         eyebrow: "Portfolio",
-        titlePrefix: "Asset websites waarop",
+        titlePrefix: "Maritieme websites waarop",
         titleAccent: "charterers en contractors",
         titleSuffix: "beslissen",
         description:
-          "Een selectie uit ons werk voor offshore operators, jack-up eigenaren, heavy-lift contractors en multi-vessel vloten. Premium digitale presentaties op het niveau van de assets zelf.",
+          "Typische projecttypes voor offshore-operators, jack-up-eigenaren, heavy-lift contractors en multi-vessel vloten. Premium vlootpresentatie op het niveau van de assets zelf.",
       },
     },
     en: {
@@ -554,12 +556,13 @@ export const dict = {
 
   latestInsight: {
     nl: {
-      eyebrow: "Inzichten",
-      title: "Laatste maritieme insight",
+      eyebrow: "Inzichten (EN)",
+      title: "Laatste artikel",
       description:
-        "Praktische perspectieven op maritiem webdesign, offshore geloofwaardigheid en digitaal vertrouwen — momenteel in het Engels.",
-      readArticle: "Lees artikel",
-      viewAll: "Alle inzichten",
+        "Praktische perspectieven op maritiem webdesign, offshore-geloofwaardigheid en digitaal vertrouwen. Onze artikelen zijn momenteel in het Engels.",
+      readArticle: "Lees artikel (EN)",
+      viewAll: "Alle inzichten (EN)",
+      languageBadge: "EN",
     },
     en: {
       eyebrow: "Insights",
@@ -568,6 +571,7 @@ export const dict = {
         "Practical perspectives on maritime website design, offshore credibility and digital trust.",
       readArticle: "Read article",
       viewAll: "All insights",
+      languageBadge: "",
     },
   },
 
@@ -593,14 +597,14 @@ export const dict = {
         "Een kort overzicht van wat u kunt verwachten wanneer u een offshore- of maritiem webproject met ons bespreekt.",
       items: [
         {
-          question: "Welk type projecten nemen jullie aan?",
+          question: "Welk type projecten neemt u aan?",
           answer:
-            "Wij richten ons op asset microsites, capability pages, vloot-platforms en SEO voor offshore operators, scheepseigenaren, contractors en maritieme engineeringbedrijven — van heavy-lift vessels en jack-ups tot support vloten.",
+            "Wij richten ons op asset-microsites, capaciteitspagina's, vlootplatforms en SEO voor offshore-operators, scheepseigenaren, scheepvaartbedrijven, contractors en maritieme engineeringbedrijven — van heavy-lift vessels en jack-ups tot supportvloten.",
         },
         {
           question: "Hoe lang duurt een project gemiddeld?",
           answer:
-            "Een enkele asset website staat doorgaans binnen vier tot acht weken live. Multi-vessel vloten of corporate sites met asset library vragen meer tijd; wij geven na de eerste inventarisatie een realistische planning.",
+            "Een enkele asset-website staat doorgaans binnen vier tot acht weken live. Multi-vessel vloten of corporate sites met asset library vragen meer tijd; wij geven na de eerste inventarisatie een realistische planning.",
         },
         {
           question: "Kunnen referenties onder NDA worden gedeeld?",
@@ -608,7 +612,7 @@ export const dict = {
             "Ja. Specifieke case studies, demo-omgevingen en technische referenties delen wij op aanvraag via het contactformulier. Waar nodig werken wij onder NDA — gangbaar in offshore en maritieme projecten.",
         },
         {
-          question: "Waarom focussen jullie op maritiem en offshore?",
+          question: "Waarom richt Breure.ai zich op maritiem en offshore?",
           answer:
             "Charterers, tenderteams en engineers zoeken concrete capability data — crane SWL, deck load, DP, POB — niet alleen een corporate verhaal. Wij structureren sites rond assets en spreken de taal van de sector.",
         },
@@ -657,26 +661,26 @@ export const dict = {
     nl: {
       services: {
         eyebrow: "Klaar voor uw vloot",
-        title: "Laat uw assets werken — ook online.",
+        title: "Laat uw assets presteren — ook online.",
         description:
           "Via het contactformulier bespreken wij welke diensten passen bij uw vloot, doelgroep en commerciële doelen.",
-        primary: "Neem contact op",
+        primary: "Vraag een verkennend gesprek aan",
         secondary: "Bekijk ons proces",
       },
       process: {
         eyebrow: "Start uw project",
         title: "Klaar om uw asset live te zetten?",
         description:
-          "Stuur ons een bericht. Wij bespreken graag uw vloot, doelgroep en tijdlijn. Vrijblijvend, en altijd vertrouwelijk.",
+          "Stuur ons een bericht. Wij bespreken graag uw vloot, doelgroep en tijdlijn. Vrijblijvend en altijd vertrouwelijk.",
         primary: "Neem contact op",
         secondary: "Bekijk onze diensten",
       },
       portfolio: {
         eyebrow: "Uw asset volgende?",
-        title: "Laat uw vloot zien zoals hij verdient.",
+        title: "Presenteer uw vloot op het niveau dat zij verdient.",
         description:
           "Wij bespreken graag welke aanpak past bij uw assets, doelgroep en commerciële doelen. Voorbeelden en demo-omgevingen delen wij op aanvraag via het contactformulier.",
-        primary: "Neem contact op",
+        primary: "Bespreken we uw project",
         secondary: "Bekijk onze diensten",
       },
     },
@@ -711,7 +715,7 @@ export const dict = {
   footer: {
     nl: {
       description:
-        "Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven. Gebouwd voor geloofwaardigheid, helderheid en commercieel vertrouwen.",
+        "Premium digitale platforms voor offshore, maritieme en zware-industriële bedrijven. Gebouwd voor geloofwaardigheid, helderheid en commercieel vertrouwen.",
       navHeading: "Navigatie",
       contactHeading: "Contact",
       copyright: (year: number) =>
@@ -735,9 +739,9 @@ export const dict = {
 export const seo = {
   home: {
     nl: {
-      title: "Breure.ai | Maritieme Websites voor Offshore & Maritime",
+      title: "Breure.ai | Maritieme Websites voor Offshore & Scheepvaart",
       description:
-        "Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven. Wij ontwerpen krachtige websites voor operators, scheepseigenaren en engineeringbedrijven.",
+        "Maritiem webdesign en professionele websites voor offshore-operators, scheepseigenaren en maritieme bedrijven. Premium platforms gebouwd voor geloofwaardigheid vóór het eerste gesprek.",
     },
     en: {
       title: "Breure.ai | Maritime Websites Engineered for Trust",
@@ -747,9 +751,9 @@ export const seo = {
   },
   services: {
     nl: {
-      title: "Diensten | Asset websites voor offshore & maritiem | Breure.ai",
+      title: "Diensten | Maritieme websites voor offshore & scheepvaart | Breure.ai",
       description:
-        "Asset microsites, capability pages, SEO en charter marketing voor heavy-lift vessels, jack-ups, platforms en support ships.",
+        "Website voor offshore bedrijf: asset-microsites, capaciteitspagina's, SEO en charter marketing voor heavy-lift vessels, jack-ups, platforms en supportschepen.",
     },
     en: {
       title: "Services | Asset websites for offshore & maritime | Breure.ai",
@@ -759,9 +763,9 @@ export const seo = {
   },
   process: {
     nl: {
-      title: "Proces | Van specs naar online impact | Breure.ai",
+      title: "Proces | Maritiem webdesign van specificatie naar livegang | Breure.ai",
       description:
-        "Een gestroomlijnd proces voor offshore & maritieme websites: asset-inventarisatie, structuur & content, design & development, en launch & optimalisatie.",
+        "Professioneel proces voor maritieme websites: asset-inventarisatie, structuur & content, ontwerp & ontwikkeling, en livegang met SEO-optimalisatie.",
     },
     en: {
       title: "Process | From specs to online impact | Breure.ai",
@@ -771,9 +775,9 @@ export const seo = {
   },
   portfolio: {
     nl: {
-      title: "Portfolio | Asset websites & capability pages | Breure.ai",
+      title: "Portfolio | Maritieme websites & vlootpresentatie | Breure.ai",
       description:
-        "Selected works: asset microsites, capability pages en multi-vessel fleet sites voor offshore operators, contractors en vlooteigenaren.",
+        "Typische projecttypes: asset-microsites, capaciteitspagina's en vlootplatforms voor offshore-operators, contractors en vlooteigenaren. Referenties op aanvraag onder NDA.",
     },
     en: {
       title: "Portfolio | Asset websites & capability pages | Breure.ai",
@@ -783,9 +787,9 @@ export const seo = {
   },
   contact: {
     nl: {
-      title: "Contact | Breure.ai",
+      title: "Contact | Maritiem webdesign Rotterdam | Breure.ai",
       description:
-        "Neem contact op met Breure.ai in Rotterdam. Stuur een bericht via het formulier — wij reageren per e-mail of telefoon.",
+        "Neem contact op met Breure.ai in Rotterdam voor maritieme websites en offshore webdesign. Stuur een bericht via het formulier — wij reageren per e-mail of telefoon.",
     },
     en: {
       title: "Contact | Breure.ai",

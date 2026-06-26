@@ -46,7 +46,13 @@ export function Footer({ locale = "nl" }: FooterProps) {
             <ul className="space-y-2 text-sm text-text-secondary">
               {links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-foreground transition-colors">
+                  <Link
+                    href={link.href}
+                    className="hover:text-foreground transition-colors"
+                    {...(link.href === INSIGHTS_INDEX_PATH && nav.insightsTitle
+                      ? { title: nav.insightsTitle }
+                      : {})}
+                  >
                     {link.label}
                   </Link>
                 </li>

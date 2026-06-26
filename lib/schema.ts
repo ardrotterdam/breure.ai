@@ -86,7 +86,7 @@ export function buildSiteSchemaGraph(): SchemaGraph {
         image: logoImageUrl,
         email: "info@breure.ai",
         description:
-          "Premium digital platforms for offshore, maritime and heavy industry companies.",
+          "Premium digitale platforms voor offshore, maritieme en zware-industriële bedrijven. Premium digital platforms for offshore, maritime and heavy industry companies.",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
