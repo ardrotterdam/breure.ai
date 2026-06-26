@@ -1,43 +1,27 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 
 import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld"
+import { ContactFaq } from "@/components/contact/contact-faq"
 import { ContactPageJsonLd } from "@/components/contact-page-json-ld"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { ContactSection } from "@/components/contact-section"
-import { seo } from "@/lib/i18n"
-import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+import { dict, ROUTES } from "@/lib/i18n"
+import { buildPageMetadata } from "@/lib/page-metadata"
 
 const locale = "nl" as const
+const nav = dict.nav.nl
+const related = dict.contactRelated.nl
 
-export const metadata: Metadata = {
-  title: seo.contact.nl.title,
-  description: seo.contact.nl.description,
+export const metadata: Metadata = buildPageMetadata("contact", locale, {
   keywords: [
     "Breure.ai contact",
     "offshore website contact",
     "maritime web agency Rotterdam",
     "contactformulier",
   ],
-  alternates: {
-    canonical: "/contact",
-    languages: {
-      "nl-NL": "/contact",
-      "en-US": "/en/contact",
-      "x-default": "/contact",
-    },
-  },
-  openGraph: socialOpenGraph({
-    title: seo.contact.nl.title,
-    description: seo.contact.nl.description,
-    url: "https://breure.ai/contact",
-    locale: "nl_NL",
-  }),
-  twitter: socialTwitter({
-    title: seo.contact.nl.title,
-    description: seo.contact.nl.description,
-  }),
-}
+})
 
 export default function ContactPage() {
   return (
@@ -47,6 +31,34 @@ export default function ContactPage() {
       <Navigation locale={locale} />
       <main className="pt-28 md:pt-32">
         <ContactSection locale={locale} variant="page" />
+        <ContactFaq locale={locale} />
+        <section className="border-t border-border/50 bg-secondary/30 py-12 sm:py-14">
+          <div className="container mx-auto px-5 sm:px-6 lg:px-12 max-w-3xl">
+            <h2 className="text-xl sm:text-2xl font-light text-foreground mb-3">
+              {related.heading}
+            </h2>
+            <p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-6">
+              {related.description}
+            </p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              <li>
+                <Link href={ROUTES.services.nl} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.services}
+                </Link>
+              </li>
+              <li>
+                <Link href={ROUTES.process.nl} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.process}
+                </Link>
+              </li>
+              <li>
+                <Link href={ROUTES.portfolio.nl} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.portfolio}
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </section>
       </main>
       <Footer locale={locale} />
     </>

@@ -7,31 +7,9 @@ import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { seo } from "@/lib/i18n"
-import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+import { buildPageMetadata } from "@/lib/page-metadata"
 
-export const metadata: Metadata = {
-  title: seo.home.nl.title,
-  description: seo.home.nl.description,
-  alternates: {
-    canonical: "/",
-    languages: {
-      "nl-NL": "/",
-      "en-US": "/en",
-      "x-default": "/",
-    },
-  },
-  openGraph: socialOpenGraph({
-    title: seo.home.nl.title,
-    description: seo.home.nl.description,
-    url: "https://breure.ai",
-    locale: "nl_NL",
-  }),
-  twitter: socialTwitter({
-    title: seo.home.nl.title,
-    description: seo.home.nl.description,
-  }),
-}
+export const metadata: Metadata = buildPageMetadata("home", "nl")
 
 export default function Home() {
   return (
@@ -39,10 +17,10 @@ export default function Home() {
       <Navigation locale="nl" />
       <main>
         <HeroSection locale="nl" />
-        <WhySection locale="nl" />
-        <ServicesSection locale="nl" />
-        <ProcessSection locale="nl" />
-        <ContactSection locale="nl" />
+        <WhySection locale="nl" portfolioHref="/portfolio" />
+        <ServicesSection locale="nl" detailHref="/diensten" />
+        <ProcessSection locale="nl" detailHref="/proces" />
+        <ContactSection locale="nl" fullPageHref="/contact" />
       </main>
       <Footer locale="nl" />
     </>

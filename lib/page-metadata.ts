@@ -1,0 +1,120 @@
+import type { Metadata } from "next"
+
+import { ROUTES, seo, type Locale, type RouteKey } from "@/lib/i18n"
+import { siteUrl, socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+
+const LOCALE_TAG = {
+  nl: "nl-NL",
+  en: "en-US",
+} as const
+
+const OG_LOCALE = {
+  nl: "nl_NL",
+  en: "en_US",
+} as const
+
+type PageSeoKey = keyof typeof seo
+
+/** Map sitemap / metadata route keys to i18n ROUTES keys. */
+export const SITEMAP_ROUTES: readonly RouteKey[] = [
+  "home",
+  "services",
+  "portfolio",
+  "process",
+  "contact",
+]
+
+export function pathForRoute(routeKey: RouteKey, locale: Locale): string {
+  return ROUTES[routeKey][locale]
+}
+
+export function absoluteUrl(path: string): string {
+  if (path === "/") return siteUrl
+  return `${siteUrl}${path}`
+}
+
+type InsightsMetadataOptions = {
+  title: string
+  description: string
+  path: string
+  keywords?: string[]
+}
+
+/** Metadata for English-only Insights routes (no NL hreflang pair). */
+export function buildInsightsPageMetadata({
+  title,
+  description,
+  path,
+  keywords,
+}: InsightsMetadataOptions): Metadata {
+  return {
+    title,
+    description,
+    ...(keywords ? { keywords } : {}),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    alternates: {
+      canonical: path,
+    },
+    openGraph: socialOpenGraph({
+      title,
+      description,
+      url: absoluteUrl(path),
+      locale: "en_US",
+    }),
+    twitter: socialTwitter({
+      title,
+      description,
+    }),
+  }
+}
+
+export function buildPageMetadata(
+  page: PageSeoKey,
+  locale: Locale,
+  options?: { keywords?: string[] },
+): Metadata {
+  const copy = seo[page][locale]
+  const path = pathForRoute(page as RouteKey, locale)
+  const oppositeLocale: Locale = locale === "nl" ? "en" : "nl"
+  const xDefaultPath = ROUTES[page as RouteKey].nl
+
+  return {
+    title: copy.title,
+    description: copy.description,
+    ...(options?.keywords ? { keywords: options.keywords } : {}),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+    alternates: {
+      canonical: path,
+      languages: {
+        [LOCALE_TAG.nl]: ROUTES[page as RouteKey].nl,
+        [LOCALE_TAG.en]: ROUTES[page as RouteKey].en,
+        "x-default": xDefaultPath,
+      },
+    },
+    openGraph: socialOpenGraph({
+      title: copy.title,
+      description: copy.description,
+      url: absoluteUrl(path),
+      locale: OG_LOCALE[locale],
+      alternateLocale: [OG_LOCALE[oppositeLocale]],
+    }),
+    twitter: socialTwitter({
+      title: copy.title,
+      description: copy.description,
+    }),
+  }
+}

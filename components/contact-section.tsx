@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { ContactDecor } from "@/components/contact/contact-decor"
 import { ContactForm } from "@/components/contact/contact-form"
@@ -8,10 +9,17 @@ interface ContactSectionProps {
   locale?: Locale
   /** Use "page" on dedicated contact routes so the section title renders as h1 */
   variant?: "section" | "page"
+  /** When set, links to the dedicated contact page (homepage). */
+  fullPageHref?: string
 }
 
-export function ContactSection({ locale = "nl", variant = "section" }: ContactSectionProps) {
+export function ContactSection({
+  locale = "nl",
+  variant = "section",
+  fullPageHref,
+}: ContactSectionProps) {
   const t = dict.contact[locale]
+  const fullPageLabel = dict.sectionLinks[locale].contactPage
   const TitleTag = variant === "page" ? "h1" : "h2"
 
   return (
@@ -47,6 +55,20 @@ export function ContactSection({ locale = "nl", variant = "section" }: ContactSe
                 {t.intro}
               </p>
             </StaggerItem>
+
+            {fullPageHref && (
+              <StaggerItem>
+                <p className="mb-10 sm:mb-12">
+                  <Link
+                    href={fullPageHref}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors"
+                  >
+                    {fullPageLabel}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </p>
+              </StaggerItem>
+            )}
 
             <StaggerItem className="space-y-6">
               <div>

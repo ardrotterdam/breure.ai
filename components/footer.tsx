@@ -16,6 +16,9 @@ export function Footer({ locale = "nl" }: FooterProps) {
     { label: nav.services, href: ROUTES.services[locale] },
     { label: nav.process, href: ROUTES.process[locale] },
     { label: nav.portfolio, href: ROUTES.portfolio[locale] },
+    ...(locale === "en"
+      ? [{ label: dict.nav.en.insights, href: "/en/insights" as const }]
+      : []),
     { label: nav.contact, href: ROUTES.contact[locale] },
   ]
 

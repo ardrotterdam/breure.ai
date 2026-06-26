@@ -65,6 +65,7 @@ export const dict = {
       services: "Services",
       process: "Process",
       portfolio: "Portfolio",
+      insights: "Insights",
       contact: "Contact",
       cta: "Get in touch",
       openMenu: "Open menu",
@@ -534,6 +535,101 @@ export const dict = {
         description:
           "A selection from our work for offshore operators, jack-up owners, heavy-lift contractors and multi-vessel fleets. Premium digital presentations at the level of the assets themselves.",
       },
+    },
+  },
+
+  contactRelated: {
+    nl: {
+      heading: "Meer over onze aanpak",
+      description:
+        "Bekijk onze diensten, het stappenplan en geselecteerd portfolio voordat u contact opneemt — zo weet u direct welke aanpak past bij uw vloot en assets.",
+    },
+    en: {
+      heading: "More about our approach",
+      description:
+        "Review our services, step-by-step process and selected portfolio before you get in touch — so you know which approach fits your fleet and assets.",
+    },
+  },
+
+  sectionLinks: {
+    nl: {
+      services: "Alle diensten bekijken",
+      process: "Ons volledige proces",
+      portfolio: "Bekijk ons portfolio",
+      contactPage: "Naar de contactpagina",
+    },
+    en: {
+      services: "View all services",
+      process: "See our full process",
+      portfolio: "View our portfolio",
+      contactPage: "Go to the contact page",
+    },
+  },
+
+  contactFaqs: {
+    nl: {
+      heading: "Veelgestelde vragen",
+      intro:
+        "Een kort overzicht van wat u kunt verwachten wanneer u een offshore- of maritiem webproject met ons bespreekt.",
+      items: [
+        {
+          question: "Welk type projecten nemen jullie aan?",
+          answer:
+            "Wij richten ons op asset microsites, capability pages, vloot-platforms en SEO voor offshore operators, scheepseigenaren, contractors en maritieme engineeringbedrijven — van heavy-lift vessels en jack-ups tot support vloten.",
+        },
+        {
+          question: "Hoe lang duurt een project gemiddeld?",
+          answer:
+            "Een enkele asset website staat doorgaans binnen vier tot acht weken live. Multi-vessel vloten of corporate sites met asset library vragen meer tijd; wij geven na de eerste inventarisatie een realistische planning.",
+        },
+        {
+          question: "Kunnen referenties onder NDA worden gedeeld?",
+          answer:
+            "Ja. Specifieke case studies, demo-omgevingen en technische referenties delen wij op aanvraag via het contactformulier. Waar nodig werken wij onder NDA — gangbaar in offshore en maritieme projecten.",
+        },
+        {
+          question: "Waarom focussen jullie op maritiem en offshore?",
+          answer:
+            "Charterers, tenderteams en engineers zoeken concrete capability data — crane SWL, deck load, DP, POB — niet alleen een corporate verhaal. Wij structureren sites rond assets en spreken de taal van de sector.",
+        },
+        {
+          question: "Hoe start ik een aanvraag?",
+          answer:
+            "Vul het formulier in met uw assets, doelgroep en gewenste timing. Wij reageren per e-mail of telefoon en plannen een verkennend gesprek — vrijblijvend en vertrouwelijk.",
+        },
+      ],
+    },
+    en: {
+      heading: "Frequently asked questions",
+      intro:
+        "A brief overview of what to expect when you discuss an offshore or maritime web project with us.",
+      items: [
+        {
+          question: "What types of projects do you take on?",
+          answer:
+            "We focus on asset microsites, capability pages, fleet platforms and SEO for offshore operators, vessel owners, contractors and maritime engineering firms — from heavy-lift vessels and jack-ups to support fleets.",
+        },
+        {
+          question: "What is a typical project timeline?",
+          answer:
+            "A single asset website usually goes live within four to eight weeks. Multi-vessel fleets or corporate sites with an asset library take longer; we provide a realistic schedule after the initial inventory.",
+        },
+        {
+          question: "Can references be shared under NDA?",
+          answer:
+            "Yes. Specific case studies, demo environments and technical references are shared on request via the contact form. We work under NDA where required — common in offshore and maritime projects.",
+        },
+        {
+          question: "Why do you focus on maritime and offshore?",
+          answer:
+            "Charterers, tender teams and engineers search for concrete capability data — crane SWL, deck load, DP, POB — not just a corporate story. We structure sites around assets and speak the language of the industry.",
+        },
+        {
+          question: "How do I start a request?",
+          answer:
+            "Use the form with your assets, audience and preferred timeline. We respond by email or phone and schedule an exploratory call — no obligation, always confidential.",
+        },
+      ],
     },
   },
 

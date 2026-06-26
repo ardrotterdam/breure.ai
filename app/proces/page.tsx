@@ -6,16 +6,14 @@ import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { ProcessSection } from "@/components/process-section"
 import { CtaBand } from "@/components/cta-band"
-import { dict, seo } from "@/lib/i18n"
-import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+import { dict } from "@/lib/i18n"
+import { buildPageMetadata } from "@/lib/page-metadata"
 
 const locale = "nl" as const
 const headerCopy = dict.pageHeaders.nl.process
 const ctaCopy = dict.ctas.nl.process
 
-export const metadata: Metadata = {
-  title: seo.process.nl.title,
-  description: seo.process.nl.description,
+export const metadata: Metadata = buildPageMetadata("process", locale, {
   keywords: [
     "offshore website proces",
     "asset website development",
@@ -23,25 +21,7 @@ export const metadata: Metadata = {
     "vessel website launch",
     "Breure.ai proces",
   ],
-  alternates: {
-    canonical: "/proces",
-    languages: {
-      "nl-NL": "/proces",
-      "en-US": "/en/process",
-      "x-default": "/proces",
-    },
-  },
-  openGraph: socialOpenGraph({
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
-    url: "https://breure.ai/proces",
-    locale: "nl_NL",
-  }),
-  twitter: socialTwitter({
-    title: seo.process.nl.title,
-    description: seo.process.nl.description,
-  }),
-}
+})
 
 export default function ProcesPage() {
   return (

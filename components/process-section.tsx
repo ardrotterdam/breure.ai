@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
@@ -6,10 +7,13 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface ProcessSectionProps {
   locale?: Locale
+  /** When set, shows a crawlable link to the dedicated process page (homepage). */
+  detailHref?: string
 }
 
-export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
+export function ProcessSection({ locale = "nl", detailHref }: ProcessSectionProps) {
   const t = dict.process[locale]
+  const detailLabel = dict.sectionLinks[locale].process
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 bg-secondary overflow-hidden">
@@ -36,6 +40,20 @@ export function ProcessSection({ locale = "nl" }: ProcessSectionProps) {
                 {t.intro}
               </p>
             </StaggerItem>
+
+            {detailHref && (
+              <StaggerItem>
+                <p className="mt-6 max-w-md">
+                  <Link
+                    href={detailHref}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors"
+                  >
+                    {detailLabel}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </p>
+              </StaggerItem>
+            )}
 
             <StaggerItem className="mt-10 sm:mt-12 max-w-md">
               <BlueprintFigure src="/blueprints/blueprint-03-wind-turbine.svg" className="w-full" />

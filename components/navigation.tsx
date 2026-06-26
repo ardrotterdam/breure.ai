@@ -107,6 +107,9 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
     { label: t.portfolio, href: ROUTES.portfolio[locale] },
+    ...(locale === "en"
+      ? [{ label: dict.nav.en.insights, href: "/en/insights" as const }]
+      : []),
     { label: t.contact, href: ROUTES.contact[locale] },
   ]
 

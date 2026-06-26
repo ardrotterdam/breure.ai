@@ -7,16 +7,14 @@ import { PageHeader } from "@/components/page-header"
 import { ServicesSection } from "@/components/services-section"
 import { WhySection } from "@/components/why-section"
 import { CtaBand } from "@/components/cta-band"
-import { dict, seo } from "@/lib/i18n"
-import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+import { dict } from "@/lib/i18n"
+import { buildPageMetadata } from "@/lib/page-metadata"
 
 const locale = "nl" as const
 const headerCopy = dict.pageHeaders.nl.services
 const ctaCopy = dict.ctas.nl.services
 
-export const metadata: Metadata = {
-  title: seo.services.nl.title,
-  description: seo.services.nl.description,
+export const metadata: Metadata = buildPageMetadata("services", locale, {
   keywords: [
     "asset microsites",
     "vessel website",
@@ -26,25 +24,7 @@ export const metadata: Metadata = {
     "capability page",
     "charter marketing",
   ],
-  alternates: {
-    canonical: "/diensten",
-    languages: {
-      "nl-NL": "/diensten",
-      "en-US": "/en/services",
-      "x-default": "/diensten",
-    },
-  },
-  openGraph: socialOpenGraph({
-    title: seo.services.nl.title,
-    description: seo.services.nl.description,
-    url: "https://breure.ai/diensten",
-    locale: "nl_NL",
-  }),
-  twitter: socialTwitter({
-    title: seo.services.nl.title,
-    description: seo.services.nl.description,
-  }),
-}
+})
 
 export default function DienstenPage() {
   return (

@@ -7,33 +7,11 @@ import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { seo } from "@/lib/i18n"
-import { socialOpenGraph, socialTwitter } from "@/lib/site-metadata"
+import { buildPageMetadata } from "@/lib/page-metadata"
 
 const locale = "en" as const
 
-export const metadata: Metadata = {
-  title: seo.home.en.title,
-  description: seo.home.en.description,
-  alternates: {
-    canonical: "/en",
-    languages: {
-      "nl-NL": "/",
-      "en-US": "/en",
-      "x-default": "/",
-    },
-  },
-  openGraph: socialOpenGraph({
-    title: seo.home.en.title,
-    description: seo.home.en.description,
-    url: "https://breure.ai/en",
-    locale: "en_US",
-  }),
-  twitter: socialTwitter({
-    title: seo.home.en.title,
-    description: seo.home.en.description,
-  }),
-}
+export const metadata: Metadata = buildPageMetadata("home", locale)
 
 export default function EnglishHome() {
   return (
@@ -41,10 +19,10 @@ export default function EnglishHome() {
       <Navigation locale={locale} />
       <main>
         <HeroSection locale={locale} />
-        <WhySection locale={locale} />
-        <ServicesSection locale={locale} />
-        <ProcessSection locale={locale} />
-        <ContactSection locale={locale} />
+        <WhySection locale={locale} portfolioHref="/en/portfolio" />
+        <ServicesSection locale={locale} detailHref="/en/services" />
+        <ProcessSection locale={locale} detailHref="/en/process" />
+        <ContactSection locale={locale} fullPageHref="/en/contact" />
       </main>
       <Footer locale={locale} />
     </>

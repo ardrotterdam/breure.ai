@@ -5,7 +5,8 @@ import { GoogleAnalytics } from '@/components/google-analytics'
 import { SiteJsonLd } from '@/components/site-json-ld'
 import { Providers } from '@/components/providers'
 import { ThemeScript } from '@/components/theme-script'
-import { siteUrl, socialOpenGraph, socialTwitter } from '@/lib/site-metadata'
+import { getRequestLocale } from '@/lib/request-locale'
+import { siteUrl } from '@/lib/site-metadata'
 import './globals.css'
 
 const inter = Inter({
@@ -48,27 +49,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Breure.ai' }],
   creator: 'Breure.ai',
-  alternates: {
-    canonical: '/',
-    languages: {
-      'nl-NL': '/',
-      'en-US': '/en',
-      'x-default': '/',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
     },
   },
-  openGraph: socialOpenGraph({
-    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
-    description:
-      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
-    url: 'https://breure.ai',
-    locale: 'nl_NL',
-    alternateLocale: ['en_US'],
-  }),
-  twitter: socialTwitter({
-    title: 'Breure.ai | Maritieme Websites voor Offshore & Maritime',
-    description:
-      'Premium digitale platforms voor offshore-, maritieme- en zware industriële bedrijven.',
-  }),
 }
 
 export const viewport: Viewport = {
@@ -80,14 +68,16 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = await getRequestLocale()
+
   return (
     <html
-      lang="nl"
+      lang={locale}
       className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} bg-background`}
       suppressHydrationWarning
     >

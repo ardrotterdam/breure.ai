@@ -1,13 +1,17 @@
+import Link from "next/link"
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { dict, type Locale } from "@/lib/i18n"
 
 interface WhySectionProps {
   locale?: Locale
+  /** When set, shows a crawlable link to the dedicated portfolio page (homepage). */
+  portfolioHref?: string
 }
 
-export function WhySection({ locale = "nl" }: WhySectionProps) {
+export function WhySection({ locale = "nl", portfolioHref }: WhySectionProps) {
   const t = dict.why[locale]
+  const portfolioLabel = dict.sectionLinks[locale].portfolio
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 bg-secondary">
@@ -49,6 +53,20 @@ export function WhySection({ locale = "nl" }: WhySectionProps) {
             </StaggerItem>
           ))}
         </div>
+
+        {portfolioHref && (
+          <StaggerItem>
+            <p className="mt-10 sm:mt-12">
+              <Link
+                href={portfolioHref}
+                className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors"
+              >
+                {portfolioLabel}
+                <span aria-hidden>→</span>
+              </Link>
+            </p>
+          </StaggerItem>
+        )}
       </StaggerInView>
     </section>
   )

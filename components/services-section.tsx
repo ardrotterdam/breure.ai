@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
@@ -5,10 +6,13 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface ServicesSectionProps {
   locale?: Locale
+  /** When set, shows a crawlable link to the dedicated services page (homepage). */
+  detailHref?: string
 }
 
-export function ServicesSection({ locale = "nl" }: ServicesSectionProps) {
+export function ServicesSection({ locale = "nl", detailHref }: ServicesSectionProps) {
   const t = dict.services[locale]
+  const detailLabel = dict.sectionLinks[locale].services
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 bg-background overflow-hidden">
@@ -28,6 +32,20 @@ export function ServicesSection({ locale = "nl" }: ServicesSectionProps) {
                 {t.intro}
               </p>
             </StaggerItem>
+
+            {detailHref && (
+              <StaggerItem>
+                <p className="mt-6">
+                  <Link
+                    href={detailHref}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors"
+                  >
+                    {detailLabel}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </p>
+              </StaggerItem>
+            )}
           </div>
 
           <StaggerItem className="w-full max-w-md lg:max-w-none lg:ml-auto">
