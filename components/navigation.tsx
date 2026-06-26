@@ -190,23 +190,26 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           </Link>
         </div>
 
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          onClick={() => setMobileOpen((open) => !open)}
-          aria-label={mobileOpen ? t.closeMenu : t.openMenu}
-          aria-expanded={mobileOpen}
-          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-ink/90 text-foreground shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 lg:hidden"
-          style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
-        >
-          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            {mobileOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+        {/* Mobile: language toggle + menu button — always visible */}
+        <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
+          <LanguageToggle variant="mobile" />
+          <button
+            type="button"
+            onClick={() => setMobileOpen((open) => !open)}
+            aria-label={mobileOpen ? t.closeMenu : t.openMenu}
+            aria-expanded={mobileOpen}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-ink/90 text-foreground shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 6l12 12M6 18L18 6" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
         </nav>
       </div>
     </motion.header>
