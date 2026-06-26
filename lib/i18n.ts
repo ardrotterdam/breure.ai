@@ -52,6 +52,7 @@ export const dict = {
       services: "Diensten",
       process: "Proces",
       portfolio: "Portfolio",
+      insights: "Inzichten",
       contact: "Contact",
       cta: "Neem contact op",
       openMenu: "Open menu",
@@ -548,6 +549,25 @@ export const dict = {
       heading: "More about our approach",
       description:
         "Review our services, step-by-step process and selected portfolio before you get in touch — so you know which approach fits your fleet and assets.",
+    },
+  },
+
+  latestInsight: {
+    nl: {
+      eyebrow: "Inzichten",
+      title: "Laatste maritieme insight",
+      description:
+        "Praktische perspectieven op maritiem webdesign, offshore geloofwaardigheid en digitaal vertrouwen — momenteel in het Engels.",
+      readArticle: "Lees artikel",
+      viewAll: "Alle inzichten",
+    },
+    en: {
+      eyebrow: "Insights",
+      title: "Latest maritime insight",
+      description:
+        "Practical perspectives on maritime website design, offshore credibility and digital trust.",
+      readArticle: "Read article",
+      viewAll: "All insights",
     },
   },
 

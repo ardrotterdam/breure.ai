@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/hero-section"
 import { WhySection } from "@/components/why-section"
 import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
+import { LatestInsightSection } from "@/components/latest-insight-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
 import { buildPageMetadata } from "@/lib/page-metadata"
@@ -20,6 +21,7 @@ export default function Home() {
         <WhySection locale="nl" portfolioHref="/portfolio" />
         <ServicesSection locale="nl" detailHref="/diensten" />
         <ProcessSection locale="nl" detailHref="/proces" />
+        <LatestInsightSection locale="nl" />
         <ContactSection locale="nl" fullPageHref="/contact" />
       </main>
       <Footer locale="nl" />

@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { BreureWordmark } from "@/components/breure-wordmark"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
+import { INSIGHTS_INDEX_PATH } from "@/lib/insights"
 
 interface FooterProps {
   locale?: Locale
@@ -16,9 +17,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
     { label: nav.services, href: ROUTES.services[locale] },
     { label: nav.process, href: ROUTES.process[locale] },
     { label: nav.portfolio, href: ROUTES.portfolio[locale] },
-    ...(locale === "en"
-      ? [{ label: dict.nav.en.insights, href: "/en/insights" as const }]
-      : []),
+    { label: nav.insights, href: INSIGHTS_INDEX_PATH },
     { label: nav.contact, href: ROUTES.contact[locale] },
   ]
 

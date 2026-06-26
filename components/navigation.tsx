@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion"
 
 import { NavbarLogo } from "@/components/navbar-logo"
 import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
+import { INSIGHTS_INDEX_PATH } from "@/lib/insights"
 import { LanguageToggle } from "./language-toggle"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -107,9 +108,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
     { label: t.portfolio, href: ROUTES.portfolio[locale] },
-    ...(locale === "en"
-      ? [{ label: dict.nav.en.insights, href: "/en/insights" as const }]
-      : []),
+    { label: t.insights, href: INSIGHTS_INDEX_PATH },
     { label: t.contact, href: ROUTES.contact[locale] },
   ]
 
