@@ -80,7 +80,7 @@ export const insightArticles: InsightArticle[] = [
     intro:
       "In maritime and offshore, a website is not a digital brochure sitting beside the business. It is a trust signal. Before a buyer contacts a company, requests a capability pack, shares project details or starts a serious commercial conversation, they often check the website first. If the site feels outdated, unclear or thin, the company may lose credibility before the first call happens — regardless of how strong the operation is offshore.",
     heroImage: {
-      src: "/images/insights/maritime-website-design-trust/breure-ai-maritime-website-design-offshore-trust-hero.png",
+      src: "/images/insights/maritime-website-design-trust/breure-ai-maritime-website-design-offshore-trust-hero.webp",
       alt: "Breure.ai maritime website design showing offshore professional in modern ship bridge",
       width: 1536,
       height: 1024,
@@ -88,7 +88,7 @@ export const insightArticles: InsightArticle[] = [
     inlineImages: [
       {
         afterSectionId: "vessel-pages",
-        src: "/images/insights/maritime-website-design-trust/breure-ai-offshore-web-design-vessel-page-wireframe.png",
+        src: "/images/insights/maritime-website-design-trust/breure-ai-offshore-web-design-vessel-page-wireframe.webp",
         alt: "Breure.ai offshore web design mockup with vessel page wireframes and maritime capability layout",
         caption:
           "A strong vessel page should turn technical capability into clear digital trust signals.",
@@ -97,7 +97,7 @@ export const insightArticles: InsightArticle[] = [
       },
       {
         afterSectionId: "safety-compliance",
-        src: "/images/insights/maritime-website-design-trust/breure-ai-vessel-website-design-ship-blueprints-office.png",
+        src: "/images/insights/maritime-website-design-trust/breure-ai-vessel-website-design-ship-blueprints-office.webp",
         alt: "Breure.ai vessel website design with professional reviewing ship blueprints in harbor office",
         caption:
           "Maritime buyers look for operational seriousness, not just visual presentation.",
