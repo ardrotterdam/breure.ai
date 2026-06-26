@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import { InsightFigure } from "@/components/insights/insight-figure"
 import {
   buildInsightArticleMetadata,
   formatInsightDate,
@@ -100,27 +101,54 @@ export default async function InsightArticlePage({
 
         <article className="py-14 sm:py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-5 sm:px-6 lg:px-12 max-w-3xl">
+            {article.heroImage ? (
+              <InsightFigure
+                src={article.heroImage.src}
+                alt={article.heroImage.alt}
+                width={article.heroImage.width}
+                height={article.heroImage.height}
+                priority
+                variant="hero"
+              />
+            ) : null}
+
             <p className="text-base sm:text-lg text-text-secondary leading-relaxed">
               {article.intro}
             </p>
 
-            {article.sections.map((section) => (
-              <section key={section.id} className="mt-12 sm:mt-14">
-                <h2 className="text-xl sm:text-2xl font-light tracking-tight text-foreground">
-                  {section.heading}
-                </h2>
-                <div className="mt-5 space-y-4">
-                  {section.paragraphs.map((paragraph, index) => (
-                    <p
-                      key={index}
-                      className="text-base sm:text-[1.05rem] text-text-secondary leading-relaxed"
-                    >
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </section>
-            ))}
+            {article.sections.map((section) => {
+              const inlineImage = article.inlineImages?.find(
+                (image) => image.afterSectionId === section.id,
+              )
+
+              return (
+                <section key={section.id} className="mt-12 sm:mt-14">
+                  <h2 className="text-xl sm:text-2xl font-light tracking-tight text-foreground">
+                    {section.heading}
+                  </h2>
+                  <div className="mt-5 space-y-4">
+                    {section.paragraphs.map((paragraph, index) => (
+                      <p
+                        key={index}
+                        className="text-base sm:text-[1.05rem] text-text-secondary leading-relaxed"
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+
+                  {inlineImage ? (
+                    <InsightFigure
+                      src={inlineImage.src}
+                      alt={inlineImage.alt}
+                      width={inlineImage.width}
+                      height={inlineImage.height}
+                      caption={inlineImage.caption}
+                    />
+                  ) : null}
+                </section>
+              )
+            })}
 
             <section className="mt-12 sm:mt-14">
               <h2 className="text-xl sm:text-2xl font-light tracking-tight text-foreground">

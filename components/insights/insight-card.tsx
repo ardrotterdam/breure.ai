@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import {
@@ -14,7 +15,20 @@ export function InsightCard({ article }: InsightCardProps) {
   const href = insightArticlePath(article.slug)
 
   return (
-    <article className="group relative rounded-xl border border-border/60 bg-card/40 transition-colors hover:border-accent/30 hover:bg-card/60">
+    <article className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/40 transition-colors hover:border-accent/30 hover:bg-card/60">
+      {article.heroImage ? (
+        <div className="relative aspect-video overflow-hidden border-b border-border/40">
+          <Image
+            src={article.heroImage.src}
+            alt={article.heroImage.alt}
+            width={article.heroImage.width ?? 1536}
+            height={article.heroImage.height ?? 1024}
+            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+        </div>
+      ) : null}
+
       <Link href={href} className="block p-6 sm:p-8">
         <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-text-eyebrow">
           <span className="font-medium tracking-[0.2em] uppercase">
