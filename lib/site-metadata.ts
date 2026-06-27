@@ -5,9 +5,9 @@ export const siteUrl = "https://breure.ai"
 export const brandAssets = {
   /** SVG wave mark — used in UI and Organization schema */
   logoMark: "/breure-logo-mark.svg",
-  /** App Router generated icons */
-  icon: "/icon",
-  appleIcon: "/apple-icon",
+  /** Static favicon assets in /public */
+  icon: "/favicon.ico",
+  appleIcon: "/apple-touch-icon.png",
   /** App Router generated social images */
   openGraph: "/opengraph-image",
   twitter: "/twitter-image",
