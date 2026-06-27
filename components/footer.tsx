@@ -1,6 +1,5 @@
+import Image from "next/image"
 import Link from "next/link"
-
-import { BreureWordmark } from "@/components/breure-wordmark"
 import { dict, type Locale, ROUTES } from "@/lib/i18n"
 
 interface FooterProps {
@@ -32,9 +31,12 @@ export function Footer({ locale = "nl" }: FooterProps) {
               className="mb-4 inline-flex items-center transition-opacity hover:opacity-90"
               aria-label="Breure.ai — Home"
             >
-              <BreureWordmark
-                markHeight={28}
-                textClassName="text-lg sm:text-xl lg:text-[1.35rem]"
+              <Image
+                src="/images/breure-ai-webbureau-rotterdam-logo.webp"
+                alt="Breure.ai – AI webbureau Rotterdam"
+                width={662}
+                height={160}
+                className="h-10 w-auto sm:h-11 md:h-12 lg:h-14"
               />
             </Link>
             <p className="text-sm text-text-secondary max-w-sm leading-relaxed">
