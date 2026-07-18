@@ -4,34 +4,42 @@ import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
 import { VesselComparisonTool } from "@/components/vessel-comparison/vessel-comparison-tool"
+import { dict } from "@/lib/i18n"
+import { buildPageMetadata } from "@/lib/page-metadata"
 import { getVessels } from "@/lib/vessels/data"
 
-export const metadata: Metadata = {
-  title: "Vessel Comparison Tool | Breure.ai",
-  description:
-    "Side-by-side comparison of offshore support vessels — crane capacity, deck area, DP class, accommodation and more. Free demo for charterers and offshore contractors.",
-  robots: {
-    index: true,
-    follow: true,
-  },
-}
+const locale = "en" as const
+const headerCopy = dict.pageHeaders.en.tools
+
+export const metadata: Metadata = buildPageMetadata("tools", locale, {
+  keywords: [
+    "vessel comparison tool",
+    "offshore vessel comparison",
+    "crane load chart",
+    "DP class comparison",
+    "charter vessel specs",
+    "offshore support vessel",
+  ],
+})
 
 export default async function VesselComparisonPage() {
   const vessels = await getVessels()
 
   return (
     <>
-      <Navigation locale="en" />
+      <Navigation locale={locale} />
       <main>
         <PageHeader
-          eyebrow="Tools"
+          eyebrow={headerCopy.eyebrow}
           title={
             <>
-              Vessel{" "}
-              <span className="heading-accent-gradient">Comparison</span>
+              {headerCopy.titlePrefix}{" "}
+              <span className="heading-accent-gradient">
+                {headerCopy.titleAccent}
+              </span>
             </>
           }
-          description="Compare 2–4 offshore support vessels side by side. Filter by crane capacity, DP class and deck area, then explore interactive crane load charts. Demo fleet — five fictional vessels with representative specs."
+          description={headerCopy.description}
         />
 
         <section className="border-t border-border bg-background pb-20 pt-4 sm:pb-28">
@@ -40,7 +48,7 @@ export default async function VesselComparisonPage() {
           </div>
         </section>
       </main>
-      <Footer locale="en" />
+      <Footer locale={locale} />
     </>
   )
 }

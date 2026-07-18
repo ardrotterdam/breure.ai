@@ -14,6 +14,8 @@ export const ROUTES = {
   services: { nl: "/diensten", en: "/en/services" },
   process: { nl: "/proces", en: "/en/process" },
   portfolio: { nl: "/portfolio", en: "/en/portfolio" },
+  /** Shared EN product URL for both locales (language toggle stays on-page). */
+  tools: { nl: "/tools/vessel-comparison", en: "/tools/vessel-comparison" },
   contact: { nl: "/contact", en: "/en/contact" },
   insights: { nl: "/inzichten", en: "/en/insights" },
 } as const
@@ -59,6 +61,7 @@ export const dict = {
       services: "Diensten",
       process: "Proces",
       portfolio: "Portfolio",
+      tools: "Tools",
       insights: "Inzichten",
       insightsTitle: "Artikelen over maritiem webdesign",
       contact: "Contact",
@@ -74,6 +77,7 @@ export const dict = {
       services: "Services",
       process: "Process",
       portfolio: "Portfolio",
+      tools: "Tools",
       insights: "Insights",
       insightsTitle: "Articles on maritime web design",
       contact: "Contact",
@@ -333,6 +337,18 @@ export const dict = {
         "Specifieke referenties, technische case studies en demo-omgevingen delen wij op aanvraag via het contactformulier, onder NDA waar nodig.",
       items: [
         {
+          category: "SaaS-tool",
+          title: "Vessel Comparison Tool",
+          description:
+            "Interactieve vergelijkingstool voor offshore support vessels. Charterers en aannemers zetten 2–4 schepen naast elkaar, filteren op kraancapaciteit, DP-klasse en dekoppervlak, en exporteren de vergelijking als PDF — zonder uren in datasheets te zoeken.",
+          href: "/tools/vessel-comparison",
+          metrics: [
+            { label: "Vergelijking", value: "2–4 schepen naast elkaar" },
+            { label: "Kraan-charts", value: "Interactief" },
+            { label: "Export", value: "Direct als PDF" },
+          ],
+        },
+        {
           category: "Heavy-lift vessel",
           title: "Microsite voor crane vessel",
           description:
@@ -386,6 +402,18 @@ export const dict = {
       ndaNote:
         "Specific references, technical case studies and demo environments are shared on request via the contact form, under NDA where required.",
       items: [
+        {
+          category: "SaaS tool",
+          title: "Vessel Comparison Tool",
+          description:
+            "Interactive comparison tool for offshore support vessels. Charterers and contractors put 2–4 vessels side by side, filter by crane capacity, DP class and deck area, then export the comparison as PDF — without hours spent hunting through datasheets.",
+          href: "/tools/vessel-comparison",
+          metrics: [
+            { label: "Comparison", value: "2–4 vessels side-by-side" },
+            { label: "Crane charts", value: "Interactive" },
+            { label: "Export", value: "Instant PDF" },
+          ],
+        },
         {
           category: "Heavy-lift vessel",
           title: "Crane vessel asset microsite",
@@ -521,6 +549,13 @@ export const dict = {
         description:
           "Typische projecttypes voor offshore-operators, jack-up-eigenaren, heavy-lift contractors en multi-vessel vloten. Premium vlootpresentatie op het niveau van de assets zelf.",
       },
+      tools: {
+        eyebrow: "Vessel Comparison Tool",
+        titlePrefix: "Stop met vessel-specs vergelijken",
+        titleAccent: "in PDF's",
+        description:
+          "Vergelijk 2–4 offshore support vessels side-by-side op kraancapaciteit, dekoppervlak, DP-klasse en meer. Verken interactieve kraan-lastdiagrammen en exporteer de vergelijking als PDF — gebouwd voor charterers en offshore-aannemers in Rotterdam en daarbuiten.",
+      },
     },
     en: {
       services: {
@@ -544,6 +579,13 @@ export const dict = {
         titleSuffix: "decide on",
         description:
           "A selection from our work for offshore operators, jack-up owners, heavy-lift contractors and multi-vessel fleets. Premium digital presentations at the level of the assets themselves.",
+      },
+      tools: {
+        eyebrow: "Vessel Comparison Tool",
+        titlePrefix: "Stop comparing vessel specs",
+        titleAccent: "in PDFs",
+        description:
+          "Compare 2–4 offshore support vessels side by side on crane capacity, deck area, DP class and more. Explore interactive crane load charts and export the comparison as PDF — built for charterers and offshore contractors in Rotterdam and beyond.",
       },
     },
   },
@@ -790,6 +832,18 @@ export const seo = {
       title: "Portfolio | Asset websites & capability pages | Breure.ai",
       description:
         "Selected works: asset microsites, capability pages and multi-vessel fleet sites for offshore operators, contractors and fleet owners.",
+    },
+  },
+  tools: {
+    nl: {
+      title: "Vessel Comparison Tool | Compare offshore vessels | Breure.ai",
+      description:
+        "Free vessel comparison tool for charterers and offshore contractors. Compare 2–4 support vessels side by side — crane capacity, deck area, DP class, interactive load charts and PDF export.",
+    },
+    en: {
+      title: "Vessel Comparison Tool | Compare offshore vessels | Breure.ai",
+      description:
+        "Free vessel comparison tool for charterers and offshore contractors. Compare 2–4 support vessels side by side — crane capacity, deck area, DP class, interactive load charts and PDF export.",
     },
   },
   contact: {

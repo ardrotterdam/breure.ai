@@ -17,6 +17,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
     { label: nav.services, href: ROUTES.services[locale] },
     { label: nav.process, href: ROUTES.process[locale] },
     { label: nav.portfolio, href: ROUTES.portfolio[locale] },
+    { label: nav.tools, href: ROUTES.tools[locale] },
     { label: nav.insights, href: insightsHref },
     { label: nav.contact, href: ROUTES.contact[locale] },
   ]

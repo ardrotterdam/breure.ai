@@ -109,6 +109,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
     { label: t.portfolio, href: ROUTES.portfolio[locale] },
+    { label: t.tools, href: ROUTES.tools[locale] },
     { label: t.insights, href: insightsHref },
     { label: t.contact, href: ROUTES.contact[locale] },
   ]

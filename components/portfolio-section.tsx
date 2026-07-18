@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { HoverLift } from "@/components/motion/hover-lift"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
 import { dict, type Locale } from "@/lib/i18n"
@@ -56,9 +58,9 @@ export function PortfolioSection({ locale = "nl", showIntro = true }: PortfolioS
         )}
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {t.items.map((project, index) => (
-            <StaggerItem key={project.title} className="group relative">
-              <article>
+          {t.items.map((project, index) => {
+            const href = "href" in project ? project.href : undefined
+            const card = (
               <HoverLift className="relative p-7 sm:p-8 lg:p-10 surface-card h-full flex flex-col overflow-hidden">
                 <div className="absolute top-6 right-6 text-5xl font-extralight text-border select-none">
                   {String(index + 1).padStart(2, "0")}
@@ -74,23 +76,52 @@ export function PortfolioSection({ locale = "nl", showIntro = true }: PortfolioS
                   </span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-medium mb-3 sm:mb-4 pr-12 text-foreground">{project.title}</h3>
-                <p className="text-text-secondary leading-relaxed text-sm mb-7 sm:mb-8">{project.description}</p>
+                <h3 className="text-xl sm:text-2xl font-medium mb-3 sm:mb-4 pr-12 text-foreground">
+                  {project.title}
+                </h3>
+                <p className="text-text-secondary leading-relaxed text-sm mb-7 sm:mb-8">
+                  {project.description}
+                </p>
 
                 <div className="mt-auto pt-6 border-t border-border/60 grid grid-cols-3 gap-3 sm:gap-4">
                   {project.metrics.map((metric) => (
                     <div key={metric.label}>
-                      <div className="text-[11px] sm:text-xs text-text-eyebrow mb-1 tracking-wide">{metric.label}</div>
-                      <div className="text-sm text-foreground font-medium">{metric.value}</div>
+                      <div className="text-[11px] sm:text-xs text-text-eyebrow mb-1 tracking-wide">
+                        {metric.label}
+                      </div>
+                      <div className="text-sm text-foreground font-medium">
+                        {metric.value}
+                      </div>
                     </div>
                   ))}
                 </div>
 
+                {href ? (
+                  <p className="mt-5 text-sm font-medium text-accent">
+                    Open demo →
+                  </p>
+                ) : null}
+
                 <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
               </HoverLift>
-              </article>
-            </StaggerItem>
-          ))}
+            )
+
+            return (
+              <StaggerItem key={project.title} className="group relative">
+                {href ? (
+                  <Link
+                    href={href}
+                    className="block h-full rounded-[inherit] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
+                  >
+                    <article className="h-full">{card}</article>
+                  </Link>
+                ) : (
+                  <article>{card}</article>
+                )}
+              </StaggerItem>
+            )
+          })}
         </div>
 
         <StaggerItem>
