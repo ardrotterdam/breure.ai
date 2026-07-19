@@ -105,9 +105,6 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
   const insightsHref = ROUTES.insights[locale]
 
-  // TODO: /tools/... has no /en prefix, so localeFromPathname treats it as NL
-  // while the page hardcodes EN. Language toggle / nav labels can disagree there.
-  // Fix in a later pass (shared product URL vs locale-aware chrome).
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },

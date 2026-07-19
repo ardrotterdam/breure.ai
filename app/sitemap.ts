@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next"
 
 import { insightSitemapEntries } from "@/lib/insights-metadata"
-import { LOCALES, ROUTES } from "@/lib/i18n"
+import { LOCALES } from "@/lib/i18n"
 import {
   absoluteUrl,
   pathForRoute,
@@ -12,12 +12,11 @@ import {
 const PRIORITY: Record<CoreRouteKey, number> = {
   home: 1,
   services: 0.9,
+  tools: 0.85,
   process: 0.8,
   portfolio: 0.8,
   contact: 0.7,
 }
-
-const TOOLS_PRIORITY = 0.85
 
 const CHANGE_FREQUENCY: Record<
   CoreRouteKey,
@@ -25,6 +24,7 @@ const CHANGE_FREQUENCY: Record<
 > = {
   home: "weekly",
   services: "monthly",
+  tools: "weekly",
   process: "monthly",
   portfolio: "monthly",
   contact: "monthly",
@@ -55,21 +55,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   )
 
-  // Shared EN product URL — one sitemap entry (not duplicated per locale).
-  const toolsPath = ROUTES.tools.en
-  const toolsEntry: MetadataRoute.Sitemap[number] = {
-    url: absoluteUrl(toolsPath),
-    lastModified,
-    changeFrequency: "weekly",
-    priority: TOOLS_PRIORITY,
-    alternates: {
-      languages: {
-        "en-US": absoluteUrl(toolsPath),
-        "nl-NL": absoluteUrl(toolsPath),
-        "x-default": absoluteUrl(toolsPath),
-      },
-    },
-  }
-
-  return [...coreEntries, toolsEntry, ...insightSitemapEntries()]
+  return [...coreEntries, ...insightSitemapEntries()]
 }

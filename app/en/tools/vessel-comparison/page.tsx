@@ -8,21 +8,21 @@ import { dict } from "@/lib/i18n"
 import { buildPageMetadata } from "@/lib/page-metadata"
 import { getVessels } from "@/lib/vessels/data"
 
-const locale = "nl" as const
-const headerCopy = dict.pageHeaders.nl.tools
+const locale = "en" as const
+const headerCopy = dict.pageHeaders.en.tools
 
 export const metadata: Metadata = buildPageMetadata("tools", locale, {
   keywords: [
-    "vessel vergelijkingstool",
-    "offshore vessel vergelijking",
-    "kraan lastdiagram",
-    "DP-klasse vergelijking",
+    "vessel comparison tool",
+    "offshore vessel comparison",
+    "crane load chart",
+    "DP class comparison",
     "charter vessel specs",
     "offshore support vessel",
   ],
 })
 
-export default async function VesselComparisonPage() {
+export default async function EnglishVesselComparisonPage() {
   const vessels = await getVessels()
 
   return (
