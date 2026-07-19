@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
 import { WhySection } from "@/components/why-section"
+import { FeaturedToolSection } from "@/components/featured-tool-section"
 import { ServicesSection } from "@/components/services-section"
 import { ProcessSection } from "@/components/process-section"
 import { LatestInsightSection } from "@/components/latest-insight-section"
@@ -21,6 +22,7 @@ export default function EnglishHome() {
       <main>
         <HeroSection locale={locale} />
         <WhySection locale={locale} portfolioHref="/en/portfolio" />
+        <FeaturedToolSection locale={locale} />
         <ServicesSection locale={locale} detailHref="/en/services" />
         <ProcessSection locale={locale} detailHref="/en/process" />
         <LatestInsightSection locale={locale} />

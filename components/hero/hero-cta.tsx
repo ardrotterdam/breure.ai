@@ -41,7 +41,7 @@ export function HeroCta({ locale, primaryLabel, secondaryLabel }: HeroCtaProps) 
       </MotionLink>
 
       <MotionLink
-        href={ROUTES.services[locale]}
+        href={ROUTES.tools[locale]}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="group btn-secondary px-7 sm:px-8 py-3.5 sm:py-4"

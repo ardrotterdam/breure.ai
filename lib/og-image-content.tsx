@@ -10,7 +10,7 @@ export const OG_BRAND = {
 } as const
 
 export const OG_TAGLINE =
-  "Maritieme websites — engineered for trust"
+  "Custom maritime software — built at speed"
 
 /** Wave mark paths scaled for a 48×48 favicon canvas */
 export function FaviconMark({ size = 48 }: { size?: number }) {

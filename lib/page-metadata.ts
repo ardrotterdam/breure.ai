@@ -17,8 +17,8 @@ type InsightLocale = "nl" | "en"
 
 type PageSeoKey = keyof typeof seo
 
-/** Core marketing pages in the bilingual sitemap loop (excludes shared tool URL). */
-export type CoreRouteKey = Exclude<RouteKey, "insights" | "tools">
+/** Core marketing pages in the bilingual sitemap loop (excludes insights). */
+export type CoreRouteKey = Exclude<RouteKey, "insights">
 
 /** Map sitemap / metadata route keys to i18n ROUTES keys. */
 export const SITEMAP_ROUTES: readonly CoreRouteKey[] = [
@@ -26,6 +26,7 @@ export const SITEMAP_ROUTES: readonly CoreRouteKey[] = [
   "services",
   "portfolio",
   "process",
+  "tools",
   "contact",
 ]
 
