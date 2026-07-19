@@ -146,8 +146,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
         <div
           className={`absolute inset-0 border-b backdrop-blur-xl transition-all duration-300 ${
             hasScrolled
-              ? "border-white/10 bg-ink/78 shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
-              : "border-border/40 bg-background/72"
+              ? "border-border/80 bg-background/90 shadow-[0_12px_40px_-28px_rgba(10,22,40,0.35)] dark:border-white/10 dark:bg-ink/78 dark:shadow-[0_18px_60px_-38px_rgba(0,0,0,0.9)]"
+              : "border-border/50 bg-background/80 dark:border-border/40 dark:bg-background/72"
           }`}
         />
 
@@ -199,7 +199,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={mobileOpen ? t.closeMenu : t.openMenu}
             aria-expanded={mobileOpen}
-            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-ink/90 text-foreground shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-[0_10px_30px_-14px_rgba(10,22,40,0.2)] transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:border-white/15 dark:bg-ink/90 dark:shadow-[0_10px_30px_-14px_rgba(0,0,0,0.9)]"
             style={{ ["--tw-ring-offset-color" as string]: "var(--ring-offset)" }}
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -233,7 +233,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                 type="button"
                 onClick={() => setMobileOpen(false)}
                 aria-label={t.closeMenu}
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-foreground transition-colors hover:border-accent/50 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:border-white/15 dark:bg-white/5 dark:text-white"
                 style={{ ["--tw-ring-offset-color" as string]: "var(--ink)" }}
               >
                 <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -256,7 +256,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={`nav-link-hover-line nav-link-hover-line--mobile block py-2 sm:py-3 pb-3 sm:pb-4 text-[clamp(2.5rem,11vw,4.25rem)] font-black leading-[1.05] tracking-tight transition-colors hover:text-accent ${
-                        active ? "text-accent" : "text-white"
+                        active ? "text-accent" : "text-foreground dark:text-white"
                       }`}
                       aria-current={active ? "page" : undefined}
                       {...(item.href === insightsHref && t.insightsTitle
@@ -270,7 +270,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
               })}
             </nav>
 
-            <div className="px-5 sm:px-6 py-5 border-t border-white/10 flex items-center justify-between gap-3">
+            <div className="px-5 sm:px-6 py-5 border-t border-border dark:border-white/10 flex items-center justify-between gap-3">
               <div className="flex items-center gap-2">
                 <ThemeToggle locale={locale} variant="mobile" />
                 <LanguageToggle variant="mobile" onSelect={() => setMobileOpen(false)} />

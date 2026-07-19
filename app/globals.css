@@ -80,34 +80,38 @@
   --theme-color: var(--ink);
 }
 
-/* Light theme — mapped from core tokens */
+/* Light theme — cooler maritime depth, clear surface ladder */
 html.light,
 .light {
-  --ink: #F0F4F8;
+  --ink: #E2EAF2;
   --surface: #FFFFFF;
-  --surface-2: #E8EDF4;
-  --border: #D0DCE8;
+  --surface-2: #D0DCEA;
+  --border: #B4C5D8;
   --text: #0A1628;
-  --text-muted: #6B7E91;
-  --text-dim: #9DAEBF;
+  --text-muted: #3D5166;
+  --text-dim: #5A6F85;
   --accent: #0078d4;
   --accent-hover: #106ebe;
   --accent-ink: #ffffff;
+  --accent-soft: #0066b8;
 
-  --border-hover: #B0C4D8;
-  --border-strong: #9BB3CC;
-  --surface-glass: rgb(255 255 255 / 0.85);
+  --border-hover: #96ACC4;
+  --border-strong: #7A94B0;
+  --input: #F4F7FB;
+  --surface-elevated: #FFFFFF;
+  --surface-muted: #FFFFFF;
+  --surface-glass: rgb(255 255 255 / 0.92);
   --ring-offset: var(--ink);
-  --glass-border: rgb(10 22 40 / 0.08);
-  --glass-highlight: rgb(255 255 255 / 0.6);
-  --card-shadow: 0 20px 60px -15px rgb(10 22 40 / 0.12);
-  --cta-shadow: 0 8px 24px -10px rgb(0 120 212 / 0.3);
-  --cta-shadow-hover: 0 16px 44px -10px rgb(0 120 212 / 0.4);
-  --accent-blur: rgb(0 120 212 / 0.08);
-  --divider-blur: rgb(176 196 216 / 0.2);
-  --toggle-track: rgb(10 22 40 / 0.06);
-  --toggle-border: rgb(10 22 40 / 0.1);
-  --input-focus-shadow: 0 0 0 4px rgb(0 120 212 / 0.15), 0 0 24px -4px rgb(0 120 212 / 0.25);
+  --glass-border: rgb(10 22 40 / 0.12);
+  --glass-highlight: rgb(255 255 255 / 0.75);
+  --card-shadow: 0 18px 48px -16px rgb(10 22 40 / 0.14);
+  --cta-shadow: 0 8px 24px -10px rgb(0 120 212 / 0.32);
+  --cta-shadow-hover: 0 16px 44px -10px rgb(0 120 212 / 0.45);
+  --accent-blur: rgb(0 120 212 / 0.1);
+  --divider-blur: rgb(122 148 176 / 0.28);
+  --toggle-track: rgb(10 22 40 / 0.07);
+  --toggle-border: rgb(10 22 40 / 0.14);
+  --input-focus-shadow: 0 0 0 4px rgb(0 120 212 / 0.16), 0 0 24px -4px rgb(0 120 212 / 0.28);
   --gradient-heading-from: var(--text);
   --gradient-heading-to: var(--accent);
   --theme-color: var(--ink);
@@ -320,7 +324,7 @@ html.light,
 }
 
 html.light .nav-link-desktop {
-  @apply text-foreground/75 hover:text-foreground;
+  @apply text-text-secondary hover:text-foreground;
 }
 
 html.light .nav-link-desktop[aria-current='page'] {
@@ -328,11 +332,15 @@ html.light .nav-link-desktop[aria-current='page'] {
 }
 
 html.light .theme-toggle-nav {
-  @apply border-border/50 bg-secondary/40 text-foreground/80 hover:border-accent/40 hover:bg-accent/10 hover:text-accent;
+  @apply border-border bg-surface text-foreground/90 hover:border-accent/50 hover:bg-accent/10 hover:text-accent;
 }
 
 html.light .lang-toggle-link--inactive {
   @apply text-text-secondary hover:text-foreground;
+}
+
+html.light .surface-card {
+  box-shadow: 0 1px 0 rgb(10 22 40 / 0.04), var(--card-shadow);
 }
 
 .btn-primary {

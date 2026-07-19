@@ -45,7 +45,7 @@ export function WhySection({
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {t.reasons.map((reason, index) => (
             <StaggerItem key={reason.title} className="group relative">
-              <HoverLift className="relative p-7 sm:p-8 border border-border bg-surface-muted h-full rounded-md">
+              <HoverLift className="relative p-7 sm:p-8 surface-card h-full">
                 <div className="absolute top-6 right-6 text-5xl font-extralight text-border select-none">
                   {String(index + 1).padStart(2, "0")}
                 </div>

@@ -17,10 +17,11 @@ export function PageHeader({ eyebrow, title, description }: PageHeaderProps) {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-accent-blur blur-[140px]" style={{ backgroundColor: "var(--accent-blur)" }} />
         <div className="absolute top-0 right-0 w-[420px] h-[420px] rounded-full blur-[140px]" style={{ backgroundColor: "var(--divider-blur)" }} />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-secondary/70 to-transparent" />
       </div>
 
       <div
-        className="absolute inset-0 opacity-[0.06] dark:opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 opacity-[0.09] dark:opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, var(--foreground) 1px, transparent 0)`,
           backgroundSize: "32px 32px",

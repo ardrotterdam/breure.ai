@@ -15,7 +15,7 @@ export function HeroHeadline({ headlineMain, headlineAccent, headlineEnd }: Hero
     <h1 className="text-[2.25rem] leading-[1.05] sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight mb-6 sm:mb-8">
       <AnimatedWord
         text={headlineMain}
-        className="block text-foreground/90"
+        className="block text-foreground"
         delay={0.4}
       />
       <span className="block mt-2">
@@ -31,7 +31,7 @@ export function HeroHeadline({ headlineMain, headlineAccent, headlineEnd }: Hero
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 1.1 }}
-          className="text-foreground/90"
+          className="text-foreground"
         >
           {headlineEnd}
         </motion.span>

@@ -69,7 +69,7 @@ export function ProcessSection({
           <div className="space-y-4">
             {t.steps.map((step, index) => (
               <StaggerItem key={step.number} className="group">
-                <HoverLift x={8} y={0} className="relative p-6 lg:p-8 border border-border bg-surface-muted rounded-md">
+                <HoverLift x={8} y={0} className="relative p-6 lg:p-8 surface-card">
                   <div className="absolute top-6 lg:top-8 right-6 lg:right-8 text-4xl font-extralight text-border select-none group-hover:text-border-hover transition-colors">
                     {step.number}
                   </div>
