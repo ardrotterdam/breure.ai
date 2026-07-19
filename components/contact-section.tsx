@@ -19,6 +19,10 @@ export function ContactSection({
   fullPageHref,
 }: ContactSectionProps) {
   const t = dict.contact[locale]
+  const slotCta = variant === "section" ? dict.home.slotCta[locale] : null
+  const titlePrefix = slotCta?.titlePrefix ?? t.titlePrefix
+  const titleAccent = slotCta?.titleAccent ?? t.titleAccent
+  const intro = slotCta?.intro ?? t.intro
   const fullPageLabel = dict.sectionLinks[locale].contactPage
   const TitleTag = variant === "page" ? "h1" : "h2"
 
@@ -44,15 +48,15 @@ export function ContactSection({
                 id="contact-heading"
                 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-5 sm:mb-6 text-foreground"
               >
-                {t.titlePrefix}{" "}
+                {titlePrefix}{" "}
                 <span className="heading-accent-gradient">
-                  {t.titleAccent}
+                  {titleAccent}
                 </span>
               </TitleTag>
             </StaggerItem>
             <StaggerItem>
               <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md mb-10 sm:mb-12">
-                {t.intro}
+                {intro}
               </p>
             </StaggerItem>
 

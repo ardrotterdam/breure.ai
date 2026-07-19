@@ -5,12 +5,18 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface WhySectionProps {
   locale?: Locale
+  /** Homepage uses problem-framing copy; other pages keep the shared why dict. */
+  variant?: "default" | "home"
   /** When set, shows a crawlable link to the dedicated portfolio page (homepage). */
   portfolioHref?: string
 }
 
-export function WhySection({ locale = "nl", portfolioHref }: WhySectionProps) {
-  const t = dict.why[locale]
+export function WhySection({
+  locale = "nl",
+  variant = "default",
+  portfolioHref,
+}: WhySectionProps) {
+  const t = variant === "home" ? dict.home.why[locale] : dict.why[locale]
   const portfolioLabel = dict.sectionLinks[locale].portfolio
 
   return (

@@ -21,10 +21,10 @@ export default function EnglishHome() {
       <Navigation locale={locale} />
       <main>
         <HeroSection locale={locale} />
-        <WhySection locale={locale} portfolioHref="/en/portfolio" />
+        <WhySection locale={locale} variant="home" portfolioHref="/en/portfolio" />
         <FeaturedToolSection locale={locale} />
         <ServicesSection locale={locale} detailHref="/en/services" />
-        <ProcessSection locale={locale} detailHref="/en/process" />
+        <ProcessSection locale={locale} variant="home" detailHref="/en/process" />
         <LatestInsightSection locale={locale} />
         <ContactSection locale={locale} fullPageHref="/en/contact" />
       </main>

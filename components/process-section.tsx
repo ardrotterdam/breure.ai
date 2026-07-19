@@ -7,12 +7,18 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface ProcessSectionProps {
   locale?: Locale
+  /** Homepage uses the 3-step messaging summary; /proces keeps the full process dict. */
+  variant?: "default" | "home"
   /** When set, shows a crawlable link to the dedicated process page (homepage). */
   detailHref?: string
 }
 
-export function ProcessSection({ locale = "nl", detailHref }: ProcessSectionProps) {
-  const t = dict.process[locale]
+export function ProcessSection({
+  locale = "nl",
+  variant = "default",
+  detailHref,
+}: ProcessSectionProps) {
+  const t = variant === "home" ? dict.home.process[locale] : dict.process[locale]
   const detailLabel = dict.sectionLinks[locale].process
 
   return (

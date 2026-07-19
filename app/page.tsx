@@ -19,10 +19,10 @@ export default function Home() {
       <Navigation locale="nl" />
       <main>
         <HeroSection locale="nl" />
-        <WhySection locale="nl" portfolioHref="/portfolio" />
+        <WhySection locale="nl" variant="home" portfolioHref="/portfolio" />
         <FeaturedToolSection locale="nl" />
         <ServicesSection locale="nl" detailHref="/diensten" />
-        <ProcessSection locale="nl" detailHref="/proces" />
+        <ProcessSection locale="nl" variant="home" detailHref="/proces" />
         <LatestInsightSection locale="nl" />
         <ContactSection locale="nl" fullPageHref="/contact" />
       </main>

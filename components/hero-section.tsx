@@ -38,12 +38,18 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
             />
 
             <FadeIn delay={1.3}>
-              <p className="text-base sm:text-lg text-foreground/75 max-w-xl leading-relaxed mb-4">
+              <p
+                className={`text-base sm:text-lg text-foreground/75 max-w-xl leading-relaxed ${
+                  t.paragraph ? "mb-4" : "mb-9 sm:mb-10"
+                }`}
+              >
                 {t.subheadline}
               </p>
-              <p className="text-sm sm:text-[15px] text-foreground/55 max-w-xl leading-relaxed mb-9 sm:mb-10">
-                {t.paragraph}
-              </p>
+              {t.paragraph ? (
+                <p className="text-sm sm:text-[15px] text-foreground/55 max-w-xl leading-relaxed mb-9 sm:mb-10">
+                  {t.paragraph}
+                </p>
+              ) : null}
             </FadeIn>
 
             <FadeIn delay={1.5}>

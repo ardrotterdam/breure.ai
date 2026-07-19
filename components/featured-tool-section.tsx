@@ -7,8 +7,7 @@ interface FeaturedToolSectionProps {
 }
 
 export function FeaturedToolSection({ locale = "nl" }: FeaturedToolSectionProps) {
-  const t = dict.pageHeaders[locale].tools
-  const ctaLabel = dict.sectionLinks[locale].tools
+  const t = dict.home.featuredTool[locale]
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-28 bg-background overflow-hidden">
@@ -40,7 +39,7 @@ export function FeaturedToolSection({ locale = "nl" }: FeaturedToolSectionProps)
               href={ROUTES.tools[locale]}
               className="inline-flex items-center gap-2.5 btn-primary px-7 sm:px-8 py-3.5 sm:py-4"
             >
-              {ctaLabel}
+              {t.cta}
               <span aria-hidden>→</span>
             </Link>
           </StaggerItem>

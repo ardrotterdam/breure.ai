@@ -93,31 +93,164 @@ export const dict = {
   hero: {
     nl: {
       eyebrow: "Custom maritieme software · Rotterdam",
-      headlineMain: "Razendsnel custom",
-      headlineAccent: "maritieme software",
+      headlineMain: "Custom maritieme software.",
+      headlineAccent: "Gebouwd in dagen",
       headlineEnd: ".",
       subheadline:
-        "Charterers vergelijken nog steeds vessel-specs over een stapel PDF’s. Wij wikkelen dat probleem — en vergelijkbare pijn — in een tool die exact op de workflow past.",
-      paragraph:
-        "Geen generieke off-the-shelf software. Wel AI-gedreven custom tools, snel en betrouwbaar geleverd voor offshore, charter en maritieme teams.",
-      ctaPrimary: "Bespreek uw probleem",
-      ctaSecondary: "Probeer de Vessel Comparison Tool",
+        "Wij bouwen tools die exact passen op jouw workflow — voor charterers, offshore contractors en brokers die geen maanden kunnen wachten op software.",
+      paragraph: "",
+      ctaPrimary: "Probeer de Vessel Comparison Tool",
+      ctaSecondary: "Beschrijf jouw probleem",
       badgeOne: "Dagen, geen maanden",
       badgeTwo: "Puur maritiem",
     },
     en: {
       eyebrow: "Custom maritime software · Rotterdam",
-      headlineMain: "Custom maritime software,",
-      headlineAccent: "built at speed",
+      headlineMain: "Custom maritime software.",
+      headlineAccent: "Built in days",
       headlineEnd: ".",
       subheadline:
-        "Charterers still compare vessel specs across a stack of PDFs. We wrap that problem — and others like it — in a tool built for the real workflow.",
-      paragraph:
-        "Not generic off-the-shelf software. AI-driven custom tools, delivered fast and reliably for offshore, charter and maritime teams.",
-      ctaPrimary: "Tell us the problem",
-      ctaSecondary: "Try the Vessel Comparison Tool",
+        "We build tools that fit your exact workflow — for charterers, offshore contractors and brokers who can't wait months for software.",
+      paragraph: "",
+      ctaPrimary: "Try the Vessel Comparison Tool",
+      ctaSecondary: "Tell us your problem",
       badgeOne: "Days, not months",
       badgeTwo: "Maritime only",
+    },
+  },
+
+  /**
+   * Homepage-only copy (messaging doc §4). Keeps shared keys for /diensten,
+   * /proces, /contact and tool pages unchanged.
+   */
+  home: {
+    why: {
+      nl: {
+        title: "Het probleem dat wij oplossen",
+        intro:
+          "Maritieme teams verliezen uren aan handwerk: specs vergelijken uit losse PDF's, kraancurves overtypen, informatie bij elkaar rapen uit mails van brokers. Generieke software lost dit niet op — die is niet voor jouw workflow gebouwd.",
+        reasons: [
+          {
+            title: "Specs uit losse PDF's",
+            description:
+              "Vijf brokers, vijf layouts — uren kwijt aan vessel-specs naast elkaar zetten voordat je überhaupt kunt beslissen.",
+          },
+          {
+            title: "Kraancurves en broker-mails",
+            description:
+              "Kraancurves overtypen, outreach zoeken op pagina 8, puzzelen met fragmenten uit e-mails. Handwerk dat niet schaalt.",
+          },
+          {
+            title: "Generieke software faalt",
+            description:
+              "Off-the-shelf tools zijn niet voor jouw workflow gebouwd. Wat je nodig hebt, is software die exact op het probleem past.",
+          },
+        ],
+      },
+      en: {
+        title: "The problem we solve",
+        intro:
+          "Maritime teams lose hours to manual work: comparing specs across scattered PDFs, retyping crane curves, piecing together broker emails. Generic software doesn't fix this — it wasn't built for your workflow.",
+        reasons: [
+          {
+            title: "Specs across scattered PDFs",
+            description:
+              "Five brokers, five layouts — hours spent lining up vessel specs before you can even decide.",
+          },
+          {
+            title: "Crane curves and broker emails",
+            description:
+              "Retyping crane curves, digging outreach out of page 8, piecing together email fragments. Manual work that doesn't scale.",
+          },
+          {
+            title: "Generic software fails",
+            description:
+              "Off-the-shelf tools weren't built for your workflow. You need software fitted exactly to the problem.",
+          },
+        ],
+      },
+    },
+    featuredTool: {
+      nl: {
+        eyebrow: "Vessel Comparison Tool",
+        titlePrefix: "Stop met specs vergelijken",
+        titleAccent: "in PDF's",
+        description:
+          "Vergelijk 2–4 schepen naast elkaar. Interactieve kraancurves. Directe PDF-export. Gratis te proberen.",
+        cta: "Open de tool",
+      },
+      en: {
+        eyebrow: "Vessel Comparison Tool",
+        titlePrefix: "Stop comparing vessel specs",
+        titleAccent: "in PDFs",
+        description:
+          "Compare 2–4 vessels side by side. Interactive crane load charts. Instant PDF export. Free to try.",
+        cta: "Open the tool",
+      },
+    },
+    process: {
+      nl: {
+        eyebrow: "Zo werken wij",
+        titlePrefix: "Van probleem naar",
+        titleAccent: "werkende tool",
+        intro:
+          "Drie stappen. Geen salestraject. Wel een tool die past op jouw workflow.",
+        steps: [
+          {
+            number: "01",
+            title: "Vertel je probleem",
+            description: "5 minuten, geen salesgesprek",
+          },
+          {
+            number: "02",
+            title: "Wij bouwen jouw tool",
+            description: "Exact op jouw workflow, geen generieke software",
+          },
+          {
+            number: "03",
+            title: "Live binnen een week",
+            description: "Vaste prijs, geen verrassingen",
+          },
+        ],
+      },
+      en: {
+        eyebrow: "How we work",
+        titlePrefix: "From problem to",
+        titleAccent: "working tool",
+        intro:
+          "Three steps. No sales process. Just a tool that fits your workflow.",
+        steps: [
+          {
+            number: "01",
+            title: "Tell us your problem",
+            description: "5 minutes, no sales call",
+          },
+          {
+            number: "02",
+            title: "We build your tool",
+            description: "Fitted to your workflow, nothing generic",
+          },
+          {
+            number: "03",
+            title: "Live within a week",
+            description: "Fixed price, no surprises",
+          },
+        ],
+      },
+    },
+    slotCta: {
+      nl: {
+        titlePrefix: "Heb je een terugkerend probleem",
+        titleAccent: "dat software zou moeten oplossen?",
+        intro:
+          "Beschrijf het. Binnen een week heb je een werkende tool.",
+      },
+      en: {
+        titlePrefix: "Got a recurring problem",
+        titleAccent: "software should solve?",
+        intro:
+          "Describe it. You'll have a working tool within a week.",
+      },
     },
   },
 
