@@ -105,6 +105,9 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
   const insightsHref = ROUTES.insights[locale]
 
+  // TODO: /tools/... has no /en prefix, so localeFromPathname treats it as NL
+  // while the page hardcodes EN. Language toggle / nav labels can disagree there.
+  // Fix in a later pass (shared product URL vs locale-aware chrome).
   const navLinks = [
     { label: t.services, href: ROUTES.services[locale] },
     { label: t.process, href: ROUTES.process[locale] },
@@ -151,18 +154,18 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           }`}
         />
 
-        <nav className="relative container mx-auto flex min-h-[80px] w-full max-w-full items-center justify-between gap-3 overflow-hidden px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px] lg:min-h-[122px] lg:gap-6 lg:overflow-visible lg:py-6 lg:pl-16 lg:pr-12 xl:min-h-[136px] 2xl:min-h-[148px]">
-        <NavbarLogo href={homeHref} className="min-w-0 lg:mr-2" />
+        <nav className="relative container mx-auto flex min-h-[80px] w-full max-w-full flex-wrap items-center justify-between gap-x-3 gap-y-2 overflow-visible px-4 py-4 sm:min-h-[92px] sm:px-6 md:min-h-[106px] lg:min-h-[122px] lg:flex-nowrap lg:gap-x-4 lg:py-6 lg:pl-12 lg:pr-10 xl:min-h-[136px] xl:gap-x-6 xl:pl-16 xl:pr-12 2xl:min-h-[148px]">
+        <NavbarLogo href={homeHref} className="min-w-0 shrink-0 lg:mr-2" />
 
-        {/* Desktop navigation */}
-        <div className="ml-auto hidden items-center gap-5 lg:flex xl:gap-6">
+        {/* Desktop navigation — flex-1 + wrap so controls never cover links */}
+        <div className="hidden min-w-0 flex-1 flex-wrap items-center justify-end gap-x-3 gap-y-1 lg:flex xl:gap-x-5 xl:gap-y-1">
           {navLinks.map((item) => {
             const active = isActive(item.href)
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`nav-link-hover-line nav-link-desktop pb-1 text-xs tracking-wide transition-colors ${
+                className={`nav-link-hover-line nav-link-desktop shrink-0 pb-1 text-[11px] tracking-wide transition-colors xl:text-xs ${
                   active ? "font-medium" : "font-normal"
                 }`}
                 aria-current={active ? "page" : undefined}
@@ -176,8 +179,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
           })}
         </div>
 
-        {/* Right cluster: theme + language toggle + CTA */}
-        <div className="hidden shrink-0 items-center gap-2 sm:gap-2.5 lg:flex">
+        {/* Right cluster: theme + language toggle + CTA — above links if space is tight */}
+        <div className="relative z-10 hidden shrink-0 items-center gap-2 sm:gap-2.5 lg:flex">
           <ThemeToggle locale={locale} variant="desktop" />
           <div className="hidden lg:block">
             <LanguageToggle variant="desktop" />
@@ -185,14 +188,14 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
           <Link
             href={contactHref}
-            className="hidden btn-primary px-4 py-2 text-sm hover:-translate-y-px sm:inline-flex"
+            className="hidden btn-primary px-3 py-2 text-sm hover:-translate-y-px sm:inline-flex xl:px-4"
           >
             {t.cta}
           </Link>
         </div>
 
         {/* Mobile: language toggle + menu button — always visible */}
-        <div className="ml-auto flex shrink-0 items-center gap-2 lg:hidden">
+        <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 lg:hidden">
           <LanguageToggle variant="mobile" />
           <button
             type="button"
