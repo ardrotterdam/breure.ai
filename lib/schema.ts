@@ -24,7 +24,12 @@ export type BreadcrumbItem = {
   href: string
 }
 
-export type PageBreadcrumbKey = "services" | "process" | "portfolio" | "contact"
+export type PageBreadcrumbKey =
+  | "services"
+  | "process"
+  | "portfolio"
+  | "horeca"
+  | "contact"
 
 const HOME_LABEL: Record<Locale, string> = {
   nl: "Home",
@@ -35,6 +40,7 @@ const PAGE_LABEL: Record<PageBreadcrumbKey, Record<Locale, string>> = {
   services: { nl: dict.nav.nl.services, en: dict.nav.en.services },
   process: { nl: dict.nav.nl.process, en: dict.nav.en.process },
   portfolio: { nl: dict.nav.nl.portfolio, en: dict.nav.en.portfolio },
+  horeca: { nl: dict.nav.nl.horeca, en: dict.nav.en.horeca },
   contact: { nl: dict.nav.nl.contact, en: dict.nav.en.contact },
 }
 
@@ -42,6 +48,7 @@ const PAGE_ROUTE: Record<PageBreadcrumbKey, Record<Locale, string>> = {
   services: ROUTES.services,
   process: ROUTES.process,
   portfolio: ROUTES.portfolio,
+  horeca: ROUTES.horeca,
   contact: ROUTES.contact,
 }
 

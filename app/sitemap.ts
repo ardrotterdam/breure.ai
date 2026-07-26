@@ -15,6 +15,7 @@ const PRIORITY: Record<CoreRouteKey, number> = {
   tools: 0.85,
   process: 0.8,
   portfolio: 0.8,
+  horeca: 0.8,
   contact: 0.7,
 }
 
@@ -27,6 +28,7 @@ const CHANGE_FREQUENCY: Record<
   tools: "weekly",
   process: "monthly",
   portfolio: "monthly",
+  horeca: "monthly",
   contact: "monthly",
 }
 

@@ -14,6 +14,7 @@ export const ROUTES = {
   services: { nl: "/diensten", en: "/en/services" },
   process: { nl: "/proces", en: "/en/process" },
   portfolio: { nl: "/portfolio", en: "/en/portfolio" },
+  horeca: { nl: "/horeca", en: "/en/horeca" },
   tools: { nl: "/tools/vessel-comparison", en: "/en/tools/vessel-comparison" },
   contact: { nl: "/contact", en: "/en/contact" },
   insights: { nl: "/inzichten", en: "/en/insights" },
@@ -60,6 +61,7 @@ export const dict = {
       services: "Diensten",
       process: "Proces",
       portfolio: "Portfolio",
+      horeca: "Horeca",
       tools: "Tools",
       insights: "Inzichten",
       insightsTitle: "Artikelen over maritiem & offshore",
@@ -76,6 +78,7 @@ export const dict = {
       services: "Services",
       process: "Process",
       portfolio: "Portfolio",
+      horeca: "Hospitality",
       tools: "Tools",
       insights: "Insights",
       insightsTitle: "Articles on maritime & offshore",
@@ -657,6 +660,123 @@ export const dict = {
     },
   },
 
+  horeca: {
+    nl: {
+      hero: {
+        eyebrow: "Horeca",
+        title: "Websites waar je honger van krijgt.",
+        description:
+          "Premium websites voor restaurants, bistro's en friteries — snel, mobiel perfect, en met de sfeer van de zaak zelf.",
+      },
+      cases: {
+        frietkot: {
+          name: "Frietkot",
+          location: "Bourg-Argental, Frankrijk",
+          description:
+            "Tweetalige site (FR/EN) voor een Belgische friterie met auberge. Editorial fotografie-opzet, warme typografie en een menukaart die de sfeer van de zaak draagt — van friet tot overnachting.",
+          cta: "Bekijk live site",
+          imageAlt:
+            "Homepage van de Frietkot website — Belgische friterie in Bourg-Argental, ontworpen door Breure.ai",
+        },
+        indenkoning: {
+          name: "Bistro In den Koning",
+          location: "Waterlandkerkje, Zeeuws-Vlaanderen",
+          label: "Concept",
+          description:
+            "Conceptdemo voor een bourgondische bistro. Diepe kleuren, rustige layout en ruimte voor menu, reserveren en het karakter van Zeeuws-Vlaanderen.",
+          cta: "Bekijk live site",
+          imageAlt:
+            "Homepage van de Bistro In den Koning website — bourgondische bistro in Waterlandkerkje, ontworpen door Breure.ai",
+        },
+      },
+      approach: {
+        eyebrow: "Aanpak",
+        title: "Hoe wij een zaak online zetten",
+        items: [
+          {
+            title: "Sfeer eerst",
+            description:
+              "Het karakter van de zaak bepaalt het ontwerp — kleuren, typografie en fotografie volgen de keuken, niet andersom.",
+          },
+          {
+            title: "Alles erin",
+            description:
+              "Menukaart, reserveren, meertalig als nodig. Wat gasten nodig hebben, staat klaar zonder rommel.",
+          },
+          {
+            title: "Snel & vindbaar",
+            description:
+              "Laadt direct op telefoon en scoort in Google — zodat hongerige gasten je ook echt vinden.",
+          },
+        ],
+      },
+      cta: {
+        title: "Benieuwd wat dit voor jouw zaak kan zijn?",
+        description:
+          "Vertel kort over je restaurant, bistro of friterie. Wij denken mee over sfeer, structuur en wat online het verschil maakt.",
+        primary: "Neem contact op",
+        mail: "Of mail ons",
+      },
+    },
+    en: {
+      hero: {
+        eyebrow: "Hospitality",
+        title: "Websites that make you hungry.",
+        description:
+          "Premium websites for restaurants, bistros and friteries — fast, mobile-perfect, and with the atmosphere of the place itself.",
+      },
+      cases: {
+        frietkot: {
+          name: "Frietkot",
+          location: "Bourg-Argental, Frankrijk",
+          description:
+            "Bilingual site (FR/EN) for a Belgian friterie with an auberge. Editorial photography setup, warm typography and a menu that carries the character of the place — from fries to overnight stays.",
+          cta: "View live site",
+          imageAlt:
+            "Homepage of the Frietkot website — Belgian friterie in Bourg-Argental, designed by Breure.ai",
+        },
+        indenkoning: {
+          name: "Bistro In den Koning",
+          location: "Waterlandkerkje, Zeeuws-Vlaanderen",
+          label: "Concept",
+          description:
+            "Concept demo for a Burgundian bistro. Deep colours, a calm layout and room for the menu, reservations and the character of Zeeuws-Vlaanderen.",
+          cta: "View live site",
+          imageAlt:
+            "Homepage of the Bistro In den Koning website — Burgundian bistro in Waterlandkerkje, designed by Breure.ai",
+        },
+      },
+      approach: {
+        eyebrow: "Approach",
+        title: "How we put a venue online",
+        items: [
+          {
+            title: "Atmosphere first",
+            description:
+              "The character of the place drives the design — colour, type and photography follow the kitchen, not the other way around.",
+          },
+          {
+            title: "Everything in place",
+            description:
+              "Menu, reservations, multilingual when needed. What guests need is ready — without clutter.",
+          },
+          {
+            title: "Fast & findable",
+            description:
+              "Loads instantly on phones and ranks in Google — so hungry guests can actually find you.",
+          },
+        ],
+      },
+      cta: {
+        title: "Curious what this could do for your place?",
+        description:
+          "Tell us briefly about your restaurant, bistro or friterie. We'll think with you about atmosphere, structure and what makes the difference online.",
+        primary: "Get in touch",
+        mail: "Or email us",
+      },
+    },
+  },
+
   pageHeaders: {
     nl: {
       services: {
@@ -990,6 +1110,18 @@ export const seo = {
       title: "Contact | Custom maritime software Rotterdam | Breure.ai",
       description:
         "Get in touch with Breure.ai in Rotterdam for custom maritime software, tools and focused websites. Send a message through the form — we will respond by email or phone.",
+    },
+  },
+  horeca: {
+    nl: {
+      title: "Horeca websites — Breure.ai",
+      description:
+        "Premium websites voor restaurants, bistro's en friteries. Sfeer, menukaart en reserveren — gebouwd met het karakter van jouw zaak.",
+    },
+    en: {
+      title: "Hospitality websites — Breure.ai",
+      description:
+        "Premium websites for restaurants, bistros and friteries. Atmosphere, menus and reservations — built with the character of your place.",
     },
   },
 } as const

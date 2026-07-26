@@ -25,6 +25,7 @@ export const SITEMAP_ROUTES: readonly CoreRouteKey[] = [
   "home",
   "services",
   "portfolio",
+  "horeca",
   "process",
   "tools",
   "contact",
