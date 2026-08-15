@@ -24,7 +24,7 @@ export const openGraphImages: NonNullable<Metadata["openGraph"]>["images"] = [
     secureUrl: openGraphImageUrl,
     width: 1200,
     height: 630,
-    alt: "Breure.ai — Premium wave mark for maritime digital platforms",
+    alt: "Breure.ai — maritieme software op maat",
     type: "image/png",
   },
 ]

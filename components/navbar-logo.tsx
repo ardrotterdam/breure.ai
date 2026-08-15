@@ -16,8 +16,8 @@ export function NavbarLogo({ href = "/", className = "", onClick }: NavbarLogoPr
       aria-label="Breure.ai — Home"
     >
       <Image
-        src="/images/breure-ai-webbureau-rotterdam-logo.webp"
-        alt="Breure.ai – AI webbureau Rotterdam"
+        src="/images/breure-ai-logo.webp"
+        alt="Breure.ai"
         width={662}
         height={160}
         priority

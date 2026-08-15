@@ -87,7 +87,7 @@ export default async function DutchInsightArticlePage({
                   d="M7 16l-4-4m0 0l4-4m-4 4h18"
                 />
               </svg>
-              Terug naar Inzichten
+              Terug naar het blog
             </Link>
 
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-5">
@@ -183,13 +183,13 @@ export default async function DutchInsightArticlePage({
               </p>
               <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <Link href="/contact" className="btn-primary px-5 py-3 text-sm">
-                  Neem contact op
+                  Bespreek je workflow
                 </Link>
-                <Link href="/diensten" className="btn-secondary px-5 py-3 text-sm">
-                  Onze diensten
+                <Link href="/maritieme-software" className="btn-secondary px-5 py-3 text-sm">
+                  Maritieme software
                 </Link>
-                <Link href="/proces" className="btn-secondary px-5 py-3 text-sm">
-                  Ons proces
+                <Link href="/tools/vessel-comparison" className="btn-secondary px-5 py-3 text-sm">
+                  Bekijk de demo
                 </Link>
               </div>
             </aside>
@@ -200,18 +200,18 @@ export default async function DutchInsightArticlePage({
             >
               <p className="text-sm text-text-secondary mb-4">
                 Ontdek hoe Breure.ai{" "}
-                <Link href="/diensten" className="text-foreground hover:text-accent transition-colors">
-                  maritiem webdesign en asset-microsites
+                <Link href="/maritieme-software" className="text-foreground hover:text-accent transition-colors">
+                  gerichte maritieme software
                 </Link>{" "}
-                aanpakt, ons{" "}
-                <Link href="/proces" className="text-foreground hover:text-accent transition-colors">
-                  projectproces
-                </Link>{" "}
-                van specificatie tot livegang, of{" "}
+                bouwt, bekijk de{" "}
+                <Link href="/tools/vessel-comparison" className="text-foreground hover:text-accent transition-colors">
+                  Vessel Comparison Tool
+                </Link>
+                , of{" "}
                 <Link href="/contact" className="text-foreground hover:text-accent transition-colors">
-                  neem contact op
-                </Link>{" "}
-                om uw vloot of offshore assets te bespreken.
+                  bespreek een workflow
+                </Link>
+                .
               </p>
               <Link
                 href={indexPath}
@@ -231,7 +231,7 @@ export default async function DutchInsightArticlePage({
                     d="M7 16l-4-4m0 0l4-4m-4 4h18"
                   />
                 </svg>
-                Alle Inzichten
+                Naar het blog
               </Link>
             </nav>
           </div>

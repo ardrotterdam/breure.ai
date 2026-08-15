@@ -11,9 +11,12 @@ export const DEFAULT_LOCALE: Locale = "nl"
  */
 export const ROUTES = {
   home: { nl: "/", en: "/en" },
+  maritimeSoftware: { nl: "/maritieme-software", en: "/en/maritime-software" },
+  /** Legacy services URLs — redirected to maritimeSoftware. Kept for locale mapping. */
   services: { nl: "/diensten", en: "/en/services" },
   process: { nl: "/proces", en: "/en/process" },
   portfolio: { nl: "/portfolio", en: "/en/portfolio" },
+  /** Unlisted hospitality routes — kept live for migration safety. */
   horeca: { nl: "/horeca", en: "/en/horeca" },
   tools: { nl: "/tools/vessel-comparison", en: "/en/tools/vessel-comparison" },
   contact: { nl: "/contact", en: "/en/contact" },
@@ -58,15 +61,20 @@ export function localeFromPathname(pathname: string): Locale {
 export const dict = {
   nav: {
     nl: {
-      services: "Diensten",
+      home: "Home",
+      maritimeSoftware: "Maritieme Software",
+      demo: "Demo",
+      blog: "Blog",
+      blogTitle: "Artikelen over maritieme software",
+      contact: "Contact",
+      cta: "Bespreek je workflow",
+      services: "Maritieme Software",
       process: "Proces",
       portfolio: "Portfolio",
       horeca: "Horeca",
-      tools: "Tools",
-      insights: "Inzichten",
-      insightsTitle: "Artikelen over maritiem & offshore",
-      contact: "Contact",
-      cta: "Neem contact op",
+      tools: "Demo",
+      insights: "Blog",
+      insightsTitle: "Artikelen over maritieme software",
       openMenu: "Open menu",
       closeMenu: "Sluit menu",
       switchTo: "Wissel naar Engels",
@@ -75,15 +83,20 @@ export const dict = {
       themeDark: "Schakel naar donkere modus",
     },
     en: {
-      services: "Services",
+      home: "Home",
+      maritimeSoftware: "Maritime Software",
+      demo: "Demo",
+      blog: "Blog",
+      blogTitle: "Articles on maritime software",
+      contact: "Contact",
+      cta: "Discuss your workflow",
+      services: "Maritime Software",
       process: "Process",
       portfolio: "Portfolio",
       horeca: "Hospitality",
-      tools: "Tools",
-      insights: "Insights",
-      insightsTitle: "Articles on maritime & offshore",
-      contact: "Contact",
-      cta: "Get in touch",
+      tools: "Demo",
+      insights: "Blog",
+      insightsTitle: "Articles on maritime software",
       openMenu: "Open menu",
       closeMenu: "Close menu",
       switchTo: "Switch to Dutch",
@@ -95,210 +108,498 @@ export const dict = {
 
   hero: {
     nl: {
-      eyebrow: "Custom maritieme software · Rotterdam",
-      headlineMain: "Custom maritieme software.",
-      headlineAccent: "Gebouwd in dagen",
-      headlineEnd: ".",
+      eyebrow: "Gerichte maritieme software · Rotterdam",
+      headlineMain: "Maritieme software",
+      headlineAccent: "voor het probleem dat je spreadsheet niet meer oplost",
+      headlineEnd: "",
       subheadline:
-        "Wij bouwen tools die exact passen op jouw workflow — voor charterers, offshore contractors en brokers die geen maanden kunnen wachten op software.",
-      paragraph: "",
-      ctaPrimary: "Probeer de Vessel Comparison Tool",
-      ctaSecondary: "Beschrijf jouw probleem",
+        "Breure.ai bouwt gerichte software voor charterers, contractors en brokers.",
+      paragraph:
+        "Van technische vergelijkingstools tot kleine workflows die handmatig werk wegnemen. Eén probleem. Eén gerichte tool.",
+      ctaPrimary: "Bespreek je workflow",
+      ctaSecondary: "Bekijk de demo",
+      ctaPrimaryRoute: "contact",
+      ctaSecondaryRoute: "tools",
       badgeOne: "Dagen, geen maanden",
       badgeTwo: "Puur maritiem",
     },
     en: {
-      eyebrow: "Custom maritime software · Rotterdam",
-      headlineMain: "Custom maritime software.",
-      headlineAccent: "Built in days",
-      headlineEnd: ".",
+      eyebrow: "Focused maritime software · Rotterdam",
+      headlineMain: "Maritime software",
+      headlineAccent: "for the problem your spreadsheet no longer solves",
+      headlineEnd: "",
       subheadline:
-        "We build tools that fit your exact workflow — for charterers, offshore contractors and brokers who can't wait months for software.",
-      paragraph: "",
-      ctaPrimary: "Try the Vessel Comparison Tool",
-      ctaSecondary: "Tell us your problem",
+        "Breure.ai builds focused software for charterers, contractors and brokers.",
+      paragraph:
+        "From technical comparison tools to small workflows that take away manual work. One problem. One focused tool.",
+      ctaPrimary: "Discuss your workflow",
+      ctaSecondary: "View the demo",
+      ctaPrimaryRoute: "contact",
+      ctaSecondaryRoute: "tools",
       badgeOne: "Days, not months",
       badgeTwo: "Maritime only",
     },
   },
 
   /**
-   * Homepage-only copy (messaging doc §4). Keeps shared keys for /diensten,
-   * /proces, /contact and tool pages unchanged.
+   * Homepage-only copy. Shared keys for /maritieme-software, /proces, /contact and
+   * tool pages stay in their own dict namespaces so those pages can be updated independently.
    */
   home: {
     why: {
       nl: {
-        title: "Het probleem dat wij oplossen",
+        title: "Doe je dit nog handmatig?",
         intro:
-          "Maritieme teams verliezen uren aan handwerk: specs vergelijken uit losse PDF's, kraancurves overtypen, informatie bij elkaar rapen uit mails van brokers. Generieke software lost dit niet op — die is niet voor jouw workflow gebouwd.",
+          "Veel werk in de maritieme sector gebeurt nog steeds tussen Excel-bestanden, pdf's, e-mails en de kennis van mensen.",
+        paragraphs: [
+          "En vaak werkt dat prima.",
+          "Totdat dezelfde handelingen steeds terugkomen.",
+        ],
         reasons: [
           {
-            title: "Specs uit losse PDF's",
+            title: "Specificaties naast elkaar",
             description:
-              "Vijf brokers, vijf layouts — uren kwijt aan vessel-specs naast elkaar zetten voordat je überhaupt kunt beslissen.",
+              "Specificaties worden uit meerdere documenten naast elkaar gelegd.",
           },
           {
-            title: "Kraancurves en broker-mails",
+            title: "Steeds opnieuw in Excel",
             description:
-              "Kraancurves overtypen, outreach zoeken op pagina 8, puzzelen met fragmenten uit e-mails. Handwerk dat niet schaalt.",
+              "Een berekening wordt voor ieder nieuw project opnieuw in Excel opgebouwd.",
           },
           {
-            title: "Generieke software faalt",
+            title: "Verspreide informatie",
             description:
-              "Off-the-shelf tools zijn niet voor jouw workflow gebouwd. Wat je nodig hebt, is software die exact op het probleem past.",
+              "Belangrijke informatie staat verspreid over pdf's en e-mails en moet telkens handmatig bij elkaar worden gezocht.",
           },
         ],
+        closingLead:
+          "Daar kan gerichte software het verschil maken. Niet meteen een compleet nieuw bedrijfssysteem.",
+        closing: "Eén probleem. Eén gerichte tool.",
       },
       en: {
-        title: "The problem we solve",
+        title: "Still doing this by hand?",
         intro:
-          "Maritime teams lose hours to manual work: comparing specs across scattered PDFs, retyping crane curves, piecing together broker emails. Generic software doesn't fix this — it wasn't built for your workflow.",
+          "A lot of work in the maritime sector still happens between Excel files, PDFs, emails and the knowledge of people.",
+        paragraphs: [
+          "And often that works fine.",
+          "Until the same actions keep coming back.",
+        ],
         reasons: [
           {
-            title: "Specs across scattered PDFs",
+            title: "Specs side by side",
             description:
-              "Five brokers, five layouts — hours spent lining up vessel specs before you can even decide.",
+              "Specifications from multiple documents are lined up next to each other by hand.",
           },
           {
-            title: "Crane curves and broker emails",
+            title: "Excel, every time again",
             description:
-              "Retyping crane curves, digging outreach out of page 8, piecing together email fragments. Manual work that doesn't scale.",
+              "A calculation is rebuilt in Excel for every new project.",
           },
           {
-            title: "Generic software fails",
+            title: "Scattered information",
             description:
-              "Off-the-shelf tools weren't built for your workflow. You need software fitted exactly to the problem.",
+              "Important information sits across PDFs and emails and has to be gathered manually each time.",
           },
         ],
+        closingLead:
+          "Focused software can make the difference there. Not immediately a complete new business system.",
+        closing: "One problem. One focused tool.",
       },
     },
     featuredTool: {
       nl: {
-        eyebrow: "Vessel Comparison Tool",
-        titlePrefix: "Stop met specs vergelijken",
-        titleAccent: "in PDF's",
+        eyebrow: "Bekijk het in de praktijk",
+        titlePrefix: "Vessel Comparison Tool",
+        titleAccent: "",
         description:
-          "Vergelijk 2–4 schepen naast elkaar. Interactieve kraancurves. Directe PDF-export. Gratis te proberen.",
-        cta: "Open de tool",
+          "Dit is het soort gerichte maritieme workflow dat Breure.ai bouwt.",
+        paragraphs: [
+          "Vergelijk scheepsspecificaties, bekijk capabilities en kraancurves, en genereer een PDF-rapport — zonder vijf datasheets naast een spreadsheet.",
+          "De huidige versie gebruikt fictieve scheepsdata en is bedoeld als demonstratie. Het principe erachter laat precies zien waar Breure.ai zich op richt: een terugkerende technische handeling omzetten in een duidelijke, bruikbare workflow.",
+        ],
+        features: [
+          "Selecteer schepen",
+          "Vergelijk specificaties",
+          "Bekijk kraancurves",
+          "Genereer een overzichtelijk PDF-rapport",
+        ],
+        cta: "Probeer de Vessel Comparison Tool",
+        disclaimer: "Demo-omgeving — de getoonde scheepsgegevens zijn fictief.",
       },
       en: {
-        eyebrow: "Vessel Comparison Tool",
-        titlePrefix: "Stop comparing vessel specs",
-        titleAccent: "in PDFs",
+        eyebrow: "See it in practice",
+        titlePrefix: "Vessel Comparison Tool",
+        titleAccent: "",
         description:
-          "Compare 2–4 vessels side by side. Interactive crane load charts. Instant PDF export. Free to try.",
-        cta: "Open the tool",
+          "This is the kind of focused maritime workflow Breure.ai builds.",
+        paragraphs: [
+          "Compare vessel specifications, inspect capabilities and crane curves, and generate a PDF report — without five datasheets open next to a spreadsheet.",
+          "The current version uses fictional vessel data and is intended as a demonstration. The principle behind it shows exactly where Breure.ai focuses: turning a recurring technical task into a clear, usable workflow.",
+        ],
+        features: [
+          "Select vessels",
+          "Compare specifications",
+          "Inspect crane curves",
+          "Generate a clear PDF report",
+        ],
+        cta: "Open the Vessel Comparison Tool",
+        disclaimer: "Demo environment — the vessel data shown is fictional.",
+      },
+    },
+    services: {
+      nl: {
+        title: "Wat bouwen we?",
+        intro:
+          "Breure.ai richt zich op kleine, specifieke maritieme tools in plaats van grote softwareplatformen die maanden nodig hebben voordat iemand ermee kan werken.",
+        items: [
+          {
+            tag: "Vergelijken",
+            number: "01",
+            title: "Vergelijkingstools",
+            description:
+              "Breng specificaties uit spreadsheets, pdf's of databases samen en vergelijk ze vanuit één omgeving.",
+            features: [
+              "Bijvoorbeeld voor scheepsselectie, equipmentvergelijkingen of technische beoordelingen.",
+            ],
+          },
+          {
+            tag: "Beslissen",
+            number: "02",
+            title: "Calculators & decision tools",
+            description:
+              "Zet een ingewikkelde of vaak gebruikte spreadsheet om in een eenvoudige tool die rond de daadwerkelijke berekening is gebouwd.",
+            features: [
+              "De logica blijft consistent en de uitkomst wordt makkelijker te begrijpen, controleren en delen.",
+            ],
+          },
+          {
+            tag: "Automatiseren",
+            number: "03",
+            title: "Workflowautomatisering",
+            description:
+              "Als mensen steeds dezelfde informatie tussen documenten, spreadsheets en e-mail kopiëren, kan een deel van dat proces vaak slimmer.",
+            features: [
+              "Gegevens uit PDF's halen, gestructureerde documentworkflows, rapportgeneratie en koppelingen tussen tools.",
+              "Niet automatiseren omdat het technisch mogelijk is — wel wanneer het tijd bespaart, fouten vermindert of repetitief werk wegneemt.",
+            ],
+          },
+        ],
+      },
+      en: {
+        title: "What we build",
+        intro:
+          "Breure.ai focuses on small, specific maritime tools rather than large software platforms that take months before anyone can work with them.",
+        items: [
+          {
+            tag: "Compare",
+            number: "01",
+            title: "Comparison tools",
+            description:
+              "Bring specifications from spreadsheets, PDFs or databases together and compare them from one environment.",
+            features: [
+              "For example vessel selection, equipment comparison or technical specification review.",
+            ],
+          },
+          {
+            tag: "Decide",
+            number: "02",
+            title: "Calculators & decision tools",
+            description:
+              "Turn a complex or frequently used spreadsheet into a simple tool built around the actual calculation.",
+            features: [
+              "The logic stays consistent and the result is easier to understand, check and share.",
+            ],
+          },
+          {
+            tag: "Automate",
+            number: "03",
+            title: "Workflow automation",
+            description:
+              "When people keep copying the same information between documents, spreadsheets and email, part of that process can often be smarter.",
+            features: [
+              "Extracting data from PDFs, structured document workflows, report generation and integrations between tools.",
+              "Not automating because it is technically possible — only when it saves time, reduces errors or removes repetitive work.",
+            ],
+          },
+        ],
       },
     },
     process: {
       nl: {
-        eyebrow: "Zo werken wij",
+        eyebrow: "Aanpak",
         titlePrefix: "Van probleem naar",
-        titleAccent: "werkende tool",
+        titleAccent: "werkende software",
         intro:
-          "Drie stappen. Geen salestraject. Wel een tool die past op jouw workflow.",
+          "Bij een strak afgebakende workflow kan een eerste werkende versie vaak binnen enkele dagen klaar zijn. Dat beloven we niet voor ieder project — we beginnen bewust klein.",
         steps: [
           {
             number: "01",
-            title: "Vertel je probleem",
-            description: "5 minuten, geen salesgesprek",
+            title: "Laat de workflow zien",
+            description:
+              "Een spreadsheet, een paar pdf's of een bestaand handmatig proces is vaak al genoeg. We kijken naar wat er nu gebeurt, waar tijd verloren gaat en welk deel daadwerkelijk slimmer kan.",
           },
           {
             number: "02",
-            title: "Wij bouwen jouw tool",
-            description: "Exact op jouw workflow, geen generieke software",
+            title: "Scope terugbrengen",
+            description:
+              "We brengen het probleem terug tot de kleinste versie die daadwerkelijk waarde levert. Geen platform, geen maandenlange inventarisatie — één gerichte tool.",
           },
           {
             number: "03",
-            title: "Live binnen een week",
-            description: "Vaste prijs, geen verrassingen",
+            title: "Eerste werkende versie bouwen",
+            description:
+              "We bouwen zo snel mogelijk iets dat in de praktijk getest kan worden. Bij een duidelijk afgebakende workflow kan dat vaak binnen enkele dagen.",
+          },
+          {
+            number: "04",
+            title: "Testen met echt werk",
+            description:
+              "Software wordt pas interessant wanneer die in het echte werk terechtkomt. Daar blijkt welke aannames kloppen, wat ontbreekt en wat daadwerkelijk tijd bespaart.",
+          },
+          {
+            number: "05",
+            title: "Verbeteren wat ertoe doet",
+            description:
+              "Geen enorme roadmap vol functies. We verbeteren wat het werk sneller, duidelijker of betrouwbaarder maakt.",
           },
         ],
       },
       en: {
         eyebrow: "How we work",
         titlePrefix: "From problem to",
-        titleAccent: "working tool",
+        titleAccent: "working software",
         intro:
-          "Three steps. No sales process. Just a tool that fits your workflow.",
+          "For a tightly scoped workflow, a first working version can often be ready within days. That is not a promise for every project — we start small on purpose.",
         steps: [
           {
             number: "01",
-            title: "Tell us your problem",
-            description: "5 minutes, no sales call",
+            title: "Show the workflow",
+            description:
+              "A spreadsheet, a few PDFs or an existing manual process is often enough. We look at what happens now, where time is lost and which part can actually be smarter.",
           },
           {
             number: "02",
-            title: "We build your tool",
-            description: "Fitted to your workflow, nothing generic",
+            title: "Reduce the scope",
+            description:
+              "We reduce the problem to the smallest version that actually delivers value. No platform, no months of discovery — one focused tool.",
           },
           {
             number: "03",
-            title: "Live within a week",
-            description: "Fixed price, no surprises",
+            title: "Build a first working version",
+            description:
+              "We build something that can be tested in practice as quickly as possible. For a clearly scoped workflow, that can often be within days.",
           },
+          {
+            number: "04",
+            title: "Test with real work",
+            description:
+              "Software only becomes interesting when it lands in real work. That is where assumptions hold or fail, and where it becomes clear what actually saves time.",
+          },
+          {
+            number: "05",
+            title: "Improve what matters",
+            description:
+              "No huge roadmap of features. We improve what makes the work faster, clearer or more reliable.",
+          },
+        ],
+      },
+    },
+    examples: {
+      nl: {
+        title: "Soms heb je geen nieuw platform nodig",
+        eyebrow: "Bijvoorbeeld",
+        intro:
+          "Niet ieder operationeel probleem vraagt om een nieuw ERP-systeem, een groot SaaS-platform of maanden development.",
+        lead: "Soms moet één terugkerende taak gewoon beter.",
+        items: [
+          "schepen vergelijken met projecteisen;",
+          "gegevens uit technische documenten structureren;",
+          "consistente klant- of projectrapporten genereren;",
+          "dezelfde technische berekening uitvoeren zonder telkens een spreadsheet opnieuw op te bouwen;",
+          "specificaties door meerdere documenten heen doorzoeken;",
+          "informatie uit verschillende bronnen op één plek samenbrengen;",
+          "een interne Excel-workflow omzetten in een tool die door meerdere mensen gebruikt kan worden.",
+        ],
+        closing:
+          "Kun je de workflow duidelijk uitleggen, dan kunnen we meestal ook snel bepalen of er een gerichte tool van te maken is.",
+      },
+      en: {
+        title: "Sometimes you don't need a new platform",
+        eyebrow: "For example",
+        intro:
+          "Not every operational problem needs a new ERP system, a large SaaS platform or months of development.",
+        lead: "Sometimes one recurring task just needs to work better.",
+        items: [
+          "comparing vessels against project requirements;",
+          "structuring data from technical documents;",
+          "generating consistent client or project reports;",
+          "running the same technical calculation without rebuilding a spreadsheet each time;",
+          "searching specifications across multiple documents;",
+          "bringing information from different sources into one place;",
+          "turning an internal Excel workflow into a tool several people can use.",
+        ],
+        closing:
+          "If you can explain the workflow clearly, we can usually determine quickly whether a focused tool can be built from it.",
+      },
+    },
+    whyBreure: {
+      nl: {
+        title: "Waarom Breure.ai?",
+        intro: "",
+        paragraphs: [],
+        reasons: [
+          {
+            title: "Maritieme focus",
+            description:
+              "We bouwen niet voor iedere sector alles wat los en vast zit. Breure.ai richt zich bewust op maritieme workflows, waar technische informatie, documenten, spreadsheets en operationele beslissingen vaak samenkomen. Die focus helpt om sneller tot de kern van een probleem te komen.",
+          },
+          {
+            title: "Klein beginnen",
+            description:
+              "We proberen niet direct een compleet platform te verkopen. Eerst bewijzen dat één oplossing in de praktijk waarde heeft. Daarna kan er worden uitgebreid als daar een goede reden voor is.",
+          },
+          {
+            title: "Korte lijnen",
+            description:
+              "De mensen met wie het probleem wordt besproken, blijven betrokken bij het bouwen van de oplossing. Dat voorkomt onnodige overdracht en maakt het makkelijker om snel bij te sturen wanneer de praktijk anders blijkt te werken dan vooraf gedacht.",
+          },
+          {
+            title: "Moderne development",
+            description:
+              "We combineren moderne softwareontwikkeling met AI-assisted development om de afstand tussen idee en werkende software kleiner te maken. AI helpt ons sneller bouwen, onderzoeken en itereren.",
+          },
+        ],
+        closingLead: "Maar AI is niet het product.",
+        closing: "De software die het probleem oplost is het product.",
+      },
+      en: {
+        title: "Why Breure.ai?",
+        intro: "",
+        paragraphs: [],
+        reasons: [
+          {
+            title: "Maritime focus",
+            description:
+              "We don't build everything for every sector. Breure.ai focuses on maritime workflows, where technical information, documents, spreadsheets and operational decisions often come together.",
+          },
+          {
+            title: "Start small",
+            description:
+              "We don't try to sell a complete platform up front. First prove that one solution has value in practice. Then expand if there is a good reason to.",
+          },
+          {
+            title: "Short lines",
+            description:
+              "The people who discuss the problem stay involved in building the solution. That avoids unnecessary handovers and makes it easier to adjust when practice differs from the plan.",
+          },
+          {
+            title: "Modern development",
+            description:
+              "We combine modern software development with AI-assisted development to shorten the distance between idea and working software. AI helps us build, research and iterate faster. But AI is not the product.",
+          },
+        ],
+        closingLead: "",
+        closing: "The software that solves the problem is the product.",
+      },
+    },
+    location: {
+      nl: {
+        title: "Gebouwd vanuit Rotterdam",
+        paragraphs: [
+          "Breure.ai bouwt gerichte software voor bedrijven en professionals in de maritieme sector.",
+          "Vanuit Rotterdam werken we aan tools die bestaande workflows eenvoudiger maken zonder dat daar meteen een groot IT-project voor nodig is.",
+          "We geloven dat veel operationele software kleiner kan beginnen: eerst één duidelijk probleem oplossen, in de praktijk bewijzen dat het werkt en daarna alleen uitbreiden waar dat waarde toevoegt.",
+        ],
+      },
+      en: {
+        title: "Built from Rotterdam",
+        paragraphs: [
+          "Breure.ai builds focused software for companies and professionals in the maritime sector.",
+          "From Rotterdam we work on tools that make existing workflows simpler without requiring a large IT project first.",
+          "We believe a lot of operational software can start smaller: solve one clear problem first, prove it works in practice, and only then expand where that adds value.",
         ],
       },
     },
     slotCta: {
       nl: {
-        titlePrefix: "Heb je een terugkerend probleem",
-        titleAccent: "dat software zou moeten oplossen?",
-        intro:
-          "Beschrijf het. Binnen een week heb je een werkende tool.",
+        titlePrefix: "Welke maritieme workflow kost",
+        titleAccent: "onnodig veel tijd?",
+        intro: "Je hoeft vooraf niet te weten welke software je nodig hebt.",
+        paragraphs: [
+          "Begin bij het probleem.",
+          "Laat de spreadsheet zien die steeds opnieuw wordt gebruikt. De pdf's die telkens naast elkaar moeten worden gelegd. De berekening die steeds opnieuw wordt gemaakt. Of die ene handeling waarvan iedereen binnen het team weet dat het eigenlijk slimmer zou moeten kunnen.",
+          "We kijken naar de huidige workflow en bepalen of een gerichte tool daar daadwerkelijk iets kan verbeteren.",
+          "Als dat zo is, maken we duidelijk hoe een eerste bruikbare versie eruit kan zien.",
+        ],
+        toolCta: "Of bekijk eerst de Vessel Comparison Tool",
       },
       en: {
-        titlePrefix: "Got a recurring problem",
-        titleAccent: "software should solve?",
-        intro:
-          "Describe it. You'll have a working tool within a week.",
+        titlePrefix: "Which maritime workflow is costing",
+        titleAccent: "more time than it should?",
+        intro: "You do not need to know in advance which software you need.",
+        paragraphs: [
+          "Start with the problem.",
+          "Show us the spreadsheet that keeps getting reused. The PDFs that have to be lined up every time. The calculation that is made over and over. Or that one step everyone on the team knows should be smarter.",
+          "We look at the current workflow and determine whether a focused tool can actually improve it.",
+          "If it can, we make clear what a first working version could look like.",
+        ],
+        toolCta: "Or look at the Vessel Comparison Tool first",
       },
     },
   },
 
   why: {
     nl: {
-      title: "Waarom maritieme teams voor Breure.ai kiezen",
+      title: "Waarom Breure.ai?",
       intro:
-        "Wij verkopen geen standaardsoftware. Wij lossen één specifiek probleem op met een tool die past — en leveren die sneller dan een agency of suite ooit kan.",
+        "Breure.ai bouwt gerichte custom software voor maritieme workflows — voor charterers, contractors en brokers.",
       reasons: [
         {
-          title: "Snelheid",
+          title: "Maritieme focus",
           description:
-            "Solo founder, wendbaar. Custom tools in dagen in plaats van maanden — zodat u niet wacht tot het seizoen voorbij is.",
+            "We bouwen niet voor iedere sector alles wat los en vast zit. Breure.ai richt zich bewust op maritieme workflows, waar technische informatie, documenten, spreadsheets en operationele beslissingen vaak samenkomen.",
         },
         {
-          title: "Puur maritiem",
+          title: "Klein beginnen",
           description:
-            "Geen generieke software-agency. Focus op charterers, offshore contractors, brokers en de echte workflow rond specs, kraancurves en projectdruk.",
+            "We proberen niet direct een compleet platform te verkopen. Eerst bewijzen dat één oplossing in de praktijk waarde heeft. Daarna kan er worden uitgebreid als daar een goede reden voor is.",
         },
         {
-          title: "Probleem eerst",
+          title: "Korte lijnen",
           description:
-            "Wij luisteren diep, vatten de pijn, en wikkelen de oplossing in software. De filosofie is open; het verschil zit in de uitvoering.",
+            "De mensen met wie het probleem wordt besproken, blijven betrokken bij het bouwen van de oplossing. Dat voorkomt onnodige overdracht en maakt het makkelijker om snel bij te sturen.",
+        },
+        {
+          title: "Moderne development",
+          description:
+            "We combineren moderne softwareontwikkeling met AI-assisted development om de afstand tussen idee en werkende software kleiner te maken. AI helpt ons sneller bouwen — maar AI is niet het product.",
         },
       ],
     },
     en: {
-      title: "Why maritime teams choose Breure.ai",
+      title: "Why Breure.ai?",
       intro:
-        "We don’t sell shelfware. We solve one specific problem with a tool that fits — and ship it faster than an agency or suite ever will.",
+        "Breure.ai builds focused custom software for maritime workflows — for charterers, contractors and brokers.",
       reasons: [
         {
-          title: "Speed",
+          title: "Maritime focus",
           description:
-            "Solo founder, highly agile. Custom tools in days instead of months — so you don’t wait until the season has passed.",
+            "We don't build everything for every sector. Breure.ai focuses on maritime workflows, where technical information, documents, spreadsheets and operational decisions often come together.",
         },
         {
-          title: "Maritime only",
+          title: "Start small",
           description:
-            "Not a generic software agency. Focused on charterers, offshore contractors, brokers and the real workflow around specs, crane curves and project pressure.",
+            "We don't try to sell a complete platform up front. First prove that one solution has value in practice. Then expand if there is a good reason to.",
         },
         {
-          title: "Problem first",
+          title: "Short lines",
           description:
-            "We listen deeply, capture the pain, and wrap the solution in software. The philosophy is public; the difference is in the execution.",
+            "The people who discuss the problem stay involved in building the solution. That avoids unnecessary handovers and makes it easier to adjust when practice differs from the plan.",
+        },
+        {
+          title: "Modern development",
+          description:
+            "We combine modern software development with AI-assisted development to shorten the distance between idea and working software. AI helps us build faster — but AI is not the product.",
         },
       ],
     },
@@ -306,87 +607,87 @@ export const dict = {
 
   services: {
     nl: {
-      title: "Wat wij bouwen voor maritieme teams",
+      title: "Drie soorten gerichte maritieme software",
       intro:
-        "Van live tools tot custom builds: software die één concrete pijn wegneemt. Websites bouwen we nog steeds — wanneer dat het juiste antwoord op het probleem is.",
+        "Breure.ai bouwt geen grote platformen. We bouwen gerichte tools voor concrete operationele problemen — voor charterers, contractors, brokers en maritieme teams met repetitieve technische of operationele workflows.",
       items: [
         {
-          tag: "Live tool",
+          tag: "Vergelijken",
           number: "01",
-          title: "Vessel Comparison Tool",
+          title: "Vergelijkingstools",
           description:
-            "Vergelijk 2–4 schepen naast elkaar op kraancapaciteit, deck, DP en meer — met interactieve kraancurves en PDF-export. Gebouwd voor charterers die klaar zijn met losse spec-PDF’s.",
+            "Breng specificaties uit spreadsheets, pdf's of databases samen en vergelijk ze vanuit één omgeving.",
           features: [
-            "Side-by-side vergelijking in seconden",
-            "Interactieve kraan-lastdiagrammen",
-            "Directe PDF-export van de vergelijking",
+            "Scheepsvergelijking",
+            "Equipmentvergelijking",
+            "Technische specificaties naast elkaar",
           ],
         },
         {
-          tag: "Custom builds",
+          tag: "Beslissen",
           number: "02",
-          title: "Tools op maat voor uw workflow",
+          title: "Calculators & decision tools",
           description:
-            "U beschrijft het probleem; wij wikkelen de oplossing in een tool die exact past. Snel gescoord, snel geleverd — geen maandenlange trajecten.",
+            "Zet een ingewikkelde of vaak gebruikte spreadsheet om in een eenvoudige tool die rond de daadwerkelijke berekening is gebouwd.",
           features: [
-            "Scoped op één helder probleem",
-            "Levering in dagen tot ongeveer een week",
-            "AI-gedreven waar het echt versnelt",
+            "Herhaalde Excel-workflows vervangen",
+            "Consistente berekeningen",
+            "Makkelijker delen en rapporteren",
           ],
         },
         {
-          tag: "Desgevraagd",
+          tag: "Automatiseren",
           number: "03",
-          title: "Maritieme websites & asset-pagina’s",
+          title: "Workflowautomatisering",
           description:
-            "Wanneer geloofwaardigheid online het knelpunt is: gerichte sites en capaciteitspagina’s voor offshore en scheepvaart — asset-first, niet corporate-first.",
+            "Als mensen steeds dezelfde informatie tussen documenten, spreadsheets en e-mail kopiëren, kan een deel van dat proces vaak slimmer.",
           features: [
-            "Asset-microsites en vlootpresentatie",
-            "Technische specs die tenderteams snappen",
-            "Snel, scherp en sectorgericht",
+            "Gegevens uit PDF's halen",
+            "Gestructureerde documentworkflows",
+            "Rapportgeneratie en koppelingen tussen tools",
           ],
         },
       ],
     },
     en: {
-      title: "What we build for maritime teams",
+      title: "Three kinds of focused maritime software",
       intro:
-        "From live tools to custom builds: software that removes one concrete pain. We still build websites — when that is the right answer to the problem.",
+        "Breure.ai does not build large platforms. We build focused tools for concrete operational problems — for charterers, contractors, brokers and maritime teams with repetitive technical or operational workflows.",
       items: [
         {
-          tag: "Live tool",
+          tag: "Compare",
           number: "01",
-          title: "Vessel Comparison Tool",
+          title: "Comparison tools",
           description:
-            "Compare 2–4 vessels side by side on crane capacity, deck, DP and more — with interactive crane curves and PDF export. Built for charterers done with loose spec PDFs.",
+            "Bring specifications from spreadsheets, PDFs or databases together and compare them from one environment.",
           features: [
-            "Side-by-side comparison in seconds",
-            "Interactive crane load charts",
-            "Direct PDF export of the comparison",
+            "Vessel comparison",
+            "Equipment comparison",
+            "Technical specification comparison",
           ],
         },
         {
-          tag: "Custom builds",
+          tag: "Decide",
           number: "02",
-          title: "Tools built around your workflow",
+          title: "Calculators & decision tools",
           description:
-            "You describe the problem; we wrap the solution in a tool that fits. Scoped fast, shipped fast — no multi-month programmes.",
+            "Turn a complex or frequently used spreadsheet into a simple tool built around the actual calculation.",
           features: [
-            "Scoped to one clear problem",
-            "Delivery in days to about a week",
-            "AI-driven where it truly accelerates",
+            "Replace repeated Excel workflows",
+            "Consistent calculations",
+            "Easier sharing and reporting",
           ],
         },
         {
-          tag: "When needed",
+          tag: "Automate",
           number: "03",
-          title: "Maritime websites & asset pages",
+          title: "Workflow automation",
           description:
-            "When online credibility is the bottleneck: focused sites and capability pages for offshore and shipping — asset-first, not corporate-first.",
+            "When people keep copying the same information between documents, spreadsheets and email, part of that process can often be smarter.",
           features: [
-            "Asset microsites and fleet presentation",
-            "Technical specs tender teams understand",
-            "Fast, sharp and sector-specific",
+            "Extracting data from PDFs",
+            "Structured document workflows",
+            "Report generation and integrations between tools",
           ],
         },
       ],
@@ -395,68 +696,80 @@ export const dict = {
 
   process: {
     nl: {
-      eyebrow: "Ons proces",
+      eyebrow: "Aanpak",
       titlePrefix: "Van probleem naar",
-      titleAccent: "werkende tool",
+      titleAccent: "werkende software",
       intro:
-        "Kort, helder en gebouwd voor tempo. Geen maandenlange trajecten — wel een tool die uw team meteen kan gebruiken.",
+        "Bij een strak afgebakende workflow kan een eerste werkende versie vaak binnen enkele dagen klaar zijn. Dat beloven we niet voor ieder project — we beginnen bewust klein.",
       steps: [
         {
           number: "01",
-          title: "Probleem begrijpen",
+          title: "Laat de workflow zien",
           description:
-            "U beschrijft de pijn in de workflow. Wij stellen scherpe vragen tot het probleem écht scherp staat.",
+            "Een spreadsheet, een paar pdf's of een bestaand handmatig proces is vaak al genoeg. We kijken naar wat er nu gebeurt, waar tijd verloren gaat en welk deel daadwerkelijk slimmer kan.",
         },
         {
           number: "02",
-          title: "Scope & aanpak",
+          title: "Scope terugbrengen",
           description:
-            "Vaste scope, vaste prijsindicatie, geen verrassingen. Alleen wat nodig is om het probleem weg te nemen.",
+            "We brengen het probleem terug tot de kleinste versie die daadwerkelijk waarde levert. Geen platform, geen maandenlange inventarisatie — één gerichte tool.",
         },
         {
           number: "03",
-          title: "Bouwen",
+          title: "Eerste werkende versie bouwen",
           description:
-            "Wij bouwen de tool snel en iteratief — met focus op betrouwbaarheid, niet op features die niemand gebruikt.",
+            "We bouwen zo snel mogelijk iets dat in de praktijk getest kan worden. Bij een duidelijk afgebakende workflow kan dat vaak binnen enkele dagen.",
         },
         {
           number: "04",
-          title: "Opleveren",
+          title: "Testen met echt werk",
           description:
-            "Live binnen dagen tot ongeveer een week. Daarna bijsturen op basis van hoe uw team hem écht gebruikt.",
+            "Software wordt pas interessant wanneer die in het echte werk terechtkomt. Daar blijkt welke aannames kloppen, wat ontbreekt en wat daadwerkelijk tijd bespaart.",
+        },
+        {
+          number: "05",
+          title: "Verbeteren wat ertoe doet",
+          description:
+            "Geen enorme roadmap vol functies. We verbeteren wat het werk sneller, duidelijker of betrouwbaarder maakt.",
         },
       ],
     },
     en: {
-      eyebrow: "Our process",
+      eyebrow: "How we work",
       titlePrefix: "From problem to",
-      titleAccent: "working tool",
+      titleAccent: "working software",
       intro:
-        "Short, clear and built for speed. No multi-month programmes — just a tool your team can use immediately.",
+        "For a tightly scoped workflow, a first working version can often be ready within days. That is not a promise for every project — we start small on purpose.",
       steps: [
         {
           number: "01",
-          title: "Understand the problem",
+          title: "Show the workflow",
           description:
-            "You describe the pain in the workflow. We ask sharp follow-ups until the problem is truly clear.",
+            "A spreadsheet, a few PDFs or an existing manual process is often enough. We look at what happens now, where time is lost and which part can actually be smarter.",
         },
         {
           number: "02",
-          title: "Scope & approach",
+          title: "Reduce the scope",
           description:
-            "Fixed scope, clear pricing, no surprises. Only what is needed to remove the problem.",
+            "We reduce the problem to the smallest version that actually delivers value. No platform, no months of discovery — one focused tool.",
         },
         {
           number: "03",
-          title: "Build",
+          title: "Build a first working version",
           description:
-            "We build the tool fast and iteratively — focused on reliability, not features nobody uses.",
+            "We build something that can be tested in practice as quickly as possible. For a clearly scoped workflow, that can often be within days.",
         },
         {
           number: "04",
-          title: "Deliver",
+          title: "Test with real work",
           description:
-            "Live in days to about a week. Then we refine based on how your team actually uses it.",
+            "Software only becomes interesting when it lands in real work. That is where assumptions hold or fail, and where it becomes clear what actually saves time.",
+        },
+        {
+          number: "05",
+          title: "Improve what matters",
+          description:
+            "No huge roadmap of features. We improve what makes the work faster, clearer or more reliable.",
         },
       ],
     },
@@ -464,133 +777,45 @@ export const dict = {
 
   portfolio: {
     nl: {
-      eyebrow: "Tools & projecttypes",
-      title: "Live tools, custom builds en asset-presentaties",
+      eyebrow: "Demo",
+      title: "Vessel Comparison Tool",
       intro:
-        "Wat wij bouwen voor charterers, contractors en vlooteigenaren — te beginnen bij software die een concrete pijn wegneemt. Specifieke referenties delen wij op aanvraag onder NDA.",
+        "De Vessel Comparison Tool is een demonstratie van software voor het vergelijken van scheepscapaciteiten en technische data. Dit is het soort gerichte maritieme workflow dat Breure.ai bouwt. Specifieke referenties delen we op aanvraag onder NDA.",
       ndaNote:
-        "Specifieke referenties, technische case studies en demo-omgevingen delen wij op aanvraag via het contactformulier, onder NDA waar nodig.",
+        "Specifieke referenties, technische case studies en demo-omgevingen delen we op aanvraag via het contactformulier, onder NDA waar nodig.",
       items: [
         {
-          category: "SaaS-tool",
+          category: "Demonstratie",
           title: "Vessel Comparison Tool",
           description:
-            "Interactieve vergelijkingstool voor offshore support vessels. Charterers en aannemers zetten 2–4 schepen naast elkaar, filteren op kraancapaciteit, DP-klasse en dekoppervlak, en exporteren de vergelijking als PDF — zonder uren in datasheets te zoeken.",
+            "Vergelijk scheepsspecificaties, bekijk capabilities en kraancurves, en genereer een PDF-rapport. De huidige versie gebruikt fictieve scheepsdata en is bedoeld als demonstratie.",
           href: "/tools/vessel-comparison",
           metrics: [
-            { label: "Vergelijking", value: "2–4 schepen naast elkaar" },
-            { label: "Kraan-charts", value: "Interactief" },
-            { label: "Export", value: "Direct als PDF" },
-          ],
-        },
-        {
-          category: "Heavy-lift vessel",
-          title: "Microsite voor crane vessel",
-          description:
-            "Dedicated microsite voor een heavy-lift crane vessel met dynamische load charts, deck layout en projectreferenties. Direct bruikbaar in tenders en FEED-studies.",
-          metrics: [
-            { label: "Load charts", value: "SWL & outreach" },
-            { label: "Talen", value: "NL · EN" },
-            { label: "Doorlooptijd", value: "4–8 weken" },
-          ],
-        },
-        {
-          category: "Jack-up platform",
-          title: "Capaciteitspagina jack-up",
-          description:
-            "Capaciteitspagina voor een wind-installatie jack-up. Compleet met leg length, payload, accommodatie, transitdata en downloadbare datasheets voor contractors.",
-          metrics: [
-            { label: "Datasheets", value: "PDF per asset" },
-            { label: "Sectoren", value: "Wind · O&G" },
-            { label: "Doorlooptijd", value: "4–8 weken" },
-          ],
-        },
-        {
-          category: "Supportvloot",
-          title: "Vlootplatform multi-vessel",
-          description:
-            "Vlootwebsite voor een offshore support operator. Per schip een eigen detailpagina met specs, beeldmateriaal en charter-aanvraag — gekoppeld aan één merkbeleving.",
-          metrics: [
-            { label: "Vlootpresentatie", value: "Per schip" },
-            { label: "Charterflow", value: "Geïntegreerd" },
-            { label: "Doorlooptijd", value: "6–10 weken" },
-          ],
-        },
-        {
-          category: "Offshore contractor",
-          title: "Corporate site met asset library",
-          description:
-            "Corporate website met geïntegreerde asset library. Tenderteams, brokers en charterers vinden in één omgeving zowel het bedrijfsverhaal als concrete capability data.",
-          metrics: [
-            { label: "Assetprofielen", value: "Centraal beheer" },
-            { label: "Performance", value: "Core Web Vitals" },
-            { label: "Doorlooptijd", value: "8–12 weken" },
+            { label: "Vergelijking", value: "Specificaties naast elkaar" },
+            { label: "Kraancurves", value: "Interactief" },
+            { label: "Export", value: "PDF-rapport" },
           ],
         },
       ],
     },
     en: {
-      eyebrow: "Tools & project types",
-      title: "Live tools, custom builds and asset presentations",
+      eyebrow: "Demo",
+      title: "Vessel Comparison Tool",
       intro:
-        "What we build for charterers, contractors and fleet owners — starting with software that removes a concrete pain. Specific case studies are shared under NDA on request.",
+        "The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data. This is the kind of focused maritime workflow Breure.ai builds. Specific case studies are shared under NDA on request.",
       ndaNote:
         "Specific references, technical case studies and demo environments are shared on request via the contact form, under NDA where required.",
       items: [
         {
-          category: "SaaS tool",
+          category: "Demonstration",
           title: "Vessel Comparison Tool",
           description:
-            "Interactive comparison tool for offshore support vessels. Charterers and contractors put 2–4 vessels side by side, filter by crane capacity, DP class and deck area, then export the comparison as PDF — without hours spent hunting through datasheets.",
+            "Compare vessel specifications, inspect capabilities and crane curves, and generate a PDF report. The current version uses fictional vessel data and is intended as a demonstration.",
           href: "/en/tools/vessel-comparison",
           metrics: [
-            { label: "Comparison", value: "2–4 vessels side-by-side" },
-            { label: "Crane charts", value: "Interactive" },
-            { label: "Export", value: "Instant PDF" },
-          ],
-        },
-        {
-          category: "Heavy-lift vessel",
-          title: "Crane vessel asset microsite",
-          description:
-            "Dedicated microsite for a heavy-lift crane vessel with dynamic load charts, deck layout and project references. Ready to use in tenders and FEED studies.",
-          metrics: [
-            { label: "SWL & outreach charts", value: "Live" },
-            { label: "Languages", value: "NL · EN" },
-            { label: "Time to launch", value: "5 weeks" },
-          ],
-        },
-        {
-          category: "Jack-up platform",
-          title: "Jack-up capability page",
-          description:
-            "Capability page for a wind installation jack-up. Complete with leg length, payload, accommodation, transit data and downloadable datasheets for contractors.",
-          metrics: [
-            { label: "Datasheets (PDF)", value: "Per asset" },
-            { label: "Sectors", value: "Wind · O&G" },
-            { label: "Time to launch", value: "4 weeks" },
-          ],
-        },
-        {
-          category: "Support fleet",
-          title: "Multi-vessel fleet site",
-          description:
-            "Fleet website for an offshore support operator. Per vessel a dedicated detail page with specs, photos and charter request, linked to a central brand experience.",
-          metrics: [
-            { label: "Vessels online", value: "12" },
-            { label: "Charter requests", value: "+38%" },
-            { label: "Time to launch", value: "8 weeks" },
-          ],
-        },
-        {
-          category: "Offshore contractor",
-          title: "Corporate site with asset library",
-          description:
-            "Corporate website with integrated asset library. Tender teams, brokers and charterers find both the company story and concrete capability data in one place.",
-          metrics: [
-            { label: "Asset profiles", value: "20+" },
-            { label: "PageSpeed", value: "98 / 100" },
-            { label: "Time to launch", value: "10 weeks" },
+            { label: "Comparison", value: "Specs side by side" },
+            { label: "Crane curves", value: "Interactive" },
+            { label: "Export", value: "PDF report" },
           ],
         },
       ],
@@ -600,56 +825,56 @@ export const dict = {
   contact: {
     nl: {
       eyebrow: "Contact",
-      titlePrefix: "Klaar om uw probleem",
-      titleAccent: "in software te vatten?",
+      titlePrefix: "Welke maritieme workflow kost",
+      titleAccent: "onnodig veel tijd?",
       intro:
-        "Vul het contactformulier in. Wij reageren per e-mail of telefoon en bespreken welk probleem wij als eerste kunnen oplossen.",
+        "Laat de spreadsheet, PDF, herhaalde berekening of het handmatige proces zien. We kijken of het omgezet kan worden in een gerichte softwaretool.",
       emailLabel: "E-mail",
       addressLabel: "Adres",
       address: ["Westplein 12", "3016 BM Rotterdam", "The Netherlands"],
-      tagline: "Snelheid. Focus. Resultaat.",
+      tagline: "Eén probleem. Eén gerichte tool.",
       form: {
         subject: "Nieuw contactverzoek via Breure.ai",
-        fromName: "Breure.ai Website",
+        fromName: "Breure.ai",
         nameLabel: "Naam",
-        namePlaceholder: "Uw naam",
+        namePlaceholder: "Je naam",
         companyLabel: "Bedrijf",
-        companyPlaceholder: "Uw bedrijf",
+        companyPlaceholder: "Je bedrijf",
         emailLabel: "E-mailadres",
-        emailPlaceholder: "uw@email.com",
-        messageLabel: "Welk probleem wilt u oplossen?",
+        emailPlaceholder: "je@email.com",
+        messageLabel: "Welke workflow kost te veel tijd?",
         messagePlaceholder:
-          "Bijvoorbeeld: vessel-specs vergelijken, kraancapaciteit beoordelen, of een ander knelpunt in uw maritieme workflow…",
+          "Bijvoorbeeld: schepen vergelijken, gegevens uit PDF's halen, een Excel-berekening die steeds terugkomt…",
         submit: "Verstuur bericht",
         submitting: "Verzenden...",
-        success: "Bedankt. Wij nemen per e-mail of telefoon contact met u op.",
+        success: "Bedankt. We nemen per e-mail of telefoon contact op.",
         error: "Er ging iets fout. Probeer opnieuw.",
         consent:
-          "Door dit formulier te verzenden gaat u akkoord met verwerking van uw gegevens voor het beantwoorden van uw aanvraag.",
+          "Door dit formulier te verzenden ga je akkoord met verwerking van je gegevens voor het beantwoorden van je aanvraag.",
       },
     },
     en: {
       eyebrow: "Contact",
-      titlePrefix: "Ready to wrap your problem",
-      titleAccent: "in software?",
+      titlePrefix: "Which maritime workflow is costing",
+      titleAccent: "more time than it should?",
       intro:
-        "Use the contact form below. We'll respond by email or phone and discuss which problem we can solve first.",
+        "Show us the spreadsheet, PDF, repeated calculation or manual process. We will look at whether it can be turned into a focused software tool.",
       emailLabel: "Email",
       addressLabel: "Address",
       address: ["Westplein 12", "3016 BM Rotterdam", "The Netherlands"],
-      tagline: "Speed. Focus. Results.",
+      tagline: "One problem. One focused tool.",
       form: {
         subject: "New contact request via Breure.ai",
-        fromName: "Breure.ai Website",
+        fromName: "Breure.ai",
         nameLabel: "Name",
         namePlaceholder: "Your name",
         companyLabel: "Company",
         companyPlaceholder: "Your company",
         emailLabel: "Email address",
         emailPlaceholder: "you@email.com",
-        messageLabel: "What problem should we solve?",
+        messageLabel: "Which workflow is costing too much time?",
         messagePlaceholder:
-          "For example: comparing vessel specs, reviewing crane capacity, or another bottleneck in your maritime workflow…",
+          "For example: comparing vessels, extracting data from PDFs, a spreadsheet calculation that keeps coming back…",
         submit: "Send message",
         submitting: "Sending...",
         success: "Thank you. We'll get back to you by email or phone.",
@@ -780,64 +1005,64 @@ export const dict = {
   pageHeaders: {
     nl: {
       services: {
-        eyebrow: "Diensten",
-        titlePrefix: "Custom maritieme software — van live tools tot",
-        titleAccent: "builds op maat",
+        eyebrow: "Maritieme software",
+        titlePrefix: "Gerichte software voor",
+        titleAccent: "maritieme workflows",
         description:
-          "Wij lossen specifieke maritieme problemen op met AI-gedreven tools. Start met de Vessel Comparison Tool, of laat ons een tool bouwen die exact op uw workflow past.",
+          "Breure.ai bouwt vergelijkingstools, calculators en workflowautomatisering voor charterers, contractors en brokers. Geen groot platform — één probleem, één gerichte tool.",
       },
       process: {
-        eyebrow: "Proces",
-        titlePrefix: "Van scherp probleem naar",
-        titleAccent: "werkende tool",
+        eyebrow: "Aanpak",
+        titlePrefix: "Van probleem naar",
+        titleAccent: "werkende software",
         description:
-          "Geen maanden wachten — oplevering in dagen tot ongeveer een week. Vier heldere stappen: begrijpen, scopen, bouwen, opleveren.",
+          "Bij een strak afgebakende workflow kan een eerste werkende versie vaak binnen enkele dagen klaar zijn. Vijf korte stappen: workflow laten zien, scope terugbrengen, bouwen, testen, verbeteren.",
       },
       portfolio: {
-        eyebrow: "Portfolio",
-        titlePrefix: "Tools en projecten waarop",
-        titleAccent: "charterers en contractors",
-        titleSuffix: "beslissen",
+        eyebrow: "Demo",
+        titlePrefix: "Vessel Comparison Tool —",
+        titleAccent: "gerichte maritieme software",
+        titleSuffix: "in de praktijk",
         description:
-          "Van de live Vessel Comparison Tool tot custom builds en asset-presentaties voor offshore-teams. Software eerst — websites wanneer dat het probleem oplost.",
+          "De Vessel Comparison Tool is een demonstratie van software voor het vergelijken van scheepscapaciteiten en technische data. De getoonde data is fictief.",
       },
       tools: {
-        eyebrow: "Vessel Comparison Tool",
-        titlePrefix: "Stop met vessel-specs vergelijken",
-        titleAccent: "in PDF's",
+        eyebrow: "Demo · Vessel Comparison Tool",
+        titlePrefix: "Vergelijk schepen zonder",
+        titleAccent: "losse PDF's",
         description:
-          "Vergelijk 2–4 offshore support vessels side-by-side op kraancapaciteit, dekoppervlak, DP-klasse en meer. Verken interactieve kraan-lastdiagrammen en exporteer de vergelijking als PDF — gebouwd voor charterers en offshore-aannemers in Rotterdam en daarbuiten.",
+          "Vergelijk scheepsspecificaties, bekijk capabilities en kraancurves, en genereer een PDF-rapport. Demonstratie met fictieve scheepsdata — dit is het soort gerichte maritieme workflow dat Breure.ai bouwt.",
       },
     },
     en: {
       services: {
-        eyebrow: "Services",
-        titlePrefix: "Custom maritime software — from live tools to",
-        titleAccent: "builds on demand",
+        eyebrow: "Maritime software",
+        titlePrefix: "Focused software for",
+        titleAccent: "maritime workflows",
         description:
-          "We solve specific maritime problems with AI-driven tools. Start with the Vessel Comparison Tool, or let us build a tool that fits your workflow exactly.",
+          "Breure.ai builds comparison tools, calculators and workflow automation for charterers, contractors and brokers. No large platform — one problem, one focused tool.",
       },
       process: {
-        eyebrow: "Process",
-        titlePrefix: "From a sharp problem to a",
-        titleAccent: "working tool",
+        eyebrow: "Approach",
+        titlePrefix: "From problem to",
+        titleAccent: "working software",
         description:
-          "No months of waiting — delivery in days to about a week. Four clear steps: understand, scope, build, deliver.",
+          "For a tightly scoped workflow, a first working version can often be ready within days. Five short steps: show the workflow, reduce scope, build, test, improve.",
       },
       portfolio: {
-        eyebrow: "Portfolio",
-        titlePrefix: "Tools and projects that",
-        titleAccent: "charterers and contractors",
-        titleSuffix: "decide on",
+        eyebrow: "Demo",
+        titlePrefix: "Vessel Comparison Tool —",
+        titleAccent: "focused maritime software",
+        titleSuffix: "in practice",
         description:
-          "From the live Vessel Comparison Tool to custom builds and asset presentations for offshore teams. Software first — websites when that solves the problem.",
+          "The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data. The data shown is fictional.",
       },
       tools: {
-        eyebrow: "Vessel Comparison Tool",
-        titlePrefix: "Stop comparing vessel specs",
-        titleAccent: "in PDFs",
+        eyebrow: "Demo · Vessel Comparison Tool",
+        titlePrefix: "Compare vessels without",
+        titleAccent: "loose PDFs",
         description:
-          "Compare 2–4 offshore support vessels side by side on crane capacity, deck area, DP class and more. Explore interactive crane load charts and export the comparison as PDF — built for charterers and offshore contractors in Rotterdam and beyond.",
+          "Compare vessel specifications, inspect capabilities and crane curves, and generate a PDF report. A demonstration with fictional vessel data — this is the kind of focused maritime workflow Breure.ai builds.",
       },
     },
   },
@@ -846,48 +1071,48 @@ export const dict = {
     nl: {
       heading: "Meer over onze aanpak",
       description:
-        "Bekijk onze diensten, het stappenplan en portfolio voordat u contact opneemt — zo weet u direct of een tool, custom build of website past.",
+        "Bekijk wat we bouwen, de demo, of het blog voordat je contact opneemt.",
     },
     en: {
       heading: "More about our approach",
       description:
-        "Review our services, process and portfolio before you get in touch — so you know whether a tool, custom build or website fits.",
+        "See what we build, the demo, or the blog before you get in touch.",
     },
   },
 
   latestInsight: {
     nl: {
-      eyebrow: "Inzichten",
-      title: "Laatste inzicht",
+      eyebrow: "Blog",
+      title: "Laatste artikel",
       description:
-        "Praktische perspectieven op maritieme workflows, offshore-geloofwaardigheid en digitaal vertrouwen.",
+        "Artikelen over maritieme software, workflows en gerichte tools voor charterers, contractors en brokers.",
       readArticle: "Lees artikel",
-      viewAll: "Alle inzichten",
+      viewAll: "Naar het blog",
       languageBadge: "",
     },
     en: {
-      eyebrow: "Insights",
-      title: "Latest maritime insight",
+      eyebrow: "Blog",
+      title: "Latest article",
       description:
-        "Practical perspectives on maritime workflows, offshore credibility and digital trust.",
+        "Articles on maritime software, workflows and focused tools for charterers, contractors and brokers.",
       readArticle: "Read article",
-      viewAll: "All insights",
+      viewAll: "Go to the blog",
       languageBadge: "",
     },
   },
 
   sectionLinks: {
     nl: {
-      services: "Alle diensten bekijken",
-      process: "Ons volledige proces",
-      portfolio: "Bekijk ons portfolio",
+      services: "Maritieme software bekijken",
+      process: "Onze aanpak",
+      portfolio: "Bekijk de demo",
       tools: "Open de Vessel Comparison Tool",
       contactPage: "Naar de contactpagina",
     },
     en: {
-      services: "View all services",
-      process: "See our full process",
-      portfolio: "View our portfolio",
+      services: "See maritime software",
+      process: "See how we work",
+      portfolio: "View the demo",
       tools: "Open the Vessel Comparison Tool",
       contactPage: "Go to the contact page",
     },
@@ -897,49 +1122,49 @@ export const dict = {
     nl: {
       heading: "Veelgestelde vragen",
       intro:
-        "Een kort overzicht van wat u kunt verwachten wanneer u een maritiem softwareprobleem met ons bespreekt.",
+        "Een kort overzicht van wat je kunt verwachten wanneer je een maritieme workflow met ons bespreekt.",
       items: [
         {
-          question: "Welk type werk neemt u aan?",
+          question: "Welk type werk nemen jullie aan?",
           answer:
-            "Custom maritieme tools die één concreet probleem oplossen — plus de live Vessel Comparison Tool. Maritieme websites bouwen wij wanneer online geloofwaardigheid het knelpunt is.",
+            "Gerichte custom software voor maritieme workflows. Vergelijkingstools, calculators en workflowautomatisering voor charterers, contractors, brokers en maritieme operators. De Vessel Comparison Tool is een demonstratie van dat soort werk.",
         },
         {
-          question: "Hoe lang duurt een project gemiddeld?",
+          question: "Hoe lang duurt een project?",
           answer:
-            "Custom tools leveren wij doorgaans in dagen tot ongeveer een week. Grotere scopes of websites plannen wij na de eerste intake realistisch in.",
+            "Bij een strak afgebakende workflow kan een eerste werkende versie vaak binnen enkele dagen klaar zijn. Dat beloven we niet voor ieder project — we beginnen bewust klein en maken na de intake duidelijk wat realistisch is.",
         },
         {
           question: "Kunnen referenties onder NDA worden gedeeld?",
           answer:
-            "Ja. Specifieke case studies, demo-omgevingen en technische referenties delen wij op aanvraag via het contactformulier. Waar nodig werken wij onder NDA — gangbaar in offshore en maritieme projecten.",
+            "Ja. Specifieke case studies, demo-omgevingen en technische referenties delen we op aanvraag via het contactformulier. Waar nodig werken we onder NDA — gangbaar in offshore en maritieme projecten.",
         },
         {
-          question: "Waarom richt Breure.ai zich op maritiem en offshore?",
+          question: "Waarom richt Breure.ai zich op maritiem?",
           answer:
-            "Daar zit de pijn én het tempo: charterers, contractors en brokers die tijd verliezen aan PDF’s, versnipperde data en handmatig vergelijkwerk. Wij winnen op snelheid en relatie, niet op omvang.",
+            "Daar zitten de repetitieve technische en operationele workflows: charterers, contractors en brokers die tijd verliezen aan PDF's, spreadsheets en handmatig vergelijkwerk. We bouwen software voor dat werk — niet voor iedere sector.",
         },
         {
           question: "Hoe start ik een aanvraag?",
           answer:
-            "Beschrijf het probleem in het formulier. Wij reageren per e-mail of telefoon en plannen een verkennend gesprek — vrijblijvend en vertrouwelijk.",
+            "Beschrijf de workflow in het formulier. We reageren per e-mail of telefoon — vrijblijvend en vertrouwelijk.",
         },
       ],
     },
     en: {
       heading: "Frequently asked questions",
       intro:
-        "A brief overview of what to expect when you discuss a maritime software problem with us.",
+        "A brief overview of what to expect when you discuss a maritime workflow with us.",
       items: [
         {
           question: "What types of work do you take on?",
           answer:
-            "Custom maritime tools that solve one concrete problem — plus the live Vessel Comparison Tool. We still build maritime websites when online credibility is the bottleneck.",
+            "Focused custom software for maritime workflows. Comparison tools, calculators and workflow automation for charterers, contractors, brokers and maritime operators. The Vessel Comparison Tool is a demonstration of that kind of work.",
         },
         {
           question: "What is a typical project timeline?",
           answer:
-            "Custom tools usually ship in days to about a week. Larger scopes or websites get a realistic schedule after the first intake.",
+            "For a tightly scoped workflow, a first working version can often be ready within days. That is not a promise for every project — we start small on purpose and make the realistic timeline clear after intake.",
         },
         {
           question: "Can references be shared under NDA?",
@@ -947,14 +1172,14 @@ export const dict = {
             "Yes. Specific case studies, demo environments and technical references are shared on request via the contact form. We work under NDA where required — common in offshore and maritime projects.",
         },
         {
-          question: "Why do you focus on maritime and offshore?",
+          question: "Why do you focus on maritime?",
           answer:
-            "That’s where the pain and the pace are: charterers, contractors and brokers losing time to PDFs, fragmented data and manual comparison work. We win on speed and relationship, not scale.",
+            "That is where the repetitive technical and operational workflows sit: charterers, contractors and brokers losing time to PDFs, spreadsheets and manual comparison work. We build software for that work — not for every sector.",
         },
         {
           question: "How do I start a request?",
           answer:
-            "Describe the problem in the form. We respond by email or phone and schedule an exploratory call — no obligation, always confidential.",
+            "Describe the workflow in the form. We respond by email or phone — no obligation, always confidential.",
         },
       ],
     },
@@ -964,53 +1189,53 @@ export const dict = {
     nl: {
       services: {
         eyebrow: "Klaar om te starten",
-        title: "Welk maritiem probleem lossen wij als eerste op?",
+        title: "Welke maritieme workflow kost onnodig veel tijd?",
         description:
-          "Via het contactformulier bespreken wij of een live tool, custom build of website het juiste antwoord is.",
-        primary: "Vraag een verkennend gesprek aan",
-        secondary: "Bekijk ons proces",
+          "Laat de spreadsheet, PDF of het handmatige proces zien. We kijken of er een gerichte tool van te maken is.",
+        primary: "Bespreek je workflow",
+        secondary: "Bekijk de demo",
       },
       process: {
-        eyebrow: "Start uw project",
-        title: "Klaar voor een tool die past?",
+        eyebrow: "Start klein",
+        title: "Klaar voor een gerichte tool?",
         description:
-          "Stuur ons een bericht. Wij bespreken graag het probleem, de scope en de tijdlijn. Vrijblijvend en altijd vertrouwelijk.",
-        primary: "Neem contact op",
-        secondary: "Bekijk onze diensten",
+          "Stuur ons een bericht. We bespreken de workflow, de scope en wat een eerste werkende versie kan zijn. Vrijblijvend en altijd vertrouwelijk.",
+        primary: "Bespreek je workflow",
+        secondary: "Bekijk maritieme software",
       },
       portfolio: {
-        eyebrow: "Volgende tool?",
-        title: "Zie wat er al live staat — en wat wij voor u kunnen bouwen.",
+        eyebrow: "Zelfde soort tool nodig?",
+        title: "Dit is het soort workflow dat Breure.ai bouwt.",
         description:
-          "Wij bespreken graag welke aanpak past bij uw probleem en workflow. Demo’s delen wij op aanvraag via het contactformulier.",
-        primary: "Bespreek uw probleem",
-        secondary: "Bekijk onze diensten",
+          "We bespreken graag of jouw spreadsheet, PDF-stroom of handmatige proces tot een gerichte tool te maken is.",
+        primary: "Bespreek je workflow",
+        secondary: "Bekijk maritieme software",
       },
     },
     en: {
       services: {
         eyebrow: "Ready to start",
-        title: "Which maritime problem should we solve first?",
+        title: "Which maritime workflow is costing more time than it should?",
         description:
-          "Use the contact form and we’ll discuss whether a live tool, custom build or website is the right answer.",
-        primary: "Get in touch",
-        secondary: "See our process",
+          "Show us the spreadsheet, PDF or manual process. We will look at whether a focused tool can be built from it.",
+        primary: "Discuss your workflow",
+        secondary: "View the demo",
       },
       process: {
-        eyebrow: "Start your project",
-        title: "Ready for a tool that fits?",
+        eyebrow: "Start small",
+        title: "Ready for a focused tool?",
         description:
-          "Send us a message. We’ll discuss the problem, scope and timeline. Always confidential, never any pressure.",
-        primary: "Get in touch",
-        secondary: "See our services",
+          "Send us a message. We will discuss the workflow, the scope and what a first working version could look like. Always confidential, never any pressure.",
+        primary: "Discuss your workflow",
+        secondary: "See maritime software",
       },
       portfolio: {
-        eyebrow: "Next tool?",
-        title: "See what’s already live — and what we can build for you.",
+        eyebrow: "Need the same kind of tool?",
+        title: "This is the kind of workflow Breure.ai builds.",
         description:
-          "We’ll discuss the approach that fits your problem and workflow. Demos are shared on request via the contact form.",
-        primary: "Tell us the problem",
-        secondary: "See our services",
+          "We will discuss whether your spreadsheet, PDF flow or manual process can become a focused tool.",
+        primary: "Discuss your workflow",
+        secondary: "See maritime software",
       },
     },
   },
@@ -1018,7 +1243,7 @@ export const dict = {
   footer: {
     nl: {
       description:
-        "Breure.ai bouwt razendsnel custom maritieme software. Specifieke problemen, opgelost in tools die exact op de workflow passen.",
+        "Breure.ai bouwt gerichte custom software voor maritieme workflows. Tools voor charterers, contractors en brokers.",
       navHeading: "Navigatie",
       contactHeading: "Contact",
       copyright: (year: number) =>
@@ -1026,7 +1251,7 @@ export const dict = {
     },
     en: {
       description:
-        "Breure.ai builds custom maritime software at speed. Specific problems, solved in tools that fit the real workflow.",
+        "Breure.ai builds focused custom software for maritime workflows. Tools for charterers, contractors and brokers.",
       navHeading: "Navigation",
       contactHeading: "Contact",
       copyright: (year: number) =>
@@ -1035,6 +1260,24 @@ export const dict = {
   },
 } as const
 
+export type MainNavItem = {
+  label: string
+  href: string
+  title?: string
+}
+
+/** Public main navigation: Home — Maritime Software — Demo — Blog — Contact */
+export function mainNavItems(locale: Locale): MainNavItem[] {
+  const t = dict.nav[locale]
+  return [
+    { label: t.home, href: ROUTES.home[locale] },
+    { label: t.maritimeSoftware, href: ROUTES.maritimeSoftware[locale] },
+    { label: t.demo, href: ROUTES.tools[locale] },
+    { label: t.blog, href: ROUTES.insights[locale], title: t.blogTitle },
+    { label: t.contact, href: ROUTES.contact[locale] },
+  ]
+}
+
 // ---------------------------------------------------------------------------
 // SEO metadata
 // ---------------------------------------------------------------------------
@@ -1042,74 +1285,86 @@ export const dict = {
 export const seo = {
   home: {
     nl: {
-      title: "Breure.ai | Custom maritieme software, razendsnel gebouwd",
+      title: "Breure.ai | Maritieme software op maat",
       description:
-        "Breure.ai bouwt custom maritieme software voor charterers, offshore contractors en brokers. Van de Vessel Comparison Tool tot tools op maat — probleem eerst, snel geleverd.",
+        "Breure.ai bouwt gerichte maritieme software voor charterers, contractors en brokers. Van vergelijkingstools tot slimme workflows voor technisch en operationeel werk.",
     },
     en: {
-      title: "Breure.ai | Custom maritime software, built at speed",
+      title: "Breure.ai | Custom Maritime Software",
       description:
-        "Breure.ai builds custom maritime software for charterers, offshore contractors and brokers. From the Vessel Comparison Tool to tools on demand — problem first, shipped fast.",
+        "Focused maritime software for charterers, contractors and brokers. From vessel comparison tools to small custom workflows for technical and operational work.",
+    },
+  },
+  maritimeSoftware: {
+    nl: {
+      title: "Maritieme software | Vergelijkingstools, calculators & workflows | Breure.ai",
+      description:
+        "Breure.ai bouwt gerichte maritieme software: vergelijkingstools, calculators en workflowautomatisering voor charterers, contractors en brokers.",
+    },
+    en: {
+      title: "Maritime Software | Comparison tools, calculators & workflows | Breure.ai",
+      description:
+        "Breure.ai builds focused maritime software: comparison tools, calculators and workflow automation for charterers, contractors and brokers.",
     },
   },
   services: {
     nl: {
-      title: "Diensten | Custom maritieme software & tools | Breure.ai",
+      title: "Maritieme software | Vergelijkingstools, calculators & workflows | Breure.ai",
       description:
-        "Live tools, custom builds en desgevraagd maritieme websites. Specifieke offshore- en charterproblemen opgelost in software die op de workflow past.",
+        "Breure.ai bouwt gerichte maritieme software: vergelijkingstools, calculators en workflowautomatisering voor charterers, contractors en brokers.",
     },
     en: {
-      title: "Services | Custom maritime software & tools | Breure.ai",
+      title: "Maritime Software | Comparison tools, calculators & workflows | Breure.ai",
       description:
-        "Live tools, custom builds and maritime websites when needed. Specific offshore and charter problems solved in software that fits the workflow.",
+        "Breure.ai builds focused maritime software: comparison tools, calculators and workflow automation for charterers, contractors and brokers.",
     },
   },
   process: {
     nl: {
-      title: "Proces | Van probleem naar werkende tool | Breure.ai",
+      title: "Aanpak | Van workflow naar werkende software | Breure.ai",
       description:
-        "Kort proces voor custom maritieme software: probleem begrijpen, scopen, bouwen en opleveren — in dagen tot ongeveer een week.",
+        "Bij een strak afgebakende maritieme workflow kan een eerste werkende versie vaak binnen enkele dagen klaar zijn. We beginnen klein en beloven geen vaste doorlooptijd voor ieder project.",
     },
     en: {
-      title: "Process | From problem to working tool | Breure.ai",
+      title: "Approach | From workflow to working software | Breure.ai",
       description:
-        "A short process for custom maritime software: understand the problem, scope, build and deliver — in days to about a week.",
+        "For a tightly scoped maritime workflow, a first working version can often be ready within days. We start small and do not promise a fixed timeline for every project.",
     },
   },
   portfolio: {
     nl: {
-      title: "Portfolio | Maritieme tools & projecten | Breure.ai",
+      title: "Demo | Vessel Comparison Tool | Breure.ai",
       description:
-        "Vessel Comparison Tool, custom builds en asset-presentaties voor offshore-teams. Referenties op aanvraag onder NDA.",
+        "De Vessel Comparison Tool is een demonstratie van software voor het vergelijken van scheepscapaciteiten en technische data. Fictieve demo-data.",
     },
     en: {
-      title: "Portfolio | Maritime tools & projects | Breure.ai",
+      title: "Demo | Vessel Comparison Tool | Breure.ai",
       description:
-        "Vessel Comparison Tool, custom builds and asset presentations for offshore teams. References available under NDA on request.",
+        "The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data. Fictional demo data.",
     },
   },
   tools: {
     nl: {
-      title: "Vessel Comparison Tool | Compare offshore vessels | Breure.ai",
+      title: "Vessel Comparison Tool | Demo maritieme software | Breure.ai",
       description:
-        "Free vessel comparison tool for charterers and offshore contractors. Compare 2–4 support vessels side by side — crane capacity, deck area, DP class, interactive load charts and PDF export.",
+        "Demonstratie: vergelijk scheepsspecificaties, bekijk capabilities en kraancurves, en genereer een PDF-rapport. De getoonde scheepsdata is fictief.",
     },
     en: {
-      title: "Vessel Comparison Tool | Compare offshore vessels | Breure.ai",
+      title: "Vessel Comparison Tool | Maritime software demo | Breure.ai",
       description:
-        "Free vessel comparison tool for charterers and offshore contractors. Compare 2–4 support vessels side by side — crane capacity, deck area, DP class, interactive load charts and PDF export.",
+        "Demonstration: compare vessel specifications, inspect capabilities and crane curves, and generate a PDF report. The vessel data shown is fictional.",
     },
   },
   contact: {
     nl: {
-      title: "Contact | Custom maritieme software Rotterdam | Breure.ai",
+      title: "Contact | Maritieme software Rotterdam | Breure.ai",
       description:
-        "Neem contact op met Breure.ai in Rotterdam voor custom maritieme software, tools en gerichte websites. Stuur een bericht via het formulier — wij reageren per e-mail of telefoon.",
+        "Welke maritieme workflow kost onnodig veel tijd? Laat de spreadsheet, PDF of het handmatige proces zien. Breure.ai in Rotterdam reageert per e-mail of telefoon.",
     },
     en: {
-      title: "Contact | Custom maritime software Rotterdam | Breure.ai",
+      title: "Contact | Maritime software Rotterdam | Breure.ai",
       description:
-        "Get in touch with Breure.ai in Rotterdam for custom maritime software, tools and focused websites. Send a message through the form — we will respond by email or phone.",
+        "Which maritime workflow is costing more time than it should? Show us the spreadsheet, PDF or manual process. Breure.ai in Rotterdam responds by email or phone.",
     },
   },
   horeca: {

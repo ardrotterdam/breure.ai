@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Footer } from "@/components/footer"
 import { Navigation } from "@/components/navigation"
 import { PageHeader } from "@/components/page-header"
+import { VesselComparisonJsonLd } from "@/components/vessel-comparison-json-ld"
 import { VesselComparisonTool } from "@/components/vessel-comparison/vessel-comparison-tool"
 import { dict } from "@/lib/i18n"
 import { buildPageMetadata } from "@/lib/page-metadata"
@@ -14,10 +15,10 @@ const headerCopy = dict.pageHeaders.en.tools
 export const metadata: Metadata = buildPageMetadata("tools", locale, {
   keywords: [
     "vessel comparison tool",
-    "offshore vessel comparison",
+    "vessel comparison software",
+    "maritime software demo",
     "crane load chart",
-    "DP class comparison",
-    "charter vessel specs",
+    "chartering software tools",
     "offshore support vessel",
   ],
 })
@@ -27,6 +28,7 @@ export default async function EnglishVesselComparisonPage() {
 
   return (
     <>
+      <VesselComparisonJsonLd locale={locale} />
       <Navigation locale={locale} />
       <main>
         <PageHeader

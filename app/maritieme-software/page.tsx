@@ -4,28 +4,31 @@ import { BreadcrumbJsonLd } from "@/components/breadcrumb-json-ld"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
-import { PortfolioSection } from "@/components/portfolio-section"
+import { ServicesSection } from "@/components/services-section"
+import { WhySection } from "@/components/why-section"
 import { CtaBand } from "@/components/cta-band"
-import { dict } from "@/lib/i18n"
+import { dict, ROUTES } from "@/lib/i18n"
 import { buildPageMetadata } from "@/lib/page-metadata"
 
-const locale = "en" as const
-const headerCopy = dict.pageHeaders.en.portfolio
-const ctaCopy = dict.ctas.en.portfolio
+const locale = "nl" as const
+const headerCopy = dict.pageHeaders.nl.services
+const ctaCopy = dict.ctas.nl.services
 
-export const metadata: Metadata = buildPageMetadata("portfolio", locale, {
+export const metadata: Metadata = buildPageMetadata("maritimeSoftware", locale, {
   keywords: [
-    "Vessel Comparison Tool",
+    "maritieme software",
+    "maatwerk software maritieme sector",
     "vessel comparison software",
-    "maritime software demo",
-    "Breure.ai demo",
+    "maritime workflow automation",
+    "maritieme calculators",
+    "chartering software tools",
   ],
 })
 
-export default function EnglishPortfolioPage() {
+export default function MaritimeSoftwarePage() {
   return (
     <>
-      <BreadcrumbJsonLd locale={locale} page="portfolio" />
+      <BreadcrumbJsonLd locale={locale} page="maritimeSoftware" />
       <Navigation locale={locale} />
       <main>
         <PageHeader
@@ -35,20 +38,20 @@ export default function EnglishPortfolioPage() {
               {headerCopy.titlePrefix}{" "}
               <span className="heading-accent-gradient">
                 {headerCopy.titleAccent}
-              </span>{" "}
-              {headerCopy.titleSuffix}
+              </span>
             </>
           }
           description={headerCopy.description}
         />
-        <PortfolioSection locale={locale} showIntro={false} />
+        <ServicesSection locale={locale} />
+        <WhySection locale={locale} variant="whyBreure" />
         <CtaBand
           eyebrow={ctaCopy.eyebrow}
           title={ctaCopy.title}
           description={ctaCopy.description}
-          primaryHref="/en/contact"
+          primaryHref={ROUTES.contact.nl}
           primaryLabel={ctaCopy.primary}
-          secondaryHref="/en/maritime-software"
+          secondaryHref={ROUTES.tools.nl}
           secondaryLabel={ctaCopy.secondary}
         />
       </main>

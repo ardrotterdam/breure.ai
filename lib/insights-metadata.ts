@@ -24,10 +24,10 @@ export function buildInsightsIndexMetadata(locale: InsightLocale): Metadata {
     alternatePath: insightsIndexPath(oppositeLocale),
     locale,
     keywords: [
-      "maritime website design",
-      "offshore web design",
-      "maritime insights",
-      "shipping company website",
+      "maritime software",
+      "maritieme software",
+      "vessel comparison",
+      "maritime workflows",
     ],
   })
 }

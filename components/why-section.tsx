@@ -6,7 +6,7 @@ import { dict, type Locale } from "@/lib/i18n"
 interface WhySectionProps {
   locale?: Locale
   /** Homepage uses problem-framing copy; other pages keep the shared why dict. */
-  variant?: "default" | "home"
+  variant?: "default" | "home" | "whyBreure"
   /** When set, shows a crawlable link to the dedicated portfolio page (homepage). */
   portfolioHref?: string
 }
@@ -16,8 +16,20 @@ export function WhySection({
   variant = "default",
   portfolioHref,
 }: WhySectionProps) {
-  const t = variant === "home" ? dict.home.why[locale] : dict.why[locale]
+  const t =
+    variant === "home"
+      ? dict.home.why[locale]
+      : variant === "whyBreure"
+        ? dict.home.whyBreure[locale]
+        : dict.why[locale]
   const portfolioLabel = dict.sectionLinks[locale].portfolio
+  const paragraphs = "paragraphs" in t ? t.paragraphs : undefined
+  const closingLead = "closingLead" in t ? t.closingLead : undefined
+  const closing = "closing" in t ? t.closing : undefined
+  const reasonGrid =
+    t.reasons.length >= 4
+      ? "grid md:grid-cols-2 gap-6 lg:gap-8"
+      : "grid md:grid-cols-3 gap-6 lg:gap-8"
 
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 bg-secondary">
@@ -36,13 +48,29 @@ export function WhySection({
           </h2>
         </StaggerItem>
 
-        <StaggerItem>
-          <p className="text-text-secondary text-base sm:text-lg max-w-2xl mb-12 sm:mb-16 leading-relaxed">
-            {t.intro}
-          </p>
-        </StaggerItem>
+        {t.intro || (paragraphs && paragraphs.length > 0) ? (
+          <StaggerItem>
+            <div className="max-w-2xl mb-12 sm:mb-16 space-y-4">
+              {t.intro ? (
+                <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
+                  {t.intro}
+                </p>
+              ) : null}
+              {paragraphs?.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-text-secondary text-base sm:text-lg leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </StaggerItem>
+        ) : (
+          <div className="mb-12 sm:mb-16" />
+        )}
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        <div className={reasonGrid}>
           {t.reasons.map((reason, index) => (
             <StaggerItem key={reason.title} className="group relative">
               <HoverLift className="relative p-7 sm:p-8 surface-card h-full">
@@ -59,6 +87,23 @@ export function WhySection({
             </StaggerItem>
           ))}
         </div>
+
+        {closingLead || closing ? (
+          <StaggerItem>
+            <div className="mt-12 sm:mt-16 max-w-3xl space-y-4">
+              {closingLead ? (
+                <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
+                  {closingLead}
+                </p>
+              ) : null}
+              {closing ? (
+                <p className="text-xl sm:text-2xl font-medium tracking-tight text-foreground">
+                  {closing}
+                </p>
+              ) : null}
+            </div>
+          </StaggerItem>
+        ) : null}
 
         {portfolioHref && (
           <StaggerItem>

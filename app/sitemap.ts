@@ -11,11 +11,10 @@ import {
 
 const PRIORITY: Record<CoreRouteKey, number> = {
   home: 1,
-  services: 0.9,
+  maritimeSoftware: 0.9,
   tools: 0.85,
-  process: 0.8,
-  portfolio: 0.8,
-  horeca: 0.8,
+  process: 0.6,
+  portfolio: 0.5,
   contact: 0.7,
 }
 
@@ -24,11 +23,10 @@ const CHANGE_FREQUENCY: Record<
   MetadataRoute.Sitemap[number]["changeFrequency"]
 > = {
   home: "weekly",
-  services: "monthly",
+  maritimeSoftware: "monthly",
   tools: "weekly",
   process: "monthly",
   portfolio: "monthly",
-  horeca: "monthly",
   contact: "monthly",
 }
 

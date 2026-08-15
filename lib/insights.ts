@@ -39,6 +39,8 @@ export type InsightArticle = {
   heroImage?: InsightImage
   inlineImages?: InsightInlineImage[]
   sections: InsightSection[]
+  /** When false, the article URL stays live but is not listed on the blog index. */
+  listed?: boolean
   conclusion: {
     heading: string
     paragraphs: string[]
@@ -65,26 +67,31 @@ export type InsightsOverview = {
   canonicalUrl: string
   title: string
   intro: string
+  empty: string
 }
 
 export const insightsOverview: InsightsOverview = {
-  seoTitle: "Insights | Maritime & Offshore Web Design | Breure.ai",
+  seoTitle: "Blog | Maritime software | Breure.ai",
   metaDescription:
-    "Practical perspectives on maritime website design, offshore credibility and digital trust for vessel owners, contractors and shipping companies.",
+    "Articles on maritime software, vessel comparison workflows, Excel tools and operational software for charterers, contractors and brokers.",
   canonicalUrl: "https://breure.ai/en/insights",
-  title: "Insights",
+  title: "Blog",
   intro:
-    "Breure.ai Insights covers maritime and offshore web design from an operator's perspective — clarity, capability, trust and the signals buyers look for before the first call.",
+    "Breure.ai writes about maritime software: vessel comparison, Excel workflows, PDF data extraction and focused tools for chartering and operations. No generic AI news.",
+  empty:
+    "No articles yet. Upcoming topics include vessel comparison workflows, maritime Excel tools, PDF data extraction and when a spreadsheet should become software.",
 }
 
 export const insightsOverviewNl: InsightsOverview = {
-  seoTitle: "Inzichten | Maritiem & Offshore Webdesign | Breure.ai",
+  seoTitle: "Blog | Maritieme software | Breure.ai",
   metaDescription:
-    "Praktische perspectieven op maritiem webdesign, offshore-geloofwaardigheid en digitaal vertrouwen voor scheepseigenaren, aannemers en scheepvaartbedrijven.",
+    "Artikelen over maritieme software, vessel comparison, Excel-workflows en operationele tools voor charterers, contractors en brokers.",
   canonicalUrl: "https://breure.ai/inzichten",
-  title: "Inzichten",
+  title: "Blog",
   intro:
-    "Breure.ai Inzichten behandelt maritiem en offshore webdesign vanuit het perspectief van de operator — helderheid, capability, vertrouwen en de signalen die kopers zoeken vóór het eerste gesprek.",
+    "Breure.ai schrijft over maritieme software: scheepsvergelijking, Excel-workflows, PDF-extractie en gerichte tools voor chartering en operatie. Geen generiek AI-nieuws.",
+  empty:
+    "Nog geen artikelen. Toekomstige onderwerpen: vessel comparison, maritieme Excel-workflows, PDF-extractie en wanneer een spreadsheet software moet worden.",
 }
 
 export function getInsightsOverview(locale: InsightLocale): InsightsOverview {
@@ -95,6 +102,7 @@ const baseInsightArticles: InsightArticle[] = [
   {
     title: "Why Maritime Companies Lose Trust Before the First Call",
     slug: "maritime-website-design-trust",
+    listed: false,
     excerpt:
       "In maritime and offshore, your website is judged long before a meeting is booked. Outdated structure, thin vessel pages and unclear capability signals can cost credibility before the first conversation starts.",
     category: "Maritime Web Design",
@@ -214,7 +222,7 @@ const baseInsightArticles: InsightArticle[] = [
         "Trust in maritime and offshore is built through consistency — between what a company claims, what it can demonstrate and how it presents itself under scrutiny. The website is often the first structured exposure a buyer has to that consistency. When it is clear, capable and current, it supports commercial conversations before they begin. When it is not, doubt sets in early — and early doubt is expensive to reverse.",
         "Investing in maritime website design is not about chasing awards or agency trends. It is about making credibility visible: for charterers comparing assets, for project teams shortlisting contractors, for partners evaluating fit, and for the people inside your organisation who need a site they are willing to share.",
       ],
-      cta: "Breure.ai builds focused maritime websites for offshore, vessel, shipping and industrial companies that need to look credible before the first conversation starts.",
+      cta: "Breure.ai builds focused custom software for maritime workflows — for charterers, contractors and brokers.",
     },
   },
 ]
@@ -347,7 +355,7 @@ function withMaritimeTrustNl(article: InsightArticle): InsightArticle {
         "Investeren in maritiem webdesign gaat niet om awards of agency-trends najagen. Het gaat erom geloofwaardigheid zichtbaar te maken: voor charterers die assets vergelijken, voor projectteams die aannemers shortlisten, voor partners die fit beoordelen, en voor mensen binnen uw organisatie die een site nodig hebben die zij willen delen.",
       ],
       ctaNl:
-        "Breure.ai bouwt gerichte maritieme websites voor offshore-, scheeps-, scheepvaart- en industriële bedrijven die geloofwaardig moeten zijn vóór het eerste gesprek begint.",
+        "Breure.ai bouwt gerichte custom software voor maritieme workflows — voor charterers, contractors en brokers.",
     },
   }
 }
@@ -357,6 +365,10 @@ export const insightArticles: InsightArticle[] = baseInsightArticles.map((articl
     ? withMaritimeTrustNl(article)
     : article,
 )
+
+export function listedInsightArticles(): InsightArticle[] {
+  return insightArticles.filter((article) => article.listed !== false)
+}
 
 export function insightsIndexPath(locale: InsightLocale): string {
   return locale === "nl" ? "/inzichten" : "/en/insights"

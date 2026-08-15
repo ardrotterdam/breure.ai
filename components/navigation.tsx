@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 
 import { NavbarLogo } from "@/components/navbar-logo"
-import { dict, type Locale, localeFromPathname, ROUTES } from "@/lib/i18n"
+import { dict, localeFromPathname, mainNavItems, type Locale, ROUTES } from "@/lib/i18n"
 import { LanguageToggle } from "./language-toggle"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -105,15 +105,7 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
 
   const insightsHref = ROUTES.insights[locale]
 
-  const navLinks = [
-    { label: t.services, href: ROUTES.services[locale] },
-    { label: t.process, href: ROUTES.process[locale] },
-    { label: t.portfolio, href: ROUTES.portfolio[locale] },
-    { label: t.horeca, href: ROUTES.horeca[locale] },
-    { label: t.tools, href: ROUTES.tools[locale] },
-    { label: t.insights, href: insightsHref },
-    { label: t.contact, href: ROUTES.contact[locale] },
-  ]
+  const navLinks = mainNavItems(locale)
 
   const homeHref = ROUTES.home[locale]
   const contactHref = ROUTES.contact[locale]
@@ -167,8 +159,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                   active ? "font-medium" : "font-normal"
                 }`}
                 aria-current={active ? "page" : undefined}
-                {...(item.href === insightsHref && t.insightsTitle
-                  ? { title: t.insightsTitle }
+                {...(item.href === insightsHref && (item.title || t.insightsTitle)
+                  ? { title: item.title || t.insightsTitle }
                   : {})}
               >
                 {item.label}
@@ -260,8 +252,8 @@ export function Navigation({ locale: localeProp }: NavigationProps = {}) {
                         active ? "text-accent" : "text-foreground dark:text-white"
                       }`}
                       aria-current={active ? "page" : undefined}
-                      {...(item.href === insightsHref && t.insightsTitle
-                        ? { title: t.insightsTitle }
+                      {...(item.href === insightsHref && (item.title || t.insightsTitle)
+                        ? { title: item.title || t.insightsTitle }
                         : {})}
                     >
                       {item.label}

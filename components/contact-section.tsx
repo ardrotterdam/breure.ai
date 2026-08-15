@@ -3,7 +3,7 @@ import { BlueprintFigure } from "@/components/blueprints/blueprint-figure"
 import { ContactDecor } from "@/components/contact/contact-decor"
 import { ContactForm } from "@/components/contact/contact-form"
 import { StaggerInView, StaggerItem } from "@/components/motion/stagger-in-view"
-import { dict, type Locale } from "@/lib/i18n"
+import { dict, ROUTES, type Locale } from "@/lib/i18n"
 
 interface ContactSectionProps {
   locale?: Locale
@@ -23,6 +23,8 @@ export function ContactSection({
   const titlePrefix = slotCta?.titlePrefix ?? t.titlePrefix
   const titleAccent = slotCta?.titleAccent ?? t.titleAccent
   const intro = slotCta?.intro ?? t.intro
+  const paragraphs = slotCta?.paragraphs ?? []
+  const toolCta = slotCta?.toolCta
   const fullPageLabel = dict.sectionLinks[locale].contactPage
   const TitleTag = variant === "page" ? "h1" : "h2"
 
@@ -55,10 +57,34 @@ export function ContactSection({
               </TitleTag>
             </StaggerItem>
             <StaggerItem>
-              <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md mb-10 sm:mb-12">
-                {intro}
-              </p>
+              <div className="max-w-md mb-10 sm:mb-12 space-y-4">
+                <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
+                  {intro}
+                </p>
+                {paragraphs.map((paragraph) => (
+                  <p
+                    key={paragraph}
+                    className="text-text-secondary text-base sm:text-lg leading-relaxed"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </StaggerItem>
+
+            {toolCta ? (
+              <StaggerItem>
+                <p className="mb-10 sm:mb-12">
+                  <Link
+                    href={ROUTES.tools[locale]}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-accent-soft hover:text-accent transition-colors"
+                  >
+                    {toolCta}
+                    <span aria-hidden>→</span>
+                  </Link>
+                </p>
+              </StaggerItem>
+            ) : null}
 
             {fullPageHref && (
               <StaggerItem>

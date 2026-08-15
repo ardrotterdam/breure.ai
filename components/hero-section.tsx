@@ -5,7 +5,7 @@ import { HeroIllustration } from "@/components/hero/hero-illustration"
 import { HeroScrollIndicator } from "@/components/hero/hero-scroll-indicator"
 import { FadeInOnMount } from "@/components/motion/fade-in-on-mount"
 import { OceanAnimation } from "@/components/ocean-animation"
-import { dict, type Locale } from "@/lib/i18n"
+import { dict, ROUTES, type Locale } from "@/lib/i18n"
 
 interface HeroSectionProps {
   locale?: Locale
@@ -57,6 +57,8 @@ export function HeroSection({ locale = "nl" }: HeroSectionProps) {
                 locale={locale}
                 primaryLabel={t.ctaPrimary}
                 secondaryLabel={t.ctaSecondary}
+                primaryHref={ROUTES[t.ctaPrimaryRoute][locale]}
+                secondaryHref={ROUTES[t.ctaSecondaryRoute][locale]}
               />
             </FadeIn>
 

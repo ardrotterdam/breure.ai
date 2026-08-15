@@ -85,7 +85,7 @@ export default async function InsightArticlePage({
                   d="M7 16l-4-4m0 0l4-4m-4 4h18"
                 />
               </svg>
-              Back to Insights
+              Back to the blog
             </Link>
 
             <p className="text-xs sm:text-sm font-medium tracking-[0.3em] uppercase text-text-eyebrow mb-5">
@@ -181,13 +181,13 @@ export default async function InsightArticlePage({
               </p>
               <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <Link href="/en/contact" className="btn-primary px-5 py-3 text-sm">
-                  Get in touch
+                  Discuss your workflow
                 </Link>
-                <Link href="/en/services" className="btn-secondary px-5 py-3 text-sm">
-                  Our services
+                <Link href="/en/maritime-software" className="btn-secondary px-5 py-3 text-sm">
+                  Maritime software
                 </Link>
-                <Link href="/en/process" className="btn-secondary px-5 py-3 text-sm">
-                  Our process
+                <Link href="/en/tools/vessel-comparison" className="btn-secondary px-5 py-3 text-sm">
+                  View the demo
                 </Link>
               </div>
             </aside>
@@ -197,19 +197,19 @@ export default async function InsightArticlePage({
               aria-label="Related pages"
             >
               <p className="text-sm text-text-secondary mb-4">
-                Explore how Breure.ai approaches{" "}
-                <Link href="/en/services" className="text-foreground hover:text-accent transition-colors">
-                  maritime website design and asset microsites
+                Explore how Breure.ai builds{" "}
+                <Link href="/en/maritime-software" className="text-foreground hover:text-accent transition-colors">
+                  focused maritime software
                 </Link>
-                , our{" "}
-                <Link href="/en/process" className="text-foreground hover:text-accent transition-colors">
-                  project process
-                </Link>{" "}
-                from specs to launch, or{" "}
+                , try the{" "}
+                <Link href="/en/tools/vessel-comparison" className="text-foreground hover:text-accent transition-colors">
+                  Vessel Comparison Tool
+                </Link>
+                , or{" "}
                 <Link href="/en/contact" className="text-foreground hover:text-accent transition-colors">
-                  contact us
-                </Link>{" "}
-                to discuss your fleet or offshore assets.
+                  discuss a workflow
+                </Link>
+                .
               </p>
               <Link
                 href={indexPath}
@@ -229,7 +229,7 @@ export default async function InsightArticlePage({
                     d="M7 16l-4-4m0 0l4-4m-4 4h18"
                   />
                 </svg>
-                All Insights
+                Back to the blog
               </Link>
             </nav>
           </div>

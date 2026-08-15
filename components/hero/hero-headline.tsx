@@ -27,14 +27,16 @@ export function HeroHeadline({ headlineMain, headlineAccent, headlineEnd }: Hero
         >
           {headlineAccent}
         </motion.span>
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 1.1 }}
-          className="text-foreground"
-        >
-          {headlineEnd}
-        </motion.span>
+        {headlineEnd ? (
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 1.1 }}
+            className="text-foreground"
+          >
+            {headlineEnd}
+          </motion.span>
+        ) : null}
       </span>
     </h1>
   )

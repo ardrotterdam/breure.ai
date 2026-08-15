@@ -7,7 +7,7 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface ProcessSectionProps {
   locale?: Locale
-  /** Homepage uses the 3-step messaging summary; /proces keeps the full process dict. */
+  /** Homepage uses the homepage process copy; /proces keeps the full process dict. */
   variant?: "default" | "home"
   /** When set, shows a crawlable link to the dedicated process page (homepage). */
   detailHref?: string
@@ -41,11 +41,13 @@ export function ProcessSection({
                 </span>
               </h2>
             </StaggerItem>
-            <StaggerItem>
-              <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md">
-                {t.intro}
-              </p>
-            </StaggerItem>
+            {t.intro ? (
+              <StaggerItem>
+                <p className="text-text-secondary text-base sm:text-lg leading-relaxed max-w-md">
+                  {t.intro}
+                </p>
+              </StaggerItem>
+            ) : null}
 
             {detailHref && (
               <StaggerItem>

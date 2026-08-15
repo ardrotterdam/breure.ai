@@ -6,12 +6,14 @@ import { dict, type Locale } from "@/lib/i18n"
 
 interface ServicesSectionProps {
   locale?: Locale
+  /** Homepage uses maritime-tool copy; /maritieme-software uses the shared services dict. */
+  variant?: "default" | "home"
   /** When set, shows a crawlable link to the dedicated services page (homepage). */
   detailHref?: string
 }
 
-export function ServicesSection({ locale = "nl", detailHref }: ServicesSectionProps) {
-  const t = dict.services[locale]
+export function ServicesSection({ locale = "nl", variant = "default", detailHref }: ServicesSectionProps) {
+  const t = variant === "home" ? dict.home.services[locale] : dict.services[locale]
   const detailLabel = dict.sectionLinks[locale].services
 
   return (
@@ -71,14 +73,16 @@ export function ServicesSection({ locale = "nl", detailHref }: ServicesSectionPr
                 <h3 className="text-lg sm:text-xl font-medium mb-3 sm:mb-4 text-foreground">{service.title}</h3>
                 <p className="text-text-secondary text-sm leading-relaxed mb-7 sm:mb-8">{service.description}</p>
 
-                <ul className="space-y-3 mt-auto">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 text-sm text-text-tertiary">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                {service.features.length > 0 ? (
+                  <ul className="space-y-3 mt-auto">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3 text-sm text-text-tertiary">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
 
                 <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent group-hover:w-full transition-all duration-500" />
               </HoverLift>

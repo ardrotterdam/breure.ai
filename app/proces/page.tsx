@@ -15,10 +15,9 @@ const ctaCopy = dict.ctas.nl.process
 
 export const metadata: Metadata = buildPageMetadata("process", locale, {
   keywords: [
-    "offshore website proces",
-    "asset website development",
-    "maritime web development",
-    "vessel website launch",
+    "maritieme software aanpak",
+    "custom maritime software",
+    "workflow software",
     "Breure.ai proces",
   ],
 })
@@ -48,7 +47,7 @@ export default function ProcesPage() {
           description={ctaCopy.description}
           primaryHref="/contact"
           primaryLabel={ctaCopy.primary}
-          secondaryHref="/diensten"
+          secondaryHref="/maritieme-software"
           secondaryLabel={ctaCopy.secondary}
         />
       </main>

@@ -1,20 +1,20 @@
 # Breure.ai
 
-Breure.ai is een gespecialiseerd webbureau voor de offshore- en maritieme sector.
-Wij bouwen snelle, duidelijke en technisch sterke asset websites voor heavy-lift vessels, jack-ups, platforms en andere offshore assets.
+Breure.ai builds focused custom software for maritime workflows.
 
-De focus van Breure.ai:
+We develop tools for charterers, contractors and brokers — from vessel comparison to small custom workflows for technical and operational work.
 
-- Dedicated microsites per schip of platform
-- Technische datasheets, crane specs, deck layouts en DP-capabilities
-- SEO en presentatie op het niveau van high-value day rates
-- Vertrouwen, duidelijkheid en besluitvorming voor charterers, engineers en tenderteams
+The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data.
+
+Brand and product source of truth: [`docs/BREURE_AI_DNA.md`](docs/BREURE_AI_DNA.md).
 
 ## Tech stack
 
 - [Next.js](https://nextjs.org/) 16 (App Router)
 - React 19
+- TypeScript
 - Tailwind CSS 4
+- Package manager: [pnpm](https://pnpm.io/)
 - Deployed on [Vercel](https://vercel.com/)
 
 ## Local development

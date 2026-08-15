@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { dict, type Locale, ROUTES } from "@/lib/i18n"
+import { dict, mainNavItems, type Locale, ROUTES } from "@/lib/i18n"
 
 interface FooterProps {
   locale?: Locale
@@ -12,16 +12,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
   const year = new Date().getFullYear()
 
   const insightsHref = ROUTES.insights[locale]
-
-  const links = [
-    { label: nav.services, href: ROUTES.services[locale] },
-    { label: nav.process, href: ROUTES.process[locale] },
-    { label: nav.portfolio, href: ROUTES.portfolio[locale] },
-    { label: nav.horeca, href: ROUTES.horeca[locale] },
-    { label: nav.tools, href: ROUTES.tools[locale] },
-    { label: nav.insights, href: insightsHref },
-    { label: nav.contact, href: ROUTES.contact[locale] },
-  ]
+  const links = mainNavItems(locale)
 
   return (
     <footer className="relative py-14 sm:py-16 bg-ocean-deep border-t border-border/50">
@@ -34,8 +25,8 @@ export function Footer({ locale = "nl" }: FooterProps) {
               aria-label="Breure.ai — Home"
             >
               <Image
-                src="/images/breure-ai-webbureau-rotterdam-logo.webp"
-                alt="Breure.ai – AI webbureau Rotterdam"
+                src="/images/breure-ai-logo.webp"
+                alt="Breure.ai"
                 width={662}
                 height={160}
                 className="h-10 w-auto sm:h-11 md:h-12 lg:h-14"

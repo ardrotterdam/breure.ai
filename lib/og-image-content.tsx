@@ -9,8 +9,7 @@ export const OG_BRAND = {
   muted: "#9DAEBF",
 } as const
 
-export const OG_TAGLINE =
-  "Custom maritime software — built at speed"
+export const OG_TAGLINE = "Focused custom software for maritime workflows"
 
 /** Wave mark paths scaled for a 48×48 favicon canvas */
 export function FaviconMark({ size = 48 }: { size?: number }) {

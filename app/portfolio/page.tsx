@@ -15,11 +15,10 @@ const ctaCopy = dict.ctas.nl.portfolio
 
 export const metadata: Metadata = buildPageMetadata("portfolio", locale, {
   keywords: [
-    "Breure.ai portfolio",
-    "offshore website portfolio",
-    "vessel website case study",
-    "asset microsite case",
-    "maritime web design portfolio",
+    "Vessel Comparison Tool",
+    "vessel comparison software",
+    "maritieme software demo",
+    "Breure.ai demo",
   ],
 })
 
@@ -49,7 +48,7 @@ export default function PortfolioPage() {
           description={ctaCopy.description}
           primaryHref="/contact"
           primaryLabel={ctaCopy.primary}
-          secondaryHref="/diensten"
+          secondaryHref="/maritieme-software"
           secondaryLabel={ctaCopy.secondary}
         />
       </main>

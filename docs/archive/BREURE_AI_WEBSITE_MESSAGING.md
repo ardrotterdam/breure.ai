@@ -1,9 +1,22 @@
+# ARCHIVED — do not use as current strategy
+
+> **Status:** historical / outdated (archived 2026-08-16)
+>
+> This document described website messaging **before** the maritime-software
+> repositioning. It is **not** the current source of truth.
+>
+> Current brand/product DNA: [`docs/BREURE_AI_DNA.md`](../BREURE_AI_DNA.md)
+> Agent instructions: [`AGENTS.md`](../../AGENTS.md)
+>
+> Do not restore navigation, timelines, solo-founder voice, “within a week”
+> promises, or `/diensten` IA from this file.
+
+---
+
 # BREURE.AI — WEBSITE MESSAGING & STRUCTUUR
 
-> **Doel:** dit document definieert de boodschap en structuur van breure.ai zodat elke
-> bezoeker binnen 10 seconden begrijpt: wat wij zijn, voor wie, en waarom het werkt.
-> Plaats in de repo als `docs/BREURE_AI_WEBSITE_MESSAGING.md` en voer aan Cursor als
-> context bij website-wijzigingen, samen met `docs/BREURE_AI_DNA.md`.
+> **Doel (historical):** dit document definieerde de boodschap en structuur van breure.ai.
+> Oorspronkelijk bedoeld als context bij website-wijzigingen, samen met `docs/BREURE_AI_DNA.md`.
 
 **Versie:** 1.0 · **Datum:** 2026-07-19 · **Talen:** NL + EN (copy voor beide hieronder)
 

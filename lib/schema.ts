@@ -25,11 +25,13 @@ export type BreadcrumbItem = {
 }
 
 export type PageBreadcrumbKey =
+  | "maritimeSoftware"
   | "services"
   | "process"
   | "portfolio"
   | "horeca"
   | "contact"
+  | "tools"
 
 const HOME_LABEL: Record<Locale, string> = {
   nl: "Home",
@@ -37,19 +39,26 @@ const HOME_LABEL: Record<Locale, string> = {
 }
 
 const PAGE_LABEL: Record<PageBreadcrumbKey, Record<Locale, string>> = {
-  services: { nl: dict.nav.nl.services, en: dict.nav.en.services },
+  maritimeSoftware: {
+    nl: dict.nav.nl.maritimeSoftware,
+    en: dict.nav.en.maritimeSoftware,
+  },
+  services: { nl: dict.nav.nl.maritimeSoftware, en: dict.nav.en.maritimeSoftware },
   process: { nl: dict.nav.nl.process, en: dict.nav.en.process },
-  portfolio: { nl: dict.nav.nl.portfolio, en: dict.nav.en.portfolio },
+  portfolio: { nl: dict.nav.nl.demo, en: dict.nav.en.demo },
   horeca: { nl: dict.nav.nl.horeca, en: dict.nav.en.horeca },
   contact: { nl: dict.nav.nl.contact, en: dict.nav.en.contact },
+  tools: { nl: dict.nav.nl.demo, en: dict.nav.en.demo },
 }
 
 const PAGE_ROUTE: Record<PageBreadcrumbKey, Record<Locale, string>> = {
-  services: ROUTES.services,
+  maritimeSoftware: ROUTES.maritimeSoftware,
+  services: ROUTES.maritimeSoftware,
   process: ROUTES.process,
   portfolio: ROUTES.portfolio,
   horeca: ROUTES.horeca,
   contact: ROUTES.contact,
+  tools: ROUTES.tools,
 }
 
 export function absoluteUrl(path: string): string {
@@ -67,6 +76,14 @@ export function buildSiteSchemaGraph(): SchemaGraph {
         url: siteUrl,
         logo: logoImageUrl,
         email: "info@breure.ai",
+        description:
+          "Breure.ai builds focused custom software for maritime workflows. Breure.ai develops tools for charterers, contractors and brokers.",
+        knowsAbout: [
+          "Maritime software",
+          "Vessel comparison software",
+          "Maritime workflow automation",
+          "Chartering software tools",
+        ],
         contactPoint: [
           {
             "@type": "ContactPoint",
@@ -93,7 +110,8 @@ export function buildSiteSchemaGraph(): SchemaGraph {
         image: logoImageUrl,
         email: "info@breure.ai",
         description:
-          "Premium digitale platforms voor offshore, maritieme en zware-industriële bedrijven. Premium digital platforms for offshore, maritime and heavy industry companies.",
+          "Breure.ai builds focused custom software for maritime workflows. Breure.ai develops tools for charterers, contractors and brokers. The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data.",
+        serviceType: "Custom maritime software",
         priceRange: "$$$",
         address: {
           "@type": "PostalAddress",
@@ -152,5 +170,31 @@ export function buildContactPageSchema(locale: Locale): Record<string, unknown> 
     isPartOf: { "@id": websiteId },
     about: { "@id": professionalServiceId },
     mainEntity: { "@id": professionalServiceId },
+  }
+}
+
+export function buildVesselComparisonSchema(locale: Locale): Record<string, unknown> {
+  const path = ROUTES.tools[locale]
+  const isNl = locale === "nl"
+
+  return {
+    "@context": SCHEMA_CONTEXT,
+    "@type": "SoftwareApplication",
+    "@id": `${absoluteUrl(path)}#software`,
+    name: "Vessel Comparison Tool",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: isNl
+      ? "De Vessel Comparison Tool is een demonstratie van software voor het vergelijken van scheepscapaciteiten en technische data. De getoonde scheepsdata is fictief."
+      : "The Vessel Comparison Tool is a demonstration of software for comparing vessel capabilities and technical data. The vessel data shown is fictional.",
+    url: absoluteUrl(path),
+    inLanguage: isNl ? "nl-NL" : "en-US",
+    isPartOf: { "@id": websiteId },
+    creator: { "@id": organizationId },
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
   }
 }

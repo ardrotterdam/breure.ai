@@ -11,13 +11,21 @@ type HeroCtaProps = {
   locale: Locale
   primaryLabel: string
   secondaryLabel: string
+  primaryHref?: string
+  secondaryHref?: string
 }
 
-export function HeroCta({ locale, primaryLabel, secondaryLabel }: HeroCtaProps) {
+export function HeroCta({
+  locale,
+  primaryLabel,
+  secondaryLabel,
+  primaryHref,
+  secondaryHref,
+}: HeroCtaProps) {
   return (
     <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
       <MotionLink
-        href={ROUTES.tools[locale]}
+        href={primaryHref ?? ROUTES.tools[locale]}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="group relative btn-primary px-7 sm:px-8 py-3.5 sm:py-4 overflow-hidden"
@@ -41,7 +49,7 @@ export function HeroCta({ locale, primaryLabel, secondaryLabel }: HeroCtaProps) 
       </MotionLink>
 
       <MotionLink
-        href={ROUTES.contact[locale]}
+        href={secondaryHref ?? ROUTES.contact[locale]}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className="group btn-secondary px-7 sm:px-8 py-3.5 sm:py-4"

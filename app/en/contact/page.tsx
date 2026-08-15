@@ -17,8 +17,8 @@ const related = dict.contactRelated.en
 export const metadata: Metadata = buildPageMetadata("contact", locale, {
   keywords: [
     "Breure.ai contact",
-    "offshore website contact",
-    "maritime web agency Rotterdam",
+    "maritime software Rotterdam",
+    "maritime workflow",
     "contact form",
   ],
 })
@@ -42,18 +42,18 @@ export default function EnglishContactPage() {
             </p>
             <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
               <li>
-                <Link href={ROUTES.services.en} className="text-accent-soft hover:text-accent transition-colors">
-                  {nav.services}
+                <Link href={ROUTES.maritimeSoftware.en} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.maritimeSoftware}
                 </Link>
               </li>
               <li>
-                <Link href={ROUTES.process.en} className="text-accent-soft hover:text-accent transition-colors">
-                  {nav.process}
+                <Link href={ROUTES.tools.en} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.demo}
                 </Link>
               </li>
               <li>
-                <Link href={ROUTES.portfolio.en} className="text-accent-soft hover:text-accent transition-colors">
-                  {nav.portfolio}
+                <Link href={ROUTES.insights.en} className="text-accent-soft hover:text-accent transition-colors">
+                  {nav.blog}
                 </Link>
               </li>
             </ul>
