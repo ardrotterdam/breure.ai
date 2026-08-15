@@ -1266,11 +1266,10 @@ export type MainNavItem = {
   title?: string
 }
 
-/** Public main navigation: Home — Maritime Software — Demo — Blog — Contact */
+/** Public main navigation: Maritime Software — Demo — Blog — Contact. Home is the logo. */
 export function mainNavItems(locale: Locale): MainNavItem[] {
   const t = dict.nav[locale]
   return [
-    { label: t.home, href: ROUTES.home[locale] },
     { label: t.maritimeSoftware, href: ROUTES.maritimeSoftware[locale] },
     { label: t.demo, href: ROUTES.tools[locale] },
     { label: t.blog, href: ROUTES.insights[locale], title: t.blogTitle },

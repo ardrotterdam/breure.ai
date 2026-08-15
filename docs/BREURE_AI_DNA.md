@@ -211,12 +211,14 @@ Do not invent a large team, staff bios, or headcount.
 
 ### Primary navigation (intentional)
 
-**Dutch:** Home · Maritieme Software · Demo · Blog · Contact  
-**English:** Home · Maritime Software · Demo · Blog · Contact
+**Dutch:** Maritieme Software · Demo · Blog · Contact  
+**English:** Maritime Software · Demo · Blog · Contact
 
-| Label | Dutch path | English path |
+The Breure.ai logo is the Home link (`/` / `/en`). Do not add a separate Home item in primary navigation.
+
+| Link | Dutch path | English path |
 |---|---|---|
-| Home | `/` | `/en` |
+| Logo (Home) | `/` | `/en` |
 | Maritieme Software / Maritime Software | `/maritieme-software` | `/en/maritime-software` |
 | Demo | `/tools/vessel-comparison` | `/en/tools/vessel-comparison` |
 | Blog | `/inzichten` | `/en/insights` |

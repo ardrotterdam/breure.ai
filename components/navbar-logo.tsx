@@ -13,7 +13,7 @@ export function NavbarLogo({ href = "/", className = "", onClick }: NavbarLogoPr
       href={href}
       onClick={onClick}
       className={`group inline-flex shrink-0 items-center transition-opacity duration-300 ease-out hover:opacity-90 ${className}`.trim()}
-      aria-label="Breure.ai — Home"
+      aria-label="Breure.ai home"
     >
       <Image
         src="/images/breure-ai-logo.webp"

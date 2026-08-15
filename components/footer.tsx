@@ -22,7 +22,7 @@ export function Footer({ locale = "nl" }: FooterProps) {
             <Link
               href={ROUTES.home[locale]}
               className="mb-4 inline-flex items-center transition-opacity hover:opacity-90"
-              aria-label="Breure.ai — Home"
+              aria-label="Breure.ai home"
             >
               <Image
                 src="/images/breure-ai-logo.webp"
