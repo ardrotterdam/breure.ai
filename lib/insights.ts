@@ -1,13 +1,27 @@
+import { spreadsheetToSoftwareArticle } from "@/lib/insights/spreadsheet-naar-software"
+
 export type InsightLocale = "nl" | "en"
 
 export const INSIGHTS_INDEX_PATH = "/en/insights" as const
 
+export type InsightBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "emphasis"; text: string }
+  | { type: "callout"; text: string }
+  | { type: "formula"; text: string }
+  | { type: "quote"; text: string }
+  | { type: "list"; ordered?: boolean; items: string[] }
+  | { type: "heading"; text: string }
+  | { type: "cta"; href: string; label: string }
+
 export type InsightSection = {
   id: string
   heading: string
-  paragraphs: string[]
+  paragraphs?: string[]
+  blocks?: InsightBlock[]
   headingNl?: string
   paragraphsNl?: string[]
+  blocksNl?: InsightBlock[]
 }
 
 export type InsightImage = {
@@ -30,6 +44,7 @@ export type InsightArticle = {
   excerpt: string
   category: string
   date: string
+  dateModified?: string
   readingTime: string
   seoTitle: string
   metaDescription: string
@@ -37,17 +52,31 @@ export type InsightArticle = {
   canonicalUrl: string
   intro: string
   heroImage?: InsightImage
+  /** Subtle label inside the designed hero placeholder when no image is set. */
+  heroPlaceholderLabel?: string
   inlineImages?: InsightInlineImage[]
+  /** Body copy before the first H2. */
+  opening?: InsightBlock[]
+  openingNl?: InsightBlock[]
   sections: InsightSection[]
+  /**
+   * Published locales. Defaults to both. Dutch-only articles must not generate
+   * an English URL, hreflang pair, or index card.
+   */
+  locales?: InsightLocale[]
   /** When false, the article URL stays live but is not listed on the blog index. */
   listed?: boolean
   conclusion: {
     heading: string
     paragraphs: string[]
     cta: string
+    ctaHref?: string
+    ctaLabel?: string
     headingNl?: string
     paragraphsNl?: string[]
     ctaNl?: string
+    ctaHrefNl?: string
+    ctaLabelNl?: string
   }
   slugNl?: string
   titleNl?: string
@@ -99,6 +128,7 @@ export function getInsightsOverview(locale: InsightLocale): InsightsOverview {
 }
 
 const baseInsightArticles: InsightArticle[] = [
+  spreadsheetToSoftwareArticle,
   {
     title: "Why Maritime Companies Lose Trust Before the First Call",
     slug: "maritime-website-design-trust",
@@ -366,8 +396,24 @@ export const insightArticles: InsightArticle[] = baseInsightArticles.map((articl
     : article,
 )
 
-export function listedInsightArticles(): InsightArticle[] {
-  return insightArticles.filter((article) => article.listed !== false)
+export function articleLocales(article: InsightArticle): InsightLocale[] {
+  return article.locales ?? ["nl", "en"]
+}
+
+export function articleHasLocale(
+  article: InsightArticle,
+  locale: InsightLocale,
+): boolean {
+  return articleLocales(article).includes(locale)
+}
+
+export function listedInsightArticles(
+  locale?: InsightLocale,
+): InsightArticle[] {
+  return insightArticles
+    .filter((article) => article.listed !== false)
+    .filter((article) => (locale ? articleHasLocale(article, locale) : true))
+    .sort((a, b) => b.date.localeCompare(a.date))
 }
 
 export function insightsIndexPath(locale: InsightLocale): string {
@@ -434,7 +480,23 @@ export function getSectionParagraphs(
   locale: InsightLocale,
 ): string[] {
   if (locale === "nl" && section.paragraphsNl) return section.paragraphsNl
-  return section.paragraphs
+  return section.paragraphs ?? []
+}
+
+export function getSectionBlocks(
+  section: InsightSection,
+  locale: InsightLocale,
+): InsightBlock[] | undefined {
+  if (locale === "nl" && section.blocksNl) return section.blocksNl
+  return section.blocks
+}
+
+export function getOpeningBlocks(
+  article: InsightArticle,
+  locale: InsightLocale,
+): InsightBlock[] | undefined {
+  if (locale === "nl" && article.openingNl) return article.openingNl
+  return article.opening
 }
 
 export function getConclusionHeading(
@@ -467,6 +529,23 @@ export function getConclusionCta(
   return article.conclusion.cta
 }
 
+export function getConclusionCtaLink(
+  article: InsightArticle,
+  locale: InsightLocale,
+): { href: string; label: string } | undefined {
+  const href =
+    locale === "nl"
+      ? (article.conclusion.ctaHrefNl ?? article.conclusion.ctaHref)
+      : article.conclusion.ctaHref
+  const label =
+    locale === "nl"
+      ? (article.conclusion.ctaLabelNl ?? article.conclusion.ctaLabel)
+      : article.conclusion.ctaLabel
+
+  if (!href || !label) return undefined
+  return { href, label }
+}
+
 export function getImageAlt(
   image: InsightImage,
   locale: InsightLocale,
@@ -487,11 +566,13 @@ export function findArticleBySlug(
   slug: string,
   locale: InsightLocale,
 ): InsightArticle | undefined {
-  return insightArticles.find((article) =>
-    locale === "nl"
-      ? article.slugNl === slug || article.slug === slug
-      : article.slug === slug,
-  )
+  return insightArticles.find((article) => {
+    if (!articleHasLocale(article, locale)) return false
+    if (locale === "nl") {
+      return article.slugNl ? article.slugNl === slug : article.slug === slug
+    }
+    return article.slug === slug
+  })
 }
 
 export function getInsightBySlug(slug: string): InsightArticle | undefined {
@@ -510,16 +591,34 @@ export function formatInsightDate(
   }).format(new Date(isoDate))
 }
 
-export function insightArticleWordCount(article: InsightArticle): number {
+function blockText(block: InsightBlock): string {
+  switch (block.type) {
+    case "list":
+      return block.items.join(" ")
+    case "cta":
+      return `${block.label} ${block.href}`
+    default:
+      return block.text
+  }
+}
+
+export function insightArticleWordCount(
+  article: InsightArticle,
+  locale: InsightLocale = "en",
+): number {
+  const opening = getOpeningBlocks(article, locale) ?? []
   const text = [
-    article.intro,
+    getInsightField(article, "intro", locale),
+    ...opening.map(blockText),
     ...article.sections.flatMap((section) => [
-      section.heading,
-      ...section.paragraphs,
+      getSectionHeading(section, locale),
+      ...getSectionParagraphs(section, locale),
+      ...(getSectionBlocks(section, locale) ?? []).map(blockText),
     ]),
-    article.conclusion.heading,
-    ...article.conclusion.paragraphs,
-    article.conclusion.cta,
+    getConclusionHeading(article, locale),
+    ...getConclusionParagraphs(article, locale),
+    getConclusionCta(article, locale),
+    getConclusionCtaLink(article, locale)?.label ?? "",
   ].join(" ")
 
   return text.split(/\s+/).filter(Boolean).length
@@ -528,7 +627,9 @@ export function insightArticleWordCount(article: InsightArticle): number {
 export function insightSitemapPaths(locale: InsightLocale): string[] {
   return [
     insightsIndexPath(locale),
-    ...insightArticles.map((article) => insightArticlePath(article, locale)),
+    ...insightArticles
+      .filter((article) => articleHasLocale(article, locale))
+      .map((article) => insightArticlePath(article, locale)),
   ]
 }
 
@@ -547,7 +648,7 @@ export function toOppositeInsightPath(
   const nlMatch = normalized.match(/^\/inzichten\/([^/]+)$/)
   if (nlMatch) {
     const article = findArticleBySlug(nlMatch[1], "nl")
-    return article
+    return article && articleHasLocale(article, target)
       ? insightArticlePath(article, target)
       : insightsIndexPath(target)
   }
@@ -555,7 +656,7 @@ export function toOppositeInsightPath(
   const enMatch = normalized.match(/^\/en\/insights\/([^/]+)$/)
   if (enMatch) {
     const article = findArticleBySlug(enMatch[1], "en")
-    return article
+    return article && articleHasLocale(article, target)
       ? insightArticlePath(article, target)
       : insightsIndexPath(target)
   }

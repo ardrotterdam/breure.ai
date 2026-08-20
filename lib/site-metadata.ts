@@ -39,6 +39,8 @@ type SocialPageMeta = {
   url: string
   locale: "nl_NL" | "en_US"
   alternateLocale?: ("nl_NL" | "en_US")[]
+  images?: NonNullable<Metadata["openGraph"]>["images"]
+  twitterImages?: NonNullable<Metadata["twitter"]>["images"]
 }
 
 /** Shared Open Graph block — include on every page so images are not dropped by metadata merge. */
@@ -48,6 +50,7 @@ export function socialOpenGraph({
   url,
   locale,
   alternateLocale,
+  images,
 }: SocialPageMeta): NonNullable<Metadata["openGraph"]> {
   return {
     type: "website",
@@ -57,7 +60,7 @@ export function socialOpenGraph({
     title,
     description,
     siteName: "Breure.ai",
-    images: openGraphImages,
+    images: images ?? openGraphImages,
   }
 }
 
@@ -65,11 +68,12 @@ export function socialOpenGraph({
 export function socialTwitter({
   title,
   description,
-}: Pick<SocialPageMeta, "title" | "description">): NonNullable<Metadata["twitter"]> {
+  twitterImages: twitterImageOverride,
+}: Pick<SocialPageMeta, "title" | "description" | "twitterImages">): NonNullable<Metadata["twitter"]> {
   return {
     card: "summary_large_image",
     title,
     description,
-    images: twitterImages,
+    images: twitterImageOverride ?? twitterImages,
   }
 }

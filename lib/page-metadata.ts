@@ -49,12 +49,21 @@ type InsightsMetadataOptions = {
   title: string
   description: string
   path: string
-  alternatePath: string
+  /** Opposite-locale path. Omit when that translation does not exist. */
+  alternatePath?: string
   locale: InsightLocale
   keywords?: string[]
+  publishedTime?: string
+  modifiedTime?: string
+  image?: {
+    url: string
+    width: number
+    height: number
+    alt: string
+  }
 }
 
-/** Metadata for bilingual Insights routes with NL↔EN hreflang alternates. */
+/** Metadata for Insights routes. Hreflang pairs only when a translation exists. */
 export function buildInsightsPageMetadata({
   title,
   description,
@@ -62,8 +71,47 @@ export function buildInsightsPageMetadata({
   alternatePath,
   locale,
   keywords,
+  publishedTime,
+  modifiedTime,
+  image,
 }: InsightsMetadataOptions): Metadata {
   const oppositeLocale: InsightLocale = locale === "nl" ? "en" : "nl"
+  const hasTranslation = Boolean(alternatePath)
+
+  const languages: Record<string, string> = hasTranslation
+    ? {
+        [LOCALE_TAG.nl]: locale === "nl" ? path : alternatePath!,
+        [LOCALE_TAG.en]: locale === "en" ? path : alternatePath!,
+        "x-default": locale === "en" ? path : alternatePath!,
+      }
+    : {
+        [LOCALE_TAG[locale]]: path,
+        "x-default": path,
+      }
+
+  const socialImage = image
+    ? [
+        {
+          url: image.url,
+          secureUrl: image.url,
+          width: image.width,
+          height: image.height,
+          alt: image.alt,
+          type: "image/webp" as const,
+        },
+      ]
+    : undefined
+
+  const openGraph = socialOpenGraph({
+    title,
+    description,
+    url: absoluteUrl(path),
+    locale: OG_LOCALE[locale],
+    ...(hasTranslation
+      ? { alternateLocale: [OG_LOCALE[oppositeLocale]] }
+      : {}),
+    ...(socialImage ? { images: socialImage } : {}),
+  })
 
   return {
     title,
@@ -79,22 +127,20 @@ export function buildInsightsPageMetadata({
     },
     alternates: {
       canonical: path,
-      languages: {
-        [LOCALE_TAG.nl]: locale === "nl" ? path : alternatePath,
-        [LOCALE_TAG.en]: locale === "en" ? path : alternatePath,
-        "x-default": locale === "en" ? path : alternatePath,
-      },
+      languages,
     },
-    openGraph: socialOpenGraph({
-      title,
-      description,
-      url: absoluteUrl(path),
-      locale: OG_LOCALE[locale],
-      alternateLocale: [OG_LOCALE[oppositeLocale]],
-    }),
+    openGraph: publishedTime
+      ? {
+          ...openGraph,
+          type: "article",
+          publishedTime,
+          modifiedTime: modifiedTime ?? publishedTime,
+        }
+      : openGraph,
     twitter: socialTwitter({
       title,
       description,
+      ...(image ? { twitterImages: [image.url] } : {}),
     }),
   }
 }

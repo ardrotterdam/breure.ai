@@ -14,7 +14,7 @@ export const metadata = buildInsightsIndexMetadata(locale)
 
 export default function DutchInsightsPage() {
   const overview = getInsightsOverview(locale)
-  const articles = listedInsightArticles()
+  const articles = listedInsightArticles(locale)
 
   return (
     <>
@@ -33,7 +33,7 @@ export default function DutchInsightsPage() {
 
         <section className="py-14 sm:py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-5 sm:px-6 lg:px-12">
-            <div className="max-w-3xl">
+            <div className="max-w-3xl space-y-8">
               {articles.length === 0 ? (
                 <p className="text-text-secondary text-base sm:text-lg leading-relaxed">
                   {overview.empty}
