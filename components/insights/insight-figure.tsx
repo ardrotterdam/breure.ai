@@ -22,14 +22,14 @@ export function InsightFigure({
   if (variant === "hero") {
     return (
       <figure className="mb-10 sm:mb-12">
-        <div className="relative aspect-video overflow-hidden rounded-xl border border-border/40">
+        <div className="overflow-hidden rounded-xl border border-border/40">
           <Image
             src={src}
             alt={alt}
             width={width}
             height={height}
             priority={priority}
-            className="h-full w-full object-cover object-center"
+            className="h-auto w-full"
             sizes="(max-width: 768px) 100vw, 768px"
           />
         </div>
