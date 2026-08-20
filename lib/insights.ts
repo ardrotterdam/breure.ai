@@ -36,6 +36,8 @@ export type InsightInlineImage = InsightImage & {
   afterSectionId: string
   caption?: string
   captionNl?: string
+  /** When set, the figure is only rendered for these locales. */
+  locales?: InsightLocale[]
 }
 
 export type InsightArticle = {
@@ -560,6 +562,15 @@ export function getInlineImageCaption(
 ): string | undefined {
   if (locale === "nl" && image.captionNl) return image.captionNl
   return image.caption
+}
+
+export function getInlineImages(
+  article: InsightArticle,
+  locale: InsightLocale,
+): InsightInlineImage[] {
+  return (article.inlineImages ?? []).filter((image) =>
+    image.locales ? image.locales.includes(locale) : true,
+  )
 }
 
 export function findArticleBySlug(

@@ -13,6 +13,7 @@ import {
   getConclusionParagraphs,
   getImageAlt,
   getInlineImageCaption,
+  getInlineImages,
   getInsightField,
   getOpeningBlocks,
   getSectionBlocks,
@@ -149,7 +150,7 @@ export function InsightArticleView({ article, locale }: InsightArticleViewProps)
           {opening ? <InsightBlocks blocks={opening} /> : null}
 
           {article.sections.map((section) => {
-            const inlineImage = article.inlineImages?.find(
+            const inlineImage = getInlineImages(article, locale).find(
               (image) => image.afterSectionId === section.id,
             )
             const blocks = getSectionBlocks(section, locale)
