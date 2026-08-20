@@ -54,6 +54,8 @@ export type InsightArticle = {
   canonicalUrl: string
   intro: string
   heroImage?: InsightImage
+  /** Optional 16:9 image for blog index cards. Falls back to heroImage. */
+  cardImage?: InsightImage
   /** Subtle label inside the designed hero placeholder when no image is set. */
   heroPlaceholderLabel?: string
   inlineImages?: InsightInlineImage[]
@@ -554,6 +556,12 @@ export function getImageAlt(
 ): string {
   if (locale === "nl" && image.altNl) return image.altNl
   return image.alt
+}
+
+export function getCardImage(
+  article: InsightArticle,
+): InsightImage | undefined {
+  return article.cardImage ?? article.heroImage
 }
 
 export function getInlineImageCaption(

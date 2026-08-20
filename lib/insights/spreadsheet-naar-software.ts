@@ -6,6 +6,8 @@ const CANONICAL = `https://breure.ai/en/insights/${SLUG}`
 const CANONICAL_NL = `https://breure.ai/inzichten/${SLUG_NL}`
 const HERO_SRC =
   "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-hero.webp"
+const CARD_SRC =
+  "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-card.webp"
 
 const spreadsheetToSoftwareEn: InsightArticle = {
   slug: SLUG,
@@ -39,6 +41,12 @@ const spreadsheetToSoftwareEn: InsightArticle = {
     alt: "From Excel and PDFs to focused vessel comparison software for a maritime workflow.",
     width: 1536,
     height: 1024,
+  },
+  cardImage: {
+    src: CARD_SRC,
+    alt: "From Excel and PDFs to focused vessel comparison software for a maritime workflow.",
+    width: 1600,
+    height: 900,
   },
   opening: [
     { type: "paragraph", text: "A request comes in." },
@@ -1381,6 +1389,13 @@ function withSpreadsheetNl(article: InsightArticle): InsightArticle {
     heroImage: article.heroImage
       ? {
           ...article.heroImage,
+          altNl:
+            "Van Excel en PDF's naar gerichte vessel comparison software voor een maritieme workflow.",
+        }
+      : undefined,
+    cardImage: article.cardImage
+      ? {
+          ...article.cardImage,
           altNl:
             "Van Excel en PDF's naar gerichte vessel comparison software voor een maritieme workflow.",
         }

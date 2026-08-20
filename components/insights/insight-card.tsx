@@ -4,6 +4,7 @@ import Link from "next/link"
 import { InsightHeroPlaceholder } from "@/components/insights/insight-hero-placeholder"
 import {
   formatInsightDate,
+  getCardImage,
   getImageAlt,
   getInsightField,
   insightArticlePath,
@@ -19,17 +20,18 @@ interface InsightCardProps {
 export function InsightCard({ article, locale = "en" }: InsightCardProps) {
   const href = insightArticlePath(article, locale)
   const readLabel = locale === "nl" ? "Lees artikel" : "Read article"
+  const cardImage = getCardImage(article)
 
   return (
     <article className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/40 transition-colors hover:border-accent/30 hover:bg-card/60">
       <Link href={href} className="block">
         <div className="relative aspect-video overflow-hidden border-b border-border/40">
-          {article.heroImage ? (
+          {cardImage ? (
             <Image
-              src={article.heroImage.src}
-              alt={getImageAlt(article.heroImage, locale)}
-              width={article.heroImage.width ?? 1536}
-              height={article.heroImage.height ?? 1024}
+              src={cardImage.src}
+              alt={getImageAlt(cardImage, locale)}
+              width={cardImage.width ?? 1600}
+              height={cardImage.height ?? 900}
               className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, 768px"
             />
