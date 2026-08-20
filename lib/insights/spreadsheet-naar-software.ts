@@ -1405,38 +1405,41 @@ function withSpreadsheetNl(article: InsightArticle): InsightArticle {
       {
         afterSectionId: "echte-kosten",
         src: "/images/insights/maritieme-spreadsheet-naar-software/maritieme-handmatige-workflow-excel-pdf-vessel-data.webp",
-        alt: "Handmatige maritieme workflow met Excel, PDF's, vessel data en tijdrovende controles.",
+        alt: "Manual maritime workflow with Excel, PDFs, vessel data and time-consuming checks.",
         altNl:
           "Handmatige maritieme workflow met Excel, PDF's, vessel data en tijdrovende controles.",
         width: 1672,
         height: 941,
+        caption:
+          "Many small manual steps can add up to a structural cost.",
         captionNl:
           "Veel kleine handmatige stappen kunnen samen een structurele kostenpost worden.",
-        locales: ["nl"],
       },
       {
         afterSectionId: "van-45-minuten",
         src: "/images/insights/maritieme-spreadsheet-naar-software/maritieme-software-workflow-van-handmatig-naar-gerichte-tool.webp",
-        alt: "Van handmatige maritieme workflow naar gerichte software voor vessel comparison en snellere rapportage.",
+        alt: "From a manual maritime workflow to focused software for vessel comparison and faster reporting.",
         altNl:
           "Van handmatige maritieme workflow naar gerichte software voor vessel comparison en snellere rapportage.",
         width: 1536,
         height: 1024,
+        caption:
+          "A focused tool brings scattered vessel data, checks and reporting together in one workflow.",
         captionNl:
           "Een gerichte tool brengt verspreide vessel data, controles en rapportage samen in één workflow.",
-        locales: ["nl"],
       },
       {
         afterSectionId: "pdf-kostenlek",
         src: "/images/insights/maritieme-spreadsheet-naar-software/maritieme-pdf-naar-gestructureerde-vessel-data-software.webp",
-        alt: "Maritieme PDF automatisch omzetten naar gestructureerde vessel data voor vergelijking en verdere verwerking.",
+        alt: "Automatically convert a maritime PDF into structured vessel data for comparison and further processing.",
         altNl:
           "Maritieme PDF automatisch omzetten naar gestructureerde vessel data voor vergelijking en verdere verwerking.",
         width: 1672,
         height: 941,
+        caption:
+          "Technical vessel data can be extracted from documents, checked and structured immediately for further use.",
         captionNl:
           "Technische vessel data kan uit documenten worden gehaald, gecontroleerd en direct gestructureerd worden voor verder gebruik.",
-        locales: ["nl"],
       },
     ],
     sections: article.sections.map((section): InsightSection => ({
