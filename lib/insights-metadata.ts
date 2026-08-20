@@ -4,6 +4,7 @@ import {
   articleHasLocale,
   findArticleBySlug,
   getImageAlt,
+  getImageSrc,
   getInsightField,
   getInsightKeywords,
   getInsightsOverview,
@@ -63,7 +64,7 @@ export function buildInsightArticleMetadata(
     ...(hero
       ? {
           image: {
-            url: absoluteUrl(hero.src),
+            url: absoluteUrl(getImageSrc(hero, locale)),
             width: hero.width ?? 1536,
             height: hero.height ?? 1024,
             alt: getImageAlt(hero, locale),
@@ -114,7 +115,7 @@ export function buildInsightArticleJsonLd(
         ? {
             image: {
               "@type": "ImageObject",
-              url: absoluteUrl(hero.src),
+              url: absoluteUrl(getImageSrc(hero, locale)),
               width: hero.width,
               height: hero.height,
             },

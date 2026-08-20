@@ -26,6 +26,8 @@ export type InsightSection = {
 
 export type InsightImage = {
   src: string
+  /** Optional Dutch-specific file. Falls back to `src`. */
+  srcNl?: string
   alt: string
   width?: number
   height?: number
@@ -548,6 +550,14 @@ export function getConclusionCtaLink(
 
   if (!href || !label) return undefined
   return { href, label }
+}
+
+export function getImageSrc(
+  image: InsightImage,
+  locale: InsightLocale,
+): string {
+  if (locale === "nl" && image.srcNl) return image.srcNl
+  return image.src
 }
 
 export function getImageAlt(

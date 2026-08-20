@@ -12,6 +12,7 @@ import {
   getConclusionHeading,
   getConclusionParagraphs,
   getImageAlt,
+  getImageSrc,
   getInlineImageCaption,
   getInlineImages,
   getInsightField,
@@ -124,7 +125,7 @@ export function InsightArticleView({ article, locale }: InsightArticleViewProps)
         <div className="container mx-auto px-5 sm:px-6 lg:px-12 max-w-3xl">
           {article.heroImage ? (
             <InsightFigure
-              src={article.heroImage.src}
+              src={getImageSrc(article.heroImage, locale)}
               alt={getImageAlt(article.heroImage, locale)}
               width={article.heroImage.width}
               height={article.heroImage.height}

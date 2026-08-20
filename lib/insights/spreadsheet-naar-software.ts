@@ -5,6 +5,8 @@ const SLUG_NL = "maritieme-spreadsheet-naar-software"
 const CANONICAL = `https://breure.ai/en/insights/${SLUG}`
 const CANONICAL_NL = `https://breure.ai/inzichten/${SLUG_NL}`
 const HERO_SRC =
+  "/images/insights/maritieme-spreadsheet-naar-software/maritime-spreadsheet-to-software-breure-ai-hero.webp"
+const HERO_SRC_NL =
   "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-hero.webp"
 const CARD_SRC =
   "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-card.webp"
@@ -1389,6 +1391,7 @@ function withSpreadsheetNl(article: InsightArticle): InsightArticle {
     heroImage: article.heroImage
       ? {
           ...article.heroImage,
+          srcNl: HERO_SRC_NL,
           altNl:
             "Van Excel en PDF's naar gerichte vessel comparison software voor een maritieme workflow.",
         }
