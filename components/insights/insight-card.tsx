@@ -6,6 +6,7 @@ import {
   formatInsightDate,
   getCardImage,
   getImageAlt,
+  getImageSrc,
   getInsightField,
   insightArticlePath,
   type InsightArticle,
@@ -28,7 +29,7 @@ export function InsightCard({ article, locale = "en" }: InsightCardProps) {
         <div className="relative aspect-video overflow-hidden border-b border-border/40">
           {cardImage ? (
             <Image
-              src={cardImage.src}
+              src={getImageSrc(cardImage, locale)}
               alt={getImageAlt(cardImage, locale)}
               width={cardImage.width ?? 1600}
               height={cardImage.height ?? 900}

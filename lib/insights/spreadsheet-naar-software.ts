@@ -9,6 +9,8 @@ const HERO_SRC =
 const HERO_SRC_NL =
   "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-hero.webp"
 const CARD_SRC =
+  "/images/insights/maritieme-spreadsheet-naar-software/maritime-spreadsheet-to-software-breure-ai-card.webp"
+const CARD_SRC_NL =
   "/images/insights/maritieme-spreadsheet-naar-software/maritieme-spreadsheet-naar-software-breure-ai-card.webp"
 
 const spreadsheetToSoftwareEn: InsightArticle = {
@@ -1399,6 +1401,7 @@ function withSpreadsheetNl(article: InsightArticle): InsightArticle {
     cardImage: article.cardImage
       ? {
           ...article.cardImage,
+          srcNl: CARD_SRC_NL,
           altNl:
             "Van Excel en PDF's naar gerichte vessel comparison software voor een maritieme workflow.",
         }
